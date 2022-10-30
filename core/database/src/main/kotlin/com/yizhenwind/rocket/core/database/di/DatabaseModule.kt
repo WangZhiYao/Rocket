@@ -21,7 +21,7 @@ import javax.inject.Singleton
 @InstallIn(SingletonComponent::class)
 object DatabaseModule {
 
-    private const val DATABASE_NAME_BOOSTER = "rocket.db"
+    private const val DATABASE_NAME = "rocket.db"
 
     @Provides
     @Singleton
@@ -29,7 +29,7 @@ object DatabaseModule {
         Room.databaseBuilder(
             appContext,
             RocketDatabase::class.java,
-            DATABASE_NAME_BOOSTER
+            DATABASE_NAME
         )
             .build()
 
