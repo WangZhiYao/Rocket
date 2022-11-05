@@ -8,7 +8,7 @@ import androidx.fragment.app.Fragment
  * @author WangZhiYao
  * @since 2022/7/29
  */
-interface IFragmentArgs {
+interface FragmentArgs {
 
     fun newInstance(): Fragment
 

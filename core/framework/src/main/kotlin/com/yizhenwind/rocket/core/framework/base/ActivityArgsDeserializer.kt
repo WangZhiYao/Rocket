@@ -7,7 +7,7 @@ import android.content.Intent
  * @author WangZhiYao
  * @since 2022/7/29
  */
-interface IActivityArgsDeserializer<T : IActivityArgs> {
+interface ActivityArgsDeserializer<T : ActivityArgs> {
 
     fun deserialize(intent: Intent): T
 

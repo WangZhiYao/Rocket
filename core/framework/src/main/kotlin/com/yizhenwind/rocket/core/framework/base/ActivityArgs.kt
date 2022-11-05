@@ -9,7 +9,7 @@ import android.content.Intent
  * @author WangZhiYao
  * @since 2022/7/29
  */
-interface IActivityArgs {
+interface ActivityArgs {
 
     fun intent(context: Context): Intent
 
