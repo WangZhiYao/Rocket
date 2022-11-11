@@ -1,6 +1,6 @@
 [versions]
 android = "7.3.1"
-kotlin = "1.7.20"
+kotlin = "1.7.21"
 hilt = "2.44"
 kotlinx-coroutines = "1.6.4"
 junit = "4.13.2"
