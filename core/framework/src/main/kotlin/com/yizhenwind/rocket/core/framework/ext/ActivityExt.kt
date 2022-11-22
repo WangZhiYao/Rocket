@@ -2,7 +2,7 @@ package com.yizhenwind.rocket.core.framework.ext
 
 import android.app.Activity
 import androidx.viewbinding.ViewBinding
-import com.yizhenwind.rocket.core.framework.base.ActivityArgs
+import com.yizhenwind.rocket.core.framework.base.IActivityArgs
 import com.yizhenwind.rocket.core.framework.lazy.ActivityArgsLazy
 import com.yizhenwind.rocket.core.framework.lazy.ViewBindingLazy
 
@@ -15,7 +15,7 @@ import com.yizhenwind.rocket.core.framework.lazy.ViewBindingLazy
 inline fun <reified VB : ViewBinding> Activity.viewBindings(): ViewBindingLazy<VB> =
     ViewBindingLazy(VB::class) { layoutInflater }
 
-inline fun <reified Args : ActivityArgs> Activity.activityArgs(): ActivityArgsLazy<Args> =
+inline fun <reified Args : IActivityArgs> Activity.activityArgs(): ActivityArgsLazy<Args> =
     ActivityArgsLazy(Args::class) {
         intent ?: throw IllegalStateException("${this::class.java.simpleName} has a null Intent")
     }

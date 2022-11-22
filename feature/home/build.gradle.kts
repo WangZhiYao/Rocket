@@ -48,7 +48,8 @@ dependencies {
     androidTestImplementation(libs.bundles.androidx.test)
 
     implementation(project(":core:framework"))
-    implementation(project(":feature:customer"))
+    implementation(project(":feature:client"))
+    implementation(project(":core:biometric"))
 
     implementation(libs.hilt.android)
     kapt(libs.hilt.android.compiler)

@@ -9,5 +9,5 @@ import org.orbitmvi.orbit.ContainerHost
  * @author WangZhiYao
  * @since 2022/10/22
  */
-abstract class BaseMVIViewModel<STATE : ViewState, SIDE_EFFECT : SideEffect> :
+abstract class BaseMVIViewModel<STATE : IViewState, SIDE_EFFECT : ISideEffect> :
     ContainerHost<STATE, SIDE_EFFECT>, ViewModel()

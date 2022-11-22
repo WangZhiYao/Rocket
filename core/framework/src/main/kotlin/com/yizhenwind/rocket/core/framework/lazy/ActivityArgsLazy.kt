@@ -3,12 +3,12 @@ package com.yizhenwind.rocket.core.framework.lazy
 import android.annotation.SuppressLint
 import android.content.Intent
 import androidx.collection.ArrayMap
-import com.yizhenwind.rocket.core.framework.base.ActivityArgs
+import com.yizhenwind.rocket.core.framework.base.IActivityArgs
 import java.lang.reflect.Method
 import kotlin.reflect.KClass
 
 internal val activityArgsMethodSignature = arrayOf(Intent::class.java)
-internal val activityArgsMethodMap = ArrayMap<KClass<out ActivityArgs>, Method>()
+internal val activityArgsMethodMap = ArrayMap<KClass<out IActivityArgs>, Method>()
 
 /**
  *
@@ -16,7 +16,7 @@ internal val activityArgsMethodMap = ArrayMap<KClass<out ActivityArgs>, Method>(
  * @author WangZhiYao
  * @since 2022/9/3
  */
-class ActivityArgsLazy<Args : ActivityArgs>(
+class ActivityArgsLazy<Args : IActivityArgs>(
     private val activityArgsClass: KClass<Args>,
     private val intentProducer: () -> Intent
 ) : Lazy<Args> {

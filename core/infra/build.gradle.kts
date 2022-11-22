@@ -47,4 +47,8 @@ dependencies {
     kapt(libs.hilt.android.compiler)
 
     api(libs.bundles.kotlinx.coroutines)
+
+    implementation(libs.androidx.startup)
+    implementation(libs.timber)
+
 }

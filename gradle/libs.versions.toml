@@ -12,11 +12,13 @@ androidx-appcompat = "1.5.1"
 androidx-activity = "1.6.1"
 androidx-fragment = "1.5.4"
 androidx-constraintlayout = "2.1.4"
+androidx-navigation = "2.5.3"
 androidx-startup = "1.1.1"
 androidx-lifecycle = "2.5.1"
 androidx-paging = "3.1.1"
 androidx-room = "2.4.3"
 androidx-datastore = "1.0.0"
+androidx-biometric = "1.2.0-alpha05"
 google-material = "1.7.0"
 timber = "5.0.1"
 retrofit = "2.9.0"
@@ -43,6 +45,8 @@ androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version
 androidx-activity-ktx = { group = "androidx.activity", name = "activity-ktx", version.ref = "androidx-activity" }
 androidx-fragment-ktx = { group = "androidx.fragment", name = "fragment-ktx", version.ref = "androidx-fragment" }
 androidx-constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayout", version.ref = "androidx-constraintlayout" }
+androidx-navigation-ui-ktx = { group = "androidx.navigation", name = "navigation-ui-ktx", version.ref = "androidx-navigation" }
+androidx-navigation-fragment-ktx = { group = "androidx.navigation", name = "navigation-fragment-ktx", version.ref = "androidx-navigation" }
 androidx-startup = { group = "androidx.startup", name = "startup-runtime", version.ref = "androidx-startup" }
 androidx-lifecycle-runtime-ktx = { group = "androidx.lifecycle", name = "lifecycle-runtime-ktx", version.ref = "androidx-lifecycle" }
 androidx-lifecycle-viewmodel-ktx = { group = "androidx.lifecycle", name = "lifecycle-viewmodel-ktx", version.ref = "androidx-lifecycle" }
@@ -52,6 +56,7 @@ androidx-room-common = { group = "androidx.room", name = "room-common", version.
 androidx-room-paging = { group = "androidx.room", name = "room-paging", version.ref = "androidx-room" }
 androidx-room-compiler = { group = "androidx.room", name = "room-compiler", version.ref = "androidx-room" }
 androidx-datastore-preferences = { group = "androidx.datastore", name = "datastore-preferences", version.ref = "androidx-datastore" }
+androidx-biometric = { group = "androidx.biometric", name = "biometric-ktx", version.ref = "androidx-biometric" }
 # Goole Material
 google-material = { group = "com.google.android.material", name = "material", version.ref = "google-material" }
 # Other
@@ -67,6 +72,7 @@ orbit-mvi-viewmodel = { group = "org.orbit-mvi", name = "orbit-viewmodel", versi
 androidx-test = ["androidx-test-ext", "androidx-test-espresso-core"]
 kotlinx-coroutines = ["kotlinx-coroutines-core", "kotlinx-coroutines-android"]
 androidx-lifecycle = ["androidx-lifecycle-runtime-ktx", "androidx-lifecycle-viewmodel-ktx"]
+androidx-navigation = ["androidx-navigation-ui-ktx", "androidx-navigation-fragment-ktx"]
 room = ["androidx-room-ktx", "androidx-room-paging"]
 network = ["retrofit", "okhttp", "okhttp-logging-interceptor"]
 orbit-mvi = ["orbit-mvi-core", "orbit-mvi-viewmodel"]

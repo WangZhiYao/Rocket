@@ -6,11 +6,11 @@ package com.yizhenwind.rocket.core.common.constant
  * @author WangZhiYao
  * @since 2022/3/18
  */
-enum class ContactType(val value: String) {
+enum class ContactType {
 
-    QQ("QQ"),
+    QQ,
 
-    WECHAT("微信"),
+    WECHAT,
 
-    PHONE("手机")
+    PHONE
 }

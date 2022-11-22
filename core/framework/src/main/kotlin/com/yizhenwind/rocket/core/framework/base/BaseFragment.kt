@@ -31,10 +31,10 @@ abstract class BaseFragment<out VB : ViewBinding>(
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        initPage()
+        init()
     }
 
-    protected open fun initPage() {
+    protected open fun init() {
 
     }
 

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="item_client_account_count">%d 个账号</string>
+    <string name="item_client_character_count">%d 个角色</string>
+    <string name="item_client_order_count">%d 条订单</string>
+    <string name="item_client_no_account_yet">暂无账号</string>
+    <string name="item_client_no_character_yet">暂无角色</string>
+    <string name="item_client_no_order_yet">暂无订单</string>
+
+    <string name="action_add_account">添加账号</string>
+    <string name="action_add_character">添加角色</string>
+    <string name="action_create_order">创建订单</string>
+    <string name="action_contact_client"></string>
+    <string name="action_delete_client">删除客户</string>
+
+</resources>

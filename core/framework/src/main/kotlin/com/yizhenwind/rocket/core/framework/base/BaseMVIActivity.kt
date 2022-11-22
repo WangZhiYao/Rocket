@@ -1,7 +1,7 @@
 package com.yizhenwind.rocket.core.framework.base
 
-import com.yizhenwind.rocket.core.framework.mvi.SideEffect
-import com.yizhenwind.rocket.core.framework.mvi.ViewState
+import com.yizhenwind.rocket.core.framework.mvi.ISideEffect
+import com.yizhenwind.rocket.core.framework.mvi.IViewState
 
 /**
  * Activity 基类
@@ -9,7 +9,7 @@ import com.yizhenwind.rocket.core.framework.mvi.ViewState
  * @author WangZhiYao
  * @since 2022/8/22
  */
-abstract class BaseMVIActivity<STATE : ViewState, SIDE_EFFECT : SideEffect> :
+abstract class BaseMVIActivity<STATE : IViewState, SIDE_EFFECT : ISideEffect> :
     BaseActivity() {
 
     protected open fun render(state: STATE) {

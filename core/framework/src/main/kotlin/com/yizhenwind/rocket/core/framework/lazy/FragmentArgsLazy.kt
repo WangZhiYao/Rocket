@@ -3,12 +3,12 @@ package com.yizhenwind.rocket.core.framework.lazy
 import android.annotation.SuppressLint
 import android.os.Bundle
 import androidx.collection.ArrayMap
-import com.yizhenwind.rocket.core.framework.base.FragmentArgs
+import com.yizhenwind.rocket.core.framework.base.IFragmentArgs
 import java.lang.reflect.Method
 import kotlin.reflect.KClass
 
 internal val fragmentMethodSignature = arrayOf(Bundle::class.java)
-internal val fragmentMethodMap = ArrayMap<KClass<out FragmentArgs>, Method>()
+internal val fragmentMethodMap = ArrayMap<KClass<out IFragmentArgs>, Method>()
 
 /**
  *
@@ -16,7 +16,7 @@ internal val fragmentMethodMap = ArrayMap<KClass<out FragmentArgs>, Method>()
  * @author WangZhiYao
  * @since 2022/9/3
  */
-class FragmentArgsLazy<Args : FragmentArgs>(
+class FragmentArgsLazy<Args : IFragmentArgs>(
     private val fragmentArgsClass: KClass<Args>,
     private val bundleProducer: () -> Bundle
 ) : Lazy<Args> {

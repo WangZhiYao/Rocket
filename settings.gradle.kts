@@ -18,17 +18,17 @@ rootProject.name = "Rocket"
 
 include(":app")
 include(":core:common")
-include(":core:database")
-include(":core:logger")
+include(":core:framework")
+include(":core:infra")
 include(":core:mediator")
+include(":core:network")
+include(":core:biometric")
+
+include(":data:database")
+include(":data:datastore")
+include(":data:model")
+
+include(":domain:client")
 
 include(":feature:home")
-include(":feature:customer")
-
-//include(":domain:customer")
-//include(":domain:character")
-include(":core:datastore")
-include(":core:network")
-include(":data:customer")
-include(":core:infra")
-include(":core:framework")
+include(":feature:client")

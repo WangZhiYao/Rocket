@@ -13,6 +13,6 @@ abstract class BaseViewHolder<T>(itemView: View) : RecyclerView.ViewHolder(itemV
 
     var onItemClickListener: ((T) -> Unit)? = null
 
-    abstract fun bind(data: T)
+    abstract fun bind(item: T)
 
 }

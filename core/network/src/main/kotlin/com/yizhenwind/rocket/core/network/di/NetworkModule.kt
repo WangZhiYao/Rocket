@@ -1,6 +1,6 @@
 package com.yizhenwind.rocket.core.network.di
 
-import com.yizhenwind.rocket.core.logger.Logger
+import com.yizhenwind.rocket.core.infra.logger.Logger
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -22,14 +22,14 @@ class NetworkModule {
 
     @Provides
     @Singleton
-    fun provideOkHttpClient(): OkHttpClient =
+    fun provideOkHttpClient(logger: Logger): OkHttpClient =
         OkHttpClient.Builder()
             .callTimeout(DEFAULT_TIMEOUT, TimeUnit.SECONDS)
             .connectTimeout(DEFAULT_TIMEOUT, TimeUnit.SECONDS)
             .readTimeout(DEFAULT_TIMEOUT, TimeUnit.SECONDS)
             .writeTimeout(DEFAULT_TIMEOUT, TimeUnit.SECONDS)
             .addInterceptor(
-                HttpLoggingInterceptor { message -> Logger.d(message) }
+                HttpLoggingInterceptor { message -> logger.d(message) }
                     .setLevel(
                         HttpLoggingInterceptor.Level.BODY
                     )
