@@ -49,7 +49,7 @@ dependencies {
 
     implementation(project(":core:framework"))
     implementation(project(":feature:client"))
-    implementation(project(":core:biometric"))
+    implementation(project(":core:authenticate"))
 
     implementation(libs.hilt.android)
     kapt(libs.hilt.android.compiler)

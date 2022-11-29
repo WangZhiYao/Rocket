@@ -49,7 +49,7 @@ dependencies {
 
     implementation(project(":core:framework"))
     implementation(project(":core:common"))
-    implementation(project(":core:biometric"))
+    implementation(project(":core:authenticate"))
 
     implementation(project(":domain:client"))
 

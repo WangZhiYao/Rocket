@@ -1,4 +1,4 @@
-package com.yizhenwind.rocket.core.biometric
+package com.yizhenwind.rocket.core.authenticate
 
 import org.junit.Test
 

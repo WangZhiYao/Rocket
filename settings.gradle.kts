@@ -22,7 +22,7 @@ include(":core:framework")
 include(":core:infra")
 include(":core:mediator")
 include(":core:network")
-include(":core:biometric")
+include(":core:authenticate")
 
 include(":data:database")
 include(":data:datastore")

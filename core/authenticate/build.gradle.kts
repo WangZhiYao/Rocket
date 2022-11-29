@@ -7,7 +7,7 @@ plugins {
 }
 
 android {
-    namespace = "com.yizhenwind.rocket.core.biometric"
+    namespace = "com.yizhenwind.rocket.core.authenticate"
     compileSdk = 33
 
     defaultConfig {
