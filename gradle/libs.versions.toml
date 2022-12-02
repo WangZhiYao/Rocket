@@ -23,7 +23,7 @@ google-material = "1.7.0"
 timber = "5.0.1"
 retrofit = "2.9.0"
 okhttp = "4.10.0"
-orbit-mvi = "4.4.0"
+orbit-mvi = "4.5.0"
 
 [libraries]
 android-tools-build-gradle = { group = "com.android.tools.build", name = "gradle", version.ref = "android" }
