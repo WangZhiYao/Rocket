@@ -54,6 +54,8 @@ dependencies {
     api(libs.androidx.activity.ktx)
     api(libs.androidx.fragment.ktx)
 
+    api(libs.bundles.androidx.navigation)
+
     api(libs.bundles.androidx.lifecycle)
 
     api(libs.bundles.orbit.mvi)
