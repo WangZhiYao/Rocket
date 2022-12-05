@@ -48,8 +48,9 @@ dependencies {
     androidTestImplementation(libs.bundles.androidx.test)
 
     implementation(project(":core:framework"))
-    implementation(project(":feature:client"))
     implementation(project(":core:authenticate"))
+
+    implementation(project(":feature:client"))
 
     implementation(libs.hilt.android)
     kapt(libs.hilt.android.compiler)

@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/nav_customer_list"
-        android:name="com.yizhenwind.rocket.feature.client.ui.ClientListFragment"
+        android:name="com.yizhenwind.rocket.feature.client.ui.home.ClientListFragment"
         android:label="@string/menu_customer_profile"
         tools:layout="@layout/fragment_client_list" />
 
