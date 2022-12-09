@@ -74,11 +74,13 @@ class CreateClientFragment :
                 .flowWithLifecycle(lifecycle)
                 .collect {
                     val contactType = contactTypeList[it.index]
-                    binding.actvCreateClientContactType.apply {
-                        if (contactType != text?.toString()) {
-                            setText(contactType, false)
+                    binding.apply {
+                        actvCreateClientContactType.apply {
+                            if (contactType != text?.toString()) {
+                                setText(contactType, false)
+                            }
                         }
-                        inputType = when (it) {
+                        tietCreateClientContactValue.inputType = when (it) {
                             ContactType.QQ, ContactType.PHONE -> EditorInfo.TYPE_CLASS_NUMBER
                             ContactType.WECHAT -> EditorInfo.TYPE_CLASS_TEXT
                         }
