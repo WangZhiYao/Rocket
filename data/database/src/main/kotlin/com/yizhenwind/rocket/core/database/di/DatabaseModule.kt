@@ -50,4 +50,9 @@ object DatabaseModule {
     fun provideClientDao(database: RocketDatabase): ClientDao =
         database.clientDao()
 
+    @Provides
+    @Singleton
+    fun provideContactDao(database: RocketDatabase): ContactDao =
+        database.contactDao()
+
 }

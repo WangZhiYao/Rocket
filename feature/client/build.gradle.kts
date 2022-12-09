@@ -4,6 +4,7 @@ plugins {
     id(libs.plugins.kotlin.android.get().pluginId)
     id(libs.plugins.kotlin.kapt.get().pluginId)
     id(libs.plugins.hilt.android.plugin.get().pluginId)
+    id(libs.plugins.navigation.safe.args.get().pluginId)
 }
 
 android {
@@ -49,6 +50,7 @@ dependencies {
 
     implementation(project(":core:framework"))
     implementation(project(":core:common"))
+    implementation(project(":core:mediator"))
     implementation(project(":core:authenticate"))
 
     implementation(project(":domain:client"))

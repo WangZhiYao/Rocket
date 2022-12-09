@@ -2,6 +2,8 @@ package com.yizhenwind.rocket.core.database
 
 import androidx.room.Database
 import androidx.room.RoomDatabase
+import androidx.room.TypeConverters
+import com.yizhenwind.rocket.core.database.converter.ContactTypeConverter
 import com.yizhenwind.rocket.core.database.dao.*
 import com.yizhenwind.rocket.core.database.entity.*
 
@@ -14,6 +16,7 @@ import com.yizhenwind.rocket.core.database.entity.*
 @Database(
     entities = [
         ClientEntity::class,
+        ContactEntity::class,
         AccountEntity::class,
         CharacterEntity::class,
         CategoryEntity::class,
@@ -23,9 +26,12 @@ import com.yizhenwind.rocket.core.database.entity.*
     version = 1,
     exportSchema = false
 )
+@TypeConverters(ContactTypeConverter::class)
 abstract class RocketDatabase : RoomDatabase() {
 
     abstract fun clientDao(): ClientDao
+
+    abstract fun contactDao(): ContactDao
 
     abstract fun accountDao(): AccountDao
 

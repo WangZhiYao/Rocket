@@ -29,6 +29,8 @@ include(":data:datastore")
 include(":data:model")
 
 include(":domain:client")
+include(":domain:contact")
 
 include(":feature:home")
 include(":feature:client")
+include(":feature:contact")

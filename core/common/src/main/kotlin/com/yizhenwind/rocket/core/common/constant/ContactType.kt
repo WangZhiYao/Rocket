@@ -6,11 +6,16 @@ package com.yizhenwind.rocket.core.common.constant
  * @author WangZhiYao
  * @since 2022/3/18
  */
-enum class ContactType {
+enum class ContactType(val index: Int) {
 
-    QQ,
+    QQ(0),
 
-    WECHAT,
+    WECHAT(1),
 
-    PHONE
+    PHONE(2);
+
+    companion object {
+
+        fun getByIndex(index: Int): ContactType? = values().firstOrNull { it.index == index }
+    }
 }

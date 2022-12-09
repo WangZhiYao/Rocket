@@ -38,6 +38,10 @@ android {
     kotlinOptions {
         jvmTarget = JavaVersion.VERSION_1_8.toString()
     }
+
+    buildFeatures {
+        viewBinding = true
+    }
 }
 
 dependencies {
@@ -48,7 +52,10 @@ dependencies {
     debugImplementation(libs.leakcanary.android)
 
     implementation(project(":core:framework"))
+
     implementation(project(":feature:home"))
+    implementation(project(":feature:client"))
+    implementation(project(":feature:contact"))
 
     implementation(libs.hilt.android)
     kapt(libs.hilt.android.compiler)

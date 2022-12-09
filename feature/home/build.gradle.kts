@@ -50,10 +50,6 @@ dependencies {
     implementation(project(":core:framework"))
     implementation(project(":core:authenticate"))
 
-    implementation(project(":feature:client"))
-
     implementation(libs.hilt.android)
     kapt(libs.hilt.android.compiler)
-
-    implementation(libs.bundles.androidx.navigation)
 }
