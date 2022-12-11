@@ -1,10 +1,10 @@
-package com.yizhenwind.rocket.feature.client.ui.home
+package com.yizhenwind.rocket.ui.client
 
+import com.yizhenwind.rocket.R
 import com.yizhenwind.rocket.core.framework.ext.setThrottleClickListener
 import com.yizhenwind.rocket.core.framework.widget.BaseViewHolder
 import com.yizhenwind.rocket.core.common.model.ClientProfile
-import com.yizhenwind.rocket.feature.client.R
-import com.yizhenwind.rocket.feature.client.databinding.ItemClientProfileBinding
+import com.yizhenwind.rocket.databinding.ItemClientProfileBinding
 
 /**
  *

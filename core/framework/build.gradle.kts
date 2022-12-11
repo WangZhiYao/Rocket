@@ -59,4 +59,7 @@ dependencies {
     api(libs.bundles.androidx.lifecycle)
 
     api(libs.bundles.orbit.mvi)
+
+    api(libs.androidx.paging.runtime.ktx)
+
 }

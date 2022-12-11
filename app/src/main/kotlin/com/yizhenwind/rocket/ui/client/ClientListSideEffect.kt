@@ -1,4 +1,4 @@
-package com.yizhenwind.rocket.feature.client.ui.home
+package com.yizhenwind.rocket.ui.client
 
 import com.yizhenwind.rocket.core.framework.mvi.ISideEffect
 

@@ -1,9 +1,9 @@
-package com.yizhenwind.rocket.feature.client.ui.home
+package com.yizhenwind.rocket.ui.client
 
 import androidx.lifecycle.viewModelScope
 import androidx.paging.cachedIn
 import com.yizhenwind.rocket.core.framework.mvi.BaseMVIViewModel
-import com.yizhenwind.rocket.domain.client.usecase.ObserveClientProfileListUseCase
+import com.yizhenwind.rocket.core.mediator.client.IClientService
 import dagger.hilt.android.lifecycle.HiltViewModel
 import org.orbitmvi.orbit.syntax.simple.intent
 import org.orbitmvi.orbit.syntax.simple.reduce
@@ -18,7 +18,7 @@ import javax.inject.Inject
  */
 @HiltViewModel
 class ClientListViewModel @Inject constructor(
-    private val observeClientProfileListUseCase: ObserveClientProfileListUseCase
+    private val clientService: IClientService
 ) : BaseMVIViewModel<ClientListViewState, ClientListSideEffect>() {
 
     override val container =
@@ -26,7 +26,7 @@ class ClientListViewModel @Inject constructor(
 
     init {
         intent {
-            observeClientProfileListUseCase()
+            clientService.observeClientProfileList()
                 .cachedIn(viewModelScope)
                 .collect { clientProfileList ->
                     reduce {

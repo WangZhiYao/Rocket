@@ -28,7 +28,10 @@ class MainActivity : BaseActivity() {
 
     private val appBarConfiguration by lazy {
         AppBarConfiguration(
-            setOf(R.id.nav_client_list),
+            setOf(
+                R.id.nav_home,
+                R.id.nav_client_list
+            ),
             binding.drawerLayout
         )
     }

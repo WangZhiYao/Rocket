@@ -1,30 +1,35 @@
-package com.yizhenwind.rocket.feature.client.ui.home
+package com.yizhenwind.rocket.ui.client
 
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
-import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.yizhenwind.rocket.core.common.route.RoutePath
+import com.yizhenwind.rocket.core.common.route.RouteAction
+import com.yizhenwind.rocket.core.common.route.RouteModule
+import com.yizhenwind.rocket.core.common.route.route
 import com.yizhenwind.rocket.core.framework.R
 import com.yizhenwind.rocket.core.framework.base.BaseMVIListFragment
 import com.yizhenwind.rocket.core.framework.ext.setThrottleClickListener
+import com.yizhenwind.rocket.core.mediator.client.navigation.IClientNavigation
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 import org.orbitmvi.orbit.viewmodel.observe
+import javax.inject.Inject
 
 /**
- *
+ * 首页客户列表
  *
  * @author WangZhiYao
  * @since 2022/11/20
  */
 @AndroidEntryPoint
-class ClientListFragment :
-    BaseMVIListFragment<ClientListViewState, ClientListSideEffect>() {
+class ClientListFragment : BaseMVIListFragment<ClientListViewState, ClientListSideEffect>() {
 
     private val viewModel by viewModels<ClientListViewModel>()
     private val adapter by lazy { ClientProfileAdapter() }
+
+    @Inject
+    lateinit var clientNavigation: IClientNavigation
 
     override fun init() {
         initData()
@@ -51,11 +56,12 @@ class ClientListFragment :
             fab.apply {
                 setImageResource(R.drawable.ic_round_add_white_24dp)
                 setThrottleClickListener {
-                    findNavController().navigate(
-                        RoutePath.Builder()
-                            .setModule(RoutePath.Module.CLIENT)
-                            .setAction(RoutePath.Action.CREATE)
-                            .build()
+                    clientNavigation.launch(
+                        requireContext(),
+                        route {
+                            module(RouteModule.CLIENT)
+                            action(RouteAction.CREATE)
+                        }.buildUri()
                     )
                 }
             }
