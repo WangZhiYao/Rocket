@@ -4,12 +4,7 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.yizhenwind.rocket.core.common.route.RouteAction
-import com.yizhenwind.rocket.core.common.route.RouteModule
-import com.yizhenwind.rocket.core.common.route.route
-import com.yizhenwind.rocket.core.framework.R
 import com.yizhenwind.rocket.core.framework.base.BaseMVIListFragment
-import com.yizhenwind.rocket.core.framework.ext.setThrottleClickListener
 import com.yizhenwind.rocket.core.mediator.client.navigation.IClientNavigation
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
@@ -49,21 +44,6 @@ class ClientListFragment : BaseMVIListFragment<ClientListViewState, ClientListSi
 
             onClientProfileActionClickListener = { clientProfile ->
 
-            }
-        }
-
-        binding.apply {
-            fab.apply {
-                setImageResource(R.drawable.ic_round_add_white_24dp)
-                setThrottleClickListener {
-                    clientNavigation.launch(
-                        requireContext(),
-                        route {
-                            module(RouteModule.CLIENT)
-                            action(RouteAction.CREATE)
-                        }.buildUri()
-                    )
-                }
             }
         }
     }

@@ -54,6 +54,6 @@ class RoutePathBuilder {
     }
 }
 
-fun route(initializer: RoutePathBuilder.() -> Unit): RoutePathBuilder {
-    return RoutePathBuilder().apply(initializer)
+fun route(initializer: RoutePathBuilder.() -> Unit): Uri {
+    return RoutePathBuilder().apply(initializer).buildUri()
 }

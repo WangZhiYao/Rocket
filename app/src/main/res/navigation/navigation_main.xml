@@ -17,8 +17,4 @@
         android:label="@string/client_profile_list_label"
         tools:layout="@layout/fragment_base_mvi_list" />
 
-    <include app:graph="@navigation/navigation_home" />
-
-    <include app:graph="@navigation/navigation_client" />
-
 </navigation>
