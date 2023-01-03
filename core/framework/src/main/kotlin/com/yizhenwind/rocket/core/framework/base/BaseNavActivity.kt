@@ -1,11 +1,11 @@
 package com.yizhenwind.rocket.core.framework.base
 
-import android.os.Bundle
 import androidx.annotation.NavigationRes
-import androidx.navigation.fragment.NavHostFragment
-import androidx.navigation.ui.*
-import com.yizhenwind.rocket.core.framework.databinding.LayoutBaseNavBinding
-import com.yizhenwind.rocket.core.framework.ext.viewBindings
+import androidx.appcompat.widget.Toolbar
+import androidx.navigation.NavController
+import androidx.navigation.ui.AppBarConfiguration
+import androidx.navigation.ui.navigateUp
+import androidx.navigation.ui.setupActionBarWithNavController
 
 /**
  *
@@ -15,35 +15,25 @@ import com.yizhenwind.rocket.core.framework.ext.viewBindings
  */
 abstract class BaseNavActivity : BaseActivity() {
 
-    private val binding by viewBindings<LayoutBaseNavBinding>()
-    protected val navController by lazy {
-        binding.navHostFragment.getFragment<NavHostFragment>().navController
-    }
-    protected val appBarConfiguration = AppBarConfiguration.Builder()
+    protected abstract val navController: NavController
+    protected open val appBarConfiguration = AppBarConfiguration.Builder()
         .setFallbackOnNavigateUpListener {
             finish()
             true
         }
         .build()
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(binding.root)
-        initView()
+    protected open fun setupToolbar(
+        toolbar: Toolbar,
+        appBarConfiguration: AppBarConfiguration = this.appBarConfiguration
+    ) {
+        setSupportActionBar(toolbar)
+        setupActionBarWithNavController(navController, appBarConfiguration)
     }
 
-    protected open fun initView() {
-        binding.apply {
-            setSupportActionBar(toolbar)
-            navController.apply {
-                graph = navInflater.inflate(getNavGraph())
-            }
-            setupActionBarWithNavController(navController, appBarConfiguration)
-        }
+    protected open fun setNavGraph(@NavigationRes navGraphId: Int) {
+        navController.graph = navController.navInflater.inflate(navGraphId)
     }
-
-    @NavigationRes
-    abstract fun getNavGraph(): Int
 
     override fun onSupportNavigateUp(): Boolean {
         return navController.navigateUp(appBarConfiguration) || super.onSupportNavigateUp()

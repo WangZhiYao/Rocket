@@ -1,11 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <application android:theme="@style/Theme.Rocket">
+    <application>
 
         <activity
             android:name=".ui.ClientNavActivity"
             android:theme="@style/Theme.Rocket.NoActionBar" />
 
+        <activity
+            android:name=".ui.composite.ClientCompositeActivity"
+            android:theme="@style/Theme.Rocket.NoActionBar" />
+
     </application>
+
 </manifest>

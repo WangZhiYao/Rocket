@@ -8,7 +8,7 @@
     <string name="action_delete_client">删除客户</string>
 
     <string name="create_client_label">创建客户</string>
-    <string name="create_client_name">客户姓名</string>
+    <string name="create_client_name">客户名</string>
     <string name="create_client_input_contact">请输入联系方式</string>
     <string name="create_client_remark">备注</string>
     <string name="create_client_contact_type">联系方式类型</string>
@@ -21,9 +21,26 @@
         <item>手机号</item>
     </string-array>
 
+    <string name="nav_client_detail">详细信息</string>
+    <string name="nav_client_character">角色</string>
+    <string name="nav_client_order">订单</string>
+
     <string name="error_client_name_empty">请输入客户名</string>
     <string name="error_contact_empty">请输入联系方式</string>
     <string name="error_contact_exist">已经存在以上联系方式的客户</string>
     <string name="error_create_client">创建客户失败</string>
+
+    <string name="client_detail_name">客户名</string>
+    <string name="client_detail_contact">联系方式</string>
+    <string name="client_detail_remark">备注</string>
+    <string name="client_detail_remark_empty">暂无备注</string>
+    <string name="client_detail_create_time">创建时间</string>
+
+    <string name="dialog_title_hint">提示</string>
+    <string name="dialog_delete_client_message">删除客户：%s 将会删除该客户下所有的账号，角色与订单，是否要执行此操作?</string>
+    <string name="dialog_action_positive">确定</string>
+    <string name="dialog_action_negative">取消</string>
+
+    <string name="error_client_detail_delete_failed">删除客户失败</string>
 
 </resources>

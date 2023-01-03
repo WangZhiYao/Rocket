@@ -1,6 +1,6 @@
 package com.yizhenwind.rocket.core.framework.mvi
 
-import androidx.lifecycle.ViewModel
+import com.yizhenwind.rocket.core.framework.base.BaseViewModel
 import org.orbitmvi.orbit.ContainerHost
 
 /**
@@ -10,4 +10,4 @@ import org.orbitmvi.orbit.ContainerHost
  * @since 2022/10/22
  */
 abstract class BaseMVIViewModel<STATE : IViewState, SIDE_EFFECT : ISideEffect> :
-    ContainerHost<STATE, SIDE_EFFECT>, ViewModel()
+    ContainerHost<STATE, SIDE_EFFECT>, BaseViewModel()

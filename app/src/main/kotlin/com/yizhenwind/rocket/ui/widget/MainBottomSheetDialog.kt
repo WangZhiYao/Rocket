@@ -43,6 +43,11 @@ class MainBottomSheetDialog : BaseBottomSheetDialogFragment() {
         super.show(manager, TAG)
     }
 
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
+
     companion object {
 
         private const val TAG = "MainBottomSheetDialog"

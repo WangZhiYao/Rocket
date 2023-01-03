@@ -9,7 +9,6 @@ package com.yizhenwind.rocket.core.common.model
 data class ClientProfile(
     val id: Long,
     val name: String,
-    val accountCount: Int,
     val characterCount: Int,
     val orderCount: Int,
     val createTime: Long

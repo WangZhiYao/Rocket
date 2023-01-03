@@ -3,8 +3,8 @@ package com.yizhenwind.rocket.ui.client
 import android.view.ViewGroup
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
-import com.yizhenwind.rocket.core.framework.ext.viewBinding
 import com.yizhenwind.rocket.core.common.model.ClientProfile
+import com.yizhenwind.rocket.core.framework.ext.viewBinding
 import com.yizhenwind.rocket.databinding.ItemClientProfileBinding
 
 /**
@@ -24,7 +24,7 @@ class ClientProfileAdapter :
             onClientProfileActionClickListener = { clientProfile ->
                 this@ClientProfileAdapter.onClientProfileActionClickListener?.invoke(clientProfile)
             }
-            onClientProfileClickListener = { clientProfile ->
+            onItemClickListener = { clientProfile ->
                 this@ClientProfileAdapter.onClientProfileClickListener?.invoke(clientProfile)
             }
         }

@@ -1,9 +1,12 @@
+import org.jetbrains.kotlin.utils.addToStdlib.safeAs
+
 @Suppress("DSL_SCOPE_VIOLATION")
 plugins {
     id(libs.plugins.android.application.get().pluginId)
     id(libs.plugins.kotlin.android.get().pluginId)
     id(libs.plugins.kotlin.kapt.get().pluginId)
     id(libs.plugins.hilt.android.plugin.get().pluginId)
+    id(libs.plugins.navigation.safe.args.get().pluginId)
 }
 
 android {

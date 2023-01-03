@@ -2,10 +2,11 @@ package com.yizhenwind.rocket.core.infra.initializer
 
 import android.content.Context
 import androidx.startup.Initializer
+import com.yizhenwind.rocket.core.infra.logger.tree.RocketDebugTree
 import timber.log.Timber
 
 /**
- *
+ * 日志
  *
  * @author WangZhiYao
  * @since 2022/9/16
@@ -18,14 +19,4 @@ class LoggerInitializer : Initializer<Unit> {
 
     override fun dependencies(): List<Class<out Initializer<*>>> = emptyList()
 
-    private inner class RocketDebugTree : Timber.DebugTree() {
-        override fun log(priority: Int, tag: String?, message: String, t: Throwable?) {
-            super.log(priority, "$LOG_TAG - $tag", message, t)
-        }
-    }
-
-    companion object {
-
-        private const val LOG_TAG = "Rocket"
-    }
 }

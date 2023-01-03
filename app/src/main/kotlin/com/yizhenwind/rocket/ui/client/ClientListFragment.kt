@@ -2,14 +2,13 @@ package com.yizhenwind.rocket.ui.client
 
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.yizhenwind.rocket.core.framework.base.BaseMVIListFragment
-import com.yizhenwind.rocket.core.mediator.client.navigation.IClientNavigation
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 import org.orbitmvi.orbit.viewmodel.observe
-import javax.inject.Inject
 
 /**
  * 首页客户列表
@@ -22,9 +21,6 @@ class ClientListFragment : BaseMVIListFragment<ClientListViewState, ClientListSi
 
     private val viewModel by viewModels<ClientListViewModel>()
     private val adapter by lazy { ClientProfileAdapter() }
-
-    @Inject
-    lateinit var clientNavigation: IClientNavigation
 
     override fun init() {
         initData()
@@ -39,7 +35,11 @@ class ClientListFragment : BaseMVIListFragment<ClientListViewState, ClientListSi
         super.initView()
         adapter.apply {
             onClientProfileClickListener = { clientProfile ->
-
+                findNavController().navigate(
+                    ClientListFragmentDirections.actionNavClientListToNavClientComposite(
+                        clientProfile.id
+                    )
+                )
             }
 
             onClientProfileActionClickListener = { clientProfile ->

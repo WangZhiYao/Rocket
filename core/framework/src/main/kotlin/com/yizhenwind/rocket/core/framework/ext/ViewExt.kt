@@ -3,6 +3,7 @@ package com.yizhenwind.rocket.core.framework.ext
 import android.view.View
 import androidx.annotation.StringRes
 import androidx.core.content.ContextCompat
+import com.google.android.material.snackbar.BaseTransientBottomBar
 import com.google.android.material.snackbar.Snackbar
 import com.yizhenwind.rocket.core.framework.R
 import com.yizhenwind.rocket.core.framework.widget.OnThrottleClickListener
@@ -25,36 +26,52 @@ fun View.setThrottleClickListener(throttleClickListener: (v: View?) -> Unit, mil
     })
 }
 
-fun View.showSnack(@StringRes resId: Int) {
-    showSnack(resId, Snackbar.LENGTH_SHORT)
+fun View.makeSnack(
+    @StringRes resId: Int,
+    @BaseTransientBottomBar.Duration duration: Int = Snackbar.LENGTH_SHORT
+) = makeSnack(resources.getText(resId), duration)
+
+fun View.makeSnack(
+    text: CharSequence,
+    @BaseTransientBottomBar.Duration duration: Int = Snackbar.LENGTH_SHORT
+) = Snackbar.make(this, text, duration)
+
+fun View.showSnack(
+    @StringRes resId: Int,
+    @BaseTransientBottomBar.Duration duration: Int = Snackbar.LENGTH_SHORT
+) {
+    showSnack(resources.getText(resId), duration)
 }
 
-fun View.showSnack(text: String) {
-    showSnack(text, Snackbar.LENGTH_SHORT)
-}
-
-fun View.showSnack(@StringRes resId: Int, duration: Int) {
-    Snackbar.make(this, resId, duration).show()
-}
-
-fun View.showSnack(text: String, duration: Int) {
-    Snackbar.make(this, text, duration).show()
+fun View.showSnack(
+    text: CharSequence,
+    @BaseTransientBottomBar.Duration duration: Int = Snackbar.LENGTH_SHORT
+) {
+    makeSnack(text, duration).show()
 }
 
 fun View.showSnackWithAction(
     @StringRes resId: Int,
+    @BaseTransientBottomBar.Duration duration: Int = Snackbar.LENGTH_SHORT,
     @StringRes actionResId: Int,
     listener: View.OnClickListener
 ) {
-    showSnackWithAction(resId, Snackbar.LENGTH_SHORT, actionResId, listener)
+    showSnackWithAction(
+        resources.getText(resId),
+        duration,
+        resources.getText(actionResId),
+        listener
+    )
 }
 
 fun View.showSnackWithAction(
-    @StringRes resId: Int,
-    duration: Int,
-    @StringRes actionResId: Int,
+    text: CharSequence,
+    @BaseTransientBottomBar.Duration duration: Int = Snackbar.LENGTH_SHORT,
+    actionText: CharSequence,
     listener: View.OnClickListener
 ) {
-    Snackbar.make(this, resId, duration).setAction(actionResId, listener)
-        .setActionTextColor(ContextCompat.getColor(context, R.color.color_secondary)).show()
+    makeSnack(text, duration)
+        .setAction(actionText, listener)
+        .setActionTextColor(ContextCompat.getColor(context, R.color.color_secondary))
+        .show()
 }

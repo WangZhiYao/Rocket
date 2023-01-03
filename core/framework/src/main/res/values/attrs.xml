@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="TwoLineTextView">
+        <attr name="tltv_title" format="string" />
+        <attr name="tltv_titleTextSize" format="dimension" />
+        <attr name="tltv_titleTextColor" format="color" />
+        <attr name="tltv_titleTextAppearance" format="reference" />
+        <attr name="tltv_titleMaxLine" format="integer" />
+        <attr name="tltv_titleEllipsize" format="enum">
+            <enum name="none" value="0" />
+            <enum name="start" value="1" />
+            <enum name="middle" value="2" />
+            <enum name="end" value="3" />
+            <enum name="marquee" value="4" />
+        </attr>
+
+        <attr name="tltv_content" format="string" />
+        <attr name="tltv_contentTextSize" format="dimension" />
+        <attr name="tltv_contentTextColor" format="color" />
+        <attr name="tltv_contentTextAppearance" format="reference" />
+        <attr name="tltv_contentMaxLine" format="integer" />
+        <attr name="tltv_contentEllipsize" format="enum">
+            <enum name="none" value="0" />
+            <enum name="start" value="1" />
+            <enum name="middle" value="2" />
+            <enum name="end" value="3" />
+            <enum name="marquee" value="4" />
+        </attr>
+    </declare-styleable>
+</resources>

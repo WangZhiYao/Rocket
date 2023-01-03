@@ -38,4 +38,8 @@ class ClientLocalDataSource @Inject constructor(
             emit(clientDao.getClientById(id))
         }
 
+    fun deleteClient(client: ClientEntity): Flow<Int> =
+        flow {
+            emit(clientDao.delete(client))
+        }
 }

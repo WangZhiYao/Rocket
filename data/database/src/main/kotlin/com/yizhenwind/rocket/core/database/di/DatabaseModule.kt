@@ -41,7 +41,6 @@ object DatabaseModule {
     fun provideDatabasePagingConfig(): PagingConfig = PagingConfig(
         pageSize = 20,
         prefetchDistance = 3,
-        initialLoadSize = 20,
         enablePlaceholders = false
     )
 

@@ -6,6 +6,7 @@ import androidx.core.widget.doAfterTextChanged
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.flowWithLifecycle
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import com.google.android.material.snackbar.Snackbar
 import com.yizhenwind.rocket.core.common.constant.ContactType
 import com.yizhenwind.rocket.core.framework.base.BaseMVIFragment
@@ -140,7 +141,11 @@ class CreateClientFragment :
                 Snackbar.LENGTH_LONG,
                 R.string.create_client_jump_to_detail
             ) {
-
+                findNavController().navigate(
+                    CreateClientFragmentDirections.actionNavCreateClientToNavClientComposite(
+                        clientId
+                    )
+                )
             }
         }
     }

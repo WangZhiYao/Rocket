@@ -5,6 +5,7 @@ import androidx.paging.map
 import com.yizhenwind.rocket.core.common.model.Client
 import com.yizhenwind.rocket.core.common.model.ClientProfile
 import com.yizhenwind.rocket.core.database.mapper.ClientDtoMapper
+import com.yizhenwind.rocket.core.database.mapper.ClientMapper
 import com.yizhenwind.rocket.core.database.mapper.ClientProfileMapper
 import com.yizhenwind.rocket.core.infra.di.coroutine.qualifier.IODispatcher
 import com.yizhenwind.rocket.core.infra.ext.ifNullOrElse
@@ -25,6 +26,7 @@ class ClientRepository @Inject constructor(
     private val clientLocalDataSource: ClientLocalDataSource,
     private val clientDtoMapper: ClientDtoMapper,
     private val clientProfileMapper: ClientProfileMapper,
+    private val clientMapper: ClientMapper,
     @IODispatcher private val dispatcher: CoroutineDispatcher
 ) {
 
@@ -48,6 +50,13 @@ class ClientRepository @Inject constructor(
         clientLocalDataSource.getClientById(id)
             .map { clientDto ->
                 clientDto.ifNullOrElse({ Client() }, { clientDtoMapper.map(it) })
+            }
+            .flowOn(dispatcher)
+
+    fun deleteClient(client: Client): Flow<Boolean> =
+        clientLocalDataSource.deleteClient(clientMapper.map(client))
+            .map {
+                it > 0
             }
             .flowOn(dispatcher)
 

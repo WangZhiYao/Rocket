@@ -1,8 +1,6 @@
 package com.yizhenwind.rocket.feature.client.di
 
 import com.yizhenwind.rocket.core.mediator.client.IClientService
-import com.yizhenwind.rocket.core.mediator.client.navigation.IClientNavigation
-import com.yizhenwind.rocket.feature.client.di.navigation.ClientNavigation
 import com.yizhenwind.rocket.feature.client.di.service.ClientService
 import dagger.Binds
 import dagger.Module
@@ -21,8 +19,5 @@ abstract class ClientModule {
 
     @Binds
     abstract fun bindClientService(clientService: ClientService): IClientService
-
-    @Binds
-    abstract fun bindClientNavigation(clientNavigation: ClientNavigation): IClientNavigation
 
 }

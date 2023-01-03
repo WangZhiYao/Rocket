@@ -30,7 +30,7 @@ class ClientListViewModel @Inject constructor(
                 .cachedIn(viewModelScope)
                 .collect { clientProfileList ->
                     reduce {
-                        ClientListViewState(clientProfileList)
+                        state.copy(clientProfileList = clientProfileList)
                     }
                 }
         }

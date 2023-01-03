@@ -18,7 +18,6 @@ class ClientProfileMapper @Inject constructor() : IMapper<ClientProfileDto, Clie
             ClientProfile(
                 id,
                 name,
-                accountCount,
                 characterCount,
                 orderCount,
                 createTime

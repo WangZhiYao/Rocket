@@ -44,6 +44,11 @@ abstract class BaseBottomSheetDialogFragment : BottomSheetDialogFragment() {
         }
     }
 
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
+
     enum class Position {
 
         HEADER,

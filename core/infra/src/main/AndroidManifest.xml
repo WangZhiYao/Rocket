@@ -10,7 +10,7 @@
             android:exported="false"
             tools:node="merge">
             <meta-data
-                android:name="com.yizhenwind.rocket.core.infra.initializer.LoggerInitializer"
+                android:name="com.yizhenwind.rocket.core.infra.initializer.ThreadInitializer"
                 android:value="androidx.startup" />
         </provider>
 

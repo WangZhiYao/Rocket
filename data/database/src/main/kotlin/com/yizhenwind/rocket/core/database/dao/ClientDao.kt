@@ -23,7 +23,6 @@ interface ClientDao : IDao<ClientEntity> {
     @Transaction
     @Query(
         "SELECT id, name,  create_time, " +
-                "(SELECT COUNT(*) FROM account WHERE client_id = client.id) AS account_count, " +
                 "(SELECT COUNT(*) FROM character WHERE client_id = client.id) AS character_count, " +
                 "(SELECT COUNT(*) FROM `order` WHERE client_id = client.id ) AS order_count " +
                 "FROM client"
