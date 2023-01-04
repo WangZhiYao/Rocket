@@ -20,8 +20,9 @@ import androidx.fragment.app.FragmentManager
  * @author WangZhiYao
  * @since 2023/1/2
  */
-class AlertDialogFragment private constructor(private val builder: Builder) :
-    BaseDialogFragment() {
+class AlertDialogFragment private constructor(
+    private val builder: Builder
+) : BaseDialogFragment() {
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         return builder.create()
@@ -201,7 +202,7 @@ class AlertDialogFragment private constructor(private val builder: Builder) :
         fun setView(view: View) =
             apply { alertDialogBuilder.setView(view) }
 
-        fun create() = alertDialogBuilder.create()
+        fun create(): AlertDialog = alertDialogBuilder.create()
 
         fun build() = AlertDialogFragment(this)
 
