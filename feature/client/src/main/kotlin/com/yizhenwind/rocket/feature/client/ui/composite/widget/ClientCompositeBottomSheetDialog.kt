@@ -37,8 +37,8 @@ class ClientCompositeBottomSheetDialog private constructor(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        return super.onCreateView(inflater, container, savedInstanceState)?.apply {
+    ): View {
+        return super.onCreateView(inflater, container, savedInstanceState).apply {
             inflate(Position.CONTENT, R.layout.dialog_client_composite_bottom_sheet) {
                 _binding = DialogClientCompositeBottomSheetBinding.bind(it)
                 _headerBinding =

@@ -23,7 +23,7 @@ abstract class BaseBottomSheetDialogFragment : BottomSheetDialogFragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         _binding = DialogBaseBottomSheetBinding.inflate(inflater, container, false)
         return binding.root
     }
