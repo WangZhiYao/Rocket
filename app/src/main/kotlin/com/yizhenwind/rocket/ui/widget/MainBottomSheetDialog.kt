@@ -26,8 +26,8 @@ class MainBottomSheetDialog : BaseBottomSheetDialogFragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        return super.onCreateView(inflater, container, savedInstanceState)?.apply {
+    ): View {
+        return super.onCreateView(inflater, container, savedInstanceState).apply {
             inflate(Position.CONTENT, R.layout.dialog_main_bottom_sheet) {
                 _binding = DialogMainBottomSheetBinding.bind(it)
                 initMenu()
