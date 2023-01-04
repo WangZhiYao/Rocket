@@ -14,11 +14,11 @@ import com.yizhenwind.rocket.databinding.ItemClientProfileBinding
  */
 class ClientProfileViewHolder(
     private val binding: ItemClientProfileBinding
-) : BaseViewHolder<com.yizhenwind.rocket.core.model.ClientProfile>(binding.root) {
+) : BaseViewHolder<ClientProfile>(binding.root) {
 
-    var onActionClickListener: ((com.yizhenwind.rocket.core.model.ClientProfile) -> Unit)? = null
+    var onActionClickListener: ((ClientProfile) -> Unit)? = null
 
-    override fun bind(item: com.yizhenwind.rocket.core.model.ClientProfile) {
+    override fun bind(item: ClientProfile) {
         binding.apply {
             item.apply {
                 tvClientName.text = name
