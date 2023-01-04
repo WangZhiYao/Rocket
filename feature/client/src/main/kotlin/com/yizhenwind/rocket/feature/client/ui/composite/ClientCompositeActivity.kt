@@ -80,12 +80,12 @@ class ClientCompositeActivity :
             .setMessage(
                 getString(
                     R.string.dialog_delete_client_message,
-                    viewModel.container.stateFlow.value.client.name
+                    viewModel.client.name
                 )
             )
             .setPositiveButton(R.string.dialog_action_positive) { dialog, _ ->
                 dialog?.dismiss()
-                viewModel.attemptDeleteClient(viewModel.container.stateFlow.value.client)
+                viewModel.attemptDeleteClient(viewModel.client)
             }
             .setNegativeButton(R.string.dialog_action_negative) { dialog, _ ->
                 dialog?.dismiss()

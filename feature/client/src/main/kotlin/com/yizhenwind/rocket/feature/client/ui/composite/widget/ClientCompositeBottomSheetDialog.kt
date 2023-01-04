@@ -24,7 +24,7 @@ import com.yizhenwind.rocket.feature.client.databinding.NavHeaderClientComposite
  * @since 2023/1/3
  */
 class ClientCompositeBottomSheetDialog private constructor(
-    val builder: Builder
+    private val builder: Builder
 ) : BaseBottomSheetDialogFragment() {
 
     private var _binding: DialogClientCompositeBottomSheetBinding? = null
