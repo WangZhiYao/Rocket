@@ -42,14 +42,21 @@ class ClientCompositeActivity :
             setupToolbar(toolbar)
             bottomAppBar.apply {
                 setNavigationIcon(R.drawable.ic_round_menu_white_24dp)
+                inflateMenu(R.menu.menu_client_composite)
                 fabAlignmentMode = BottomAppBar.FAB_ALIGNMENT_MODE_END
                 setNavigationOnClickListener {
                     ClientCompositeBottomSheetDialog.Builder(viewModel.client)
-                        .setOnDeleteClientSelectedListener { client ->
-                            showDeleteClientDialog(client)
-                        }
                         .build()
                         .show(supportFragmentManager)
+                }
+                setOnMenuItemClickListener { item ->
+                    return@setOnMenuItemClickListener when (item.itemId) {
+                        R.id.action_delete -> {
+                            showDeleteClientDialog(viewModel.client)
+                            true
+                        }
+                        else -> false
+                    }
                 }
             }
             navController.addOnDestinationChangedListener { _, destination, _ ->

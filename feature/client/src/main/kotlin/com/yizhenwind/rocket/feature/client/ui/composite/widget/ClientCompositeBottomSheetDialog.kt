@@ -4,13 +4,9 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.customview.widget.Openable
 import androidx.fragment.app.FragmentManager
 import androidx.navigation.fragment.findNavController
-import androidx.navigation.ui.NavigationUI
-import androidx.navigation.ui.onNavDestinationSelected
 import androidx.navigation.ui.setupWithNavController
-import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.yizhenwind.rocket.core.common.model.Client
 import com.yizhenwind.rocket.core.framework.widget.BaseBottomSheetDialogFragment
 import com.yizhenwind.rocket.feature.client.R
@@ -50,32 +46,7 @@ class ClientCompositeBottomSheetDialog private constructor(
 
     private fun initMenu() {
         headerBinding.tvClientCompositeBottomSheetTitle.text = builder.client.name
-        binding.root.apply {
-            setupWithNavController(findNavController())
-            setNavigationItemSelectedListener { item ->
-                var handled = item.onNavDestinationSelected(findNavController())
-                if (!handled) {
-                    when (item.itemId) {
-                        R.id.action_delete -> {
-                            builder.onDeleteClientSelectedListener?.invoke(builder.client)
-                            handled = true
-                        }
-                    }
-                }
-                if (handled) {
-                    val parent = parent
-                    if (parent is Openable) {
-                        parent.close()
-                    } else {
-                        val bottomSheetBehavior = NavigationUI.findBottomSheetBehavior(this)
-                        if (bottomSheetBehavior != null) {
-                            bottomSheetBehavior.state = BottomSheetBehavior.STATE_HIDDEN
-                        }
-                    }
-                }
-                handled
-            }
-        }
+        binding.root.setupWithNavController(findNavController())
     }
 
     fun show(manager: FragmentManager) {
@@ -89,12 +60,6 @@ class ClientCompositeBottomSheetDialog private constructor(
     }
 
     data class Builder(val client: Client) {
-
-        var onDeleteClientSelectedListener: ((Client) -> Unit)? = null
-            private set
-
-        fun setOnDeleteClientSelectedListener(onDeleteClientSelectedListener: ((Client) -> Unit)) =
-            apply { this.onDeleteClientSelectedListener = onDeleteClientSelectedListener }
 
         fun build(): ClientCompositeBottomSheetDialog = ClientCompositeBottomSheetDialog(this)
 
