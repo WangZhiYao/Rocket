@@ -16,9 +16,12 @@ import java.util.*
  * @since 2022/12/4
  */
 class SequenceUseCase(
-    val useCaseList: LinkedList<IUseCase<Flow<ExecuteResult>>> = LinkedList(),
+    private val useCaseList: LinkedList<IUseCase<Flow<ExecuteResult>>> = LinkedList(),
     private val dispatcher: CoroutineDispatcher = Dispatchers.Default,
 ) : IUseCase<Flow<ExecuteResult>> {
+
+    fun add(useCase: IUseCase<Flow<ExecuteResult>>) =
+        apply { this.apply { useCaseList.add(useCase) } }
 
     fun add(index: Int, useCase: IUseCase<Flow<ExecuteResult>>) =
         apply { this.apply { useCaseList.add(index, useCase) } }
@@ -38,5 +41,5 @@ class SequenceUseCase(
 }
 
 operator fun SequenceUseCase.plusAssign(useCase: IUseCase<Flow<ExecuteResult>>) {
-    this.useCaseList.add(useCase)
+    add(useCase)
 }
