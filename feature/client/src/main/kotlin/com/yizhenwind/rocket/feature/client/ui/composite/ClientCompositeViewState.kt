@@ -1,6 +1,6 @@
 package com.yizhenwind.rocket.feature.client.ui.composite
 
-import com.yizhenwind.rocket.core.common.model.Client
+import com.yizhenwind.rocket.core.model.Client
 import com.yizhenwind.rocket.core.framework.mvi.IViewState
 
 /**

@@ -1,6 +1,6 @@
 package com.yizhenwind.rocket.core.database.mapper
 
-import com.yizhenwind.rocket.core.common.model.Contact
+import com.yizhenwind.rocket.core.model.Contact
 import com.yizhenwind.rocket.core.database.entity.ContactEntity
 import com.yizhenwind.rocket.core.infra.mapper.IMapper
 import javax.inject.Inject

@@ -1,7 +1,7 @@
 package com.yizhenwind.rocket.ui.client
 
 import com.yizhenwind.rocket.R
-import com.yizhenwind.rocket.core.common.model.ClientProfile
+import com.yizhenwind.rocket.core.model.ClientProfile
 import com.yizhenwind.rocket.core.framework.ext.setThrottleClickListener
 import com.yizhenwind.rocket.core.framework.widget.BaseViewHolder
 import com.yizhenwind.rocket.databinding.ItemClientProfileBinding
@@ -14,11 +14,11 @@ import com.yizhenwind.rocket.databinding.ItemClientProfileBinding
  */
 class ClientProfileViewHolder(
     private val binding: ItemClientProfileBinding
-) : BaseViewHolder<ClientProfile>(binding.root) {
+) : BaseViewHolder<com.yizhenwind.rocket.core.model.ClientProfile>(binding.root) {
 
-    var onActionClickListener: ((ClientProfile) -> Unit)? = null
+    var onActionClickListener: ((com.yizhenwind.rocket.core.model.ClientProfile) -> Unit)? = null
 
-    override fun bind(item: ClientProfile) {
+    override fun bind(item: com.yizhenwind.rocket.core.model.ClientProfile) {
         binding.apply {
             item.apply {
                 tvClientName.text = name

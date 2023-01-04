@@ -1,7 +1,7 @@
 package com.yizhenwind.rocket.feature.contact.di.service
 
 import com.yizhenwind.rocket.core.common.constant.ContactType
-import com.yizhenwind.rocket.core.common.model.Contact
+import com.yizhenwind.rocket.core.model.Contact
 import com.yizhenwind.rocket.core.mediator.contact.IContactService
 import com.yizhenwind.rocket.domain.contact.usecase.CreateContactUseCase
 import com.yizhenwind.rocket.domain.contact.usecase.GetContactByTypeAndValueUseCase

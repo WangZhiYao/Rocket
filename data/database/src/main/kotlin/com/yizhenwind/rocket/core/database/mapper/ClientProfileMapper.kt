@@ -2,7 +2,7 @@ package com.yizhenwind.rocket.core.database.mapper
 
 import com.yizhenwind.rocket.core.database.dto.ClientProfileDto
 import com.yizhenwind.rocket.core.infra.mapper.IMapper
-import com.yizhenwind.rocket.core.common.model.ClientProfile
+import com.yizhenwind.rocket.core.model.ClientProfile
 import javax.inject.Inject
 
 /**

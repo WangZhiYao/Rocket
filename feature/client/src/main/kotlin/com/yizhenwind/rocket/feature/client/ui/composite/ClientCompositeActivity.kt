@@ -3,7 +3,7 @@ package com.yizhenwind.rocket.feature.client.ui.composite
 import androidx.activity.viewModels
 import androidx.navigation.navArgs
 import com.google.android.material.bottomappbar.BottomAppBar
-import com.yizhenwind.rocket.core.common.model.Client
+import com.yizhenwind.rocket.core.model.Client
 import com.yizhenwind.rocket.core.framework.base.BaseBottomAppBarMVIActivity
 import com.yizhenwind.rocket.core.framework.ext.makeSnack
 import com.yizhenwind.rocket.core.framework.widget.AlertDialogFragment

@@ -50,10 +50,14 @@ data class CharacterEntity(
     val serverId: Long,
 
     /**
-     * 账号ID
+     * 账号
      */
-    @ColumnInfo(name = "account_id")
-    val accountId: Long,
+    val account: String,
+
+    /**
+     * 密码
+     */
+    var password: String,
 
     /**
      * 仓库锁

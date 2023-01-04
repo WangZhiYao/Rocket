@@ -49,4 +49,5 @@ dependencies {
     kapt(libs.hilt.android.compiler)
 
     implementation(libs.bundles.network)
+    kapt(libs.moshi.kotlin.codegen)
 }

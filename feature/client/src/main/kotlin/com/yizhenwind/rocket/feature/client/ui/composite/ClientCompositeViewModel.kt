@@ -1,6 +1,6 @@
 package com.yizhenwind.rocket.feature.client.ui.composite
 
-import com.yizhenwind.rocket.core.common.model.Client
+import com.yizhenwind.rocket.core.model.Client
 import com.yizhenwind.rocket.core.framework.mvi.BaseMVIViewModel
 import com.yizhenwind.rocket.core.infra.logger.Logger
 import com.yizhenwind.rocket.domain.client.usecase.DeleteClientUseCase

@@ -55,12 +55,14 @@ dependencies {
     debugImplementation(libs.leakcanary.android)
 
     implementation(project(":core:common"))
+    implementation(project(":core:model"))
     implementation(project(":core:framework"))
     implementation(project(":core:mediator"))
 
     implementation(project(":feature:home"))
     implementation(project(":feature:client"))
     implementation(project(":feature:contact"))
+    implementation(project(":feature:character"))
 
     implementation(libs.hilt.android)
     kapt(libs.hilt.android.compiler)

@@ -54,4 +54,9 @@ object DatabaseModule {
     fun provideContactDao(database: RocketDatabase): ContactDao =
         database.contactDao()
 
+    @Provides
+    @Singleton
+    fun provideCharacterDao(database: RocketDatabase): CharacterDao =
+        database.characterDao()
+
 }

@@ -1,7 +1,7 @@
 package com.yizhenwind.rocket.feature.client.ui.create
 
 import com.yizhenwind.rocket.core.common.constant.ContactType
-import com.yizhenwind.rocket.core.common.model.Client
+import com.yizhenwind.rocket.core.model.Client
 import com.yizhenwind.rocket.core.framework.mvi.BaseMVIViewModel
 import com.yizhenwind.rocket.core.infra.logger.Logger
 import com.yizhenwind.rocket.core.mediator.contact.IContactService

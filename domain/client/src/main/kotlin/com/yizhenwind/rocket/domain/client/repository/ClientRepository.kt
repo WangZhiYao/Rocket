@@ -2,8 +2,8 @@ package com.yizhenwind.rocket.domain.client.repository
 
 import androidx.paging.PagingData
 import androidx.paging.map
-import com.yizhenwind.rocket.core.common.model.Client
-import com.yizhenwind.rocket.core.common.model.ClientProfile
+import com.yizhenwind.rocket.core.model.Client
+import com.yizhenwind.rocket.core.model.ClientProfile
 import com.yizhenwind.rocket.core.database.mapper.ClientDtoMapper
 import com.yizhenwind.rocket.core.database.mapper.ClientMapper
 import com.yizhenwind.rocket.core.database.mapper.ClientProfileMapper
@@ -42,7 +42,11 @@ class ClientRepository @Inject constructor(
     fun createClient(name: String, remark: String?): Flow<Client> =
         clientLocalDataSource.createClient(name, remark)
             .map { id ->
-                id.ifNullOrElse({ Client() }, { Client(id = it, name = name, remark = remark) })
+                id.ifNullOrElse({
+                    Client()
+                }, {
+                    Client(id = it, name = name, remark = remark)
+                })
             }
             .flowOn(dispatcher)
 

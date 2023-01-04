@@ -45,6 +45,7 @@ dependencies {
 
     implementation(project(":core:infra"))
     implementation(project(":core:common"))
+    implementation(project(":core:model"))
 
     implementation(libs.hilt.android)
     kapt(libs.hilt.android.compiler)

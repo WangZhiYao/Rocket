@@ -1,7 +1,7 @@
 package com.yizhenwind.rocket.domain.contact.usecase
 
 import com.yizhenwind.rocket.core.common.constant.ContactType
-import com.yizhenwind.rocket.core.common.model.Contact
+import com.yizhenwind.rocket.core.model.Contact
 import com.yizhenwind.rocket.domain.contact.repository.ContactRepository
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
