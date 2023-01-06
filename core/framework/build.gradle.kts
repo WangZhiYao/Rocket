@@ -2,6 +2,8 @@
 plugins {
     id(libs.plugins.android.library.get().pluginId)
     id(libs.plugins.kotlin.android.get().pluginId)
+    id(libs.plugins.kotlin.kapt.get().pluginId)
+    id(libs.plugins.hilt.android.plugin.get().pluginId)
 }
 
 android {
@@ -45,7 +47,13 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.bundles.androidx.test)
 
-    api(project(":core:infra"))
+    implementation(project(":core:common"))
+    implementation(project(":core:mediator"))
+
+    implementation(libs.hilt.android)
+    kapt(libs.hilt.android.compiler)
+
+    api(libs.bundles.kotlinx.coroutines)
 
     api(libs.androidx.core.ktx)
     api(libs.androidx.appcompat)
@@ -61,5 +69,8 @@ dependencies {
     api(libs.bundles.orbit.mvi)
 
     api(libs.androidx.paging.runtime.ktx)
+
+    implementation(libs.androidx.startup)
+    implementation(libs.timber)
 
 }

@@ -4,12 +4,10 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.view.isVisible
 import androidx.fragment.app.FragmentManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.yizhenwind.rocket.core.framework.databinding.DialogBottomSheetOptionBinding
-import com.yizhenwind.rocket.core.infra.ext.ifTrue
 
 /**
  *

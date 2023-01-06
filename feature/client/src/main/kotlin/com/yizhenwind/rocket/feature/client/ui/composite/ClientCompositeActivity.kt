@@ -7,6 +7,7 @@ import com.yizhenwind.rocket.core.model.Client
 import com.yizhenwind.rocket.core.framework.base.BaseBottomAppBarMVIActivity
 import com.yizhenwind.rocket.core.framework.ext.makeSnack
 import com.yizhenwind.rocket.core.framework.widget.AlertDialogFragment
+import com.yizhenwind.rocket.core.model.Client
 import com.yizhenwind.rocket.feature.client.R
 import com.yizhenwind.rocket.feature.client.ui.composite.widget.ClientCompositeBottomSheetDialog
 import dagger.hilt.android.AndroidEntryPoint
@@ -87,12 +88,12 @@ class ClientCompositeActivity :
             .setMessage(
                 getString(
                     R.string.dialog_delete_client_message,
-                    viewModel.client.name
+                    client.name
                 )
             )
             .setPositiveButton(R.string.dialog_action_positive) { dialog, _ ->
                 dialog?.dismiss()
-                viewModel.attemptDeleteClient(viewModel.client)
+                viewModel.attemptDeleteClient(client)
             }
             .setNegativeButton(R.string.dialog_action_negative) { dialog, _ ->
                 dialog?.dismiss()

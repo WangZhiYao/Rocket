@@ -43,7 +43,7 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.bundles.androidx.test)
 
-    implementation(project(":core:infra"))
+    implementation(project(":core:mediator"))
 
     implementation(libs.hilt.android)
     kapt(libs.hilt.android.compiler)

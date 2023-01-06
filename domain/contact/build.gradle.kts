@@ -43,7 +43,6 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.bundles.androidx.test)
 
-    implementation(project(":core:infra"))
     implementation(project(":core:common"))
     implementation(project(":core:model"))
 

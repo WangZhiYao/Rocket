@@ -3,9 +3,7 @@ package com.yizhenwind.rocket.core.datastore.di
 import android.content.Context
 import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
-import com.yizhenwind.rocket.core.datastore.DataStoreManager
 import com.yizhenwind.rocket.core.datastore.ext.rocketDataStore
-import com.yizhenwind.rocket.core.infra.logger.Logger
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -27,13 +25,5 @@ object DataStoreModule {
     @Singleton
     fun provideRocketDataStore(@ApplicationContext appContext: Context): DataStore<Preferences> =
         appContext.rocketDataStore
-
-    @Provides
-    @Singleton
-    fun provideDataStoreManager(
-        logger: Logger,
-        dataStore: DataStore<Preferences>
-    ): DataStoreManager =
-        DataStoreManager(logger, dataStore)
 
 }
