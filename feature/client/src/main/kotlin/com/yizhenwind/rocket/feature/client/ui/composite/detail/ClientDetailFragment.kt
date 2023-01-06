@@ -1,9 +1,9 @@
 package com.yizhenwind.rocket.feature.client.ui.composite.detail
 
 import androidx.fragment.app.activityViewModels
+import com.yizhenwind.rocket.core.common.ext.formatDate
 import com.yizhenwind.rocket.core.framework.base.BaseFragment
 import com.yizhenwind.rocket.core.framework.mvi.IMVIHost
-import com.yizhenwind.rocket.core.infra.ext.formatDate
 import com.yizhenwind.rocket.feature.client.R
 import com.yizhenwind.rocket.feature.client.databinding.FragmentClientDetailBinding
 import com.yizhenwind.rocket.feature.client.ui.composite.ClientCompositeSideEffect

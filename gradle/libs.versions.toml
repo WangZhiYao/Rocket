@@ -24,6 +24,7 @@ google-material = "1.7.0"
 timber = "5.0.1"
 retrofit = "2.9.0"
 okhttp = "4.10.0"
+moshi = "1.14.0"
 orbit-mvi = "4.5.0"
 deeplink-dispatch = "6.1.0"
 
@@ -66,10 +67,13 @@ google-material = { group = "com.google.android.material", name = "material", ve
 # Other
 timber = { group = "com.jakewharton.timber", name = "timber", version.ref = "timber" }
 retrofit = { group = "com.squareup.retrofit2", name = "retrofit", version.ref = "retrofit" }
+retrofit-converter-moshi = { group = "com.squareup.retrofit2", name = "converter-moshi", version.ref = "retrofit" }
 okhttp = { group = "com.squareup.okhttp3", name = "okhttp", version.ref = "okhttp" }
 okhttp-logging-interceptor = { group = "com.squareup.okhttp3", name = "logging-interceptor", version.ref = "okhttp" }
 deeplink-dispatch = { group = "com.airbnb", name = "deeplinkdispatch", version.ref = "deeplink-dispatch" }
 deeplink-dispatch-processor = { group = "com.airbnb", name = "deeplinkdispatch-processor", version.ref = "deeplink-dispatch" }
+moshi-kotlin = { group = "com.squareup.moshi", name = "moshi-kotlin", version.ref = "moshi" }
+moshi-kotlin-codegen = { group = "com.squareup.moshi", name = "moshi-kotlin-codegen", version.ref = "moshi" }
 # MVI
 orbit-mvi-core = { group = "org.orbit-mvi", name = "orbit-core", version.ref = "orbit-mvi" }
 orbit-mvi-viewmodel = { group = "org.orbit-mvi", name = "orbit-viewmodel", version.ref = "orbit-mvi" }
@@ -80,7 +84,7 @@ kotlinx-coroutines = ["kotlinx-coroutines-core", "kotlinx-coroutines-android"]
 androidx-lifecycle = ["androidx-lifecycle-runtime-ktx", "androidx-lifecycle-viewmodel-ktx"]
 androidx-navigation = ["androidx-navigation-ui-ktx", "androidx-navigation-fragment-ktx"]
 room = ["androidx-room-ktx", "androidx-room-paging"]
-network = ["retrofit", "okhttp", "okhttp-logging-interceptor"]
+network = ["retrofit", "okhttp", "okhttp-logging-interceptor", "moshi-kotlin"]
 orbit-mvi = ["orbit-mvi-core", "orbit-mvi-viewmodel"]
 
 [plugins]

@@ -1,5 +1,6 @@
 package com.yizhenwind.rocket.core.framework.base
 
+import android.os.Bundle
 import androidx.annotation.NavigationRes
 import androidx.appcompat.widget.Toolbar
 import androidx.navigation.NavController
@@ -31,8 +32,11 @@ abstract class BaseNavActivity : BaseActivity() {
         setupActionBarWithNavController(navController, appBarConfiguration)
     }
 
-    protected open fun setNavGraph(@NavigationRes navGraphId: Int) {
-        navController.graph = navController.navInflater.inflate(navGraphId)
+    protected open fun setNavGraph(
+        @NavigationRes navGraphId: Int,
+        startDestinationArgs: Bundle? = null
+    ) {
+        navController.setGraph(navGraphId, startDestinationArgs)
     }
 
     override fun onSupportNavigateUp(): Boolean {

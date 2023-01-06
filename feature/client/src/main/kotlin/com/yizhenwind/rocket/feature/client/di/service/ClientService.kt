@@ -1,8 +1,8 @@
 package com.yizhenwind.rocket.feature.client.di.service
 
 import androidx.paging.PagingData
-import com.yizhenwind.rocket.core.common.model.ClientProfile
 import com.yizhenwind.rocket.core.mediator.client.IClientService
+import com.yizhenwind.rocket.core.model.ClientProfile
 import com.yizhenwind.rocket.domain.client.usecase.ObserveClientProfileListUseCase
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject

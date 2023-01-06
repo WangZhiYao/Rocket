@@ -1,8 +1,8 @@
 package com.yizhenwind.rocket.feature.client.ui.composite
 
-import com.yizhenwind.rocket.core.common.model.Client
 import com.yizhenwind.rocket.core.framework.mvi.BaseMVIViewModel
-import com.yizhenwind.rocket.core.infra.logger.Logger
+import com.yizhenwind.rocket.core.logger.ILogger
+import com.yizhenwind.rocket.core.model.Client
 import com.yizhenwind.rocket.domain.client.usecase.DeleteClientUseCase
 import com.yizhenwind.rocket.domain.client.usecase.GetClientByIdUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -23,7 +23,7 @@ import javax.inject.Inject
 class ClientCompositeViewModel @Inject constructor(
     private val getClientByIdUseCase: GetClientByIdUseCase,
     private val deleteClientUseCase: DeleteClientUseCase,
-    private val logger: Logger
+    private val logger: ILogger
 ) : BaseMVIViewModel<ClientCompositeViewState, ClientCompositeSideEffect>() {
 
     override val container =

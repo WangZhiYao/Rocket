@@ -7,8 +7,8 @@ import android.view.ViewGroup
 import androidx.fragment.app.FragmentManager
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.setupWithNavController
-import com.yizhenwind.rocket.core.common.model.Client
 import com.yizhenwind.rocket.core.framework.widget.BaseBottomSheetDialogFragment
+import com.yizhenwind.rocket.core.model.Client
 import com.yizhenwind.rocket.feature.client.R
 import com.yizhenwind.rocket.feature.client.databinding.DialogClientCompositeBottomSheetBinding
 import com.yizhenwind.rocket.feature.client.databinding.NavHeaderClientCompositeBottomSheetBinding

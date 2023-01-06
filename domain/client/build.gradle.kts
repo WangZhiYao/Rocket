@@ -43,11 +43,10 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.bundles.androidx.test)
 
-    implementation(project(":core:infra"))
     implementation(project(":core:common"))
+    implementation(project(":core:model"))
 
     implementation(project(":data:database"))
-    api(project(":data:model"))
 
     implementation(libs.hilt.android)
     kapt(libs.hilt.android.compiler)

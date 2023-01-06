@@ -8,10 +8,10 @@ import android.widget.LinearLayout
 import androidx.annotation.StyleRes
 import androidx.core.content.ContextCompat
 import androidx.core.content.res.use
+import com.yizhenwind.rocket.core.common.ext.sp
 import com.yizhenwind.rocket.core.framework.R
 import com.yizhenwind.rocket.core.framework.databinding.LayoutTwoLineTextViewBinding
 import com.yizhenwind.rocket.core.framework.ext.inflate
-import com.yizhenwind.rocket.core.infra.ext.sp
 
 /**
  *

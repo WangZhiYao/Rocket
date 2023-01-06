@@ -19,14 +19,14 @@ rootProject.name = "Rocket"
 include(":app")
 include(":core:common")
 include(":core:framework")
-include(":core:infra")
+include(":core:model")
+include(":core:logger")
 include(":core:mediator")
 include(":core:network")
 include(":core:authenticate")
 
 include(":data:database")
 include(":data:datastore")
-include(":data:model")
 
 include(":domain:client")
 include(":domain:contact")

@@ -2,7 +2,7 @@ package com.yizhenwind.rocket.ui.client
 
 import androidx.paging.PagingData
 import com.yizhenwind.rocket.core.framework.mvi.IViewState
-import com.yizhenwind.rocket.core.common.model.ClientProfile
+import com.yizhenwind.rocket.core.model.ClientProfile
 
 /**
  *

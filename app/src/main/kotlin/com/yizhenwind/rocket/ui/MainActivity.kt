@@ -4,9 +4,6 @@ import androidx.navigation.ui.AppBarConfiguration
 import com.google.android.material.snackbar.Snackbar
 import com.yizhenwind.rocket.NavigationMainDirections
 import com.yizhenwind.rocket.R
-import com.yizhenwind.rocket.core.common.route.RouteAction
-import com.yizhenwind.rocket.core.common.route.RouteModule
-import com.yizhenwind.rocket.core.common.route.route
 import com.yizhenwind.rocket.core.framework.base.BaseBottomAppBarActivity
 import com.yizhenwind.rocket.core.framework.ext.setThrottleClickListener
 import com.yizhenwind.rocket.ui.widget.MainBottomSheetDialog
@@ -36,12 +33,7 @@ class MainActivity : BaseBottomAppBarActivity() {
                     when (navController.currentDestination?.id) {
                         R.id.nav_client_list -> {
                             navController.navigate(
-                                NavigationMainDirections.actionNavClientListToNavClientNav(
-                                    route {
-                                        module(RouteModule.CLIENT)
-                                        action(RouteAction.CREATE)
-                                    }
-                                )
+                                NavigationMainDirections.actionNavClientListToNavClientNav()
                             )
                         }
                         else -> Snackbar.make(root, "Action", Snackbar.LENGTH_SHORT)

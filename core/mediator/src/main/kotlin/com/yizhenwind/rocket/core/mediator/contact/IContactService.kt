@@ -1,7 +1,7 @@
 package com.yizhenwind.rocket.core.mediator.contact
 
 import com.yizhenwind.rocket.core.common.constant.ContactType
-import com.yizhenwind.rocket.core.common.model.Contact
+import com.yizhenwind.rocket.core.model.Contact
 import kotlinx.coroutines.flow.Flow
 
 /**

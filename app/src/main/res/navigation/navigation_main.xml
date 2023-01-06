@@ -30,15 +30,7 @@
     <activity
         android:id="@+id/nav_client_nav"
         android:name="com.yizhenwind.rocket.feature.client.ui.ClientNavActivity"
-        tools:layout="@layout/activity_base_nav">
-
-        <argument
-            android:name="navUri"
-            android:defaultValue="@null"
-            app:argType="android.net.Uri"
-            app:nullable="true" />
-
-    </activity>
+        tools:layout="@layout/activity_base_nav" />
 
     <activity
         android:id="@+id/nav_client_composite"

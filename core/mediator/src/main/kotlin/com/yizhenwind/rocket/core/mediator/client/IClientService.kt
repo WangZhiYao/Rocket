@@ -1,7 +1,7 @@
 package com.yizhenwind.rocket.core.mediator.client
 
 import androidx.paging.PagingData
-import com.yizhenwind.rocket.core.common.model.ClientProfile
+import com.yizhenwind.rocket.core.model.ClientProfile
 import kotlinx.coroutines.flow.Flow
 
 /**

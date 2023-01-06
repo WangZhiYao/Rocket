@@ -5,26 +5,11 @@
     android:id="@+id/navigation_client"
     app:startDestination="@id/nav_create_client">
 
-    <activity
-        android:id="@+id/nav_client_nav"
-        android:name="com.yizhenwind.rocket.feature.client.ui.ClientNavActivity"
-        tools:layout="@layout/activity_base_nav">
-
-        <argument
-            android:name="navUri"
-            android:defaultValue="@null"
-            app:argType="android.net.Uri"
-            app:nullable="true" />
-
-    </activity>
-
     <fragment
         android:id="@+id/nav_create_client"
         android:name="com.yizhenwind.rocket.feature.client.ui.create.CreateClientFragment"
         android:label="@string/create_client_label"
         tools:layout="@layout/fragment_create_client">
-
-        <deepLink app:uri="rocket://com.yizhenwind.rocket/feature/client/create" />
 
         <action
             android:id="@+id/action_nav_create_client_to_nav_client_composite"

@@ -1,10 +1,10 @@
 package com.yizhenwind.rocket.domain.contact.repository
 
 import com.yizhenwind.rocket.core.common.constant.ContactType
-import com.yizhenwind.rocket.core.common.model.Contact
+import com.yizhenwind.rocket.core.common.di.coroutine.qualifier.IODispatcher
+import com.yizhenwind.rocket.core.common.ext.ifNullOrElse
 import com.yizhenwind.rocket.core.database.mapper.ContactMapper
-import com.yizhenwind.rocket.core.infra.di.coroutine.qualifier.IODispatcher
-import com.yizhenwind.rocket.core.infra.ext.ifNullOrElse
+import com.yizhenwind.rocket.core.model.Contact
 import com.yizhenwind.rocket.domain.contact.source.ContactLocalDataSource
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.flow.Flow
@@ -28,7 +28,11 @@ class ContactRepository @Inject constructor(
     fun createContact(clientId: Long, contactType: ContactType, value: String): Flow<Contact> =
         contactLocalDataSource.createContact(clientId, contactType, value)
             .map { id ->
-                id.ifNullOrElse({ Contact() }, { Contact(it, clientId, contactType, value) })
+                id.ifNullOrElse({
+                    Contact()
+                }, {
+                    Contact(it, clientId, contactType, value)
+                })
             }
             .flowOn(dispatcher)
 

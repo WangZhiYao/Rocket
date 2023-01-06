@@ -1,10 +1,10 @@
 package com.yizhenwind.rocket.feature.client.ui.create
 
 import com.yizhenwind.rocket.core.common.constant.ContactType
-import com.yizhenwind.rocket.core.common.model.Client
 import com.yizhenwind.rocket.core.framework.mvi.BaseMVIViewModel
-import com.yizhenwind.rocket.core.infra.logger.Logger
+import com.yizhenwind.rocket.core.logger.ILogger
 import com.yizhenwind.rocket.core.mediator.contact.IContactService
+import com.yizhenwind.rocket.core.model.Client
 import com.yizhenwind.rocket.domain.client.usecase.CreateClientUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.*
@@ -21,7 +21,7 @@ import javax.inject.Inject
  */
 @HiltViewModel
 class CreateClientViewModel @Inject constructor(
-    private val logger: Logger,
+    private val logger: ILogger,
     private val createClientUseCase: CreateClientUseCase,
     private val contactService: IContactService
 ) : BaseMVIViewModel<CreateClientViewState, CreateClientSideEffect>() {

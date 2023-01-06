@@ -3,6 +3,7 @@ plugins {
     id(libs.plugins.android.library.get().pluginId)
     id(libs.plugins.kotlin.android.get().pluginId)
     id(libs.plugins.kotlin.kapt.get().pluginId)
+    id(libs.plugins.ksp.get().pluginId)
     id(libs.plugins.hilt.android.plugin.get().pluginId)
 }
 
@@ -43,10 +44,11 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.bundles.androidx.test)
 
-    implementation(project(":core:infra"))
+    implementation(project(":core:mediator"))
 
     implementation(libs.hilt.android)
     kapt(libs.hilt.android.compiler)
 
     implementation(libs.bundles.network)
+    ksp(libs.moshi.kotlin.codegen)
 }
