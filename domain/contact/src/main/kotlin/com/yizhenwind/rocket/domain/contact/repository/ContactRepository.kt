@@ -1,12 +1,11 @@
 package com.yizhenwind.rocket.domain.contact.repository
 
 import com.yizhenwind.rocket.core.common.constant.ContactType
-import com.yizhenwind.rocket.core.common.di.coroutine.qualifier.IODispatcher
 import com.yizhenwind.rocket.core.model.Contact
 import com.yizhenwind.rocket.core.database.mapper.ContactMapper
 import com.yizhenwind.rocket.core.common.ext.ifNullOrElse
 import com.yizhenwind.rocket.domain.contact.source.ContactLocalDataSource
-import kotlinx.coroutines.CoroutineDispatcher
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn
@@ -22,7 +21,6 @@ import javax.inject.Inject
 class ContactRepository @Inject constructor(
     private val contactLocalDataSource: ContactLocalDataSource,
     private val contactMapper: ContactMapper,
-    @IODispatcher private val dispatcher: CoroutineDispatcher
 ) {
 
     fun createContact(clientId: Long, contactType: ContactType, value: String): Flow<Contact> =
@@ -34,7 +32,7 @@ class ContactRepository @Inject constructor(
                     Contact(it, clientId, contactType, value)
                 })
             }
-            .flowOn(dispatcher)
+            .flowOn(Dispatchers.IO)
 
     fun getContactByTypeAndValue(contactType: ContactType, value: String): Flow<Contact> =
         flow {
@@ -43,6 +41,6 @@ class ContactRepository @Inject constructor(
             .map { contactEntity ->
                 contactEntity.ifNullOrElse({ Contact() }, { contactMapper.map(it) })
             }
-            .flowOn(dispatcher)
+            .flowOn(Dispatchers.IO)
 
 }

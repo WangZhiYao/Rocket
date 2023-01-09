@@ -1,6 +1,6 @@
 package com.yizhenwind.rocket.core.network.di
 
-import com.yizhenwind.rocket.core.mediator.logger.ILogger
+import com.yizhenwind.rocket.core.common.logger.ILogger
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
