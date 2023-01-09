@@ -1,8 +1,8 @@
 package com.yizhenwind.rocket.feature.client.ui.composite
 
-import com.yizhenwind.rocket.core.model.Client
+import com.yizhenwind.rocket.core.common.logger.ILogger
 import com.yizhenwind.rocket.core.framework.mvi.BaseMVIViewModel
-import com.yizhenwind.rocket.core.mediator.logger.ILogger
+import com.yizhenwind.rocket.core.model.Client
 import com.yizhenwind.rocket.domain.client.usecase.DeleteClientUseCase
 import com.yizhenwind.rocket.domain.client.usecase.GetClientByIdUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel

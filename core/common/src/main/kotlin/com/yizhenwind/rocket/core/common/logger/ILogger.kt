@@ -1,4 +1,4 @@
-package com.yizhenwind.rocket.core.mediator.logger
+package com.yizhenwind.rocket.core.common.logger
 
 /**
  *

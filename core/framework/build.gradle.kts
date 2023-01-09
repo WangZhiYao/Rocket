@@ -70,7 +70,4 @@ dependencies {
 
     api(libs.androidx.paging.runtime.ktx)
 
-    implementation(libs.androidx.startup)
-    implementation(libs.timber)
-
 }

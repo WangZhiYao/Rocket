@@ -3,6 +3,7 @@ package com.yizhenwind.rocket.core.database.di
 import android.content.Context
 import androidx.paging.PagingConfig
 import androidx.room.Room
+import com.yizhenwind.rocket.core.common.logger.ILogger
 import com.yizhenwind.rocket.core.database.RocketDatabase
 import com.yizhenwind.rocket.core.database.dao.*
 import com.yizhenwind.rocket.core.database.di.qualifier.DatabasePagingConfig
@@ -11,6 +12,7 @@ import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
+import java.util.concurrent.Executors
 import javax.inject.Singleton
 
 /**
@@ -27,12 +29,26 @@ object DatabaseModule {
 
     @Provides
     @Singleton
-    fun provideRocketDatabase(@ApplicationContext appContext: Context): RocketDatabase =
+    fun provideRocketDatabase(
+        @ApplicationContext appContext: Context,
+        logger: ILogger
+    ): RocketDatabase =
         Room.databaseBuilder(
             appContext,
             RocketDatabase::class.java,
             DATABASE_NAME
         )
+            .setQueryCallback(
+                { sqlQuery, bindArgs ->
+                    logger.d(
+                        String.format(
+                            sqlQuery.replace("?", "%s"),
+                            *bindArgs.toTypedArray()
+                        )
+                    )
+                },
+                Executors.newSingleThreadExecutor()
+            )
             .build()
 
     @Provides

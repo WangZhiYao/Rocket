@@ -3,9 +3,13 @@ package com.yizhenwind.rocket.feature.client.ui.composite
 import androidx.activity.viewModels
 import androidx.navigation.navArgs
 import com.google.android.material.bottomappbar.BottomAppBar
-import com.yizhenwind.rocket.core.model.Client
+import com.google.android.material.snackbar.Snackbar
+import com.yizhenwind.rocket.core.common.route.RouteAction
+import com.yizhenwind.rocket.core.common.route.RouteModule
+import com.yizhenwind.rocket.core.common.route.route
 import com.yizhenwind.rocket.core.framework.base.BaseBottomAppBarMVIActivity
 import com.yizhenwind.rocket.core.framework.ext.makeSnack
+import com.yizhenwind.rocket.core.framework.ext.setThrottleClickListener
 import com.yizhenwind.rocket.core.framework.widget.AlertDialogFragment
 import com.yizhenwind.rocket.core.model.Client
 import com.yizhenwind.rocket.feature.client.R
@@ -58,6 +62,22 @@ class ClientCompositeActivity :
                         }
                         else -> false
                     }
+                }
+            }
+            fab.setThrottleClickListener {
+                when (navController.currentDestination?.id) {
+                    R.id.nav_client_character -> {
+                        navController.navigate(
+                            route {
+                                module(RouteModule.CHARACTER)
+                                action(RouteAction.CREATE)
+                                argument(viewModel.client.id)
+                            }
+                        )
+                    }
+                    else -> Snackbar.make(root, "Action", Snackbar.LENGTH_SHORT)
+                        .setAnchorView(it)
+                        .show()
                 }
             }
             navController.addOnDestinationChangedListener { _, destination, _ ->

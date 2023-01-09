@@ -1,7 +1,9 @@
-package com.yizhenwind.rocket.core.common.di.coroutine
+package com.yizhenwind.rocket.core.common.di
 
 import com.yizhenwind.rocket.core.common.di.coroutine.qualifier.IODispatcher
 import com.yizhenwind.rocket.core.common.di.coroutine.qualifier.MainDispatcher
+import com.yizhenwind.rocket.core.common.logger.ILogger
+import com.yizhenwind.rocket.core.common.logger.impl.timber.TimberLogger
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -12,12 +14,13 @@ import javax.inject.Singleton
 
 /**
  *
+ *
  * @author WangZhiYao
- * @since 2022/7/29
+ * @since 2023/1/9
  */
 @Module
 @InstallIn(SingletonComponent::class)
-class CoroutineModule {
+class CommonModule {
 
     @Provides
     @Singleton
@@ -28,5 +31,9 @@ class CoroutineModule {
     @Singleton
     @MainDispatcher
     fun provideMainDispatcher(): CoroutineDispatcher = Dispatchers.Main
+
+    @Provides
+    @Singleton
+    fun providerLogger(): ILogger = TimberLogger()
 
 }

@@ -1,8 +1,7 @@
-package com.yizhenwind.rocket.core.framework.logger
+package com.yizhenwind.rocket.core.common.logger.impl.timber
 
-import com.yizhenwind.rocket.core.mediator.logger.ILogger
+import com.yizhenwind.rocket.core.common.logger.ILogger
 import timber.log.Timber
-import javax.inject.Inject
 
 /**
  *
@@ -10,7 +9,7 @@ import javax.inject.Inject
  * @author WangZhiYao
  * @since 2022/11/20
  */
-class Logger @Inject constructor() : ILogger {
+class TimberLogger : ILogger {
 
     override fun d(message: String?, vararg args: Any?) {
         Timber.d(message, *args)

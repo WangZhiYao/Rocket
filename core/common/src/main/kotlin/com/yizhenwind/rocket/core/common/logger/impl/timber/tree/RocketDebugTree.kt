@@ -1,6 +1,6 @@
-package com.yizhenwind.rocket.core.framework.logger.tree
+package com.yizhenwind.rocket.core.common.logger.impl.timber.tree
 
-import com.yizhenwind.rocket.core.framework.BuildConfig
+import com.yizhenwind.rocket.core.common.BuildConfig
 import timber.log.Timber
 
 /**

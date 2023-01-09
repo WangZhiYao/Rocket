@@ -1,8 +1,8 @@
-package com.yizhenwind.rocket.core.framework.initializer
+package com.yizhenwind.rocket.core.common.initializer
 
 import android.content.Context
 import androidx.startup.Initializer
-import com.yizhenwind.rocket.core.framework.logger.tree.RocketDebugTree
+import com.yizhenwind.rocket.core.common.logger.impl.timber.tree.RocketDebugTree
 import timber.log.Timber
 
 /**
