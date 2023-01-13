@@ -1,12 +1,9 @@
 package com.yizhenwind.rocket.core.framework.usecase
 
-import kotlinx.coroutines.CoroutineDispatcher
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flatMapLatest
 import kotlinx.coroutines.flow.flowOf
-import kotlinx.coroutines.flow.flowOn
 import java.util.*
 
 /**
@@ -16,8 +13,7 @@ import java.util.*
  * @since 2022/12/4
  */
 class SequenceUseCase(
-    private val useCaseList: LinkedList<IUseCase<Flow<ExecuteResult>>> = LinkedList(),
-    private val dispatcher: CoroutineDispatcher = Dispatchers.Default,
+    private val useCaseList: LinkedList<IUseCase<Flow<ExecuteResult>>> = LinkedList()
 ) : IUseCase<Flow<ExecuteResult>> {
 
     fun add(useCase: IUseCase<Flow<ExecuteResult>>) =
@@ -36,10 +32,5 @@ class SequenceUseCase(
                     flowOf(executeResult)
                 }
             }
-            .flowOn(dispatcher)
     }
-}
-
-operator fun SequenceUseCase.plusAssign(useCase: IUseCase<Flow<ExecuteResult>>) {
-    add(useCase)
 }
