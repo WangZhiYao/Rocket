@@ -21,9 +21,7 @@ import javax.inject.Singleton
  */
 @Module
 @InstallIn(SingletonComponent::class)
-object DatabaseModule {
-
-    private const val DATABASE_NAME = "rocket.db"
+class DatabaseModule {
 
     @Provides
     @Singleton
@@ -54,4 +52,9 @@ object DatabaseModule {
     fun provideContactDao(database: RocketDatabase): ContactDao =
         database.contactDao()
 
+    companion object {
+
+        private const val DATABASE_NAME = "rocket.db"
+
+    }
 }
