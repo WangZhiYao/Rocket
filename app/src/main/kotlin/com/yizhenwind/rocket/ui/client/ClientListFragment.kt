@@ -48,7 +48,7 @@ class ClientListFragment : BaseMVIListFragment<ClientListViewState, ClientListSi
         }
     }
 
-    override fun render(state: ClientListViewState) {
+    override suspend fun render(state: ClientListViewState) {
         lifecycleScope.launch {
             adapter.submitData(state.clientProfileList)
         }

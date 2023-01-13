@@ -1,7 +1,8 @@
 package com.yizhenwind.rocket.feature.client.ui.composite.detail
 
 import androidx.fragment.app.activityViewModels
-import com.yizhenwind.rocket.core.framework.base.BaseMVIFragment
+import com.yizhenwind.rocket.core.framework.base.BaseFragment
+import com.yizhenwind.rocket.core.framework.mvi.IMVIHost
 import com.yizhenwind.rocket.core.infra.ext.formatDate
 import com.yizhenwind.rocket.feature.client.R
 import com.yizhenwind.rocket.feature.client.databinding.FragmentClientDetailBinding
@@ -19,9 +20,8 @@ import org.orbitmvi.orbit.viewmodel.observe
  */
 @AndroidEntryPoint
 class ClientDetailFragment :
-    BaseMVIFragment<FragmentClientDetailBinding, ClientCompositeViewState, ClientCompositeSideEffect>(
-        FragmentClientDetailBinding::inflate
-    ) {
+    BaseFragment<FragmentClientDetailBinding>(FragmentClientDetailBinding::inflate),
+    IMVIHost<ClientCompositeViewState, ClientCompositeSideEffect> {
 
     private val clientCompositeViewModel by activityViewModels<ClientCompositeViewModel>()
 
@@ -33,7 +33,7 @@ class ClientDetailFragment :
         clientCompositeViewModel.observe(viewLifecycleOwner, state = ::render)
     }
 
-    override fun render(state: ClientCompositeViewState) {
+    override suspend fun render(state: ClientCompositeViewState) {
         state.client.apply {
             binding.apply {
                 tltvClientDetailName.content = name

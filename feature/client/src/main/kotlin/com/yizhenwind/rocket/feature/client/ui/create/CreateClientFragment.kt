@@ -9,10 +9,11 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.google.android.material.snackbar.Snackbar
 import com.yizhenwind.rocket.core.common.constant.ContactType
-import com.yizhenwind.rocket.core.framework.base.BaseMVIFragment
+import com.yizhenwind.rocket.core.framework.base.BaseFragment
 import com.yizhenwind.rocket.core.framework.ext.setThrottleClickListener
 import com.yizhenwind.rocket.core.framework.ext.showSnack
 import com.yizhenwind.rocket.core.framework.ext.showSnackWithAction
+import com.yizhenwind.rocket.core.framework.mvi.IMVIHost
 import com.yizhenwind.rocket.feature.client.R
 import com.yizhenwind.rocket.feature.client.databinding.FragmentCreateClientBinding
 import dagger.hilt.android.AndroidEntryPoint
@@ -27,9 +28,8 @@ import org.orbitmvi.orbit.viewmodel.observe
  */
 @AndroidEntryPoint
 class CreateClientFragment :
-    BaseMVIFragment<FragmentCreateClientBinding, CreateClientViewState, CreateClientSideEffect>(
-        FragmentCreateClientBinding::inflate
-    ) {
+    BaseFragment<FragmentCreateClientBinding>(FragmentCreateClientBinding::inflate),
+    IMVIHost<CreateClientViewState, CreateClientSideEffect> {
 
     private val viewModel by viewModels<CreateClientViewModel>()
 
