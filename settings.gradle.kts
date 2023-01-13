@@ -28,9 +28,4 @@ include(":core:authenticate")
 include(":data:database")
 include(":data:datastore")
 
-include(":domain:client")
-include(":domain:contact")
-
 include(":feature:home")
-include(":feature:client")
-include(":feature:contact")
