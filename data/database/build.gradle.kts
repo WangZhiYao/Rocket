@@ -4,6 +4,7 @@ plugins {
     id(libs.plugins.kotlin.android.get().pluginId)
     id(libs.plugins.kotlin.kapt.get().pluginId)
     id(libs.plugins.hilt.android.plugin.get().pluginId)
+    id(libs.plugins.ksp.get().pluginId)
 }
 
 android {
@@ -50,6 +51,6 @@ dependencies {
     kapt(libs.hilt.android.compiler)
 
     implementation(libs.bundles.room)
-    kapt(libs.androidx.room.compiler)
+    ksp(libs.androidx.room.compiler)
 
 }

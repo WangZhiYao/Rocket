@@ -1,7 +1,8 @@
 [versions]
-android = "7.4.0"
+android = "7.3.1"
 kotlin = "1.8.0"
 hilt = "2.44.2"
+ksp = "1.8.0-1.0.8"
 kotlinx-coroutines = "1.6.4"
 junit = "4.13.2"
 androidx-test-ext = "1.1.5"
@@ -24,6 +25,7 @@ timber = "5.0.1"
 retrofit = "2.9.0"
 okhttp = "4.10.0"
 orbit-mvi = "4.5.0"
+deeplink-dispatch = "6.1.0"
 
 [libraries]
 android-tools-build-gradle = { group = "com.android.tools.build", name = "gradle", version.ref = "android" }
@@ -66,6 +68,8 @@ timber = { group = "com.jakewharton.timber", name = "timber", version.ref = "tim
 retrofit = { group = "com.squareup.retrofit2", name = "retrofit", version.ref = "retrofit" }
 okhttp = { group = "com.squareup.okhttp3", name = "okhttp", version.ref = "okhttp" }
 okhttp-logging-interceptor = { group = "com.squareup.okhttp3", name = "logging-interceptor", version.ref = "okhttp" }
+deeplink-dispatch = { group = "com.airbnb", name = "deeplinkdispatch", version.ref = "deeplink-dispatch" }
+deeplink-dispatch-processor = { group = "com.airbnb", name = "deeplinkdispatch-processor", version.ref = "deeplink-dispatch" }
 # MVI
 orbit-mvi-core = { group = "org.orbit-mvi", name = "orbit-core", version.ref = "orbit-mvi" }
 orbit-mvi-viewmodel = { group = "org.orbit-mvi", name = "orbit-viewmodel", version.ref = "orbit-mvi" }
@@ -87,4 +91,5 @@ hilt-android-plugin = { id = "dagger.hilt.android.plugin", version.ref = "hilt" 
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 kotlin-kapt = { id = "org.jetbrains.kotlin.kapt", version.ref = "kotlin" }
 kotlin-parcelize = { id = "kotlin-parcelize", version.ref = "kotlin" }
+ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
 navigation-safe-args = { id = "androidx.navigation.safeargs.kotlin", version.ref = "androidx-navigation" }
