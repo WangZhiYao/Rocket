@@ -5,6 +5,7 @@ plugins {
     id(libs.plugins.kotlin.kapt.get().pluginId)
     id(libs.plugins.hilt.android.plugin.get().pluginId)
     id(libs.plugins.navigation.safe.args.get().pluginId)
+    id(libs.plugins.ksp.get().pluginId)
 }
 
 android {
@@ -43,6 +44,12 @@ android {
     buildFeatures {
         viewBinding = true
     }
+
+    ksp {
+        arg("deepLink.incremental", "true")
+        arg("deepLink.customAnnotations", "com.yizhenwind.rocket.core.framework.deeplink.RocketDeepLink")
+        arg("deepLinkDoc.output", "${buildDir}/doc/deeplinks.txt")
+    }
 }
 
 dependencies {
@@ -62,4 +69,6 @@ dependencies {
     implementation(libs.hilt.android)
     kapt(libs.hilt.android.compiler)
 
+    implementation(libs.deeplink.dispatch)
+    ksp(libs.deeplink.dispatch.processor)
 }

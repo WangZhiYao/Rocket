@@ -15,17 +15,14 @@
             <option value="$PROJECT_DIR$/core/authenticate" />
             <option value="$PROJECT_DIR$/core/common" />
             <option value="$PROJECT_DIR$/core/framework" />
-            <option value="$PROJECT_DIR$/core/infra" />
+            <option value="$PROJECT_DIR$/core/logger" />
             <option value="$PROJECT_DIR$/core/mediator" />
+            <option value="$PROJECT_DIR$/core/model" />
             <option value="$PROJECT_DIR$/core/network" />
             <option value="$PROJECT_DIR$/data" />
             <option value="$PROJECT_DIR$/data/database" />
             <option value="$PROJECT_DIR$/data/datastore" />
-            <option value="$PROJECT_DIR$/data/model" />
-            <option value="$PROJECT_DIR$/domain" />
-            <option value="$PROJECT_DIR$/domain/client" />
             <option value="$PROJECT_DIR$/feature" />
-            <option value="$PROJECT_DIR$/feature/client" />
             <option value="$PROJECT_DIR$/feature/home" />
           </set>
         </option>

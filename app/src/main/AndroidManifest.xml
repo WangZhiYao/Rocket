@@ -25,6 +25,20 @@
             </intent-filter>
         </activity>
 
+        <activity
+            android:name="com.yizhenwind.rocket.deeplink.RocketDeepLinkActivity"
+            android:exported="true"
+            android:theme="@android:style/Theme.NoDisplay">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data android:scheme="rocket" />
+            </intent-filter>
+        </activity>
+
     </application>
 
 </manifest>

@@ -9,7 +9,7 @@
             android:exported="false"
             tools:node="merge">
             <meta-data
-                android:name="com.yizhenwind.rocket.core.framework.initializer.ThreadInitializer"
+                android:name="com.yizhenwind.rocket.core.framework.initializer.DeepLinkReceiverInitializer"
                 android:value="androidx.startup" />
         </provider>
     </application>
