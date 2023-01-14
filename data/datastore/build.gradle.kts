@@ -42,7 +42,7 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.bundles.androidx.test)
 
-    implementation(project(":core:mediator"))
+    implementation(project(":core:logger"))
 
     implementation(libs.hilt.android)
     kapt(libs.hilt.android.compiler)

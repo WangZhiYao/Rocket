@@ -3,7 +3,6 @@ package com.yizhenwind.rocket.core.framework.base
 import androidx.recyclerview.widget.RecyclerView
 import com.yizhenwind.rocket.core.framework.databinding.FragmentBaseMviListBinding
 import com.yizhenwind.rocket.core.framework.mvi.IMVIHost
-import com.yizhenwind.rocket.core.framework.mvi.ISideEffect
 import com.yizhenwind.rocket.core.framework.mvi.IViewState
 
 /**
@@ -12,7 +11,7 @@ import com.yizhenwind.rocket.core.framework.mvi.IViewState
  * @author WangZhiYao
  * @since 2022/12/5
  */
-abstract class BaseMVIListFragment<STATE : IViewState, SIDE_EFFECT : ISideEffect> :
+abstract class BaseMVIListFragment<STATE : IViewState, SIDE_EFFECT : Any> :
     BaseFragment<FragmentBaseMviListBinding>(FragmentBaseMviListBinding::inflate),
     IMVIHost<STATE, SIDE_EFFECT> {
 

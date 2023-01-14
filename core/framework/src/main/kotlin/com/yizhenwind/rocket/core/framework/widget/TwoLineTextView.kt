@@ -8,6 +8,7 @@ import android.widget.LinearLayout
 import androidx.annotation.StyleRes
 import androidx.core.content.ContextCompat
 import androidx.core.content.res.use
+import androidx.core.content.withStyledAttributes
 import com.yizhenwind.rocket.core.common.ext.sp
 import com.yizhenwind.rocket.core.framework.R
 import com.yizhenwind.rocket.core.framework.databinding.LayoutTwoLineTextViewBinding
@@ -90,72 +91,68 @@ class TwoLineTextView @JvmOverloads constructor(
         }
 
     init {
-        attrs?.apply {
-            context.obtainStyledAttributes(
-                this,
-                R.styleable.TwoLineTextView,
-                defStyleAttr,
-                defStyleRes
-            ).use { ta ->
-                ta.apply {
-                    binding.apply {
-                        title = getString(R.styleable.TwoLineTextView_tltv_title)
-                        titleTextSize = getDimensionPixelSize(
-                            R.styleable.TwoLineTextView_tltv_titleTextSize,
-                            16.sp
-                        ).toFloat()
-                        titleTextColor = getColor(
-                            R.styleable.TwoLineTextView_tltv_titleTextColor,
-                            ContextCompat.getColor(context, R.color.color_text_primary)
-                        )
-                        val titleTextAppearance =
-                            getResourceId(
-                                R.styleable.TwoLineTextView_tltv_titleTextAppearance,
-                                0
-                            )
-                        if (titleTextAppearance != 0) {
-                            setTitleTextAppearance(titleTextAppearance)
-                        }
-                        titleMaxLine = getInt(
-                            R.styleable.TwoLineTextView_tltv_titleMaxLine,
-                            Int.MAX_VALUE
-                        )
-                        titleEllipsize = getEllipsize(
-                            getInt(
-                                R.styleable.TwoLineTextView_tltv_titleEllipsize,
-                                ELLIPSIZE_NONE
-                            )
-                        )
-
-                        content = getString(R.styleable.TwoLineTextView_tltv_content)
-                        contentTextSize = getDimensionPixelSize(
-                            R.styleable.TwoLineTextView_tltv_contentTextSize,
-                            14.sp
-                        ).toFloat()
-                        contentTextColor = getColor(
-                            R.styleable.TwoLineTextView_tltv_contentTextColor,
-                            ContextCompat.getColor(context, R.color.color_text_secondary)
-                        )
-                        val contentTextAppearance =
-                            getResourceId(
-                                R.styleable.TwoLineTextView_tltv_contentTextAppearance,
-                                0
-                            )
-                        if (contentTextAppearance != 0) {
-                            setContentTextAppearance(contentTextAppearance)
-                        }
-                        contentMaxLine = getInt(
-                            R.styleable.TwoLineTextView_tltv_contentMaxLine,
-                            Int.MAX_VALUE
-                        )
-                        contentEllipsize = getEllipsize(
-                            getInt(
-                                R.styleable.TwoLineTextView_tltv_contentEllipsize,
-                                ELLIPSIZE_NONE
-                            )
-                        )
-                    }
+        context.withStyledAttributes(
+            attrs,
+            R.styleable.TwoLineTextView,
+            defStyleAttr,
+            defStyleRes
+        ) {
+            binding.apply {
+                title = getString(R.styleable.TwoLineTextView_tltv_title)
+                titleTextSize = getDimensionPixelSize(
+                    R.styleable.TwoLineTextView_tltv_titleTextSize,
+                    16.sp
+                ).toFloat()
+                titleTextColor = getColor(
+                    R.styleable.TwoLineTextView_tltv_titleTextColor,
+                    ContextCompat.getColor(context, R.color.color_text_primary)
+                )
+                val titleTextAppearance =
+                    getResourceId(
+                        R.styleable.TwoLineTextView_tltv_titleTextAppearance,
+                        0
+                    )
+                if (titleTextAppearance != 0) {
+                    setTitleTextAppearance(titleTextAppearance)
                 }
+                titleMaxLine = getInt(
+                    R.styleable.TwoLineTextView_tltv_titleMaxLine,
+                    Int.MAX_VALUE
+                )
+                titleEllipsize = getEllipsize(
+                    getInt(
+                        R.styleable.TwoLineTextView_tltv_titleEllipsize,
+                        ELLIPSIZE_NONE
+                    )
+                )
+
+                content = getString(R.styleable.TwoLineTextView_tltv_content)
+                contentTextSize = getDimensionPixelSize(
+                    R.styleable.TwoLineTextView_tltv_contentTextSize,
+                    14.sp
+                ).toFloat()
+                contentTextColor = getColor(
+                    R.styleable.TwoLineTextView_tltv_contentTextColor,
+                    ContextCompat.getColor(context, R.color.color_text_secondary)
+                )
+                val contentTextAppearance =
+                    getResourceId(
+                        R.styleable.TwoLineTextView_tltv_contentTextAppearance,
+                        0
+                    )
+                if (contentTextAppearance != 0) {
+                    setContentTextAppearance(contentTextAppearance)
+                }
+                contentMaxLine = getInt(
+                    R.styleable.TwoLineTextView_tltv_contentMaxLine,
+                    Int.MAX_VALUE
+                )
+                contentEllipsize = getEllipsize(
+                    getInt(
+                        R.styleable.TwoLineTextView_tltv_contentEllipsize,
+                        ELLIPSIZE_NONE
+                    )
+                )
             }
         }
     }

@@ -1,4 +1,4 @@
-package com.yizhenwind.rocket.core.framework.usecase
+package com.yizhenwind.rocket.core.common.usecase
 
 /**
  *

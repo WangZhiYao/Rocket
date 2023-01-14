@@ -44,6 +44,7 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.bundles.androidx.test)
 
+    implementation(project(":core:logger"))
     implementation(project(":core:mediator"))
 
     implementation(libs.hilt.android)
