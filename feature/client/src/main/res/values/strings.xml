@@ -1,4 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="client_label">客户</string>
+
+    <string-array name="contact_type">
+        <item>QQ</item>
+        <item>微信</item>
+        <item>手机号</item>
+    </string-array>
+
+    <string name="item_client_profile_account_count">%d 个账号</string>
+    <string name="item_client_profile_character_count">%d 个角色</string>
+    <string name="item_client_profile_order_count">%d 条订单</string>
+    <string name="item_client_profile_no_account_yet">暂无账号</string>
+    <string name="item_client_profile_no_character_yet">暂无角色</string>
+    <string name="item_client_profile_no_order_yet">暂无订单</string>
+    <string name="item_client_profile_add_character">创建角色</string>
+    <string name="item_client_profile_create_order">新建订单</string>
+
 </resources>

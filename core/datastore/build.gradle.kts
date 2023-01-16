@@ -7,7 +7,7 @@ plugins {
 }
 
 android {
-    namespace = "com.yizhenwind.rocket.feature.client"
+    namespace = "com.yizhenwind.rocket.core.datastore"
     compileSdk = 33
 
     defaultConfig {
@@ -35,10 +35,6 @@ android {
     kotlinOptions {
         jvmTarget = JavaVersion.VERSION_1_8.toString()
     }
-
-    buildFeatures {
-        viewBinding = true
-    }
 }
 
 dependencies {
@@ -46,10 +42,10 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.bundles.androidx.test)
 
-    implementation(project(":core:framework"))
-    implementation(project(":domain:client"))
+    implementation(project(":core:logger"))
 
     implementation(libs.hilt.android)
     kapt(libs.hilt.android.compiler)
 
+    implementation(libs.androidx.datastore.preferences)
 }

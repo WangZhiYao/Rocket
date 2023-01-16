@@ -4,10 +4,11 @@ plugins {
     id(libs.plugins.kotlin.android.get().pluginId)
     id(libs.plugins.kotlin.kapt.get().pluginId)
     id(libs.plugins.hilt.android.plugin.get().pluginId)
+    id(libs.plugins.ksp.get().pluginId)
 }
 
 android {
-    namespace = "com.yizhenwind.rocket.feature.client"
+    namespace = "com.yizhenwind.rocket.core.database"
     compileSdk = 33
 
     defaultConfig {
@@ -35,10 +36,6 @@ android {
     kotlinOptions {
         jvmTarget = JavaVersion.VERSION_1_8.toString()
     }
-
-    buildFeatures {
-        viewBinding = true
-    }
 }
 
 dependencies {
@@ -46,10 +43,14 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.bundles.androidx.test)
 
-    implementation(project(":core:framework"))
-    implementation(project(":domain:client"))
+    api(project(":core:common"))
+    api(project(":core:model"))
+    implementation(project(":core:logger"))
 
     implementation(libs.hilt.android)
     kapt(libs.hilt.android.compiler)
+
+    implementation(libs.bundles.room)
+    ksp(libs.androidx.room.compiler)
 
 }

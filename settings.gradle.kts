@@ -17,17 +17,18 @@ dependencyResolutionManagement {
 rootProject.name = "Rocket"
 
 include(":app")
-include(":core:common")
 include(":core:framework")
-include(":core:model")
+include(":core:common")
 include(":core:logger")
+include(":core:model")
 include(":core:mediator")
 include(":core:network")
+include(":core:database")
+include(":core:datastore")
 include(":core:authenticate")
-
-include(":data:database")
-include(":data:datastore")
 
 include(":feature:home")
 include(":feature:user")
 include(":feature:client")
+include(":data:client")
+include(":domain:client")

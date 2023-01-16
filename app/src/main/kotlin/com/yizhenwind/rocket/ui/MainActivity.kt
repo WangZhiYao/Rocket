@@ -28,7 +28,7 @@ class MainActivity : BaseActivity() {
         get() = binding.appBar.contentMain.navHostFragment.getFragment<NavHostFragment>().navController
 
     private val appBarConfiguration by lazy {
-        AppBarConfiguration.Builder(setOf(R.id.nav_home, R.id.nav_client, R.id.nav_user))
+        AppBarConfiguration.Builder(setOf(R.id.nav_home, R.id.nav_client_profile, R.id.nav_user))
             .setOpenableLayout(binding.drawerLayout)
             .build()
     }

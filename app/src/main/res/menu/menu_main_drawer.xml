@@ -11,7 +11,7 @@
             android:title="@string/home_label" />
 
         <item
-            android:id="@+id/nav_client"
+            android:id="@+id/nav_client_profile"
             android:icon="@drawable/ic_round_client_circle_white_24dp"
             android:title="@string/client_label" />
 
