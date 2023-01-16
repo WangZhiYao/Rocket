@@ -18,7 +18,9 @@ import javax.inject.Singleton
  */
 @Module
 @InstallIn(SingletonComponent::class)
-class NetworkModule {
+object NetworkModule {
+
+    private const val DEFAULT_TIMEOUT = 10L
 
     @Provides
     @Singleton
@@ -36,9 +38,4 @@ class NetworkModule {
             )
             .build()
 
-    companion object {
-
-        private const val DEFAULT_TIMEOUT = 10L
-
-    }
 }

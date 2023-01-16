@@ -27,7 +27,7 @@ data class ClientEntity(
     /**
      * 备注
      */
-    var remark: String? = null,
+    val remark: String? = null,
 
     /**
      * 创建时间

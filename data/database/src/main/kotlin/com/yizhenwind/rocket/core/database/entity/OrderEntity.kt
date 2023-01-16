@@ -82,59 +82,59 @@ data class OrderEntity(
      * 开始时间
      */
     @ColumnInfo(name = "start_date")
-    var startDate: Long,
+    val startDate: Long,
 
     /**
      * 结束时间
      */
     @ColumnInfo(name = "end_date")
-    var endDate: Long? = null,
+    val endDate: Long? = null,
 
     /**
      * 备注
      */
-    var remark: String? = null,
+    val remark: String? = null,
 
     /**
      * 订单状态
      */
-    var status: OrderStatus,
+    val status: OrderStatus,
 
     /**
      * 订单状态更新时间
      */
     @ColumnInfo(name = "status_update_time")
-    var statusUpdateTime: Long,
+    val statusUpdateTime: Long,
 
     /**
      * 付款状态
      */
     @ColumnInfo(name = "payment_status")
-    var paymentStatus: PaymentStatus,
+    val paymentStatus: PaymentStatus,
 
     /**
      * 付款时间
      */
     @ColumnInfo(name = "payment_time")
-    var paymentTime: Long? = null,
+    val paymentTime: Long? = null,
 
     /**
      * 退款金额
      */
     @ColumnInfo(name = "refund_amount")
-    var refundAmount: Long? = null,
+    val refundAmount: Long? = null,
 
     /**
      * 退款时间
      */
     @ColumnInfo(name = "refund_time")
-    var refundTime: Long? = null,
+    val refundTime: Long? = null,
 
     /**
      * 更新时间
      */
     @ColumnInfo(name = "update_time")
-    var updateTime: Long,
+    val updateTime: Long,
 
     /**
      * 创建时间

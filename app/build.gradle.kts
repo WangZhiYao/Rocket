@@ -58,6 +58,8 @@ dependencies {
     implementation(project(":core:mediator"))
 
     implementation(project(":feature:home"))
+    implementation(project(":feature:client"))
+    implementation(project(":feature:user"))
 
     implementation(libs.hilt.android)
     kapt(libs.hilt.android.compiler)

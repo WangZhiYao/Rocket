@@ -20,6 +20,13 @@ import androidx.room.PrimaryKey
             childColumns = ["client_id"],
             onDelete = ForeignKey.CASCADE,
             onUpdate = ForeignKey.CASCADE
+        ),
+        ForeignKey(
+            entity = AccountEntity::class,
+            parentColumns = ["id"],
+            childColumns = ["account_id"],
+            onDelete = ForeignKey.CASCADE,
+            onUpdate = ForeignKey.CASCADE
         )
     ]
 )
@@ -35,7 +42,7 @@ data class CharacterEntity(
      * 客户ID
      */
     @ColumnInfo(name = "client_id", index = true)
-    val clientId: Long,
+    val clientId: Long?,
 
     /**
      * 大区
@@ -52,14 +59,14 @@ data class CharacterEntity(
     /**
      * 账号ID
      */
-    @ColumnInfo(name = "account_id")
+    @ColumnInfo(name = "account_id", index = true)
     val accountId: Long,
 
     /**
      * 仓库锁
      */
     @ColumnInfo(name = "security_lock")
-    var securityLock: String? = null,
+    val securityLock: String? = null,
 
     /**
      * 角色名
@@ -81,7 +88,7 @@ data class CharacterEntity(
     /**
      * 备注
      */
-    var remark: String? = null,
+    val remark: String? = null,
 
     /**
      * 创建时间

@@ -29,3 +29,5 @@ include(":data:database")
 include(":data:datastore")
 
 include(":feature:home")
+include(":feature:user")
+include(":feature:client")

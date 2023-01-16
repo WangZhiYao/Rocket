@@ -47,5 +47,11 @@ data class ContactEntity(
     /**
      * 联系方式
      */
-    val value: String
+    val value: String,
+
+    /**
+     * 创建时间
+     */
+    @ColumnInfo(name = "create_time")
+    val createTime: Long = System.currentTimeMillis()
 )

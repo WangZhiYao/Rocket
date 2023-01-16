@@ -23,7 +23,9 @@
             <option value="$PROJECT_DIR$/data/database" />
             <option value="$PROJECT_DIR$/data/datastore" />
             <option value="$PROJECT_DIR$/feature" />
+            <option value="$PROJECT_DIR$/feature/client" />
             <option value="$PROJECT_DIR$/feature/home" />
+            <option value="$PROJECT_DIR$/feature/user" />
           </set>
         </option>
       </GradleProjectSettings>

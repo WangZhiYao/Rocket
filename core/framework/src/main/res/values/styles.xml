@@ -6,7 +6,7 @@
         <item name="android:focusable">true</item>
         <item name="android:foreground">?android:attr/selectableItemBackground</item>
     </style>
-    
+
     <style name="Theme.Rocket.Card" parent="Theme.Rocket.ClickableItem">
         <item name="android:layout_marginStart">8dp</item>
         <item name="android:layout_marginTop">4dp</item>
@@ -16,4 +16,10 @@
         <item name="cardCornerRadius">4dp</item>
     </style>
 
+    <style name="Theme.Rocket.TabLayout" parent="Widget.MaterialComponents.TabLayout">
+        <item name="android:background">@color/color_primary</item>
+        <item name="tabTextColor">@android:color/white</item>
+        <item name="tabSelectedTextColor">@android:color/white</item>
+        <item name="tabIndicatorColor">@android:color/white</item>
+    </style>
 </resources>

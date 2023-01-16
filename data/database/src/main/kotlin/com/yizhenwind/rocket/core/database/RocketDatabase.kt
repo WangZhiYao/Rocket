@@ -15,6 +15,7 @@ import com.yizhenwind.rocket.core.database.entity.*
  */
 @Database(
     entities = [
+        AccountEntity::class,
         ClientEntity::class,
         ContactEntity::class,
         CharacterEntity::class,
@@ -27,6 +28,8 @@ import com.yizhenwind.rocket.core.database.entity.*
 )
 @TypeConverters(ContactTypeConverter::class)
 abstract class RocketDatabase : RoomDatabase() {
+
+    abstract fun accountDao(): AccountDao
 
     abstract fun clientDao(): ClientDao
 

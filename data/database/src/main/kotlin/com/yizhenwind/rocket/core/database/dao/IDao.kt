@@ -1,9 +1,6 @@
 package com.yizhenwind.rocket.core.database.dao
 
-import androidx.room.Delete
-import androidx.room.Insert
-import androidx.room.OnConflictStrategy
-import androidx.room.Update
+import androidx.room.*
 
 /**
  * 数据库操作
@@ -26,16 +23,10 @@ interface IDao<T> {
     suspend fun insert(vararg item: T): List<Long>
 
     /**
-     * 插入
+     * 更新或插入
      */
-    @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insertOrReplace(item: T): Long
-
-    /**
-     * 批量插入
-     */
-    @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insertOrReplace(itemList: List<T>): List<Long>
+    @Upsert
+    suspend fun upsert(item: T): Long
 
     /**
      * 更新

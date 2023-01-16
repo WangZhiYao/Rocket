@@ -33,7 +33,7 @@ data class CategoryEntity (
     /**
      * 描述
      */
-    var description: String? = null,
+    val description: String? = null,
 
     /**
      * 创建时间

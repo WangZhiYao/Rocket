@@ -10,6 +10,6 @@ data class Client(
     val id: Long = 0,
     val name: String = "",
     val contactList: List<Contact> = emptyList(),
-    var remark: String? = null,
+    val remark: String? = null,
     val createTime: Long = System.currentTimeMillis()
 )
