@@ -45,12 +45,13 @@ dependencies {
 
     api(project(":core:common"))
     api(project(":core:model"))
-    implementation(project(":core:logger"))
 
     implementation(libs.hilt.android)
     kapt(libs.hilt.android.compiler)
 
     implementation(libs.bundles.room)
     ksp(libs.androidx.room.compiler)
+
+    api(libs.androidx.paging.runtime.ktx)
 
 }

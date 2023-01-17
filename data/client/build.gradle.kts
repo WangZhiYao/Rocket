@@ -43,7 +43,6 @@ dependencies {
     androidTestImplementation(libs.bundles.androidx.test)
 
     implementation(project(":core:database"))
-    compileOnly(libs.androidx.paging.common.ktx)
 
     implementation(libs.hilt.android)
     kapt(libs.hilt.android.compiler)

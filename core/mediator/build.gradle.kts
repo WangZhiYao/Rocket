@@ -42,13 +42,12 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.bundles.androidx.test)
 
-    implementation(project(":core:common"))
-    implementation(project(":core:model"))
-    implementation(project(":core:logger"))
+    compileOnly(project(":core:common"))
+    compileOnly(project(":core:model"))
 
     implementation(libs.hilt.android)
     kapt(libs.hilt.android.compiler)
 
-    implementation(libs.androidx.paging.common.ktx)
+    compileOnly(libs.androidx.paging.common.ktx)
 
 }

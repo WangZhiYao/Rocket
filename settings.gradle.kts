@@ -27,8 +27,10 @@ include(":core:database")
 include(":core:datastore")
 include(":core:authenticate")
 
+include(":data:client")
+
+include(":domain:client")
+
 include(":feature:home")
 include(":feature:user")
 include(":feature:client")
-include(":data:client")
-include(":domain:client")
