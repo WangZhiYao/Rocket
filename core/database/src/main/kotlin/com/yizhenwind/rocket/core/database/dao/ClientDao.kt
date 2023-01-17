@@ -4,7 +4,7 @@ import androidx.paging.PagingSource
 import androidx.room.Dao
 import androidx.room.Query
 import androidx.room.Transaction
-import com.yizhenwind.rocket.core.database.dto.ClientDto
+import com.yizhenwind.rocket.core.common.constant.ContactType
 import com.yizhenwind.rocket.core.database.dto.ClientProfileDto
 import com.yizhenwind.rocket.core.database.entity.ClientEntity
 
@@ -30,10 +30,9 @@ interface ClientDao : IDao<ClientEntity> {
     fun observeClientProfile(): PagingSource<Int, ClientProfileDto>
 
     /**
-     * 根据ID查询客户（包含联系方式）
+     * 根据联系方式查询客户
      */
-    @Transaction
-    @Query("SELECT * FROM client WHERE id = :id")
-    suspend fun getClientById(id: Long): ClientDto
+    @Query("SELECT * FROM client WHERE contact_type = :contactType AND contact = :contact LIMIT 1")
+    suspend fun getClientByContact(contactType: ContactType, contact: String): ClientEntity?
 
 }

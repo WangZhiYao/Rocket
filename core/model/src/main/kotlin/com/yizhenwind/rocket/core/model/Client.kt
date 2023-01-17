@@ -1,5 +1,7 @@
 package com.yizhenwind.rocket.core.model
 
+import com.yizhenwind.rocket.core.common.constant.ContactType
+
 /**
  * 客户
  *
@@ -9,7 +11,8 @@ package com.yizhenwind.rocket.core.model
 data class Client(
     val id: Long = 0,
     val name: String = "",
-    val contactList: List<Contact> = emptyList(),
+    val contactType: ContactType = ContactType.QQ,
+    val contact: String = "",
     val remark: String? = null,
     val createTime: Long = System.currentTimeMillis()
 )

@@ -2,4 +2,5 @@
 <resources>
     <string name="app_name">Rocket</string>
 
+    <string name="menu_action_search">搜索</string>
 </resources>

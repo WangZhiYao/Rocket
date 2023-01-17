@@ -5,6 +5,7 @@ import com.yizhenwind.rocket.core.framework.base.BaseFragment
 import com.yizhenwind.rocket.core.framework.ext.setThrottleClickListener
 import com.yizhenwind.rocket.core.framework.mvi.IMVIHost
 import com.yizhenwind.rocket.feature.client.databinding.FragmentClientProfileBinding
+import com.yizhenwind.rocket.feature.client.ui.create.CreateClientArgs
 import dagger.hilt.android.AndroidEntryPoint
 import org.orbitmvi.orbit.viewmodel.observe
 
@@ -46,7 +47,7 @@ class ClientProfileFragment :
                 rvClientProfile.adapter = this
             }
             fabCreateClient.setThrottleClickListener {
-                // TODO: create client
+                CreateClientArgs().launch(requireContext())
             }
         }
     }

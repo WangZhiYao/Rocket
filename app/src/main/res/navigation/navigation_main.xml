@@ -14,7 +14,7 @@
     <fragment
         android:id="@+id/nav_client_profile"
         android:name="com.yizhenwind.rocket.feature.client.ui.profile.ClientProfileFragment"
-        android:label="@string/client_label"
+        android:label="@string/client_profile_label"
         tools:layout="@layout/fragment_client_profile" />
 
     <fragment
