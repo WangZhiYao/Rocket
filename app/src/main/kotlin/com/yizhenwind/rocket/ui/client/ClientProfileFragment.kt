@@ -1,11 +1,12 @@
-package com.yizhenwind.rocket.feature.client.ui.profile
+package com.yizhenwind.rocket.ui.client
 
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
+import com.yizhenwind.rocket.NavigationMainDirections
 import com.yizhenwind.rocket.core.framework.base.BaseFragment
 import com.yizhenwind.rocket.core.framework.ext.setThrottleClickListener
 import com.yizhenwind.rocket.core.framework.mvi.IMVIHost
-import com.yizhenwind.rocket.feature.client.databinding.FragmentClientProfileBinding
-import com.yizhenwind.rocket.feature.client.ui.create.CreateClientArgs
+import com.yizhenwind.rocket.databinding.FragmentClientProfileBinding
 import dagger.hilt.android.AndroidEntryPoint
 import org.orbitmvi.orbit.viewmodel.observe
 
@@ -44,7 +45,9 @@ class ClientProfileFragment :
                 rvClientProfile.adapter = this
             }
             fabCreateClient.setThrottleClickListener {
-                CreateClientArgs().launch(requireContext())
+                findNavController().navigate(
+                    ClientProfileFragmentDirections.actionClientProfileToCreateClient()
+                )
             }
         }
     }

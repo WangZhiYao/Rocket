@@ -1,11 +1,11 @@
-package com.yizhenwind.rocket.feature.client.ui.profile
+package com.yizhenwind.rocket.ui.client
 
 import android.view.ViewGroup
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import com.yizhenwind.rocket.core.framework.ext.viewBinding
 import com.yizhenwind.rocket.core.model.ClientProfile
-import com.yizhenwind.rocket.feature.client.databinding.ItemClientProfileBinding
+import com.yizhenwind.rocket.databinding.ItemClientProfileBinding
 
 /**
  *

@@ -3,4 +3,9 @@
     <string name="app_name">Rocket</string>
 
     <string name="menu_action_search">搜索</string>
+
+    <string name="item_client_profile_account_count">账号数: %d </string>
+    <string name="item_client_profile_character_count">角色数: %d </string>
+    <string name="item_client_profile_order_count">订单数: %d</string>
+
 </resources>

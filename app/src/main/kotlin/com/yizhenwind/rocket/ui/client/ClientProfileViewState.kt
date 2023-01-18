@@ -1,4 +1,4 @@
-package com.yizhenwind.rocket.feature.client.ui.profile
+package com.yizhenwind.rocket.ui.client
 
 import androidx.paging.PagingData
 import com.yizhenwind.rocket.core.framework.mvi.IViewState
