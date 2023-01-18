@@ -15,49 +15,39 @@ import com.yizhenwind.rocket.feature.client.databinding.ItemClientProfileBinding
 class ClientProfileViewHolder(private val binding: ItemClientProfileBinding) :
     BaseViewHolder<ClientProfile>(binding.root) {
 
-    var onAddCharacterClickListener: ((ClientProfile) -> Unit)? = null
-
-    var onCreateOrderClickListener: ((ClientProfile) -> Unit)? = null
+    var onActionClickListener: ((ClientProfile) -> Unit)? = null
 
     override fun bind(item: ClientProfile) {
         binding.apply {
             item.apply {
                 tvClientName.text = name
                 tvClientProfile.apply {
-                    text = StringBuilder().apply {
-                        if (characterCount > 0) {
-                            append(
-                                context.getString(
-                                    R.string.item_client_profile_character_count,
-                                    characterCount
-                                )
+                    text = StringBuilder()
+                        .append(
+                            context.getString(
+                                R.string.item_client_profile_account_count,
+                                accountCount
                             )
-                        } else {
-                            append(context.getString(R.string.item_client_profile_no_character_yet))
-                        }
-                        append(",")
-                        if (orderCount > 0) {
-                            append(
-                                context.getString(
-                                    R.string.item_client_profile_order_count,
-                                    orderCount
-                                )
+                        )
+                        .append(", ")
+                        .append(
+                            context.getString(
+                                R.string.item_client_profile_character_count,
+                                characterCount
                             )
-                        } else {
-                            append(context.getString(R.string.item_client_profile_no_order_yet))
-                        }
-                    }
+                        )
+                        .append(", ")
+                        .append(
+                            context.getString(
+                                R.string.item_client_profile_order_count,
+                                orderCount
+                            )
+                        )
                         .toString()
                 }
-
-                btnClientAddCharacter.setThrottleClickListener {
-                    onAddCharacterClickListener?.invoke(this)
-                }
-
-                btnClientCreateOrder.setOnClickListener {
-                    onCreateOrderClickListener?.invoke(this)
-                }
             }
+
+            ibClientAction.setThrottleClickListener { onActionClickListener?.invoke(item) }
         }
     }
 }

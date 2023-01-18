@@ -7,7 +7,6 @@ import android.util.TypedValue
 import android.widget.LinearLayout
 import androidx.annotation.StyleRes
 import androidx.core.content.ContextCompat
-import androidx.core.content.res.use
 import androidx.core.content.withStyledAttributes
 import com.yizhenwind.rocket.core.common.ext.sp
 import com.yizhenwind.rocket.core.framework.R

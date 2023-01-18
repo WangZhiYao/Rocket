@@ -8,12 +8,9 @@
         <item>手机号</item>
     </string-array>
 
-    <string name="item_client_profile_account_count">%d 个账号</string>
-    <string name="item_client_profile_character_count">%d 个角色</string>
-    <string name="item_client_profile_order_count">%d 条订单</string>
-    <string name="item_client_profile_no_account_yet">暂无账号</string>
-    <string name="item_client_profile_no_character_yet">暂无角色</string>
-    <string name="item_client_profile_no_order_yet">暂无订单</string>
+    <string name="item_client_profile_account_count">账号数: %d </string>
+    <string name="item_client_profile_character_count">角色数: %d </string>
+    <string name="item_client_profile_order_count">订单数: %d</string>
     <string name="item_client_profile_add_character">创建角色</string>
     <string name="item_client_profile_create_order">新建订单</string>
 
@@ -22,7 +19,7 @@
     <string name="create_client_contact_tip">联系方式*</string>
     <string name="create_client_input_contact">请输入联系方式</string>
     <string name="create_client_remark">备注</string>
-    <string name="create_client_contact_type">类型</string>
+    <string name="create_client_contact_type">联系方式类型</string>
     <string name="create_client_success">创建客户成功</string>
     <string name="create_client_success_to_composite">跳转详情</string>
 

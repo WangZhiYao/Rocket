@@ -17,7 +17,7 @@ import androidx.room.PrimaryKey
         Index("title", unique = true)
     ]
 )
-data class CategoryEntity (
+data class CategoryEntity(
 
     /**
      * 主键ID

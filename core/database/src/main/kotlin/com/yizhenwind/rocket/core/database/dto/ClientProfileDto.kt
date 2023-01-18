@@ -11,6 +11,8 @@ import androidx.room.ColumnInfo
 data class ClientProfileDto(
     val id: Long,
     val name: String,
+    @ColumnInfo(name = "account_count")
+    val accountCount: Int,
     @ColumnInfo(name = "character_count")
     val characterCount: Int,
     @ColumnInfo(name = "order_count")

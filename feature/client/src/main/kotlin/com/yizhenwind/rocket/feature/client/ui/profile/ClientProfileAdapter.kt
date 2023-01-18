@@ -18,20 +18,15 @@ class ClientProfileAdapter :
 
     var onClientProfileClickListener: ((ClientProfile) -> Unit)? = null
 
-    var onAddCharacterClickListener: ((ClientProfile) -> Unit)? = null
-
-    var onCreateOrderClickListener: ((ClientProfile) -> Unit)? = null
+    var onActionClickListener: ((ClientProfile) -> Unit)? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ClientProfileViewHolder =
         ClientProfileViewHolder(parent.viewBinding(ItemClientProfileBinding::inflate)).apply {
             onItemClickListener = { clientProfile ->
                 onClientProfileClickListener?.invoke(clientProfile)
             }
-            onAddCharacterClickListener = { clientProfile ->
-                this@ClientProfileAdapter.onAddCharacterClickListener?.invoke(clientProfile)
-            }
-            onCreateOrderClickListener = { clientProfile ->
-                this@ClientProfileAdapter.onCreateOrderClickListener?.invoke(clientProfile)
+            onActionClickListener = { clientProfile ->
+                this@ClientProfileAdapter.onActionClickListener?.invoke(clientProfile)
             }
         }
 

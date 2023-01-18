@@ -70,8 +70,9 @@ class CreateClientFragment :
             tietCreateClientContactValue.apply {
                 text = null
                 inputType = when (state.contactType) {
-                    ContactType.QQ, ContactType.PHONE -> EditorInfo.TYPE_CLASS_NUMBER
+                    ContactType.QQ -> EditorInfo.TYPE_CLASS_NUMBER
                     ContactType.WECHAT -> EditorInfo.TYPE_CLASS_TEXT
+                    ContactType.PHONE -> EditorInfo.TYPE_CLASS_PHONE
                 }
             }
         }

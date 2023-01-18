@@ -1,6 +1,9 @@
 package com.yizhenwind.rocket.core.database.dao
 
-import androidx.room.*
+import androidx.room.Delete
+import androidx.room.Insert
+import androidx.room.Update
+import androidx.room.Upsert
 
 /**
  * 数据库操作

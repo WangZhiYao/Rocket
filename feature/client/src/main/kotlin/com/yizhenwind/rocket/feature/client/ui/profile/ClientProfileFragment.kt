@@ -35,14 +35,11 @@ class ClientProfileFragment :
     private fun initView() {
         binding.apply {
             adapter.apply {
-                onClientProfileClickListener = {
+                onClientProfileClickListener = { clientProfile ->
                     // TODO: open client composite
                 }
-                onAddCharacterClickListener = {
-                    // TODO: add character
-                }
-                onCreateOrderClickListener = {
-                    // TODO: create order
+                onActionClickListener = { clientProfile ->
+                    // TODO: open action bottom sheet
                 }
                 rvClientProfile.adapter = this
             }
@@ -54,6 +51,11 @@ class ClientProfileFragment :
 
     override suspend fun render(state: ClientProfileViewState) {
         adapter.submitData(state.clientProfileList)
+    }
+
+    override fun onDestroyView() {
+        binding.rvClientProfile.adapter = null
+        super.onDestroyView()
     }
 
 }

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -33,26 +34,15 @@
 
         </com.google.android.material.textfield.TextInputLayout>
 
-        <TextView
-            android:id="@+id/tv_create_client_contact_tip"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="8dp"
-            android:text="@string/create_client_contact_tip"
-            android:textColor="@color/color_text_primary"
-            android:textSize="16sp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/til_create_client_name" />
-
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/til_create_client_contact_type"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
+            android:layout_marginTop="4dp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tv_create_client_contact_tip"
+            app:layout_constraintTop_toBottomOf="@id/til_create_client_name"
             app:layout_constraintWidth_percent="0.35">
 
             <com.google.android.material.textfield.MaterialAutoCompleteTextView
@@ -60,7 +50,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/create_client_contact_type"
-                android:inputType="none" />
+                android:inputType="none"
+                tools:text="QQ" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -73,9 +64,9 @@
             android:layout_marginEnd="16dp"
             app:endIconMode="clear_text"
             app:errorEnabled="true"
+            app:layout_constraintBaseline_toBaselineOf="@id/til_create_client_contact_type"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/til_create_client_contact_type"
-            app:layout_constraintTop_toBottomOf="@id/tv_create_client_contact_tip">
+            app:layout_constraintStart_toEndOf="@id/til_create_client_contact_type">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/tiet_create_client_contact_value"

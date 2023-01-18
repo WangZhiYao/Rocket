@@ -18,6 +18,7 @@ class ClientProfileDtoMapper @Inject constructor() : IMapper<ClientProfileDto, C
             ClientProfile(
                 id,
                 name,
+                accountCount,
                 characterCount,
                 orderCount,
                 createTime

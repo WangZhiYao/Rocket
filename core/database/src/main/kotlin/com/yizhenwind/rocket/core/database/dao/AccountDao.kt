@@ -10,4 +10,4 @@ import com.yizhenwind.rocket.core.database.entity.AccountEntity
  * @since 2023/1/15
  */
 @Dao
-interface AccountDao :IDao<AccountEntity>
+interface AccountDao : IDao<AccountEntity>

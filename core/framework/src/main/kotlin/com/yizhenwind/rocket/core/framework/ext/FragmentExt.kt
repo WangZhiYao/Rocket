@@ -12,5 +12,6 @@ import com.yizhenwind.rocket.core.framework.lazy.FragmentArgsLazy
  */
 inline fun <reified Args : IFragmentArgs> Fragment.fragmentArgs(): FragmentArgsLazy<Args> =
     FragmentArgsLazy(Args::class) {
-        arguments ?: throw IllegalStateException("${this::class.java.simpleName} has null arguments")
+        arguments
+            ?: throw IllegalStateException("${this::class.java.simpleName} has null arguments")
     }
