@@ -1,4 +1,4 @@
-package com.yizhenwind.rocket.core.framework.util
+package com.yizhenwind.rocket.core.common.util
 
 import android.content.ClipData
 import android.content.ClipboardManager
