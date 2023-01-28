@@ -2,7 +2,6 @@ package com.yizhenwind.rocket.core.database.entity
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity
-import androidx.room.Index
 import androidx.room.PrimaryKey
 
 /**
@@ -11,12 +10,7 @@ import androidx.room.PrimaryKey
  * @author WangZhiYao
  * @since 2022/1/24
  */
-@Entity(
-    tableName = "category",
-    indices = [
-        Index("title", unique = true)
-    ]
-)
+@Entity(tableName = "category")
 data class CategoryEntity(
 
     /**
@@ -36,8 +30,18 @@ data class CategoryEntity(
     val description: String? = null,
 
     /**
+     * 是否为默认
+     */
+    val default: Boolean,
+
+    /**
+     * 是否可用
+     */
+    val enable: Boolean,
+
+    /**
      * 创建时间
      */
     @ColumnInfo(name = "create_time")
-    val createTime: Long = System.currentTimeMillis()
+    val createTime: Long
 )

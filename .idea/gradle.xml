@@ -22,12 +22,32 @@
             <option value="$PROJECT_DIR$/core/model" />
             <option value="$PROJECT_DIR$/core/network" />
             <option value="$PROJECT_DIR$/data" />
+            <option value="$PROJECT_DIR$/data/account" />
+            <option value="$PROJECT_DIR$/data/character" />
             <option value="$PROJECT_DIR$/data/client" />
+            <option value="$PROJECT_DIR$/data/contacttype" />
+            <option value="$PROJECT_DIR$/data/internal" />
+            <option value="$PROJECT_DIR$/data/order" />
+            <option value="$PROJECT_DIR$/data/sect" />
+            <option value="$PROJECT_DIR$/data/server" />
+            <option value="$PROJECT_DIR$/data/zone" />
             <option value="$PROJECT_DIR$/domain" />
+            <option value="$PROJECT_DIR$/domain/account" />
+            <option value="$PROJECT_DIR$/domain/character" />
             <option value="$PROJECT_DIR$/domain/client" />
+            <option value="$PROJECT_DIR$/domain/contacttype" />
+            <option value="$PROJECT_DIR$/domain/internal" />
+            <option value="$PROJECT_DIR$/domain/order" />
+            <option value="$PROJECT_DIR$/domain/sect" />
+            <option value="$PROJECT_DIR$/domain/server" />
+            <option value="$PROJECT_DIR$/domain/zone" />
             <option value="$PROJECT_DIR$/feature" />
+            <option value="$PROJECT_DIR$/feature/account" />
+            <option value="$PROJECT_DIR$/feature/character" />
             <option value="$PROJECT_DIR$/feature/client" />
+            <option value="$PROJECT_DIR$/feature/contacttype" />
             <option value="$PROJECT_DIR$/feature/home" />
+            <option value="$PROJECT_DIR$/feature/order" />
             <option value="$PROJECT_DIR$/feature/user" />
           </set>
         </option>

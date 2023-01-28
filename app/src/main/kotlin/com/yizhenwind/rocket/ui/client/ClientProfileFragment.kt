@@ -3,10 +3,8 @@ package com.yizhenwind.rocket.ui.client
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.yizhenwind.rocket.NavigationMainDirections
-import com.yizhenwind.rocket.core.framework.base.BaseFragment
-import com.yizhenwind.rocket.core.framework.ext.setThrottleClickListener
+import com.yizhenwind.rocket.core.framework.base.BaseListFragment
 import com.yizhenwind.rocket.core.framework.mvi.IMVIHost
-import com.yizhenwind.rocket.databinding.FragmentClientProfileBinding
 import dagger.hilt.android.AndroidEntryPoint
 import org.orbitmvi.orbit.viewmodel.observe
 
@@ -17,12 +15,11 @@ import org.orbitmvi.orbit.viewmodel.observe
  * @since 2023/1/16
  */
 @AndroidEntryPoint
-class ClientProfileFragment :
-    BaseFragment<FragmentClientProfileBinding>(FragmentClientProfileBinding::inflate),
-    IMVIHost<ClientProfileViewState, Nothing> {
+class ClientProfileFragment : BaseListFragment(), IMVIHost<ClientProfileViewState, Nothing> {
 
     private val viewModel by viewModels<ClientProfileViewModel>()
-    private val adapter = ClientProfileAdapter()
+
+    override val adapter = ClientProfileAdapter()
 
     override fun init() {
         initData()
@@ -33,32 +30,29 @@ class ClientProfileFragment :
         viewModel.observe(viewLifecycleOwner, state = ::render)
     }
 
-    private fun initView() {
+    override fun initView() {
+        super.initView()
         binding.apply {
             adapter.apply {
-                onClientProfileClickListener = { clientProfile ->
-                    // TODO: open client composite
+                onItemClickListener = { clientProfile ->
+                    findNavController().navigate(
+                        NavigationMainDirections.actionToClientComposite(clientProfile.id)
+                    )
                 }
                 onActionClickListener = { clientProfile ->
                     // TODO: open action bottom sheet
                 }
-                rvClientProfile.adapter = this
             }
-            fabCreateClient.setThrottleClickListener {
+            /*fabCreateClient.setThrottleClickListener {
                 findNavController().navigate(
                     ClientProfileFragmentDirections.actionClientProfileToCreateClient()
                 )
-            }
+            }*/
         }
     }
 
     override suspend fun render(state: ClientProfileViewState) {
         adapter.submitData(state.clientProfileList)
-    }
-
-    override fun onDestroyView() {
-        binding.rvClientProfile.adapter = null
-        super.onDestroyView()
     }
 
 }

@@ -5,8 +5,10 @@ import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupWithNavController
+import com.yizhenwind.rocket.NavigationMainDirections
 import com.yizhenwind.rocket.R
 import com.yizhenwind.rocket.core.framework.base.BaseNavActivity
+import com.yizhenwind.rocket.core.framework.ext.setThrottleClickListener
 import com.yizhenwind.rocket.core.framework.ext.viewBindings
 import com.yizhenwind.rocket.databinding.ActivityMainBinding
 import dagger.hilt.android.AndroidEntryPoint
@@ -40,17 +42,34 @@ class MainActivity : BaseNavActivity() {
 
     private fun initView() {
         binding.apply {
-            setupToolbar(appBar.toolbar)
-            appBar.toolbar.apply {
-                inflateMenu(R.menu.menu_main)
-                setOnMenuItemClickListener { menuItem ->
-                    if (menuItem.itemId == R.id.action_search) {
-                        return@setOnMenuItemClickListener true
+            appBar.apply {
+                setupToolbar(toolbar)
+                toolbar.apply {
+                    inflateMenu(R.menu.menu_main)
+                    setOnMenuItemClickListener { menuItem ->
+                        if (menuItem.itemId == R.id.action_search) {
+                            return@setOnMenuItemClickListener true
+                        }
+                        return@setOnMenuItemClickListener false
                     }
-                    return@setOnMenuItemClickListener false
+                }
+                fab.setThrottleClickListener {
+                    when (navController.currentDestination?.id) {
+                        R.id.nav_client_profile -> {
+                            navController.navigate(NavigationMainDirections.actionToCreateClient())
+                        }
+                    }
                 }
             }
             navView.setupWithNavController(navController)
+            navController.addOnDestinationChangedListener { _, destination, _ ->
+                appBar.fab.setImageResource(
+                    when (destination.id) {
+                        R.id.nav_client_profile -> R.drawable.ic_round_add_white_24dp
+                        else -> R.drawable.ic_round_faces_white_24dp
+                    }
+                )
+            }
         }
     }
 }

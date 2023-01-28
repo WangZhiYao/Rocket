@@ -17,14 +17,6 @@
         android:label="@string/client_profile_label"
         tools:layout="@layout/fragment_client_profile">
 
-        <action
-            android:id="@+id/action_client_profile_to_create_client"
-            app:destination="@id/nav_create_client"
-            app:enterAnim="@anim/slide_in_right"
-            app:exitAnim="@anim/slide_out_left"
-            app:popEnterAnim="@anim/slide_in_left"
-            app:popExitAnim="@anim/slide_out_right" />
-
     </fragment>
 
     <fragment
@@ -49,6 +41,14 @@
             app:argType="long"
             app:nullable="false" />
     </activity>
+
+    <action
+        android:id="@+id/action_to_create_client"
+        app:destination="@id/nav_create_client"
+        app:enterAnim="@anim/slide_in_right"
+        app:exitAnim="@anim/slide_out_left"
+        app:popEnterAnim="@anim/slide_in_left"
+        app:popExitAnim="@anim/slide_out_right" />
 
     <action
         android:id="@+id/action_to_client_composite"

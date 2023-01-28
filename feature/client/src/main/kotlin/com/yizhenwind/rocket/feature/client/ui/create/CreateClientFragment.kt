@@ -3,16 +3,21 @@ package com.yizhenwind.rocket.feature.client.ui.create
 import android.view.inputmethod.EditorInfo
 import androidx.core.widget.doAfterTextChanged
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
+import androidx.navigation.fragment.findNavController
 import com.google.android.material.snackbar.Snackbar
-import com.yizhenwind.rocket.core.common.constant.ContactType
 import com.yizhenwind.rocket.core.framework.base.BaseFragment
 import com.yizhenwind.rocket.core.framework.ext.setThrottleClickListener
 import com.yizhenwind.rocket.core.framework.ext.showSnack
 import com.yizhenwind.rocket.core.framework.ext.showSnackWithAction
 import com.yizhenwind.rocket.core.framework.mvi.IMVIHost
+import com.yizhenwind.rocket.core.model.ContactType
 import com.yizhenwind.rocket.feature.client.R
 import com.yizhenwind.rocket.feature.client.databinding.FragmentCreateClientBinding
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.launch
 import org.orbitmvi.orbit.viewmodel.observe
 
 /**
@@ -34,7 +39,40 @@ class CreateClientFragment :
     }
 
     private fun initData() {
-        viewModel.observe(this, state = ::render, sideEffect = ::handleSideEffect)
+        viewModel.apply {
+            observe(viewLifecycleOwner, state = ::render, sideEffect = ::handleSideEffect)
+
+            viewLifecycleOwner.lifecycleScope.launch {
+                lifecycle.repeatOnLifecycle(Lifecycle.State.STARTED) {
+                    launch {
+                        contactTypeList.collect { contactTypeList ->
+                            binding.apply {
+                                actvCreateClientContactType.apply {
+                                    contactTypeList.apply {
+                                        setSimpleItems(map { it.name }.toTypedArray())
+                                        setText(firstOrNull()?.name, false)
+                                    }
+                                }
+                                tietCreateClientContactValue.text = null
+                            }
+                        }
+                    }
+
+                    launch {
+                        contactType.collect { contactType ->
+                            binding.tietCreateClientContactValue.apply {
+                                text = null
+                                inputType = when (contactType.id) {
+                                    ContactType.QQ -> EditorInfo.TYPE_CLASS_NUMBER
+                                    ContactType.WECHAT -> EditorInfo.TYPE_CLASS_TEXT
+                                    else -> EditorInfo.TYPE_CLASS_TEXT
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
     }
 
     private fun initView() {
@@ -43,12 +81,8 @@ class CreateClientFragment :
                 viewModel.onNameChanged(name?.toString())
             }
 
-            actvCreateClientContactType.apply {
-                setSimpleItems(R.array.contact_type)
-                setText(resources.getStringArray(R.array.contact_type)[0], false)
-                setOnItemClickListener { _, _, position, _ ->
-                    viewModel.onContactTypeChanged(ContactType.values()[position])
-                }
+            actvCreateClientContactType.setOnItemClickListener { _, _, position, _ ->
+                viewModel.onContactTypeChanged(position)
             }
 
             tietCreateClientContactValue.doAfterTextChanged { contact ->
@@ -61,19 +95,6 @@ class CreateClientFragment :
                     tietCreateClientContactValue.text?.toString(),
                     tietCreateClientRemark.text?.toString()
                 )
-            }
-        }
-    }
-
-    override suspend fun render(state: CreateClientViewState) {
-        binding.apply {
-            tietCreateClientContactValue.apply {
-                text = null
-                inputType = when (state.contactType) {
-                    ContactType.QQ -> EditorInfo.TYPE_CLASS_NUMBER
-                    ContactType.WECHAT -> EditorInfo.TYPE_CLASS_TEXT
-                    ContactType.PHONE -> EditorInfo.TYPE_CLASS_PHONE
-                }
             }
         }
     }
@@ -97,7 +118,11 @@ class CreateClientFragment :
                         Snackbar.LENGTH_INDEFINITE,
                         actionResId = R.string.create_client_success_to_composite
                     ) {
-                        // TODO: to client composite
+                        findNavController().navigate(
+                            CreateClientFragmentDirections.actionCreateClientToClientComposite(
+                                sideEffect.client.id
+                            )
+                        )
                     }
                 }
                 is CreateClientSideEffect.CreateClientFailure ->

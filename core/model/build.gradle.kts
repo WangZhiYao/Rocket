@@ -44,6 +44,6 @@ dependencies {
 
     implementation(project(":core:common"))
 
-    implementation(libs.moshi.kotlin)
     ksp(libs.moshi.kotlin.codegen)
+
 }

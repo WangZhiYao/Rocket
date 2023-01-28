@@ -1,0 +1,14 @@
+[
+  {
+    "id": 1,
+    "name": "QQ",
+    "default": true,
+    "enable": true
+  },
+  {
+    "id": 2,
+    "name": "微信",
+    "default": true,
+    "enable": true
+  }
+]

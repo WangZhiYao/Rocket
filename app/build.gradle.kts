@@ -1,3 +1,7 @@
+import com.android.build.gradle.internal.api.BaseVariantOutputImpl
+import java.text.SimpleDateFormat
+import java.util.*
+
 @Suppress("DSL_SCOPE_VIOLATION")
 plugins {
     id(libs.plugins.android.application.get().pluginId)
@@ -29,6 +33,30 @@ android {
                 "proguard-rules.pro"
             )
         }
+
+        debug {
+            signingConfig = signingConfigs.getByName("debug")
+        }
+    }
+
+    applicationVariants.all {
+        outputs
+            .map { it as BaseVariantOutputImpl }
+            .forEach { output ->
+                val dateFormat = SimpleDateFormat("yyyyMMddHHmmss", Locale.CHINA)
+                val outputFileName =
+                    "Rocket-$versionName-$name-${dateFormat.format(Date())}.${output.outputFile.extension}"
+                output.outputFileName = outputFileName
+            }
+    }
+
+    signingConfigs {
+        getByName("debug") {
+            storeFile = file("../Rocket.jks")
+            storePassword = "WzY@156987"
+            keyAlias = "rocket"
+            keyPassword = "WzY@156987"
+        }
     }
 
     compileOptions {
@@ -59,6 +87,10 @@ dependencies {
 
     implementation(project(":feature:home"))
     implementation(project(":feature:client"))
+    implementation(project(":feature:contacttype"))
+    implementation(project(":feature:account"))
+    implementation(project(":feature:character"))
+    implementation(project(":feature:order"))
     implementation(project(":feature:user"))
 
     implementation(libs.hilt.android)

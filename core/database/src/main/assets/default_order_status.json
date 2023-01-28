@@ -1,0 +1,26 @@
+[
+  {
+    "id": 1,
+    "name": "未开始",
+    "default": true,
+    "enable": true
+  },
+  {
+    "id": 2,
+    "name": "代练中",
+    "default": true,
+    "enable": true
+  },
+  {
+    "id": 3,
+    "name": "暂停",
+    "default": true,
+    "enable": true
+  },
+  {
+    "id": 4,
+    "name": "已完成",
+    "default": true,
+    "enable": true
+  }
+]

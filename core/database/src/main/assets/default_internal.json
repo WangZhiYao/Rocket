@@ -1,0 +1,182 @@
+[
+  {
+    "id": 1,
+    "sectId": 1,
+    "name": "花间游",
+    "icon": "https://storage.zephaniel.site/static/image/ic_setc_wh_internal_hjy.png"
+  },
+  {
+    "id": 2,
+    "sectId": 1,
+    "name": "离经易道",
+    "icon": "https://storage.zephaniel.site/static/image/ic_sect_wh_internal_ljyd.png"
+  },
+  {
+    "id": 3,
+    "sectId": 2,
+    "name": "太虚剑意",
+    "icon": "https://storage.zephaniel.site/static/image/ic_setc_cy_internal_txjy.png"
+  },
+  {
+    "id": 4,
+    "sectId": 2,
+    "name": "紫霞功",
+    "icon": "https://storage.zephaniel.site/static/image/ic_setc_cy_internal_zxg.png"
+  },
+  {
+    "id": 5,
+    "sectId": 3,
+    "name": "冰心诀",
+    "icon": "https://storage.zephaniel.site/static/image/ic_sect_qx_internal_bxj.png"
+  },
+  {
+    "id": 6,
+    "sectId": 3,
+    "name": "云裳心经",
+    "icon": "https://storage.zephaniel.site/static/image/ic_sect_qx_internal_ysxj.png"
+  },
+  {
+    "id": 7,
+    "sectId": 4,
+    "name": "易筋经",
+    "icon": "https://storage.zephaniel.site/static/image/ic_sect_sl_internal_yjj.png"
+  },
+  {
+    "id": 8,
+    "sectId": 4,
+    "name": "洗髓经",
+    "icon": "https://storage.zephaniel.site/static/image/ic_sect_sl_internal_xsj.png"
+  },
+  {
+    "id": 9,
+    "sectId": 5,
+    "name": "傲血战意",
+    "icon": "https://storage.zephaniel.site/static/image/ic_setc_tc_internal_axzy.png"
+  },
+  {
+    "id": 10,
+    "sectId": 5,
+    "name": "铁牢律",
+    "icon": "https://storage.zephaniel.site/static/image/ic_setc_tc_internal_tll.png"
+  },
+  {
+    "id": 11,
+    "sectId": 6,
+    "name": "问水诀",
+    "icon": "https://storage.zephaniel.site/static/image/ic_setc_cj_internal_wsj.png"
+  },
+  {
+    "id": 12,
+    "sectId": 6,
+    "name": "山居剑意",
+    "icon": "https://storage.zephaniel.site/static/image/ic_setc_cj_internal_sjjy.png"
+  },
+  {
+    "id": 13,
+    "sectId": 7,
+    "name": "千蛛万毒手",
+    "icon": "https://storage.zephaniel.site/static/image/ic_setc_wd_internal_qzwds.png"
+  },
+  {
+    "id": 14,
+    "sectId": 7,
+    "name": "补天心经",
+    "icon": "https://storage.zephaniel.site/static/image/ic_setc_wd_internal_btj.png"
+  },
+  {
+    "id": 15,
+    "sectId": 8,
+    "name": "惊羽诀",
+    "icon": "https://storage.zephaniel.site/static/image/ic_setc_tm_internal_jyj.png"
+  },
+  {
+    "id": 16,
+    "sectId": 8,
+    "name": "天罗诡道",
+    "icon": "https://storage.zephaniel.site/static/image/ic_setc_tm_internal_tlgd.png"
+  },
+  {
+    "id": 17,
+    "sectId": 9,
+    "name": "焚影圣诀",
+    "icon": "https://storage.zephaniel.site/static/image/ic_setc_mj_internal_fysj.png"
+  },
+  {
+    "id": 18,
+    "sectId": 9,
+    "name": "明尊琉璃体",
+    "icon": "https://storage.zephaniel.site/static/image/ic_setc_mj_internal_mzllt.png"
+  },
+  {
+    "id": 19,
+    "sectId": 10,
+    "name": "笑尘诀",
+    "icon": "https://storage.zephaniel.site/static/image/ic_setc_gb_internal_xcj.png"
+  },
+  {
+    "id": 20,
+    "sectId": 11,
+    "name": "分山劲",
+    "icon": "https://storage.zephaniel.site/static/image/ic_setc_cy_internal_fsj.png"
+  },
+  {
+    "id": 21,
+    "sectId": 11,
+    "name": "铁骨衣",
+    "icon": "https://storage.zephaniel.site/static/image/ic_setc_cy_internal_tgy.png"
+  },
+  {
+    "id": 22,
+    "sectId": 12,
+    "name": "北傲诀",
+    "icon": "https://storage.zephaniel.site/static/image/ic_setc_bd_internal_baj.png"
+  },
+  {
+    "id": 23,
+    "sectId": 13,
+    "name": "莫问",
+    "icon": "https://storage.zephaniel.site/static/image/ic_setc_cgm_internal_mw.png"
+  },
+  {
+    "id": 24,
+    "sectId": 13,
+    "name": "相知",
+    "icon": "https://storage.zephaniel.site/static/image/ic_setc_cgm_internal_xz.png"
+  },
+  {
+    "id": 25,
+    "sectId": 14,
+    "name": "凌海诀",
+    "icon": "https://storage.zephaniel.site/static/image/ic_setc_pl_internal_lhj.png"
+  },
+  {
+    "id": 26,
+    "sectId": 15,
+    "name": "隐龙诀",
+    "icon": "https://storage.zephaniel.site/static/image/ic_setc_lxg_internal_ylj.png"
+  },
+  {
+    "id": 27,
+    "sectId": 16,
+    "name": "太玄经",
+    "icon": "https://storage.zephaniel.site/static/image/ic_setc_ytz_internal_txj.png"
+  },
+  {
+    "id": 28,
+    "sectId": 17,
+    "name": "无方",
+    "icon": "https://storage.zephaniel.site/static/image/ic_setc_btyz_internal_wf.png"
+  },
+  {
+    "id": 29,
+    "sectId": 17,
+    "name": "灵素",
+    "icon": "https://storage.zephaniel.site/static/image/ic_setc_btyz_internal_ls.png"
+  },
+  {
+    "id": 30,
+    "sectId": 18,
+    "name": "孤锋诀",
+    "icon": "https://storage.zephaniel.site/static/image/ic_setc_dz_internal_gfj.png"
+  }
+]

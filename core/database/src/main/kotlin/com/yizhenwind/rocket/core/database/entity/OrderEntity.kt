@@ -4,9 +4,6 @@ import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.ForeignKey
 import androidx.room.PrimaryKey
-import com.yizhenwind.rocket.core.common.constant.BillingCycle
-import com.yizhenwind.rocket.core.common.constant.OrderStatus
-import com.yizhenwind.rocket.core.common.constant.PaymentStatus
 
 /**
  * 订单属性
@@ -14,32 +11,7 @@ import com.yizhenwind.rocket.core.common.constant.PaymentStatus
  * @author WangZhiYao
  * @since 2021/10/27
  */
-@Entity(
-    tableName = "order",
-    foreignKeys = [
-        ForeignKey(
-            entity = ClientEntity::class,
-            parentColumns = ["id"],
-            childColumns = ["client_id"],
-            onDelete = ForeignKey.CASCADE,
-            onUpdate = ForeignKey.CASCADE
-        ),
-        ForeignKey(
-            entity = CharacterEntity::class,
-            parentColumns = ["id"],
-            childColumns = ["character_id"],
-            onDelete = ForeignKey.CASCADE,
-            onUpdate = ForeignKey.CASCADE
-        ),
-        ForeignKey(
-            entity = SubjectEntity::class,
-            parentColumns = ["id"],
-            childColumns = ["subject_id"],
-            onDelete = ForeignKey.NO_ACTION,
-            onUpdate = ForeignKey.CASCADE
-        )
-    ]
-)
+@Entity(tableName = "order")
 data class OrderEntity(
 
     /**
@@ -55,10 +27,16 @@ data class OrderEntity(
     val clientId: Long,
 
     /**
+     * 账号ID
+     */
+    @ColumnInfo(name = "account_id", index = true)
+    val accountId: Long,
+
+    /**
      * 代练角色
      */
     @ColumnInfo(name = "character_id", index = true)
-    val characterId: Long?,
+    val characterId: Long,
 
     /**
      * 代练项目
@@ -69,8 +47,8 @@ data class OrderEntity(
     /**
      * 收费模式
      */
-    @ColumnInfo(name = "billing_cycle")
-    val billingCycle: BillingCycle,
+    @ColumnInfo(name = "billing_cycle_id")
+    val billingCycleId: Long,
 
     /**
      * 原价（分）
@@ -88,17 +66,18 @@ data class OrderEntity(
      * 结束时间
      */
     @ColumnInfo(name = "end_date")
-    val endDate: Long? = null,
+    val endDate: Long?,
 
     /**
      * 备注
      */
-    val remark: String? = null,
+    val remark: String?,
 
     /**
      * 订单状态
      */
-    val status: OrderStatus,
+    @ColumnInfo(name = "order_status_id")
+    val orderStatusId: Long,
 
     /**
      * 订单状态更新时间
@@ -109,26 +88,37 @@ data class OrderEntity(
     /**
      * 付款状态
      */
-    @ColumnInfo(name = "payment_status")
-    val paymentStatus: PaymentStatus,
+    @ColumnInfo(name = "payment_status_id")
+    val paymentStatusId: Long,
+
+    /**
+     * 付款方式ID
+     */
+    @ColumnInfo(name = "payment_method_id")
+    val paymentMethodId: Long,
 
     /**
      * 付款时间
      */
     @ColumnInfo(name = "payment_time")
-    val paymentTime: Long? = null,
+    val paymentTime: Long?,
 
     /**
      * 退款金额
      */
     @ColumnInfo(name = "refund_amount")
-    val refundAmount: Long? = null,
+    val refundAmount: Long?,
 
     /**
      * 退款时间
      */
     @ColumnInfo(name = "refund_time")
-    val refundTime: Long? = null,
+    val refundTime: Long?,
+
+    /**
+     * 是否可用
+     */
+    val enable: Boolean,
 
     /**
      * 更新时间
@@ -140,5 +130,5 @@ data class OrderEntity(
      * 创建时间
      */
     @ColumnInfo(name = "create_time")
-    val createTime: Long = System.currentTimeMillis()
+    val createTime: Long
 )

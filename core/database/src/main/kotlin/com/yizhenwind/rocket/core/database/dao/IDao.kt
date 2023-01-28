@@ -17,13 +17,13 @@ interface IDao<T> {
      * 插入
      */
     @Insert
-    suspend fun insert(item: T): Long?
+    suspend fun insert(item: T): Long
 
     /**
      * 批量插入
      */
     @Insert
-    suspend fun insert(vararg item: T): List<Long>
+    suspend fun insert(itemList: List<T>): List<Long>
 
     /**
      * 更新或插入
@@ -32,14 +32,15 @@ interface IDao<T> {
     suspend fun upsert(item: T): Long
 
     /**
+     * 批量插入或更新
+     */
+    @Upsert
+    suspend fun upsert(itemList: List<T>): List<Long>
+
+    /**
      * 更新
      */
     @Update
     suspend fun update(item: T)
 
-    /**
-     * 删除
-     */
-    @Delete
-    suspend fun delete(item: T): Int
 }

@@ -46,4 +46,7 @@ dependencies {
 
     implementation(libs.hilt.android)
     kapt(libs.hilt.android.compiler)
+
+    api(libs.moshi.kotlin)
+
 }

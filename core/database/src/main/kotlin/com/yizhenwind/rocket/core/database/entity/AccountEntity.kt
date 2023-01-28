@@ -35,7 +35,7 @@ data class AccountEntity(
      * 客户ID
      */
     @ColumnInfo(name = "client_id", index = true)
-    val clientId: Long?,
+    val clientId: Long,
 
     /**
      * 用户名
@@ -48,8 +48,13 @@ data class AccountEntity(
     val password: String,
 
     /**
+     * 是否可用
+     */
+    val enable: Boolean,
+
+    /**
      * 创建时间
      */
     @ColumnInfo(name = "create_time")
-    val createTime: Long = System.currentTimeMillis()
+    val createTime: Long
 )

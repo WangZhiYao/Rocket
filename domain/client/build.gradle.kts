@@ -7,7 +7,7 @@ plugins {
 }
 
 android {
-    namespace = "com.yizhenwind.domain.client"
+    namespace = "com.yizhenwind.rocket.domain.client"
     compileSdk = 33
 
     defaultConfig {

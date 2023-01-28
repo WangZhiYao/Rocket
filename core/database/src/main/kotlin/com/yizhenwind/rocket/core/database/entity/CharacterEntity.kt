@@ -2,7 +2,6 @@ package com.yizhenwind.rocket.core.database.entity
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity
-import androidx.room.ForeignKey
 import androidx.room.PrimaryKey
 
 /**
@@ -11,25 +10,7 @@ import androidx.room.PrimaryKey
  * @author WangZhiYao
  * @since 2021/10/26
  */
-@Entity(
-    tableName = "character",
-    foreignKeys = [
-        ForeignKey(
-            entity = ClientEntity::class,
-            parentColumns = ["id"],
-            childColumns = ["client_id"],
-            onDelete = ForeignKey.CASCADE,
-            onUpdate = ForeignKey.CASCADE
-        ),
-        ForeignKey(
-            entity = AccountEntity::class,
-            parentColumns = ["id"],
-            childColumns = ["account_id"],
-            onDelete = ForeignKey.CASCADE,
-            onUpdate = ForeignKey.CASCADE
-        )
-    ]
-)
+@Entity(tableName = "character")
 data class CharacterEntity(
 
     /**
@@ -42,7 +23,7 @@ data class CharacterEntity(
      * 客户ID
      */
     @ColumnInfo(name = "client_id", index = true)
-    val clientId: Long?,
+    val clientId: Long,
 
     /**
      * 大区
@@ -91,8 +72,13 @@ data class CharacterEntity(
     val remark: String? = null,
 
     /**
+     * 是否可用
+     */
+    val enable: Boolean,
+
+    /**
      * 创建时间
      */
     @ColumnInfo(name = "create_time")
-    val createTime: Long = System.currentTimeMillis()
+    val createTime: Long
 )

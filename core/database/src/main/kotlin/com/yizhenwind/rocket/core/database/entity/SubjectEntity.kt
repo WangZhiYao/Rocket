@@ -2,7 +2,6 @@ package com.yizhenwind.rocket.core.database.entity
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity
-import androidx.room.ForeignKey
 import androidx.room.PrimaryKey
 
 /**
@@ -11,18 +10,7 @@ import androidx.room.PrimaryKey
  * @author WangZhiYao
  * @since 2021/10/27
  */
-@Entity(
-    tableName = "subject",
-    foreignKeys = [
-        ForeignKey(
-            entity = CategoryEntity::class,
-            parentColumns = ["id"],
-            childColumns = ["category_id"],
-            onDelete = ForeignKey.CASCADE,
-            onUpdate = ForeignKey.CASCADE
-        )
-    ]
-)
+@Entity(tableName = "subject")
 data class SubjectEntity(
 
     /**
@@ -43,8 +31,18 @@ data class SubjectEntity(
     val content: String,
 
     /**
+     * 是否为默认的
+     */
+    val default: Boolean,
+
+    /**
+     * 是否可用
+     */
+    val enable: Boolean,
+
+    /**
      * 创建时间
      */
     @ColumnInfo(name = "create_time")
-    val createTime: Long = System.currentTimeMillis()
+    val createTime: Long
 )

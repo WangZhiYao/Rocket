@@ -10,5 +10,7 @@ data class Account(
     val id: Long = 0,
     val clientId: Long = 0,
     val username: String = "",
-    val password: String = ""
+    val password: String = "",
+    val enable: Boolean = true,
+    val createTime: Long = System.currentTimeMillis()
 )

@@ -1,8 +1,8 @@
 package com.yizhenwind.rocket.ui.client
 
 import android.view.ViewGroup
-import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
+import com.yizhenwind.rocket.core.framework.base.BasePagingDataAdapter
 import com.yizhenwind.rocket.core.framework.ext.viewBinding
 import com.yizhenwind.rocket.core.model.ClientProfile
 import com.yizhenwind.rocket.databinding.ItemClientProfileBinding
@@ -14,25 +14,19 @@ import com.yizhenwind.rocket.databinding.ItemClientProfileBinding
  * @since 2023/1/16
  */
 class ClientProfileAdapter :
-    PagingDataAdapter<ClientProfile, ClientProfileViewHolder>(CLIENT_PROFILE_COMPARATOR) {
-
-    var onClientProfileClickListener: ((ClientProfile) -> Unit)? = null
+    BasePagingDataAdapter<ClientProfile, ClientProfileViewHolder>(CLIENT_PROFILE_COMPARATOR) {
 
     var onActionClickListener: ((ClientProfile) -> Unit)? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ClientProfileViewHolder =
         ClientProfileViewHolder(parent.viewBinding(ItemClientProfileBinding::inflate)).apply {
             onItemClickListener = { clientProfile ->
-                onClientProfileClickListener?.invoke(clientProfile)
+                this@ClientProfileAdapter.onItemClickListener?.invoke(clientProfile)
             }
             onActionClickListener = { clientProfile ->
                 this@ClientProfileAdapter.onActionClickListener?.invoke(clientProfile)
             }
         }
-
-    override fun onBindViewHolder(holder: ClientProfileViewHolder, position: Int) {
-        getItem(position)?.apply { holder.bind(this) }
-    }
 
     companion object {
 
