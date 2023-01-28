@@ -4,6 +4,7 @@ plugins {
     id(libs.plugins.kotlin.android.get().pluginId)
     id(libs.plugins.kotlin.kapt.get().pluginId)
     id(libs.plugins.hilt.android.plugin.get().pluginId)
+    id(libs.plugins.navigation.safe.args.get().pluginId)
 }
 
 android {
@@ -47,6 +48,8 @@ dependencies {
     androidTestImplementation(libs.bundles.androidx.test)
 
     implementation(project(":core:framework"))
+    implementation(project(":core:mediator"))
+    implementation(project(":domain:client"))
 
     implementation(libs.hilt.android)
     kapt(libs.hilt.android.compiler)

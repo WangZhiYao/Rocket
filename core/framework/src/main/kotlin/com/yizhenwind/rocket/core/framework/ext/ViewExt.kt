@@ -75,3 +75,33 @@ fun View.showSnackWithAction(
         .setActionTextColor(ContextCompat.getColor(context, R.color.color_secondary))
         .show()
 }
+
+fun View.showSnackWithAction(
+    @StringRes resId: Int,
+    @BaseTransientBottomBar.Duration duration: Int = Snackbar.LENGTH_SHORT,
+    anchorView: View,
+    @StringRes actionResId: Int,
+    listener: View.OnClickListener
+) {
+    showSnackWithAction(
+        resources.getText(resId),
+        duration,
+        anchorView,
+        resources.getText(actionResId),
+        listener
+    )
+}
+
+fun View.showSnackWithAction(
+    text: CharSequence,
+    @BaseTransientBottomBar.Duration duration: Int = Snackbar.LENGTH_SHORT,
+    anchorView: View,
+    actionText: CharSequence,
+    listener: View.OnClickListener
+) {
+    makeSnack(text, duration)
+        .setAnchorView(anchorView)
+        .setAction(actionText, listener)
+        .setActionTextColor(ContextCompat.getColor(context, R.color.color_secondary))
+        .show()
+}

@@ -1,0 +1,20 @@
+[
+  {
+    "id": 1,
+    "name": "次",
+    "default": true,
+    "enable": true
+  },
+  {
+    "id": 2,
+    "name": "月",
+    "default": true,
+    "enable": true
+  },
+  {
+    "id": 3,
+    "name": "赛季",
+    "default": true,
+    "enable": true
+  }
+]

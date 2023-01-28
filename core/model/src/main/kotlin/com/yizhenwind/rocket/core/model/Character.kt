@@ -8,7 +8,7 @@ package com.yizhenwind.rocket.core.model
  */
 data class Character(
     val id: Long = 0,
-    val clientId: Long = 0,
+    val client: Client = Client(),
     val zone: Zone = Zone(),
     val server: Server = Server(),
     val account: Account = Account(),
@@ -17,5 +17,6 @@ data class Character(
     val sect: Sect = Sect(),
     val internal: Internal = Internal(),
     val remark: String? = null,
-    val createTime: Long = 0
+    val enable: Boolean = true,
+    val createTime: Long = System.currentTimeMillis()
 )

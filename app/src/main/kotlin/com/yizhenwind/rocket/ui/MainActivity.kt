@@ -4,11 +4,11 @@ import android.os.Bundle
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
-import androidx.navigation.ui.navigateUp
-import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
+import com.yizhenwind.rocket.NavigationMainDirections
 import com.yizhenwind.rocket.R
-import com.yizhenwind.rocket.core.framework.base.BaseActivity
+import com.yizhenwind.rocket.core.framework.base.BaseNavActivity
+import com.yizhenwind.rocket.core.framework.ext.setThrottleClickListener
 import com.yizhenwind.rocket.core.framework.ext.viewBindings
 import com.yizhenwind.rocket.databinding.ActivityMainBinding
 import dagger.hilt.android.AndroidEntryPoint
@@ -20,15 +20,15 @@ import dagger.hilt.android.AndroidEntryPoint
  * @since 2021/10/26
  */
 @AndroidEntryPoint
-class MainActivity : BaseActivity() {
+class MainActivity : BaseNavActivity() {
 
     private val binding by viewBindings<ActivityMainBinding>()
 
-    private val navController: NavController
+    override val navController: NavController
         get() = binding.appBar.contentMain.navHostFragment.getFragment<NavHostFragment>().navController
 
-    private val appBarConfiguration by lazy {
-        AppBarConfiguration.Builder(setOf(R.id.nav_home, R.id.nav_client, R.id.nav_user))
+    override val appBarConfiguration by lazy {
+        AppBarConfiguration.Builder(setOf(R.id.nav_home, R.id.nav_client_profile, R.id.nav_user))
             .setOpenableLayout(binding.drawerLayout)
             .build()
     }
@@ -42,13 +42,34 @@ class MainActivity : BaseActivity() {
 
     private fun initView() {
         binding.apply {
-            setSupportActionBar(appBar.toolbar)
-            setupActionBarWithNavController(navController, appBarConfiguration)
+            appBar.apply {
+                setupToolbar(toolbar)
+                toolbar.apply {
+                    inflateMenu(R.menu.menu_main)
+                    setOnMenuItemClickListener { menuItem ->
+                        if (menuItem.itemId == R.id.action_search) {
+                            return@setOnMenuItemClickListener true
+                        }
+                        return@setOnMenuItemClickListener false
+                    }
+                }
+                fab.setThrottleClickListener {
+                    when (navController.currentDestination?.id) {
+                        R.id.nav_client_profile -> {
+                            navController.navigate(NavigationMainDirections.actionToCreateClient())
+                        }
+                    }
+                }
+            }
             navView.setupWithNavController(navController)
+            navController.addOnDestinationChangedListener { _, destination, _ ->
+                appBar.fab.setImageResource(
+                    when (destination.id) {
+                        R.id.nav_client_profile -> R.drawable.ic_round_add_white_24dp
+                        else -> R.drawable.ic_round_faces_white_24dp
+                    }
+                )
+            }
         }
-    }
-
-    override fun onSupportNavigateUp(): Boolean {
-        return navController.navigateUp(appBarConfiguration) || super.onSupportNavigateUp()
     }
 }

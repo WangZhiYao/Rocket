@@ -26,5 +26,7 @@
             <enum name="end" value="3" />
             <enum name="marquee" value="4" />
         </attr>
+
+        <attr name="tltv_action_icon" format="reference" />
     </declare-styleable>
 </resources>

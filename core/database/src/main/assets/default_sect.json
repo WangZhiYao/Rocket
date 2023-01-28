@@ -1,0 +1,92 @@
+[
+  {
+    "id": 1,
+    "name": "万花",
+    "icon": "https://storage.zephaniel.site/static/image/ic_sect_wanhua.png"
+  },
+  {
+    "id": 2,
+    "name": "纯阳",
+    "icon": "https://storage.zephaniel.site/static/image/ic_setc_cunyang.png"
+  },
+  {
+    "id": 3,
+    "name": "七秀",
+    "icon": "https://storage.zephaniel.site/static/image/ic_setc_qixiu.png"
+  },
+  {
+    "id": 4,
+    "name": "少林",
+    "icon": "https://storage.zephaniel.site/static/image/ic_setc_shaolin.png"
+  },
+  {
+    "id": 5,
+    "name": "天策",
+    "icon": "https://storage.zephaniel.site/static/image/ic_sect_tiance.png"
+  },
+  {
+    "id": 6,
+    "name": "藏剑",
+    "icon": "https://storage.zephaniel.site/static/image/ic_setc_cangjian.png"
+  },
+  {
+    "id": 7,
+    "name": "五毒",
+    "icon": "https://storage.zephaniel.site/static/image/ic_setc_wudu.png"
+  },
+  {
+    "id": 8,
+    "name": "唐门",
+    "icon": "https://storage.zephaniel.site/static/image/ic_setc_tangmen.png"
+  },
+  {
+    "id": 9,
+    "name": "明教",
+    "icon": "https://storage.zephaniel.site/static/image/ic_setc_mingjiao.png"
+  },
+  {
+    "id": 10,
+    "name": "丐帮",
+    "icon": "https://storage.zephaniel.site/static/image/ic_setc_gaibang.png"
+  },
+  {
+    "id": 11,
+    "name": "苍云",
+    "icon": "https://storage.zephaniel.site/static/image/ic_setc_cangyun.png"
+  },
+  {
+    "id": 12,
+    "name": "霸刀",
+    "icon": "https://storage.zephaniel.site/static/image/ic_setc_badao.png"
+  },
+  {
+    "id": 13,
+    "name": "长歌",
+    "icon": "https://storage.zephaniel.site/static/image/ic_setc_changgemen.png"
+  },
+  {
+    "id": 14,
+    "name": "蓬莱",
+    "icon": "https://storage.zephaniel.site/static/image/ic_setc_penglai.png"
+  },
+  {
+    "id": 15,
+    "name": "凌雪阁",
+    "icon": "https://storage.zephaniel.site/static/image/ic_setc_linxuege.png"
+  },
+  {
+    "id": 16,
+    "name": "衍天宗",
+    "icon": "https://storage.zephaniel.site/static/image/ic_setc_yantianzong.png"
+  },
+  {
+    "id": 17,
+    "name": "北天药宗",
+    "icon": "https://storage.zephaniel.site/static/image/ic_setc_beitianyaozong.png"
+  },
+  {
+    "id": 18,
+    "name": "刀宗",
+    "icon": "https://storage.zephaniel.site/static/image/ic_setc_daozong.png"
+  }
+]

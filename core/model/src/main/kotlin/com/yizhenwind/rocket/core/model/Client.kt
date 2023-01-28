@@ -9,7 +9,9 @@ package com.yizhenwind.rocket.core.model
 data class Client(
     val id: Long = 0,
     val name: String = "",
-    val contactList: List<Contact> = emptyList(),
+    val contactType: ContactType = ContactType(),
+    val contact: String = "",
     val remark: String? = null,
+    val enable: Boolean = true,
     val createTime: Long = System.currentTimeMillis()
 )

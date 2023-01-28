@@ -12,6 +12,6 @@ import kotlinx.coroutines.flow.Flow
  */
 interface IClientService {
 
-    fun observeClientProfileList(): Flow<PagingData<ClientProfile>>
+    fun observeClientProfile(): Flow<PagingData<ClientProfile>>
 
 }
