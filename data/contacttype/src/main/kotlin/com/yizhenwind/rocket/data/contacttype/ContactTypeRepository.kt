@@ -24,4 +24,14 @@ class ContactTypeRepository @Inject constructor(
                 EntityListMapper(contactTypeMapper).fromEntity(it)
             }
 
+    suspend fun getContactTypeByName(name: String): ContactType? =
+        contactTypeLocalSource.getContactTypeByName(name)
+            ?.run { contactTypeMapper.fromEntity(this) }
+
+    fun createContactType(contactType: ContactType): Flow<Long> =
+        contactTypeLocalSource.createContactType(contactTypeMapper.toEntity(contactType))
+
+    fun updateContactType(contactType: ContactType): Flow<Int> =
+        contactTypeLocalSource.updateContactType(contactTypeMapper.toEntity(contactType))
+
 }

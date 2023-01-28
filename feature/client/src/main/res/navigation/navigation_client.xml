@@ -8,7 +8,7 @@
     <fragment
         android:id="@+id/nav_create_client"
         android:name="com.yizhenwind.rocket.feature.client.ui.create.CreateClientFragment"
-        android:label="@string/create_client_label"
+        android:label="@string/label_create_client"
         tools:layout="@layout/fragment_create_client">
 
         <action

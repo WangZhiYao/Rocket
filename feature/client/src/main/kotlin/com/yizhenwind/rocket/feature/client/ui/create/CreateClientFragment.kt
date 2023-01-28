@@ -11,7 +11,6 @@ import com.google.android.material.snackbar.Snackbar
 import com.yizhenwind.rocket.core.framework.base.BaseFragment
 import com.yizhenwind.rocket.core.framework.ext.setThrottleClickListener
 import com.yizhenwind.rocket.core.framework.ext.showSnack
-import com.yizhenwind.rocket.core.framework.ext.showSnackWithAction
 import com.yizhenwind.rocket.core.framework.mvi.IMVIHost
 import com.yizhenwind.rocket.core.model.ContactType
 import com.yizhenwind.rocket.feature.client.R
@@ -113,7 +112,7 @@ class CreateClientFragment :
                     tilCreateClientContactValue.error = null
                 is CreateClientSideEffect.CreateClientSuccess -> {
                     resetUI()
-                    root.showSnackWithAction(
+                    root.showSnack(
                         resId = R.string.create_client_success,
                         Snackbar.LENGTH_INDEFINITE,
                         actionResId = R.string.create_client_success_to_composite

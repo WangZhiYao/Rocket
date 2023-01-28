@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/tv_setting_contact_type"
+        style="@style/Theme.Rocket.ClickableItem"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_marginTop="@dimen/item_content_margin"
+        android:gravity="center_vertical"
+        android:paddingStart="@dimen/item_content_margin"
+        android:text="@string/setting_contact_type"
+        android:textColor="@color/color_text_primary" />
+
+</LinearLayout>

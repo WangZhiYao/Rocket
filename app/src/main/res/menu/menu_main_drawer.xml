@@ -8,17 +8,28 @@
         <item
             android:id="@+id/nav_home"
             android:icon="@drawable/ic_round_dashboard_white_24dp"
-            android:title="@string/home_label" />
+            android:title="@string/label_home" />
 
         <item
             android:id="@+id/nav_client_profile"
             android:icon="@drawable/ic_round_client_circle_white_24dp"
-            android:title="@string/client_profile_label" />
+            android:title="@string/label_client_profile" />
 
         <item
             android:id="@+id/nav_user"
             android:icon="@drawable/ic_round_faces_white_24dp"
-            android:title="@string/user_label" />
+            android:title="@string/label_user" />
+
+    </group>
+
+    <group
+        android:id="@+id/nav_action"
+        android:checkableBehavior="single">
+
+        <item
+            android:id="@+id/nav_setting"
+            android:icon="@drawable/ic_round_settings_white_24dp"
+            android:title="@string/label_setting" />
 
     </group>
 

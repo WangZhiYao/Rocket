@@ -1,4 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="home_label">首页</string>
+    <string name="label_home">首页</string>
 </resources>

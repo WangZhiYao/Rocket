@@ -8,7 +8,7 @@ import com.google.android.material.snackbar.Snackbar
 import com.yizhenwind.rocket.core.framework.base.BaseActivity
 import com.yizhenwind.rocket.core.framework.ext.setThrottleClickListener
 import com.yizhenwind.rocket.core.framework.ext.setupFragmentWithTab
-import com.yizhenwind.rocket.core.framework.ext.showSnackWithAction
+import com.yizhenwind.rocket.core.framework.ext.showSnack
 import com.yizhenwind.rocket.core.framework.ext.viewBindings
 import com.yizhenwind.rocket.core.framework.mvi.IMVIHost
 import com.yizhenwind.rocket.feature.client.R
@@ -105,7 +105,7 @@ class ClientCompositeActivity : BaseActivity(),
         when (sideEffect) {
             is ClientCompositeSideEffect.ShowError -> {
                 binding.apply {
-                    root.showSnackWithAction(
+                    root.showSnack(
                         sideEffect.resId,
                         Snackbar.LENGTH_INDEFINITE,
                         fab,

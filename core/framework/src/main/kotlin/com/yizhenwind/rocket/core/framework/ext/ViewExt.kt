@@ -50,13 +50,29 @@ fun View.showSnack(
     makeSnack(text, duration).show()
 }
 
-fun View.showSnackWithAction(
+fun View.showSnack(
+    @StringRes resId: Int,
+    @BaseTransientBottomBar.Duration duration: Int = Snackbar.LENGTH_SHORT,
+    anchorView: View
+) {
+    showSnack(resources.getText(resId), duration, anchorView)
+}
+
+fun View.showSnack(
+    text: CharSequence,
+    @BaseTransientBottomBar.Duration duration: Int = Snackbar.LENGTH_SHORT,
+    anchorView: View
+) {
+    makeSnack(text, duration).setAnchorView(anchorView).show()
+}
+
+fun View.showSnack(
     @StringRes resId: Int,
     @BaseTransientBottomBar.Duration duration: Int = Snackbar.LENGTH_SHORT,
     @StringRes actionResId: Int,
     listener: View.OnClickListener
 ) {
-    showSnackWithAction(
+    showSnack(
         resources.getText(resId),
         duration,
         resources.getText(actionResId),
@@ -64,7 +80,7 @@ fun View.showSnackWithAction(
     )
 }
 
-fun View.showSnackWithAction(
+fun View.showSnack(
     text: CharSequence,
     @BaseTransientBottomBar.Duration duration: Int = Snackbar.LENGTH_SHORT,
     actionText: CharSequence,
@@ -76,14 +92,14 @@ fun View.showSnackWithAction(
         .show()
 }
 
-fun View.showSnackWithAction(
+fun View.showSnack(
     @StringRes resId: Int,
     @BaseTransientBottomBar.Duration duration: Int = Snackbar.LENGTH_SHORT,
     anchorView: View,
     @StringRes actionResId: Int,
     listener: View.OnClickListener
 ) {
-    showSnackWithAction(
+    showSnack(
         resources.getText(resId),
         duration,
         anchorView,
@@ -92,7 +108,7 @@ fun View.showSnackWithAction(
     )
 }
 
-fun View.showSnackWithAction(
+fun View.showSnack(
     text: CharSequence,
     @BaseTransientBottomBar.Duration duration: Int = Snackbar.LENGTH_SHORT,
     anchorView: View,

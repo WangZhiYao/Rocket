@@ -48,6 +48,7 @@
             <option value="$PROJECT_DIR$/feature/contacttype" />
             <option value="$PROJECT_DIR$/feature/home" />
             <option value="$PROJECT_DIR$/feature/order" />
+            <option value="$PROJECT_DIR$/feature/setting" />
             <option value="$PROJECT_DIR$/feature/user" />
           </set>
         </option>

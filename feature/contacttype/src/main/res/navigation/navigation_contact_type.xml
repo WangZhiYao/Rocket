@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    app:startDestination="@id/nav_contact_type"
+    android:id="@+id/navigation_contact_type">
+
+    <fragment
+        android:id="@+id/nav_contact_type"
+        android:name="com.yizhenwind.rocket.feature.contacttype.ui.ContactTypeFragment"
+        android:label="@string/label_contact_type"
+        tools:layout="@layout/fragment_base_list" />
+
+</navigation>

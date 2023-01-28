@@ -92,6 +92,7 @@ dependencies {
     implementation(project(":feature:character"))
     implementation(project(":feature:order"))
     implementation(project(":feature:user"))
+    implementation(project(":feature:setting"))
 
     implementation(libs.hilt.android)
     kapt(libs.hilt.android.compiler)

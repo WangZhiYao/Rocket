@@ -1,4 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="user_label">我的</string>
+    <string name="label_user">我的</string>
 </resources>

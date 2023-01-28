@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="label_contact_type">联系方式类型</string>
+
+    <string name="contact_type_create_success">创建联系方式类型成功</string>
+
+    <string name="dialog_title_add_contact_type">添加联系方式类型</string>
+
+    <string name="dialog_navigation_button_text">取消</string>
+    <string name="dialog_positive_button_text">确定</string>
+
+    <string name="error_contact_type_exist">联系方式类型已存在</string>
+    <string name="error_contact_type_empty">请输入联系方式类型</string>
+
+</resources>

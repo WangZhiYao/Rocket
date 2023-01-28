@@ -43,11 +43,6 @@ class ClientProfileFragment : BaseListFragment(), IMVIHost<ClientProfileViewStat
                     // TODO: open action bottom sheet
                 }
             }
-            /*fabCreateClient.setThrottleClickListener {
-                findNavController().navigate(
-                    ClientProfileFragmentDirections.actionClientProfileToCreateClient()
-                )
-            }*/
         }
     }
 

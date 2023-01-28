@@ -1,4 +1,4 @@
-package com.yizhenwind.rocket.feature.client.ui.create
+package com.yizhenwind.rocket.feature.contacttype.ui
 
 import android.os.Bundle
 import androidx.navigation.NavController
@@ -6,17 +6,17 @@ import androidx.navigation.fragment.NavHostFragment
 import com.yizhenwind.rocket.core.framework.base.BaseNavActivity
 import com.yizhenwind.rocket.core.framework.databinding.ActivityBaseNavBinding
 import com.yizhenwind.rocket.core.framework.ext.viewBindings
-import com.yizhenwind.rocket.feature.client.R
+import com.yizhenwind.rocket.feature.contacttype.R
 import dagger.hilt.android.AndroidEntryPoint
 
 /**
- * 创建客户
+ *
  *
  * @author WangZhiYao
- * @since 2022/11/29
+ * @since 2023/1/28
  */
 @AndroidEntryPoint
-class CreateClientActivity : BaseNavActivity() {
+class ContactTypeNavActivity: BaseNavActivity() {
 
     private val binding by viewBindings<ActivityBaseNavBinding>()
 
@@ -34,6 +34,7 @@ class CreateClientActivity : BaseNavActivity() {
         binding.apply {
             setupToolbar(toolbar)
         }
-        setupNavGraph(R.navigation.navigation_create_client)
+        setupNavGraph(R.navigation.navigation_contact_type)
     }
+
 }

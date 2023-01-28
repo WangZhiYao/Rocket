@@ -1,6 +1,7 @@
 package com.yizhenwind.rocket.ui
 
 import android.os.Bundle
+import androidx.core.view.isVisible
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
@@ -28,7 +29,7 @@ class MainActivity : BaseNavActivity() {
         get() = binding.appBar.contentMain.navHostFragment.getFragment<NavHostFragment>().navController
 
     override val appBarConfiguration by lazy {
-        AppBarConfiguration.Builder(setOf(R.id.nav_home, R.id.nav_client_profile, R.id.nav_user))
+        AppBarConfiguration.Builder(setOf(R.id.nav_home, R.id.nav_client_profile, R.id.nav_user, R.id.nav_setting))
             .setOpenableLayout(binding.drawerLayout)
             .build()
     }
@@ -44,31 +45,25 @@ class MainActivity : BaseNavActivity() {
         binding.apply {
             appBar.apply {
                 setupToolbar(toolbar)
-                toolbar.apply {
-                    inflateMenu(R.menu.menu_main)
-                    setOnMenuItemClickListener { menuItem ->
-                        if (menuItem.itemId == R.id.action_search) {
-                            return@setOnMenuItemClickListener true
-                        }
-                        return@setOnMenuItemClickListener false
-                    }
-                }
                 fab.setThrottleClickListener {
                     when (navController.currentDestination?.id) {
                         R.id.nav_client_profile -> {
-                            navController.navigate(NavigationMainDirections.actionToCreateClient())
+                            navController.navigate(NavigationMainDirections.actionToClient())
                         }
                     }
                 }
             }
             navView.setupWithNavController(navController)
             navController.addOnDestinationChangedListener { _, destination, _ ->
-                appBar.fab.setImageResource(
-                    when (destination.id) {
-                        R.id.nav_client_profile -> R.drawable.ic_round_add_white_24dp
-                        else -> R.drawable.ic_round_faces_white_24dp
-                    }
-                )
+                appBar.fab.apply {
+                    isVisible = destination.id != R.id.nav_setting
+                    setImageResource(
+                        when (destination.id) {
+                            R.id.nav_client_profile -> R.drawable.ic_round_add_white_24dp
+                            else -> R.drawable.ic_round_faces_white_24dp
+                        }
+                    )
+                }
             }
         }
     }

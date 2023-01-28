@@ -5,6 +5,7 @@ import androidx.appcompat.widget.Toolbar
 import androidx.navigation.NavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
+import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 
 /**
@@ -23,7 +24,8 @@ abstract class BaseNavActivity : BaseActivity() {
         .build()
 
     protected fun setupToolbar(toolbar: Toolbar) {
-        toolbar.setupWithNavController(navController, appBarConfiguration)
+        setSupportActionBar(toolbar)
+        setupActionBarWithNavController(navController, appBarConfiguration)
     }
 
     protected open fun setupNavGraph(@NavigationRes resId: Int) {
