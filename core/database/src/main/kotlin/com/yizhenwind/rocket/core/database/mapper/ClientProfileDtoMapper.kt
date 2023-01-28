@@ -1,4 +1,4 @@
-package com.yizhenwind.data.client.mapper
+package com.yizhenwind.rocket.core.database.mapper
 
 import com.yizhenwind.rocket.core.common.mapper.IMapper
 import com.yizhenwind.rocket.core.database.dto.ClientProfileDto
@@ -11,13 +11,17 @@ import javax.inject.Inject
  * @author WangZhiYao
  * @since 2022/11/21
  */
-class ClientProfileDtoMapper @Inject constructor() : IMapper<ClientProfileDto, ClientProfile> {
+class ClientProfileDtoMapper @Inject constructor(
+    private val contactTypeMapper: ContactTypeMapper
+) : IMapper<ClientProfileDto, ClientProfile> {
 
     override fun map(input: ClientProfileDto): ClientProfile =
         input.run {
             ClientProfile(
                 id,
                 name,
+                contactTypeMapper.fromEntity(contactType),
+                contact,
                 accountCount,
                 characterCount,
                 orderCount,
