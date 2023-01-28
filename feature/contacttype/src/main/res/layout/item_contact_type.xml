@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     style="@style/Theme.Rocket.ClickableItem"
     android:layout_width="match_parent"
-    android:layout_height="48dp"
+    android:layout_height="@dimen/single_line_item_height"
     android:gravity="center_vertical"
     android:paddingStart="@dimen/item_content_margin"
     android:paddingEnd="@dimen/item_content_margin"

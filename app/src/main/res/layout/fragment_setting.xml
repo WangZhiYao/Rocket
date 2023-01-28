@@ -8,7 +8,7 @@
         android:id="@+id/tv_setting_contact_type"
         style="@style/Theme.Rocket.ClickableItem"
         android:layout_width="match_parent"
-        android:layout_height="48dp"
+        android:layout_height="@dimen/single_line_item_height"
         android:layout_marginTop="@dimen/item_content_margin"
         android:gravity="center_vertical"
         android:paddingStart="@dimen/item_content_margin"
