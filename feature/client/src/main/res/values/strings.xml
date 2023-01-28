@@ -22,6 +22,7 @@
     <string name="client_detail_contact">联系方式</string>
     <string name="client_detail_remark">备注</string>
     <string name="client_detail_create_time">创建时间</string>
+    <string name="client_detail_copy_contact_to_clipboard_success">联系方式已复制到剪切板</string>
 
     <string name="empty_remark">暂无备注</string>
 

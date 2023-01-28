@@ -6,7 +6,9 @@ import com.yizhenwind.rocket.core.common.constant.Constant
 import com.yizhenwind.rocket.core.common.ext.formatDate
 import com.yizhenwind.rocket.core.framework.base.BaseFragment
 import com.yizhenwind.rocket.core.framework.ext.fragmentArgs
+import com.yizhenwind.rocket.core.framework.ext.showSnack
 import com.yizhenwind.rocket.core.framework.mvi.IMVIHost
+import com.yizhenwind.rocket.core.framework.util.ClipboardHelper
 import com.yizhenwind.rocket.feature.client.R
 import com.yizhenwind.rocket.feature.client.databinding.FragmentClientDetailBinding
 import com.yizhenwind.rocket.feature.client.ui.composite.ClientCompositeViewModel
@@ -29,9 +31,31 @@ class ClientDetailFragment :
     private val args by fragmentArgs<ClientDetailArgs>()
 
     override fun init() {
+        initData()
+        initView()
+    }
+
+    private fun initData() {
         viewModel.apply {
             observe(viewLifecycleOwner, state = ::render, sideEffect = ::handleSideEffect)
             getClientById(args.clientId)
+        }
+    }
+
+    private fun initView() {
+        binding.apply {
+            clClientDetailContact.setOnLongClickListener {
+                if (ClipboardHelper.copyTo(
+                        requireContext(),
+                        viewModel.container.stateFlow.value.client.contact
+                    )
+                ) {
+                    binding.root.showSnack(R.string.client_detail_copy_contact_to_clipboard_success)
+                    true
+                } else {
+                    false
+                }
+            }
         }
     }
 

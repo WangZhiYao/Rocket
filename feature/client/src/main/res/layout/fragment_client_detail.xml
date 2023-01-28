@@ -40,6 +40,7 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/cl_client_detail_contact"
         style="@style/Theme.Rocket.ClickableItem"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
