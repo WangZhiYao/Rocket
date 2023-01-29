@@ -19,8 +19,7 @@ import javax.inject.Inject
  */
 @HiltViewModel
 class ClientAccountViewModel @Inject constructor(
-    private val accountService: IAccountService,
-    private val logger: ILogger
+    private val accountService: IAccountService
 ) : BaseMVIViewModel<ClientAccountViewState, Nothing>() {
 
     override val container =
@@ -34,27 +33,6 @@ class ClientAccountViewModel @Inject constructor(
                         state.copy(accountProfileList = accountProfileList)
                     }
                 }
-        }
-    }
-
-    fun createAccount(clientId: Long) {
-        intent {
-            for (index in 1..100) {
-                accountService.createAccount(
-                    Account(
-                        clientId = clientId,
-                        username = "${index}@qq.com",
-                        password = "$index"
-                    )
-                )
-                    .catch {
-                        logger.e(it)
-                        emit(Account())
-                    }
-                    .collect {
-                        logger.d("${it.id}")
-                    }
-            }
         }
     }
 }
