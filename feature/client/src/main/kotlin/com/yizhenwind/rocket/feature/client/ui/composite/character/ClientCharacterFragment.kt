@@ -20,12 +20,7 @@ class ClientCharacterFragment : BaseListFragment(), IMVIHost<ClientCharacterView
 
     override val adapter = ClientCharacterAdapter()
 
-    override fun init() {
-        initData()
-        initView()
-    }
-
-    private fun initData() {
+    override fun initData() {
         viewModel.apply {
             observe(viewLifecycleOwner, state = ::render)
             observeCharacterProfileByClientId(args.clientId)

@@ -11,4 +11,8 @@ import com.yizhenwind.rocket.feature.home.databinding.FragmentHomeBinding
  */
 class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::inflate) {
 
+    override fun init() {
+
+    }
+
 }

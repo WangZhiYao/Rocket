@@ -30,11 +30,11 @@ class CreateContactTypeFragment :
         initView()
     }
 
-    private fun initData() {
+    override fun initData() {
         viewModel.observe(viewLifecycleOwner, sideEffect = ::handleSideEffect)
     }
 
-    private fun initView() {
+    override fun initView() {
         binding.apply {
             tietCreateContactType.apply {
                 doAfterTextChanged { name ->

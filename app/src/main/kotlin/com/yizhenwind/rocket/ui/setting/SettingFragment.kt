@@ -17,11 +17,14 @@ import dagger.hilt.android.AndroidEntryPoint
 class SettingFragment : BaseFragment<FragmentSettingBinding>(FragmentSettingBinding::inflate) {
 
     override fun init() {
+        initView()
+    }
+
+    override fun initView() {
         binding.apply {
             tvSettingContactType.setThrottleClickListener {
                 findNavController().navigate(NavigationMainDirections.actionToContactType())
             }
         }
     }
-
 }

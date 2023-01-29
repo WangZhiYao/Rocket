@@ -25,12 +25,7 @@ class ContactTypeFragment : BaseListFragment(),
 
     override val adapter = ContactTypeAdapter()
 
-    override fun init() {
-        initData()
-        initView()
-    }
-
-    private fun initData() {
+    override fun initData() {
         viewModel.observe(viewLifecycleOwner, state = ::render, sideEffect = ::handleSideEffect)
     }
 

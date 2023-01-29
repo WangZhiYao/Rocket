@@ -18,10 +18,11 @@ abstract class BaseListFragment :
     protected abstract val adapter: RecyclerView.Adapter<*>
 
     override fun init() {
+        initData()
         initView()
     }
 
-    protected open fun initView() {
+    override fun initView() {
         binding.rvList.apply {
             layoutManager = this@BaseListFragment.layoutManager
             adapter = this@BaseListFragment.adapter

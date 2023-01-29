@@ -22,12 +22,7 @@ class ClientAccountFragment : BaseListFragment(), IMVIHost<ClientAccountViewStat
 
     override val adapter = ClientAccountAdapter()
 
-    override fun init() {
-        initData()
-        initView()
-    }
-
-    private fun initData() {
+    override fun initData() {
         viewModel.apply {
             observe(viewLifecycleOwner, state = ::render)
             observeAccountProfileByClientId(args.clientId)

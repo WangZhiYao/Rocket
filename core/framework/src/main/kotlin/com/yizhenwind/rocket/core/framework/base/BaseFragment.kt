@@ -34,7 +34,13 @@ abstract class BaseFragment<out VB : ViewBinding>(
         init()
     }
 
-    protected open fun init() {
+    abstract fun init()
+
+    protected open fun initData() {
+
+    }
+
+    protected open fun initView() {
 
     }
 

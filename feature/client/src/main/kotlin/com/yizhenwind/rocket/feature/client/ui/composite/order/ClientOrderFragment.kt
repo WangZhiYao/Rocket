@@ -24,12 +24,7 @@ class ClientOrderFragment : BaseListFragment(), IMVIHost<ClientOrderViewState, N
 
     override val adapter = ClientOrderAdapter()
 
-    override fun init() {
-        initData()
-        initView()
-    }
-
-    private fun initData() {
+    override fun initData() {
         viewModel.apply {
             observe(viewLifecycleOwner, state = ::render)
             observeOrderProfileByClientId(args.clientId)

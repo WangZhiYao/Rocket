@@ -35,14 +35,14 @@ class ClientDetailFragment :
         initView()
     }
 
-    private fun initData() {
+    override fun initData() {
         viewModel.apply {
             observe(viewLifecycleOwner, state = ::render, sideEffect = ::handleSideEffect)
             getClientById(args.clientId)
         }
     }
 
-    private fun initView() {
+    override fun initView() {
         binding.apply {
             clClientDetailContact.setOnLongClickListener {
                 if (ClipboardHelper.copyTo(

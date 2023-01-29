@@ -37,7 +37,7 @@ class CreateClientFragment :
         initView()
     }
 
-    private fun initData() {
+    override fun initData() {
         viewModel.apply {
             observe(viewLifecycleOwner, state = ::render, sideEffect = ::handleSideEffect)
 
@@ -74,7 +74,7 @@ class CreateClientFragment :
         }
     }
 
-    private fun initView() {
+    override fun initView() {
         binding.apply {
             tietCreateClientName.doAfterTextChanged { name ->
                 viewModel.onNameChanged(name?.toString())

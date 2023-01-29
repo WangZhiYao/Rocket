@@ -9,4 +9,9 @@ import com.yizhenwind.rocket.feature.user.databinding.FragmentUserBinding
  * @author WangZhiYao
  * @since 2023/1/16
  */
-class UserFragment : BaseFragment<FragmentUserBinding>(FragmentUserBinding::inflate)
+class UserFragment : BaseFragment<FragmentUserBinding>(FragmentUserBinding::inflate) {
+
+    override fun init() {
+
+    }
+}
