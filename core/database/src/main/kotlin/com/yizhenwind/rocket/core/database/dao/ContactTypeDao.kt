@@ -17,7 +17,7 @@ interface ContactTypeDao : IDao<ContactTypeEntity> {
     @Query("SELECT * FROM contact_type WHERE enable = 1")
     fun observeContactType(): Flow<List<ContactTypeEntity>>
 
-    @Query("SELECT * FROM contact_type WHERE name COLLATE NOCASE = :name")
+    @Query("SELECT * FROM contact_type WHERE name = :name")
     suspend fun getContactTypeByName(name: String): ContactTypeEntity?
 
 }

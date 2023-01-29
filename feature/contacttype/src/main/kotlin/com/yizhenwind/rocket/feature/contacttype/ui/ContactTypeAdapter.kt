@@ -16,10 +16,12 @@ import com.yizhenwind.rocket.feature.contacttype.databinding.ItemContactTypeBind
 class ContactTypeAdapter :
     BaseListAdapter<ContactType, ContactTypeViewHolder>(CONTACT_TYPE_COMPARATOR) {
 
+    var onDeleteClickListener: ((ContactType) -> Unit)? = null
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ContactTypeViewHolder =
         ContactTypeViewHolder(parent.viewBinding(ItemContactTypeBinding::inflate)).apply {
-            onItemClickListener = { contactType ->
-                this@ContactTypeAdapter.onItemClickListener?.invoke(contactType)
+            onDeleteClickListener = { contactType ->
+                this@ContactTypeAdapter.onDeleteClickListener?.invoke(contactType)
             }
         }
 

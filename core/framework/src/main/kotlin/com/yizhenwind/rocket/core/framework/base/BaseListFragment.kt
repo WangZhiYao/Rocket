@@ -13,9 +13,8 @@ import com.yizhenwind.rocket.core.framework.databinding.FragmentBaseListBinding
 abstract class BaseListFragment :
     BaseFragment<FragmentBaseListBinding>(FragmentBaseListBinding::inflate) {
 
-    protected open val layoutManager: RecyclerView.LayoutManager by lazy {
-        LinearLayoutManager(requireContext())
-    }
+    protected open val layoutManager: RecyclerView.LayoutManager
+        get() = LinearLayoutManager(requireContext())
     protected abstract val adapter: RecyclerView.Adapter<*>
 
     override fun init() {

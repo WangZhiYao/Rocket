@@ -2,12 +2,12 @@ package com.yizhenwind.rocket.feature.contacttype.ui
 
 import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import com.yizhenwind.rocket.core.framework.base.BaseListFragment
 import com.yizhenwind.rocket.core.framework.ext.setThrottleClickListener
 import com.yizhenwind.rocket.core.framework.ext.showSnack
 import com.yizhenwind.rocket.core.framework.mvi.IMVIHost
 import com.yizhenwind.rocket.feature.contacttype.R
-import com.yizhenwind.rocket.feature.contacttype.ui.widget.CreateContactTypeDialog
 import dagger.hilt.android.AndroidEntryPoint
 import org.orbitmvi.orbit.viewmodel.observe
 
@@ -25,13 +25,6 @@ class ContactTypeFragment : BaseListFragment(),
 
     override val adapter = ContactTypeAdapter()
 
-    private val createContactTypeDialog by lazy {
-        CreateContactTypeDialog.Builder(childFragmentManager)
-            .setOnNameChangeListener { name -> viewModel.onNameChanged(name) }
-            .setOnPositiveClickListener { name -> viewModel.createContactType(name) }
-            .build()
-    }
-
     override fun init() {
         initData()
         initView()
@@ -47,11 +40,11 @@ class ContactTypeFragment : BaseListFragment(),
             isVisible = true
             setImageResource(R.drawable.ic_round_add_white_24dp)
             setThrottleClickListener {
-                createContactTypeDialog.show()
+                findNavController().navigate(ContactTypeFragmentDirections.actionToCreateContactType())
             }
         }
-        adapter.onItemClickListener = {
-            // TODO: on contact type clicked
+        adapter.onDeleteClickListener = { contactType ->
+            viewModel.toggleContactTypeState(contactType, false)
         }
     }
 
@@ -60,17 +53,20 @@ class ContactTypeFragment : BaseListFragment(),
     }
 
     override fun handleSideEffect(sideEffect: ContactTypeSideEffect) {
-        when (sideEffect) {
-            is ContactTypeSideEffect.ShowError -> createContactTypeDialog.setError(sideEffect.resId)
-            ContactTypeSideEffect.HideError -> createContactTypeDialog.hideError()
-            is ContactTypeSideEffect.ShowSnake -> {
-                createContactTypeDialog.dismiss()
-                binding.root.showSnack(
-                    resId = sideEffect.resId,
-                    anchorView = binding.fab
-                )
+        binding.apply {
+            when (sideEffect) {
+                is ContactTypeSideEffect.DeleteContactTypeSuccess -> {
+                    sideEffect.contactType.apply {
+                        root.showSnack(
+                            text = getString(R.string.create_contact_type_delete_success, name),
+                            anchorView = fab,
+                            actionText = getString(R.string.create_contact_type_delete_revoke)
+                        ) {
+                            viewModel.toggleContactTypeState(this, true)
+                        }
+                    }
+                }
             }
         }
     }
-
 }

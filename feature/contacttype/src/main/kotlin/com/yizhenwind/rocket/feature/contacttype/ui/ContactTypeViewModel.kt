@@ -1,11 +1,9 @@
 package com.yizhenwind.rocket.feature.contacttype.ui
 
-import com.yizhenwind.rocket.core.common.constant.Constant
 import com.yizhenwind.rocket.core.framework.base.BaseMVIViewModel
-import com.yizhenwind.rocket.domain.contacttype.CreateOrEnableContactTypeUseCase
-import com.yizhenwind.rocket.domain.contacttype.GetContactTypeByNameUseCase
+import com.yizhenwind.rocket.core.model.ContactType
 import com.yizhenwind.rocket.domain.contacttype.ObserveContactTypeUseCase
-import com.yizhenwind.rocket.feature.contacttype.R
+import com.yizhenwind.rocket.domain.contacttype.UpdateContactTypeUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import org.orbitmvi.orbit.syntax.simple.intent
 import org.orbitmvi.orbit.syntax.simple.postSideEffect
@@ -22,8 +20,7 @@ import javax.inject.Inject
 @HiltViewModel
 class ContactTypeViewModel @Inject constructor(
     private val observeContactTypeUseCase: ObserveContactTypeUseCase,
-    private val getContactTypeByNameUseCase: GetContactTypeByNameUseCase,
-    private val createOrEnableContactTypeUseCase: CreateOrEnableContactTypeUseCase
+    private val updateContactTypeUseCase: UpdateContactTypeUseCase
 ) : BaseMVIViewModel<ContactTypeViewState, ContactTypeSideEffect>() {
 
     override val container =
@@ -40,32 +37,15 @@ class ContactTypeViewModel @Inject constructor(
         }
     }
 
-    fun onNameChanged(name: String?) {
+    fun toggleContactTypeState(contactType: ContactType, enable: Boolean) {
         intent {
-            if (name.isNullOrBlank()) {
-                postSideEffect(ContactTypeSideEffect.HideError)
-                return@intent
-            }
-
-            val contactType = getContactTypeByNameUseCase(name)
-            if (contactType.id == Constant.DEFAULT_ID || !contactType.enable) {
-                postSideEffect(ContactTypeSideEffect.HideError)
-            } else {
-                postSideEffect(ContactTypeSideEffect.ShowError(R.string.error_contact_type_exist))
-            }
-        }
-    }
-
-    fun createContactType(name: String?) {
-        intent {
-            if (name.isNullOrBlank()) {
-                postSideEffect(ContactTypeSideEffect.ShowError(R.string.error_contact_type_empty))
-                return@intent
-            }
-            createOrEnableContactTypeUseCase(name)
-                .collect {
-                    postSideEffect(ContactTypeSideEffect.ShowSnake(R.string.contact_type_create_success))
+            updateContactTypeUseCase(contactType.copy(enable = enable))
+                .collect { contactType ->
+                    if (!enable) {
+                        postSideEffect(ContactTypeSideEffect.DeleteContactTypeSuccess(contactType))
+                    }
                 }
         }
     }
+
 }
