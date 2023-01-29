@@ -34,6 +34,6 @@ class ClientNavActivity : BaseNavActivity() {
         binding.apply {
             setupToolbar(toolbar)
         }
-        setupNavGraph(R.navigation.navigation_client)
+        navController.setGraph(R.navigation.navigation_client)
     }
 }

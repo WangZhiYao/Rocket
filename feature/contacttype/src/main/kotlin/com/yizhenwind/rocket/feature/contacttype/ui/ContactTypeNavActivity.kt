@@ -34,7 +34,7 @@ class ContactTypeNavActivity: BaseNavActivity() {
         binding.apply {
             setupToolbar(toolbar)
         }
-        setupNavGraph(R.navigation.navigation_contact_type)
+        navController.setGraph(R.navigation.navigation_contact_type)
     }
 
 }
