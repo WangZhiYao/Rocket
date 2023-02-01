@@ -38,7 +38,7 @@ data class AccountEntity(
     val clientId: Long,
 
     /**
-     * 用户名
+     * 账号
      */
     val username: String,
 
@@ -46,6 +46,16 @@ data class AccountEntity(
      * 密码
      */
     val password: String,
+
+    /**
+     * 密码是否加密
+     */
+    val encrypted: Boolean,
+
+    /**
+     * AES加密向量
+     */
+    val iv: String,
 
     /**
      * 是否可用

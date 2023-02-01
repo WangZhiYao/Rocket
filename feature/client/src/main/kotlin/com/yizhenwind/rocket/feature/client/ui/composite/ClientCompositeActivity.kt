@@ -11,6 +11,7 @@ import com.yizhenwind.rocket.core.framework.ext.setupFragmentWithTab
 import com.yizhenwind.rocket.core.framework.ext.showSnack
 import com.yizhenwind.rocket.core.framework.ext.viewBindings
 import com.yizhenwind.rocket.core.framework.mvi.IMVIHost
+import com.yizhenwind.rocket.core.mediator.account.IAccountService
 import com.yizhenwind.rocket.feature.client.R
 import com.yizhenwind.rocket.feature.client.databinding.ActivityClientCompositeBinding
 import com.yizhenwind.rocket.feature.client.ui.composite.account.ClientAccountArgs
@@ -19,6 +20,7 @@ import com.yizhenwind.rocket.feature.client.ui.composite.detail.ClientDetailArgs
 import com.yizhenwind.rocket.feature.client.ui.composite.order.ClientOrderArgs
 import dagger.hilt.android.AndroidEntryPoint
 import org.orbitmvi.orbit.viewmodel.observe
+import javax.inject.Inject
 
 /**
  *
@@ -32,6 +34,9 @@ class ClientCompositeActivity : BaseActivity(),
     private val binding by viewBindings<ActivityClientCompositeBinding>()
     private val navArgs by navArgs<ClientCompositeActivityArgs>()
     private val viewModel by viewModels<ClientCompositeViewModel>()
+
+    @Inject
+    lateinit var accountService: IAccountService
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -83,7 +88,10 @@ class ClientCompositeActivity : BaseActivity(),
                             // TODO: open edit client
                         }
                         PAGE_INDEX_ACCOUNT -> {
-                            // TODO: open add account
+                            accountService.launchCreateAccount(
+                                this@ClientCompositeActivity,
+                                navArgs.clientId
+                            )
                         }
                         PAGE_INDEX_CHARACTER -> {
                             // TODO: open add character

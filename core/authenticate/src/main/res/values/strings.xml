@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="authentication_title_encrypt">使用生物特征加密</string>
+    <string name="authentication_subtitle_encrypt">请验证您的指纹</string>
+
+    <string name="authentication_title_decrypt">身份验证</string>
+
+    <string name="negative_button_text">使用锁屏密码</string>
+</resources>

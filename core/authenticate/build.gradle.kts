@@ -42,6 +42,9 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.bundles.androidx.test)
 
+    implementation(project(":core:common"))
+    compileOnly(libs.androidx.lifecycle.runtime.ktx)
+
     implementation(libs.hilt.android)
     kapt(libs.hilt.android.compiler)
 

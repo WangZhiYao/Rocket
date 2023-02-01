@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation_account_nav"
+    app:startDestination="@id/nav_create_account">
+
+    <fragment
+        android:id="@+id/nav_create_account"
+        android:name="com.yizhenwind.rocket.feature.account.ui.create.CreateAccountFragment"
+        android:label="@string/label_create_account"
+        tools:layout="@layout/fragment_create_account" >
+
+        <argument
+            android:name="clientId"
+            android:defaultValue="0L"
+            app:argType="long"
+            app:nullable="false" />
+
+    </fragment>
+
+</navigation>

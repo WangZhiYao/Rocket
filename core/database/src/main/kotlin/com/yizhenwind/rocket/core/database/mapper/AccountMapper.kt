@@ -13,7 +13,7 @@ import javax.inject.Inject
 class AccountMapper @Inject constructor() : IEntityMapper<AccountEntity, Account> {
 
     override fun fromEntity(entity: AccountEntity): Account =
-        entity.run { Account(id, clientId, username, password, enable, createTime) }
+        entity.run { Account(id, clientId, username, password, encrypted, iv, enable, createTime) }
 
     override fun toEntity(model: Account): AccountEntity =
         model.run {
@@ -22,6 +22,8 @@ class AccountMapper @Inject constructor() : IEntityMapper<AccountEntity, Account
                 clientId,
                 username,
                 password,
+                encrypted,
+                iv,
                 enable,
                 createTime
             )

@@ -27,4 +27,8 @@ class AccountLocalDataSource @Inject constructor(
         flow {
             emit(accountDao.insert(accountEntity))
         }
+
+    suspend fun getAccountByUsername(username:String): AccountEntity? =
+        accountDao.getAccountByUsername(username)
+
 }

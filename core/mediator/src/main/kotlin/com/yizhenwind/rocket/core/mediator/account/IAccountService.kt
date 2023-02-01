@@ -1,5 +1,6 @@
 package com.yizhenwind.rocket.core.mediator.account
 
+import android.content.Context
 import com.yizhenwind.rocket.core.model.Account
 import com.yizhenwind.rocket.core.model.AccountProfile
 import kotlinx.coroutines.flow.Flow
@@ -14,5 +15,7 @@ interface IAccountService {
     fun observeAccountProfileByClientId(clientId: Long): Flow<List<AccountProfile>>
 
     fun createAccount(account: Account): Flow<Account>
+
+    fun launchCreateAccount(context: Context, clientId: Long)
 
 }

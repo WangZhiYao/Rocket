@@ -51,4 +51,7 @@ interface AccountDao : IDao<AccountEntity> {
     )
     fun observeAccountProfileByClientId(clientId: Long): Flow<List<AccountProfileDto>>
 
+    @Query("SELECT * FROM account WHERE username = :username LIMIT 1")
+    suspend fun getAccountByUsername(username: String): AccountEntity?
+
 }

@@ -1,10 +1,12 @@
 package com.yizhenwind.rocket.feature.account.di.service
 
+import android.content.Context
 import com.yizhenwind.rocket.core.mediator.account.IAccountService
 import com.yizhenwind.rocket.core.model.Account
 import com.yizhenwind.rocket.core.model.AccountProfile
 import com.yizhenwind.rocket.domain.account.CreateAccountUseCase
 import com.yizhenwind.rocket.domain.account.ObserveAccountProfileByClientIdUseCase
+import com.yizhenwind.rocket.feature.account.ui.AccountNavArgs
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 
@@ -23,5 +25,9 @@ class AccountServiceImpl @Inject constructor(
 
     override fun createAccount(account: Account): Flow<Account> =
         createAccountUseCase(account)
+
+    override fun launchCreateAccount(context: Context, clientId: Long) {
+        AccountNavArgs(clientId).launch(context)
+    }
 
 }

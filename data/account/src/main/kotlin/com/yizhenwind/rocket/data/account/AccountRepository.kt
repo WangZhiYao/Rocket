@@ -1,11 +1,11 @@
 package com.yizhenwind.rocket.data.account
 
 import com.yizhenwind.rocket.core.common.mapper.ListMapper
+import com.yizhenwind.rocket.core.database.mapper.AccountMapper
+import com.yizhenwind.rocket.core.database.mapper.AccountProfileDtoMapper
 import com.yizhenwind.rocket.core.database.mapper.EntityListMapper
 import com.yizhenwind.rocket.core.model.Account
 import com.yizhenwind.rocket.core.model.AccountProfile
-import com.yizhenwind.rocket.core.database.mapper.AccountMapper
-import com.yizhenwind.rocket.core.database.mapper.AccountProfileDtoMapper
 import com.yizhenwind.rocket.data.account.source.AccountLocalDataSource
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
@@ -34,5 +34,9 @@ class AccountRepository @Inject constructor(
     fun createAccount(account: Account): Flow<Account> =
         accountLocalDataSource.createAccount(accountMapper.toEntity(account))
             .map { id -> account.copy(id = id) }
+
+    suspend fun getAccountByUsername(username: String): Account? =
+        accountLocalDataSource.getAccountByUsername(username)
+            ?.run { accountMapper.fromEntity(this) }
 
 }
