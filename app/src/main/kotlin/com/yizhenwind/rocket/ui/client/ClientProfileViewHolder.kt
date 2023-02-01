@@ -29,14 +29,14 @@ class ClientProfileViewHolder(private val binding: ItemClientProfileBinding) :
                                 accountCount
                             )
                         )
-                        .append(", ")
+                        .append(" ")
                         .append(
                             context.getString(
                                 R.string.item_client_profile_character_count,
                                 characterCount
                             )
                         )
-                        .append(", ")
+                        .append(" ")
                         .append(
                             context.getString(
                                 R.string.item_client_profile_order_count,

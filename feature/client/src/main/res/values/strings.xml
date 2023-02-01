@@ -15,7 +15,7 @@
     <string name="client_composite_character">角色</string>
     <string name="client_composite_order">订单</string>
 
-    <string name="item_account_profile_character_count">角色数: %d </string>
+    <string name="item_account_profile_character_count">角色数: %d</string>
     <string name="item_account_profile_order_count">订单数: %d</string>
 
     <string name="client_detail_contact_type">联系方式类型</string>

@@ -29,7 +29,7 @@ class ClientAccountViewHolder(private val binding: ItemClientAccountBinding) :
                                 characterCount
                             )
                         )
-                        .append(", ")
+                        .append(" ")
                         .append(
                             context.getString(
                                 R.string.item_account_profile_order_count,
