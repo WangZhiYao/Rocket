@@ -37,7 +37,7 @@
     <activity
         android:id="@+id/nav_client_composite"
         android:name="com.yizhenwind.rocket.feature.client.ui.composite.ClientCompositeActivity"
-        tools:layout="@layout/activity_client_composite">
+        tools:layout="@layout/activity_base_composite">
 
         <argument
             android:name="clientId"
