@@ -1,13 +1,13 @@
 package com.yizhenwind.rocket.feature.client.ui.composite.account
 
 import androidx.fragment.app.viewModels
-import androidx.recyclerview.widget.RecyclerView
 import com.yizhenwind.rocket.core.framework.base.BaseListFragment
-import com.yizhenwind.rocket.core.framework.databinding.FragmentBaseListBinding
 import com.yizhenwind.rocket.core.framework.ext.fragmentArgs
 import com.yizhenwind.rocket.core.framework.mvi.IMVIHost
+import com.yizhenwind.rocket.core.mediator.account.IAccountService
 import dagger.hilt.android.AndroidEntryPoint
 import org.orbitmvi.orbit.viewmodel.observe
+import javax.inject.Inject
 
 /**
  *
@@ -22,6 +22,9 @@ class ClientAccountFragment : BaseListFragment(), IMVIHost<ClientAccountViewStat
 
     override val adapter = ClientAccountAdapter()
 
+    @Inject
+    lateinit var accountService: IAccountService
+
     override fun initData() {
         viewModel.apply {
             observe(viewLifecycleOwner, state = ::render)
@@ -33,7 +36,7 @@ class ClientAccountFragment : BaseListFragment(), IMVIHost<ClientAccountViewStat
         super.initView()
         adapter.apply {
             onItemClickListener = { accountProfile ->
-                // TODO: open account composite
+                accountService.launchAccountComposite(requireContext(), accountProfile.id)
             }
             onActionClickListener = { accountProfile ->
                 // TODO: open action bottom sheet

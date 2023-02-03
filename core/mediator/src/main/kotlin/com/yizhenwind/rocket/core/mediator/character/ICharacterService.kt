@@ -15,4 +15,6 @@ interface ICharacterService {
 
     fun observeCharacterProfileByClientId(clientId: Long): Flow<List<CharacterProfile>>
 
+    fun observeCharacterProfileByAccountId(accountId: Long): Flow<List<CharacterProfile>>
+
 }

@@ -5,6 +5,7 @@ import com.yizhenwind.rocket.core.authenticate.usecase.BiometricEncryptUseCase
 import com.yizhenwind.rocket.core.framework.base.BaseMVIViewModel
 import com.yizhenwind.rocket.core.logger.ILogger
 import com.yizhenwind.rocket.core.model.Account
+import com.yizhenwind.rocket.core.model.Client
 import com.yizhenwind.rocket.domain.account.CheckPasswordValidUseCase
 import com.yizhenwind.rocket.domain.account.CheckUsernameValidUseCase
 import com.yizhenwind.rocket.domain.account.CreateAccountUseCase
@@ -110,7 +111,7 @@ class CreateAccountViewModel @Inject constructor(
                 return@intent
             }
 
-            val account = Account(clientId = clientId, username = username, password = password)
+            val account = Account(client = Client(id = clientId), username = username, password = password)
 
             if (authResult != null) {
                 biometricEncryptUseCase(authResult, password)

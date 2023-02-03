@@ -3,9 +3,7 @@
 
     <application>
 
-        <activity
-            android:name=".ui.ContactTypeNavActivity"
-            android:theme="@style/Theme.Rocket.NoActionBar" />
+        <activity android:name=".ui.ContactTypeNavActivity" />
 
     </application>
 </manifest>

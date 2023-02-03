@@ -14,7 +14,7 @@ class CharacterDtoMapper @Inject constructor(
     private val clientDtoMapper: ClientDtoMapper,
     private val zoneMapper: ZoneMapper,
     private val serverMapper: ServerMapper,
-    private val accountMapper: AccountMapper,
+    private val accountDtoMapper: AccountDtoMapper,
     private val sectMapper: SectMapper,
     private val internalMapper: InternalMapper
 ) : IMapper<CharacterDto, Character> {
@@ -26,7 +26,7 @@ class CharacterDtoMapper @Inject constructor(
                 clientDtoMapper.map(client),
                 zoneMapper.fromEntity(zone),
                 serverMapper.fromEntity(server),
-                accountMapper.fromEntity(account),
+                accountDtoMapper.map(account),
                 character.securityLock,
                 character.name,
                 sectMapper.fromEntity(sect),

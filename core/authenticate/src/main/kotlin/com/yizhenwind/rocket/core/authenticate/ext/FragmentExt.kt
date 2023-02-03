@@ -46,10 +46,22 @@ private suspend fun Fragment.authenticate(
     }
 }
 
-suspend fun Fragment.authenticateForEncrypt(keyName: String = "Rocket"): BiometricPrompt.AuthenticationResult =
+suspend fun Fragment.authenticateForEncrypt(
+    keyName: String = "Rocket"
+): BiometricPrompt.AuthenticationResult =
     authenticate(
         BiometricPrompt.CryptoObject(CryptographyManager.getEncryptionCipher(keyName)),
         getString(R.string.authentication_title_encrypt),
         getString(R.string.negative_button_text),
         getString(R.string.authentication_subtitle_encrypt)
+    )
+
+suspend fun Fragment.authenticateForDecrypt(
+    iv: String,
+    keyName: String = "Rocket",
+): BiometricPrompt.AuthenticationResult =
+    authenticate(
+        BiometricPrompt.CryptoObject(CryptographyManager.getDecryptionCipher(keyName, iv)),
+        getString(R.string.authentication_title_decrypt),
+        getString(R.string.negative_button_text)
     )

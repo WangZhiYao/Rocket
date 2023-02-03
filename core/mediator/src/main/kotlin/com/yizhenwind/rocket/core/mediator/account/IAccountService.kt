@@ -18,4 +18,6 @@ interface IAccountService {
 
     fun launchCreateAccount(context: Context, clientId: Long)
 
+    fun launchAccountComposite(context: Context, accountId: Long)
+
 }

@@ -31,7 +31,7 @@
     <string name="error_client_exist">已经存在以上联系方式的客户</string>
     <string name="error_create_client">创建客户失败</string>
 
-    <string name="error_client_id">客户ID错误</string>
+    <string name="error_client_detail">客户信息错误</string>
     <string name="error_action_close">关闭</string>
 
 </resources>

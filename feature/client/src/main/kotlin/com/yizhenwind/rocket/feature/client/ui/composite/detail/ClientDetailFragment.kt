@@ -38,19 +38,16 @@ class ClientDetailFragment :
     override fun initData() {
         viewModel.apply {
             observe(viewLifecycleOwner, state = ::render, sideEffect = ::handleSideEffect)
-            getClientById(args.clientId)
+            observeClientById(args.clientId)
         }
     }
 
     override fun initView() {
         binding.apply {
             clClientDetailContact.setOnLongClickListener {
-                if (ClipboardHelper.copyTo(
-                        requireContext(),
-                        viewModel.container.stateFlow.value.client.contact
-                    )
+                if (ClipboardHelper.copyTo(requireContext(), viewModel.contact)
                 ) {
-                    binding.root.showSnack(R.string.client_detail_copy_contact_to_clipboard_success)
+                    root.showSnack(R.string.client_detail_copy_contact_to_clipboard_success)
                     true
                 } else {
                     false

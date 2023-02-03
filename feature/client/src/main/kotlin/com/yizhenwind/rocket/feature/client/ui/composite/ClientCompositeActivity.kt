@@ -1,6 +1,5 @@
 package com.yizhenwind.rocket.feature.client.ui.composite
 
-import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.fragment.app.Fragment
 import androidx.navigation.navArgs
@@ -33,14 +32,6 @@ class ClientCompositeActivity : BaseCompositeActivity(),
     @Inject
     lateinit var accountService: IAccountService
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(binding.root)
-
-        initData()
-        initView()
-    }
-
     override fun initData() {
         viewModel.observe(this, state = ::render, sideEffect = ::handleSideEffect)
     }
@@ -54,12 +45,14 @@ class ClientCompositeActivity : BaseCompositeActivity(),
         )
 
     override fun getFragments(): List<Fragment> =
-        arrayListOf(
-            ClientDetailArgs(navArgs.clientId).newInstance(),
-            ClientAccountArgs(navArgs.clientId).newInstance(),
-            ClientCharacterArgs(navArgs.clientId).newInstance(),
-            ClientOrderArgs(navArgs.clientId).newInstance()
-        )
+        navArgs.run {
+            arrayListOf(
+                ClientDetailArgs(clientId).newInstance(),
+                ClientAccountArgs(clientId).newInstance(),
+                ClientCharacterArgs(clientId).newInstance(),
+                ClientOrderArgs(clientId).newInstance()
+            )
+        }
 
     override fun onPageSelected(position: Int) {
         binding.fab.setImageResource(

@@ -29,4 +29,8 @@ class CharacterRepository @Inject constructor(
         characterLocalSource.observeCharacterProfileByClientId(clientId)
             .map { ListMapper(characterProfileDtoMapper).map(it) }
 
+    fun observeCharacterProfileByAccountId(accountId: Long): Flow<List<CharacterProfile>> =
+        characterLocalSource.observeCharacterProfileByAccountId(accountId)
+            .map { ListMapper(characterProfileDtoMapper).map(it) }
+
 }

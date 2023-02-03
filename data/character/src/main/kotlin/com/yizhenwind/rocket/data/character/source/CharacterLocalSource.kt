@@ -21,4 +21,6 @@ class CharacterLocalSource @Inject constructor(
     fun observeCharacterProfileByClientId(clientId: Long): Flow<List<CharacterProfileDto>> =
         characterDao.observeCharacterProfileByClientId(clientId)
 
+    fun observeCharacterProfileByAccountId(accountId: Long): Flow<List<CharacterProfileDto>> =
+        characterDao.observeCharacterProfileByClientId(accountId)
 }

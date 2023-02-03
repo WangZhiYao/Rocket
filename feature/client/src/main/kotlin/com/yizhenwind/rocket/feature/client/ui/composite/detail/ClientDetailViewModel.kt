@@ -1,8 +1,8 @@
 package com.yizhenwind.rocket.feature.client.ui.composite.detail
 
-import com.yizhenwind.rocket.core.common.ext.ifNullOrElse
+import com.yizhenwind.rocket.core.common.constant.Constant
 import com.yizhenwind.rocket.core.framework.base.BaseMVIViewModel
-import com.yizhenwind.rocket.domain.client.GetClientByIdUseCase
+import com.yizhenwind.rocket.domain.client.ObserveClientByIdUseCase
 import com.yizhenwind.rocket.feature.client.R
 import dagger.hilt.android.lifecycle.HiltViewModel
 import org.orbitmvi.orbit.syntax.simple.intent
@@ -18,21 +18,27 @@ import javax.inject.Inject
  */
 @HiltViewModel
 class ClientDetailViewModel @Inject constructor(
-    private val getClientByIdUseCase: GetClientByIdUseCase
+    private val observeClientByIdUseCase: ObserveClientByIdUseCase
 ) : BaseMVIViewModel<ClientDetailViewState, ClientDetailSideEffect>() {
 
     override val container =
         container<ClientDetailViewState, ClientDetailSideEffect>(ClientDetailViewState())
 
-    fun getClientById(id: Long) {
+    val contact: String
+        get() = container.stateFlow.value.client.contact
+
+    fun observeClientById(id: Long) {
         intent {
-            getClientByIdUseCase(id).ifNullOrElse({
-                postSideEffect(ClientDetailSideEffect(R.string.error_client_id))
-            }, { client ->
-                reduce {
-                    state.copy(client = client)
+            observeClientByIdUseCase(id)
+                .collect { client ->
+                    if (client.id == Constant.DEFAULT_ID) {
+                        postSideEffect(ClientDetailSideEffect(R.string.error_client_detail))
+                    } else {
+                        reduce {
+                            state.copy(client = client)
+                        }
+                    }
                 }
-            })
         }
     }
 }

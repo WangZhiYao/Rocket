@@ -9,7 +9,7 @@
         android:id="@+id/nav_create_account"
         android:name="com.yizhenwind.rocket.feature.account.ui.create.CreateAccountFragment"
         android:label="@string/label_create_account"
-        tools:layout="@layout/fragment_create_account" >
+        tools:layout="@layout/fragment_create_account">
 
         <argument
             android:name="clientId"
@@ -17,6 +17,27 @@
             app:argType="long"
             app:nullable="false" />
 
+        <action
+            android:id="@+id/action_create_account_to_account_composite"
+            app:destination="@id/nav_account_composite"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+
     </fragment>
+
+    <activity
+        android:id="@+id/nav_account_composite"
+        android:name="com.yizhenwind.rocket.feature.account.ui.composite.AccountCompositeActivity"
+        tools:layout="@layout/activity_base_composite">
+
+        <argument
+            android:name="accountId"
+            android:defaultValue="0L"
+            app:argType="long"
+            app:nullable="false" />
+
+    </activity>
 
 </navigation>

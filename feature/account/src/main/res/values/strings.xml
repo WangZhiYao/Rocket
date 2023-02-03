@@ -3,16 +3,36 @@
 
     <string name="label_create_account">创建账号</string>
 
-    <string name="create_account_username">账号</string>
+    <string name="create_account_username">用户名</string>
     <string name="create_account_password">密码</string>
     <string name="create_account_encrypt_password">密码加密</string>
     <string name="create_account_success">创建账号成功</string>
     <string name="create_account_success_to_composite">跳转详情</string>
+
+    <string name="account_composite_detail">详情</string>
+    <string name="account_composite_character">角色</string>
+
+    <string name="account_detail_client">客户</string>
+    <string name="account_detail_username">用户名</string>
+    <string name="account_detail_password">密码</string>
+    <string name="account_detail_password_decrypt">查看密码</string>
+    <string name="account_detail_create_time">创建时间</string>
+    <string name="account_detail_copy_username_to_clipboard_success">用户名已复制到剪切板</string>
+    <string name="account_detail_copy_password_to_clipboard_success">密码已复制到剪切板</string>
+
+    <string name="empty_remark">暂无备注</string>
 
     <string name="error_account_username_empty">请输入账号</string>
     <string name="error_account_username_invalid">账号格式错误</string>
     <string name="error_account_exist">账号已存在</string>
     <string name="error_account_password_empty">请输入密码</string>
     <string name="error_account_password_invalid">密码格式错误</string>
+    <string name="error_account_detail">账号信息错误</string>
+    <string name="error_action_close">关闭</string>
+    <string name="error_biometric_failed">生物验证失败</string>
+    <string name="error_account_detail_password_decrypt">密码解密失败</string>
+    <string name="error_account_detail_copy_password_to_clipboard">请先解密密码</string>
+
+    <string name="account_detail_password_placeholder">password</string>
 
 </resources>

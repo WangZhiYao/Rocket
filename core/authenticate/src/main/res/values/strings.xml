@@ -5,5 +5,5 @@
 
     <string name="authentication_title_decrypt">身份验证</string>
 
-    <string name="negative_button_text">使用锁屏密码</string>
+    <string name="negative_button_text">取消</string>
 </resources>

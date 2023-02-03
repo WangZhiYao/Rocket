@@ -3,6 +3,7 @@ package com.yizhenwind.rocket.core.database.dao
 import androidx.room.Dao
 import androidx.room.Query
 import androidx.room.Transaction
+import com.yizhenwind.rocket.core.database.dto.AccountDto
 import com.yizhenwind.rocket.core.database.dto.AccountProfileDto
 import com.yizhenwind.rocket.core.database.entity.AccountEntity
 import kotlinx.coroutines.flow.Flow
@@ -16,6 +17,7 @@ import kotlinx.coroutines.flow.Flow
 @Dao
 interface AccountDao : IDao<AccountEntity> {
 
+    @Transaction
     @Query(
         """
             SELECT
@@ -29,7 +31,7 @@ interface AccountDao : IDao<AccountEntity> {
               create_time DESC
         """
     )
-    fun observeAccountByClientId(clientId: Long): Flow<List<AccountEntity>>
+    fun observeAccountByClientId(clientId: Long): Flow<List<AccountDto>>
 
     @Transaction
     @Query(
@@ -51,7 +53,12 @@ interface AccountDao : IDao<AccountEntity> {
     )
     fun observeAccountProfileByClientId(clientId: Long): Flow<List<AccountProfileDto>>
 
+    @Transaction
     @Query("SELECT * FROM account WHERE username = :username LIMIT 1")
-    suspend fun getAccountByUsername(username: String): AccountEntity?
+    suspend fun getAccountByUsername(username: String): AccountDto?
+
+    @Transaction
+    @Query("SELECT * FROM account WHERE id = :id LIMIT 1")
+    fun observeAccountById(id: Long): Flow<AccountDto?>
 
 }

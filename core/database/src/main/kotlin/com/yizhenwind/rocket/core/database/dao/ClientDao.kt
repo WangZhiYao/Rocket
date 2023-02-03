@@ -7,6 +7,7 @@ import androidx.room.Transaction
 import com.yizhenwind.rocket.core.database.dto.ClientDto
 import com.yizhenwind.rocket.core.database.dto.ClientProfileDto
 import com.yizhenwind.rocket.core.database.entity.ClientEntity
+import kotlinx.coroutines.flow.Flow
 
 /**
  * 客户表操作
@@ -72,5 +73,9 @@ interface ClientDao : IDao<ClientEntity> {
     @Transaction
     @Query("SELECT * FROM client WHERE id = :id LIMIT 1")
     suspend fun getClientById(id: Long): ClientDto?
+
+    @Transaction
+    @Query("SELECT * FROM client WHERE id = :id LIMIT 1")
+    fun observeClientById(id: Long): Flow<ClientDto?>
 
 }

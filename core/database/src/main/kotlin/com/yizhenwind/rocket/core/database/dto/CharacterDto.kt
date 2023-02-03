@@ -29,10 +29,11 @@ data class CharacterDto(
     )
     val server: ServerEntity,
     @Relation(
+        entity = AccountEntity::class,
         parentColumn = "account_id",
         entityColumn = "id",
     )
-    val account: AccountEntity,
+    val account: AccountDto,
     @Relation(
         parentColumn = "sect_id",
         entityColumn = "id",

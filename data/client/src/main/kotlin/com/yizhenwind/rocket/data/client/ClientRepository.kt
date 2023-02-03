@@ -45,4 +45,8 @@ class ClientRepository @Inject constructor(
     suspend fun getClientById(id: Long): Client? =
         clientLocalDataSource.getClientById(id)?.run { clientDtoMapper.map(this) }
 
+    fun observeClientById(id: Long): Flow<Client> =
+        clientLocalDataSource.observeClientById(id).map { clientDto ->
+            clientDto?.run { clientDtoMapper.map(this) } ?: Client()
+        }
 }

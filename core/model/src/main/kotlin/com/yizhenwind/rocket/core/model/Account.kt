@@ -8,7 +8,7 @@ package com.yizhenwind.rocket.core.model
  */
 data class Account(
     val id: Long = 0,
-    val clientId: Long = 0,
+    val client: Client = Client(),
     val username: String = "",
     val password: String = "",
     val encrypted: Boolean = false,
