@@ -1,5 +1,6 @@
 package com.yizhenwind.rocket.core.mediator.character
 
+import android.content.Context
 import com.yizhenwind.rocket.core.model.Character
 import com.yizhenwind.rocket.core.model.CharacterProfile
 import kotlinx.coroutines.flow.Flow
@@ -16,5 +17,7 @@ interface ICharacterService {
     fun observeCharacterProfileByClientId(clientId: Long): Flow<List<CharacterProfile>>
 
     fun observeCharacterProfileByAccountId(accountId: Long): Flow<List<CharacterProfile>>
+
+    fun launchCreateCharacter(context: Context, clientId: Long, accountId: Long)
 
 }

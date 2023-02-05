@@ -2,7 +2,7 @@ package com.yizhenwind.rocket.ui.client
 
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
-import com.yizhenwind.rocket.core.framework.base.BasePagingDataAdapter
+import com.yizhenwind.rocket.core.framework.base.BaseListAdapter
 import com.yizhenwind.rocket.core.framework.ext.viewBinding
 import com.yizhenwind.rocket.core.model.ClientProfile
 import com.yizhenwind.rocket.databinding.ItemClientProfileBinding
@@ -14,7 +14,7 @@ import com.yizhenwind.rocket.databinding.ItemClientProfileBinding
  * @since 2023/1/16
  */
 class ClientProfileAdapter :
-    BasePagingDataAdapter<ClientProfile, ClientProfileViewHolder>(CLIENT_PROFILE_COMPARATOR) {
+    BaseListAdapter<ClientProfile, ClientProfileViewHolder>(CLIENT_PROFILE_COMPARATOR) {
 
     var onActionClickListener: ((ClientProfile) -> Unit)? = null
 

@@ -1,6 +1,5 @@
 package com.yizhenwind.rocket.core.database.dao
 
-import androidx.paging.PagingSource
 import androidx.room.Dao
 import androidx.room.Query
 import androidx.room.Transaction
@@ -17,6 +16,10 @@ import kotlinx.coroutines.flow.Flow
  */
 @Dao
 interface ClientDao : IDao<ClientEntity> {
+
+    @Transaction
+    @Query("SELECT * FROM client")
+    fun observeClientList(): Flow<List<ClientDto>>
 
     /**
      * 分页查询客户简介
@@ -41,7 +44,7 @@ interface ClientDao : IDao<ClientEntity> {
               create_time DESC
         """
     )
-    fun observeClientProfile(): PagingSource<Int, ClientProfileDto>
+    fun observeClientProfile(): Flow<List<ClientProfileDto>>
 
     /**
      * 根据联系方式查询客户

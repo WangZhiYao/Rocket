@@ -13,4 +13,8 @@ data class Internal(
     val id: Long = 0,
     val sectId: Long = 0,
     val name: String = "",
-)
+) {
+
+    override fun toString(): String = name
+
+}

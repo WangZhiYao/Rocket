@@ -1,7 +1,7 @@
 package com.yizhenwind.rocket.core.mediator.client
 
 import android.content.Context
-import androidx.paging.PagingData
+import com.yizhenwind.rocket.core.model.Client
 import com.yizhenwind.rocket.core.model.ClientProfile
 import kotlinx.coroutines.flow.Flow
 
@@ -13,7 +13,9 @@ import kotlinx.coroutines.flow.Flow
  */
 interface IClientService {
 
-    fun observeClientProfile(): Flow<PagingData<ClientProfile>>
+    fun observeClientList(): Flow<List<Client>>
+
+    fun observeClientProfile(): Flow<List<ClientProfile>>
 
     fun launchClientComposite(context: Context, clientId: Long)
 

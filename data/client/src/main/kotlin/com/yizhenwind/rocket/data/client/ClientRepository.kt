@@ -1,7 +1,5 @@
 package com.yizhenwind.rocket.data.client
 
-import androidx.paging.PagingData
-import androidx.paging.map
 import com.yizhenwind.rocket.core.database.mapper.ClientDtoMapper
 import com.yizhenwind.rocket.core.database.mapper.ClientMapper
 import com.yizhenwind.rocket.core.database.mapper.ClientProfileDtoMapper
@@ -26,11 +24,17 @@ class ClientRepository @Inject constructor(
     private val clientDtoMapper: ClientDtoMapper,
 ) {
 
-    fun observeClientProfile(): Flow<PagingData<ClientProfile>> =
+    fun observeClientList(): Flow<List<Client>> =
+        clientLocalDataSource.observeClientList()
+            .map { clientDtoList ->
+                clientDtoList.map { clientDto -> clientDtoMapper.map(clientDto) }
+            }
+
+    fun observeClientProfile(): Flow<List<ClientProfile>> =
         clientLocalDataSource.observeClientProfile()
-            .map { pagingData ->
-                pagingData.map {
-                    clientProfileDtoMapper.map(it)
+            .map { clientProfileDtoList ->
+                clientProfileDtoList.map { clientProfileDto ->
+                    clientProfileDtoMapper.map(clientProfileDto)
                 }
             }
 

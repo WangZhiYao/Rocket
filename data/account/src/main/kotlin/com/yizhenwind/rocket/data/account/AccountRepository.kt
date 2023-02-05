@@ -24,6 +24,10 @@ class AccountRepository @Inject constructor(
     private val accountDtoMapper: AccountDtoMapper
 ) {
 
+    fun observeAccountListByClientId(clientId: Long): Flow<List<Account>> =
+        accountLocalDataSource.observeAccountListByClientId(clientId)
+            .map { ListMapper(accountDtoMapper).map(it) }
+
     fun observeAccountProfileByClientId(clientId: Long): Flow<List<AccountProfile>> =
         accountLocalDataSource.observeAccountProfileByClientId(clientId)
             .map { ListMapper(accountProfileDtoMapper).map(it) }

@@ -4,10 +4,12 @@ import androidx.activity.viewModels
 import androidx.fragment.app.Fragment
 import androidx.navigation.navArgs
 import com.google.android.material.snackbar.Snackbar
+import com.yizhenwind.rocket.core.common.constant.Constant
 import com.yizhenwind.rocket.core.framework.base.BaseCompositeActivity
 import com.yizhenwind.rocket.core.framework.ext.showSnack
 import com.yizhenwind.rocket.core.framework.mvi.IMVIHost
 import com.yizhenwind.rocket.core.mediator.account.IAccountService
+import com.yizhenwind.rocket.core.mediator.character.ICharacterService
 import com.yizhenwind.rocket.feature.client.R
 import com.yizhenwind.rocket.feature.client.ui.composite.account.ClientAccountArgs
 import com.yizhenwind.rocket.feature.client.ui.composite.character.ClientCharacterArgs
@@ -31,6 +33,9 @@ class ClientCompositeActivity : BaseCompositeActivity(),
 
     @Inject
     lateinit var accountService: IAccountService
+
+    @Inject
+    lateinit var characterService: ICharacterService
 
     override fun initData() {
         viewModel.observe(this, state = ::render, sideEffect = ::handleSideEffect)
@@ -70,12 +75,16 @@ class ClientCompositeActivity : BaseCompositeActivity(),
             }
             PAGE_INDEX_ACCOUNT -> {
                 accountService.launchCreateAccount(
-                    this@ClientCompositeActivity,
+                    this,
                     navArgs.clientId
                 )
             }
             PAGE_INDEX_CHARACTER -> {
-                // TODO: open add character
+                characterService.launchCreateCharacter(
+                    this,
+                    navArgs.clientId,
+                    Constant.DEFAULT_ID
+                )
             }
             PAGE_INDEX_ORDER -> {
                 // TODO: open create order

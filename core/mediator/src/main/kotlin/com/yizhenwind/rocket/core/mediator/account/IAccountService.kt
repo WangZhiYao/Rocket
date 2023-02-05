@@ -12,12 +12,14 @@ import kotlinx.coroutines.flow.Flow
  */
 interface IAccountService {
 
+    fun observeAccountListByClientId(clientId: Long):Flow<List<Account>>
+
     fun observeAccountProfileByClientId(clientId: Long): Flow<List<AccountProfile>>
 
     fun createAccount(account: Account): Flow<Account>
 
     fun launchCreateAccount(context: Context, clientId: Long)
 
-    fun launchAccountComposite(context: Context, accountId: Long)
+    fun launchAccountComposite(context: Context, clientId: Long, accountId: Long)
 
 }

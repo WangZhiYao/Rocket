@@ -26,7 +26,6 @@ class ClientProfileViewModel @Inject constructor(
     init {
         intent {
             clientService.observeClientProfile()
-                .cachedIn(viewModelScope)
                 .collect {
                     reduce {
                         state.copy(clientProfileList = it)

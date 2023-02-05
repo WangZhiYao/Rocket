@@ -22,10 +22,21 @@ class AccountCompositeViewModel @Inject constructor() :
     override val container =
         container<AccountCompositeViewState, AccountCompositeSideEffect>(AccountCompositeViewState())
 
+    val clientId: Long
+        get() = container.stateFlow.value.clientId
+
     fun setTitle(title: CharSequence) {
         intent {
             reduce {
                 state.copy(title = title)
+            }
+        }
+    }
+
+    fun setClientId(clientId: Long) {
+        intent {
+            reduce {
+                state.copy(clientId = clientId)
             }
         }
     }

@@ -6,6 +6,7 @@ import com.yizhenwind.rocket.core.mediator.account.IAccountService
 import com.yizhenwind.rocket.core.model.Account
 import com.yizhenwind.rocket.core.model.AccountProfile
 import com.yizhenwind.rocket.domain.account.CreateAccountUseCase
+import com.yizhenwind.rocket.domain.account.ObserveAccountListByClientIdUseCase
 import com.yizhenwind.rocket.domain.account.ObserveAccountProfileByClientIdUseCase
 import com.yizhenwind.rocket.feature.account.ui.AccountNavArgs
 import com.yizhenwind.rocket.feature.account.ui.composite.AccountCompositeActivity
@@ -19,9 +20,13 @@ import javax.inject.Inject
  * @since 2023/1/19
  */
 class AccountServiceImpl @Inject constructor(
+    private val observeAccountListByClientIdUseCase: ObserveAccountListByClientIdUseCase,
     private val observeAccountProfileByClientIdUseCase: ObserveAccountProfileByClientIdUseCase,
     private val createAccountUseCase: CreateAccountUseCase
 ) : IAccountService {
+
+    override fun observeAccountListByClientId(clientId: Long): Flow<List<Account>> =
+        observeAccountListByClientIdUseCase(clientId)
 
     override fun observeAccountProfileByClientId(clientId: Long): Flow<List<AccountProfile>> =
         observeAccountProfileByClientIdUseCase(clientId)
@@ -33,7 +38,7 @@ class AccountServiceImpl @Inject constructor(
         AccountNavArgs(clientId).launch(context)
     }
 
-    override fun launchAccountComposite(context: Context, accountId: Long) {
+    override fun launchAccountComposite(context: Context, clientId: Long, accountId: Long) {
         context.startActivity(Intent(context, AccountCompositeActivity::class.java).apply {
             replaceExtras(AccountCompositeActivityArgs(accountId).toBundle())
         })

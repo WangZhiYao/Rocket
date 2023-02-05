@@ -105,13 +105,20 @@ class AccountDetailFragment :
     }
 
     override suspend fun render(state: AccountDetailViewState) {
-        state.apply {
-            if (account.id != Constant.DEFAULT_ID) {
-                activityViewModel.setTitle(account.username)
-                binding.apply {
-                    tvAccountDetailClient.text = account.client.name
-                    tvAccountDetailUsername.text = account.username
-                    if (account.encrypted) {
+        binding.apply {
+            state.apply {
+                account.apply {
+                    if (id != Constant.DEFAULT_ID) {
+                        activityViewModel.apply {
+                            setTitle(username)
+                            setClientId(client.id)
+                        }
+                    }
+
+                    tvAccountDetailClient.text = client.name
+                    tvAccountDetailUsername.text = username
+
+                    if (encrypted) {
                         ibAccountDetailPasswordVisibility.apply {
                             isVisible = true
                             setImageResource(R.drawable.ic_round_visibility_white_24dp)
@@ -127,14 +134,14 @@ class AccountDetailFragment :
                                 setImageResource(R.drawable.ic_round_visibility_off_white_24dp)
                             }
                             tvAccountDetailPassword.apply {
-                                text = account.password
+                                text = password
                                 transformationMethod = null
                             }
                         } else {
                             ibAccountDetailPasswordVisibility.isVisible = false
                         }
                     }
-                    tvClientDetailCreateTime.text = account.createTime.formatDate()
+                    tvClientDetailCreateTime.text = createTime.formatDate()
                 }
             }
         }

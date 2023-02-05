@@ -63,7 +63,6 @@
         android:layout_marginBottom="@dimen/item_content_margin"
         android:ellipsize="end"
         android:maxLines="2"
-        android:minLines="2"
         android:textColor="@color/color_text_secondary"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@id/ib_character_action"

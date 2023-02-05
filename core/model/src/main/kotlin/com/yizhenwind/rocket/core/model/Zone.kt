@@ -12,4 +12,8 @@ import com.squareup.moshi.JsonClass
 data class Zone(
     val id: Long = 0,
     val name: String = ""
-)
+) {
+
+    override fun toString(): String = name
+
+}

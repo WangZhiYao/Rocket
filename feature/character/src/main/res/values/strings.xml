@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="label_create_character">创建角色</string>
+
+    <string name="create_character_select_client">客户</string>
+    <string name="create_character_select_zone">大区</string>
+    <string name="create_character_select_server">主服务器</string>
+    <string name="create_character_account">账号</string>
+    <string name="create_character_security_lock">安全锁</string>
+    <string name="create_character_name">角色名</string>
+    <string name="create_character_select_sect">门派</string>
+    <string name="create_character_select_internal">心法</string>
+    <string name="create_character_remark">备注</string>
+
+    <string name="create_character_success">创建角色成功</string>
+    <string name="create_character_success_to_composite">跳转详情</string>
+
+    <string name="error_create_character_client_unselected">请选择客户</string>
+    <string name="error_create_character_zone_unselected">请选择大区</string>
+    <string name="error_create_character_server_unselected">请选择服务器</string>
+    <string name="error_create_character_account_unselected">请选择账号</string>
+    <string name="error_create_character_name_empty">请输入角色名</string>
+    <string name="error_create_character_sect_unselected">请选择门派</string>
+    <string name="error_create_character_internal_unselected">请选择心法</string>
+    <string name="error_create_character_failed">创建角色失败</string>
+
+</resources>

@@ -90,6 +90,8 @@ dependencies {
     implementation(project(":feature:contacttype"))
     implementation(project(":feature:account"))
     implementation(project(":feature:character"))
+    implementation(project(":feature:zoneserver"))
+    implementation(project(":feature:sectinternal"))
     implementation(project(":feature:order"))
     implementation(project(":feature:user"))
     implementation(project(":feature:setting"))

@@ -26,21 +26,17 @@
             <option value="$PROJECT_DIR$/data/character" />
             <option value="$PROJECT_DIR$/data/client" />
             <option value="$PROJECT_DIR$/data/contacttype" />
-            <option value="$PROJECT_DIR$/data/internal" />
             <option value="$PROJECT_DIR$/data/order" />
-            <option value="$PROJECT_DIR$/data/sect" />
-            <option value="$PROJECT_DIR$/data/server" />
-            <option value="$PROJECT_DIR$/data/zone" />
+            <option value="$PROJECT_DIR$/data/sectinternal" />
+            <option value="$PROJECT_DIR$/data/zoneserver" />
             <option value="$PROJECT_DIR$/domain" />
             <option value="$PROJECT_DIR$/domain/account" />
             <option value="$PROJECT_DIR$/domain/character" />
             <option value="$PROJECT_DIR$/domain/client" />
             <option value="$PROJECT_DIR$/domain/contacttype" />
-            <option value="$PROJECT_DIR$/domain/internal" />
             <option value="$PROJECT_DIR$/domain/order" />
-            <option value="$PROJECT_DIR$/domain/sect" />
-            <option value="$PROJECT_DIR$/domain/server" />
-            <option value="$PROJECT_DIR$/domain/zone" />
+            <option value="$PROJECT_DIR$/domain/sectinternal" />
+            <option value="$PROJECT_DIR$/domain/zoneserver" />
             <option value="$PROJECT_DIR$/feature" />
             <option value="$PROJECT_DIR$/feature/account" />
             <option value="$PROJECT_DIR$/feature/character" />
@@ -48,8 +44,10 @@
             <option value="$PROJECT_DIR$/feature/contacttype" />
             <option value="$PROJECT_DIR$/feature/home" />
             <option value="$PROJECT_DIR$/feature/order" />
+            <option value="$PROJECT_DIR$/feature/sectinternal" />
             <option value="$PROJECT_DIR$/feature/setting" />
             <option value="$PROJECT_DIR$/feature/user" />
+            <option value="$PROJECT_DIR$/feature/zoneserver" />
           </set>
         </option>
       </GradleProjectSettings>

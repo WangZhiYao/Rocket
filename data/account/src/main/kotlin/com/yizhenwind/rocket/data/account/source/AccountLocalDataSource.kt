@@ -18,6 +18,9 @@ class AccountLocalDataSource @Inject constructor(
     private val accountDao: AccountDao
 ) {
 
+    fun observeAccountListByClientId(clientId: Long): Flow<List<AccountDto>> =
+        accountDao.observeAccountListByClientId(clientId)
+
     fun observeAccountProfileByClientId(clientId: Long): Flow<List<AccountProfileDto>> =
         accountDao.observeAccountProfileByClientId(clientId)
 

@@ -36,7 +36,11 @@ class ClientAccountFragment : BaseListFragment(), IMVIHost<ClientAccountViewStat
         super.initView()
         adapter.apply {
             onItemClickListener = { accountProfile ->
-                accountService.launchAccountComposite(requireContext(), accountProfile.id)
+                accountService.launchAccountComposite(
+                    requireContext(),
+                    args.clientId,
+                    accountProfile.id
+                )
             }
             onActionClickListener = { accountProfile ->
                 // TODO: open action bottom sheet

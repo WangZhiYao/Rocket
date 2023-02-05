@@ -42,7 +42,7 @@ class ClientProfileFragment : BaseListFragment(), IMVIHost<ClientProfileViewStat
     }
 
     override suspend fun render(state: ClientProfileViewState) {
-        adapter.submitData(state.clientProfileList)
+        adapter.submitList(state.clientProfileList)
     }
 
 }

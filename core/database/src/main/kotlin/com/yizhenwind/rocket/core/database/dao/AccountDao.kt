@@ -31,7 +31,7 @@ interface AccountDao : IDao<AccountEntity> {
               create_time DESC
         """
     )
-    fun observeAccountByClientId(clientId: Long): Flow<List<AccountDto>>
+    fun observeAccountListByClientId(clientId: Long): Flow<List<AccountDto>>
 
     @Transaction
     @Query(

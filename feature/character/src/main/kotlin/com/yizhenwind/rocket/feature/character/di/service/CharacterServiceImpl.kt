@@ -1,11 +1,13 @@
 package com.yizhenwind.rocket.feature.character.di.service
 
+import android.content.Context
 import com.yizhenwind.rocket.core.mediator.character.ICharacterService
 import com.yizhenwind.rocket.core.model.Character
 import com.yizhenwind.rocket.core.model.CharacterProfile
 import com.yizhenwind.rocket.domain.character.ObserveCharacterByClientIdUseCase
 import com.yizhenwind.rocket.domain.character.ObserveCharacterProfileByAccountIdUseCase
 import com.yizhenwind.rocket.domain.character.ObserveCharacterProfileByClientIdUseCase
+import com.yizhenwind.rocket.feature.character.CharacterNavArgs
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 
@@ -28,5 +30,9 @@ class CharacterServiceImpl @Inject constructor(
 
     override fun observeCharacterProfileByAccountId(accountId: Long): Flow<List<CharacterProfile>> =
         observeCharacterProfileByAccountIdUseCase(accountId)
+
+    override fun launchCreateCharacter(context: Context, clientId: Long, accountId: Long) {
+        CharacterNavArgs(clientId, accountId).launch(context)
+    }
 
 }
