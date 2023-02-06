@@ -7,7 +7,7 @@ import com.yizhenwind.rocket.core.model.CharacterProfile
 import com.yizhenwind.rocket.domain.character.ObserveCharacterByClientIdUseCase
 import com.yizhenwind.rocket.domain.character.ObserveCharacterProfileByAccountIdUseCase
 import com.yizhenwind.rocket.domain.character.ObserveCharacterProfileByClientIdUseCase
-import com.yizhenwind.rocket.feature.character.CharacterNavArgs
+import com.yizhenwind.rocket.feature.character.ui.create.CreateCharacterArgs
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 
@@ -32,7 +32,7 @@ class CharacterServiceImpl @Inject constructor(
         observeCharacterProfileByAccountIdUseCase(accountId)
 
     override fun launchCreateCharacter(context: Context, clientId: Long, accountId: Long) {
-        CharacterNavArgs(clientId, accountId).launch(context)
+        CreateCharacterArgs(clientId, accountId).launch(context)
     }
 
 }

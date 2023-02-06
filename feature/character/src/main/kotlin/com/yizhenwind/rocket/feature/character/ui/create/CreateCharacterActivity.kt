@@ -1,4 +1,4 @@
-package com.yizhenwind.rocket.feature.character.ui
+package com.yizhenwind.rocket.feature.character.ui.create
 
 import android.os.Bundle
 import androidx.navigation.NavController
@@ -16,7 +16,7 @@ import dagger.hilt.android.AndroidEntryPoint
  * @since 2023/2/4
  */
 @AndroidEntryPoint
-class CharacterNavActivity: BaseNavActivity() {
+class CreateCharacterActivity: BaseNavActivity() {
 
     private val binding by viewBindings<ActivityBaseNavBinding>()
 
@@ -34,7 +34,7 @@ class CharacterNavActivity: BaseNavActivity() {
         binding.apply {
             setupToolbar(toolbar)
         }
-        navController.setGraph(R.navigation.navigation_character, intent.extras)
+        navController.setGraph(R.navigation.navigation_create_character, intent.extras)
     }
 
 }
