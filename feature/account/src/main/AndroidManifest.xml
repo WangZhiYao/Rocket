@@ -3,7 +3,7 @@
 
     <application>
 
-        <activity android:name=".ui.AccountNavActivity" />
+        <activity android:name=".ui.create.CreateAccountActivity" />
 
         <activity android:name=".ui.composite.AccountCompositeActivity" />
 

@@ -1,4 +1,4 @@
-package com.yizhenwind.rocket.feature.account.ui
+package com.yizhenwind.rocket.feature.account.ui.create
 
 import android.os.Bundle
 import androidx.navigation.NavController
@@ -16,7 +16,7 @@ import dagger.hilt.android.AndroidEntryPoint
  * @since 2023/1/29
  */
 @AndroidEntryPoint
-class AccountNavActivity : BaseNavActivity() {
+class CreateAccountActivity : BaseNavActivity() {
 
     private val binding by viewBindings<ActivityBaseNavBinding>()
 
@@ -34,7 +34,7 @@ class AccountNavActivity : BaseNavActivity() {
         binding.apply {
             setupToolbar(toolbar)
         }
-        navController.setGraph(R.navigation.navigation_account, intent.extras)
+        navController.setGraph(R.navigation.navigation_create_account, intent.extras)
     }
 
 }
