@@ -30,8 +30,8 @@
         tools:layout="@layout/fragment_setting" />
 
     <activity
-        android:id="@+id/nav_client"
-        android:name="com.yizhenwind.rocket.feature.client.ui.ClientNavActivity"
+        android:id="@+id/nav_create_client"
+        android:name="com.yizhenwind.rocket.feature.client.ui.create.CreateClientActivity"
         tools:layout="@layout/activity_base_nav" />
 
     <activity
@@ -52,8 +52,8 @@
         tools:layout="@layout/activity_base_nav" />
 
     <action
-        android:id="@+id/action_to_client"
-        app:destination="@id/nav_client"
+        android:id="@+id/action_to_create_client"
+        app:destination="@id/nav_create_client"
         app:enterAnim="@anim/slide_in_right"
         app:exitAnim="@anim/slide_out_left"
         app:popEnterAnim="@anim/slide_in_left"

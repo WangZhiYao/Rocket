@@ -1,4 +1,4 @@
-package com.yizhenwind.rocket.feature.client.ui
+package com.yizhenwind.rocket.feature.client.ui.create
 
 import android.os.Bundle
 import androidx.navigation.NavController
@@ -16,7 +16,7 @@ import dagger.hilt.android.AndroidEntryPoint
  * @since 2022/11/29
  */
 @AndroidEntryPoint
-class ClientNavActivity : BaseNavActivity() {
+class CreateClientActivity : BaseNavActivity() {
 
     private val binding by viewBindings<ActivityBaseNavBinding>()
 
@@ -34,6 +34,6 @@ class ClientNavActivity : BaseNavActivity() {
         binding.apply {
             setupToolbar(toolbar)
         }
-        navController.setGraph(R.navigation.navigation_client)
+        navController.setGraph(R.navigation.navigation_create_client)
     }
 }

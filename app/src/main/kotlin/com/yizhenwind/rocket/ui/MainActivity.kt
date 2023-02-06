@@ -48,7 +48,7 @@ class MainActivity : BaseNavActivity() {
                 fab.setThrottleClickListener {
                     when (navController.currentDestination?.id) {
                         R.id.nav_client_profile -> {
-                            navController.navigate(NavigationMainDirections.actionToClient())
+                            navController.navigate(NavigationMainDirections.actionToCreateClient())
                         }
                     }
                 }
