@@ -14,6 +14,6 @@ import kotlinx.coroutines.flow.Flow
 interface OrderStatusDao : IDao<OrderStatusEntity> {
 
     @Query("SELECT * FROM order_status WHERE enable = 1")
-    fun observeOrderStatus():Flow<List<OrderStatusEntity>>
+    fun observeOrderStatus(): Flow<List<OrderStatusEntity>>
 
 }

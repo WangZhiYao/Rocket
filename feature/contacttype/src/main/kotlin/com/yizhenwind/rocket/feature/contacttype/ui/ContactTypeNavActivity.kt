@@ -16,7 +16,7 @@ import dagger.hilt.android.AndroidEntryPoint
  * @since 2023/1/28
  */
 @AndroidEntryPoint
-class ContactTypeNavActivity: BaseNavActivity() {
+class ContactTypeNavActivity : BaseNavActivity() {
 
     private val binding by viewBindings<ActivityBaseNavBinding>()
 

@@ -1,7 +1,5 @@
 package com.yizhenwind.rocket.data.order
 
-import androidx.paging.PagingData
-import androidx.paging.map
 import com.yizhenwind.rocket.core.database.mapper.OrderProfileDtoMapper
 import com.yizhenwind.rocket.core.model.OrderProfile
 import com.yizhenwind.rocket.data.order.source.OrderLocalDataSource
@@ -19,10 +17,24 @@ class OrderRepository @Inject constructor(
     private val orderProfileDtoMapper: OrderProfileDtoMapper
 ) {
 
-    fun observeOrderProfileByClientId(clientId: Long): Flow<PagingData<OrderProfile>> =
-        orderLocalDataSource.observeOrderProfileByClientId(clientId)
-            .map { pagingData ->
-                pagingData.map { orderProfileDtoMapper.map(it) }
+    fun observeOrderProfileListByClientId(clientId: Long): Flow<List<OrderProfile>> =
+        orderLocalDataSource.observeOrderProfileListByClientId(clientId)
+            .map { orderProfileDtoList ->
+                orderProfileDtoList.map { orderProfileDto ->
+                    orderProfileDtoMapper.map(
+                        orderProfileDto
+                    )
+                }
+            }
+
+    fun observeOrderProfileListByCharacterId(characterId: Long): Flow<List<OrderProfile>> =
+        orderLocalDataSource.observeOrderProfileListByCharacterId(characterId)
+            .map { orderProfileDtoList ->
+                orderProfileDtoList.map { orderProfileDto ->
+                    orderProfileDtoMapper.map(
+                        orderProfileDto
+                    )
+                }
             }
 
 }

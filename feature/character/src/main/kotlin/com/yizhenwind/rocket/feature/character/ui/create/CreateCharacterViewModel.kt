@@ -200,10 +200,10 @@ class CreateCharacterViewModel @Inject constructor(
                         zone = zone,
                         server = server,
                         account = account,
-                        securityLock = securityLock,
                         name = characterName,
                         sect = sect,
                         internal = internal,
+                        securityLock = securityLock,
                         remark = remark
                     )
                 )

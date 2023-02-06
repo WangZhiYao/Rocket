@@ -3,7 +3,6 @@ package com.yizhenwind.rocket.core.database.dto
 import androidx.room.ColumnInfo
 import androidx.room.Relation
 import com.yizhenwind.rocket.core.database.entity.ContactTypeEntity
-import com.yizhenwind.rocket.core.model.ContactType
 
 /**
  * 客户信息摘要

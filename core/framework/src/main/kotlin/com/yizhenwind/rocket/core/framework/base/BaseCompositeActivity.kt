@@ -41,7 +41,7 @@ abstract class BaseCompositeActivity : BaseActivity() {
                 )
                 registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
                     override fun onPageSelected(position: Int) {
-                       this@BaseCompositeActivity.onPageSelected(position)
+                        this@BaseCompositeActivity.onPageSelected(position)
                     }
                 })
                 fab.setThrottleClickListener { onActionClicked(currentItem) }
@@ -57,7 +57,7 @@ abstract class BaseCompositeActivity : BaseActivity() {
 
     }
 
-    protected open fun onActionClicked(currentIndex:Int) {
+    protected open fun onActionClicked(currentIndex: Int) {
 
     }
 }

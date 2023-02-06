@@ -12,10 +12,10 @@ data class Character(
     val zone: Zone = Zone(),
     val server: Server = Server(),
     val account: Account = Account(),
-    val securityLock: String? = null,
     val name: String = "",
     val sect: Sect = Sect(),
     val internal: Internal = Internal(),
+    val securityLock: String? = null,
     val remark: String? = null,
     val enable: Boolean = true,
     val createTime: Long = System.currentTimeMillis()

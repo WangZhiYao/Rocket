@@ -1,7 +1,5 @@
 package com.yizhenwind.rocket.feature.client.ui.composite.order
 
-import androidx.lifecycle.viewModelScope
-import androidx.paging.cachedIn
 import com.yizhenwind.rocket.core.framework.base.BaseMVIViewModel
 import com.yizhenwind.rocket.core.mediator.order.IOrderService
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -25,8 +23,7 @@ class ClientOrderViewModel @Inject constructor(
 
     fun observeOrderProfileByClientId(clientId: Long) {
         intent {
-            orderService.observeOrderProfileByClientId(clientId)
-                .cachedIn(viewModelScope)
+            orderService.observeOrderProfileListByClientId(clientId)
                 .collect { orderProfileList ->
                     reduce {
                         state.copy(orderProfileList = orderProfileList)

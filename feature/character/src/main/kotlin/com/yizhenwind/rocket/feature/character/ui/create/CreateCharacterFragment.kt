@@ -3,6 +3,7 @@ package com.yizhenwind.rocket.feature.character.ui.create
 import android.widget.ArrayAdapter
 import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.google.android.material.snackbar.Snackbar
 import com.yizhenwind.rocket.core.common.constant.Constant
@@ -188,7 +189,11 @@ class CreateCharacterFragment :
                         Snackbar.LENGTH_INDEFINITE,
                         actionResId = R.string.create_character_success_to_composite
                     ) {
-                        // TODO: to character composite
+                        findNavController().navigate(
+                            CreateCharacterFragmentDirections.actionCreateCharacterToCharacterComposite(
+                                sideEffect.character.id
+                            )
+                        )
                     }
                 }
             }

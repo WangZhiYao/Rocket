@@ -21,10 +21,10 @@ class CharacterMapper @Inject constructor() : IMapper<Character, CharacterEntity
                 zone.id,
                 server.id,
                 account.id,
-                securityLock,
                 name,
                 sect.id,
                 internal.id,
+                securityLock,
                 remark,
                 enable,
                 createTime

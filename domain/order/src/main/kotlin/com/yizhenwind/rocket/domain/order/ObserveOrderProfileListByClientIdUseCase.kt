@@ -1,6 +1,5 @@
 package com.yizhenwind.rocket.domain.order
 
-import androidx.paging.PagingData
 import com.yizhenwind.rocket.core.common.di.coroutine.qualifier.IODispatcher
 import com.yizhenwind.rocket.core.model.OrderProfile
 import com.yizhenwind.rocket.data.order.OrderRepository
@@ -14,13 +13,13 @@ import javax.inject.Inject
  * @author WangZhiYao
  * @since 2023/1/22
  */
-class ObserveOrderProfileByClientIdUseCase @Inject constructor(
+class ObserveOrderProfileListByClientIdUseCase @Inject constructor(
     private val orderRepository: OrderRepository,
     @IODispatcher private val dispatcher: CoroutineDispatcher
 ) {
 
-    operator fun invoke(clientId: Long): Flow<PagingData<OrderProfile>> =
-        orderRepository.observeOrderProfileByClientId(clientId)
+    operator fun invoke(clientId: Long): Flow<List<OrderProfile>> =
+        orderRepository.observeOrderProfileListByClientId(clientId)
             .flowOn(dispatcher)
-    
+
 }

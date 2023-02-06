@@ -3,7 +3,6 @@ package com.yizhenwind.rocket.core.database.dao
 import androidx.room.Dao
 import androidx.room.Query
 import com.yizhenwind.rocket.core.database.entity.ContactTypeEntity
-import com.yizhenwind.rocket.core.model.ContactType
 import kotlinx.coroutines.flow.Flow
 
 /**

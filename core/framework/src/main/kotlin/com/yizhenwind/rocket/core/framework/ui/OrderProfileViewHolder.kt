@@ -1,17 +1,16 @@
-package com.yizhenwind.rocket.feature.client.ui.composite.order
+package com.yizhenwind.rocket.core.framework.ui
 
 import com.yizhenwind.rocket.core.common.ext.formatDate
+import com.yizhenwind.rocket.core.framework.databinding.ItemOrderProfileBinding
 import com.yizhenwind.rocket.core.framework.ext.setThrottleClickListener
-import com.yizhenwind.rocket.core.framework.widget.BaseViewHolder
 import com.yizhenwind.rocket.core.model.OrderProfile
-import com.yizhenwind.rocket.feature.client.databinding.ItemClientOrderBinding
 
 /**
  *
  * @author WangZhiYao
- * @since 2023/1/23
+ * @since 2023/2/6
  */
-class ClientOrderViewHolder(private val binding: ItemClientOrderBinding) :
+class OrderProfileViewHolder(private val binding: ItemOrderProfileBinding) :
     BaseViewHolder<OrderProfile>(binding.root) {
 
     override fun bind(item: OrderProfile) {

@@ -1,7 +1,6 @@
 package com.yizhenwind.rocket.core.common.di
 
 import com.squareup.moshi.Moshi
-import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import com.yizhenwind.rocket.core.common.di.coroutine.qualifier.IODispatcher
 import com.yizhenwind.rocket.core.common.di.coroutine.qualifier.IOScope
 import com.yizhenwind.rocket.core.common.di.coroutine.qualifier.MainDispatcher

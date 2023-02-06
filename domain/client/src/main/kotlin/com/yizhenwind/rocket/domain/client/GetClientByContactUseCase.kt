@@ -1,8 +1,8 @@
 package com.yizhenwind.rocket.domain.client
 
-import com.yizhenwind.rocket.data.client.ClientRepository
 import com.yizhenwind.rocket.core.model.Client
 import com.yizhenwind.rocket.core.model.ContactType
+import com.yizhenwind.rocket.data.client.ClientRepository
 import javax.inject.Inject
 
 /**

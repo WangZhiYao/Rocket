@@ -12,7 +12,7 @@ import android.content.Context
  */
 object ClipboardHelper {
 
-    fun copyTo(context: Context, value: String): Boolean {
+    fun copy(context: Context, value: String): Boolean {
         return try {
             val clipboard = context.getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
             val clipData = ClipData.newPlainText(value, value)

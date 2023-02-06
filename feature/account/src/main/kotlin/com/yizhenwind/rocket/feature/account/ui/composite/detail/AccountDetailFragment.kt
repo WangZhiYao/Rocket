@@ -59,45 +59,48 @@ class AccountDetailFragment :
 
     override fun initView() {
         binding.apply {
-            clAccountDetailClient.setThrottleClickListener {
-                clientService.launchClientComposite(requireContext(), viewModel.account.client.id)
-            }
-            clAccountDetailUsername.setOnLongClickListener {
-                if (ClipboardHelper.copyTo(requireContext(), viewModel.account.username)
-                ) {
-                    root.showSnack(R.string.account_detail_copy_username_to_clipboard_success)
-                    true
-                } else {
-                    false
-                }
-            }
-            clAccountDetailPassword.setOnLongClickListener {
-                if (viewModel.passwordDecrypted) {
-                    if (ClipboardHelper.copyTo(requireContext(), viewModel.account.password)) {
-                        root.showSnack(R.string.account_detail_copy_password_to_clipboard_success)
-                        return@setOnLongClickListener true
-                    } else {
-                        return@setOnLongClickListener false
+            viewModel.apply {
+                clAccountDetailClient.setThrottleClickListener {
+                    if (account.client.id != Constant.DEFAULT_ID) {
+                        clientService.launchClientComposite(requireContext(), account.client.id)
                     }
-                } else {
-                    root.showSnack(R.string.error_account_detail_copy_password_to_clipboard)
-                    return@setOnLongClickListener false
                 }
-            }
-            ibAccountDetailPasswordVisibility.setThrottleClickListener {
-                viewModel.account.apply {
-                    if (encrypted) {
-                        lifecycleScope.launch(CoroutineExceptionHandler { _, throwable ->
-                            logger.e(throwable)
-                            root.showSnack(
-                                throwable.message
-                                    ?: getString(R.string.error_biometric_failed)
-                            )
-                        }) {
-                            viewModel.decryptPassword(authenticateForDecrypt(iv))
+                clAccountDetailUsername.setOnLongClickListener {
+                    if (ClipboardHelper.copy(requireContext(), account.username)) {
+                        root.showSnack(R.string.account_detail_copy_username_to_clipboard_success)
+                        true
+                    } else {
+                        false
+                    }
+                }
+                clAccountDetailPassword.setOnLongClickListener {
+                    if (passwordDecrypted) {
+                        if (ClipboardHelper.copy(requireContext(), account.password)) {
+                            root.showSnack(R.string.account_detail_copy_password_to_clipboard_success)
+                            return@setOnLongClickListener true
+                        } else {
+                            return@setOnLongClickListener false
                         }
                     } else {
-                        viewModel.observeAccountById(args.accountId)
+                        root.showSnack(R.string.error_account_detail_copy_password_to_clipboard)
+                        return@setOnLongClickListener false
+                    }
+                }
+                ibAccountDetailPasswordVisibility.setThrottleClickListener {
+                    account.apply {
+                        if (encrypted) {
+                            lifecycleScope.launch(CoroutineExceptionHandler { _, throwable ->
+                                logger.e(throwable)
+                                root.showSnack(
+                                    throwable.message
+                                        ?: getString(R.string.error_biometric_failed)
+                                )
+                            }) {
+                                decryptPassword(authenticateForDecrypt(iv))
+                            }
+                        } else {
+                            observeAccountById(args.accountId)
+                        }
                     }
                 }
             }

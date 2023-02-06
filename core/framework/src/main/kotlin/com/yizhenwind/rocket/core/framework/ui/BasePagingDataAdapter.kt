@@ -1,8 +1,7 @@
-package com.yizhenwind.rocket.core.framework.base
+package com.yizhenwind.rocket.core.framework.ui
 
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
-import com.yizhenwind.rocket.core.framework.widget.BaseViewHolder
 
 /**
  *

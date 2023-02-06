@@ -1,18 +1,16 @@
-package com.yizhenwind.rocket.feature.client.ui.composite.account
+package com.yizhenwind.rocket.core.framework.ui
 
+import com.yizhenwind.rocket.core.framework.R
+import com.yizhenwind.rocket.core.framework.databinding.ItemAccountProfileBinding
 import com.yizhenwind.rocket.core.framework.ext.setThrottleClickListener
-import com.yizhenwind.rocket.core.framework.widget.BaseViewHolder
 import com.yizhenwind.rocket.core.model.AccountProfile
-import com.yizhenwind.rocket.feature.client.R
-import com.yizhenwind.rocket.feature.client.databinding.ItemClientAccountBinding
 
 /**
  *
- *
  * @author WangZhiYao
- * @since 2023/1/18
+ * @since 2023/2/6
  */
-class ClientAccountViewHolder(private val binding: ItemClientAccountBinding) :
+class AccountProfileViewHolder(private val binding: ItemAccountProfileBinding) :
     BaseViewHolder<AccountProfile>(binding.root) {
 
     var onActionClickListener: ((AccountProfile) -> Unit)? = null
@@ -25,14 +23,14 @@ class ClientAccountViewHolder(private val binding: ItemClientAccountBinding) :
                     text = StringBuilder()
                         .append(
                             context.getString(
-                                R.string.item_account_profile_character_count,
+                                R.string.item_profile_character_count,
                                 characterCount
                             )
                         )
                         .append(" ")
                         .append(
                             context.getString(
-                                R.string.item_account_profile_order_count,
+                                R.string.item_profile_order_count,
                                 orderCount
                             )
                         )

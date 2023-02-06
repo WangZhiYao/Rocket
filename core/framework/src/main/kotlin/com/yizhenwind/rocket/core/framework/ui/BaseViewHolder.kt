@@ -1,4 +1,4 @@
-package com.yizhenwind.rocket.core.framework.widget
+package com.yizhenwind.rocket.core.framework.ui
 
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView

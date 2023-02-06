@@ -2,7 +2,7 @@ package com.yizhenwind.rocket.feature.contacttype.ui
 
 import androidx.core.view.isVisible
 import com.yizhenwind.rocket.core.framework.ext.setThrottleClickListener
-import com.yizhenwind.rocket.core.framework.widget.BaseViewHolder
+import com.yizhenwind.rocket.core.framework.ui.BaseViewHolder
 import com.yizhenwind.rocket.core.model.ContactType
 import com.yizhenwind.rocket.feature.contacttype.databinding.ItemContactTypeBinding
 

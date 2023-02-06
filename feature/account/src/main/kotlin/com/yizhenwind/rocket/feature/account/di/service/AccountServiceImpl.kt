@@ -8,9 +8,9 @@ import com.yizhenwind.rocket.core.model.AccountProfile
 import com.yizhenwind.rocket.domain.account.CreateAccountUseCase
 import com.yizhenwind.rocket.domain.account.ObserveAccountListByClientIdUseCase
 import com.yizhenwind.rocket.domain.account.ObserveAccountProfileByClientIdUseCase
-import com.yizhenwind.rocket.feature.account.ui.create.CreateAccountArgs
 import com.yizhenwind.rocket.feature.account.ui.composite.AccountCompositeActivity
 import com.yizhenwind.rocket.feature.account.ui.composite.AccountCompositeActivityArgs
+import com.yizhenwind.rocket.feature.account.ui.create.CreateAccountArgs
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 

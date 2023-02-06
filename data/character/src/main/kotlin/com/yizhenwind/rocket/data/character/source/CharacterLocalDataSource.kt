@@ -31,4 +31,7 @@ class CharacterLocalDataSource @Inject constructor(
             emit(characterDao.insert(characterEntity))
         }
 
+    fun observeCharacterById(id:Long):Flow<CharacterDto?> =
+        characterDao.observeCharacterById(id)
+
 }

@@ -16,7 +16,7 @@ import dagger.hilt.android.AndroidEntryPoint
  * @since 2023/2/4
  */
 @AndroidEntryPoint
-class CreateCharacterActivity: BaseNavActivity() {
+class CreateCharacterActivity : BaseNavActivity() {
 
     private val binding by viewBindings<ActivityBaseNavBinding>()
 

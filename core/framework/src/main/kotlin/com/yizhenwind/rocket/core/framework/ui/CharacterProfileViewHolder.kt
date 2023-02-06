@@ -1,17 +1,16 @@
-package com.yizhenwind.rocket.feature.client.ui.composite.character
+package com.yizhenwind.rocket.core.framework.ui
 
+import com.yizhenwind.rocket.core.framework.R
+import com.yizhenwind.rocket.core.framework.databinding.ItemCharacterProfileBinding
 import com.yizhenwind.rocket.core.framework.ext.setThrottleClickListener
-import com.yizhenwind.rocket.core.framework.widget.BaseViewHolder
 import com.yizhenwind.rocket.core.model.CharacterProfile
-import com.yizhenwind.rocket.feature.client.R
-import com.yizhenwind.rocket.feature.client.databinding.ItemClientCharacterBinding
 
 /**
  *
  * @author WangZhiYao
- * @since 2023/1/19
+ * @since 2023/2/6
  */
-class ClientCharacterViewHolder(private val binding: ItemClientCharacterBinding) :
+class CharacterProfileViewHolder(private val binding: ItemCharacterProfileBinding) :
     BaseViewHolder<CharacterProfile>(binding.root) {
 
     var onActionClickListener: ((CharacterProfile) -> Unit)? = null

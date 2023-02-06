@@ -39,4 +39,9 @@ class CharacterRepository @Inject constructor(
         characterLocalDataSource.createCharacter(characterMapper.map(character))
             .map { id -> character.copy(id = id) }
 
+    fun observeCharacterById(id: Long): Flow<Character> =
+        characterLocalDataSource.observeCharacterById(id).map { characterDto ->
+            characterDto?.run { characterDtoMapper.map(this) } ?: Character()
+        }
+
 }

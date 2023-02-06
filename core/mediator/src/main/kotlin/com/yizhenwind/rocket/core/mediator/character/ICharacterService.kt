@@ -20,4 +20,6 @@ interface ICharacterService {
 
     fun launchCreateCharacter(context: Context, clientId: Long, accountId: Long)
 
+    fun launchCharacterComposite(context: Context, characterId: Long)
+
 }

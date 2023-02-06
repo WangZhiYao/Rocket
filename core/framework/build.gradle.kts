@@ -47,6 +47,7 @@ dependencies {
     androidTestImplementation(libs.bundles.androidx.test)
 
     api(project(":core:common"))
+    api(project(":core:model"))
 
     implementation(libs.hilt.android)
     kapt(libs.hilt.android.compiler)

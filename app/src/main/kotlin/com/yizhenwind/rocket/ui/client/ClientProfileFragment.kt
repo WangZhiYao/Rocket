@@ -5,6 +5,7 @@ import androidx.navigation.fragment.findNavController
 import com.yizhenwind.rocket.NavigationMainDirections
 import com.yizhenwind.rocket.core.framework.base.BaseListFragment
 import com.yizhenwind.rocket.core.framework.mvi.IMVIHost
+import com.yizhenwind.rocket.core.framework.ui.ClientProfileAdapter
 import dagger.hilt.android.AndroidEntryPoint
 import org.orbitmvi.orbit.viewmodel.observe
 

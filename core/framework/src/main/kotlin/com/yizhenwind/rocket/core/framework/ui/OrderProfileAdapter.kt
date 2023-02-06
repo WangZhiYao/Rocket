@@ -1,24 +1,23 @@
-package com.yizhenwind.rocket.feature.client.ui.composite.order
+package com.yizhenwind.rocket.core.framework.ui
 
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
-import com.yizhenwind.rocket.core.framework.base.BasePagingDataAdapter
+import com.yizhenwind.rocket.core.framework.databinding.ItemOrderProfileBinding
 import com.yizhenwind.rocket.core.framework.ext.viewBinding
 import com.yizhenwind.rocket.core.model.OrderProfile
-import com.yizhenwind.rocket.feature.client.databinding.ItemClientOrderBinding
 
 /**
  *
  * @author WangZhiYao
- * @since 2023/1/23
+ * @since 2023/2/6
  */
-class ClientOrderAdapter :
-    BasePagingDataAdapter<OrderProfile, ClientOrderViewHolder>(ORDER_PROFILE_COMPARATOR) {
+class OrderProfileAdapter :
+    BaseListAdapter<OrderProfile, OrderProfileViewHolder>(ORDER_PROFILE_COMPARATOR) {
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ClientOrderViewHolder =
-        ClientOrderViewHolder(parent.viewBinding(ItemClientOrderBinding::inflate)).apply {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): OrderProfileViewHolder =
+        OrderProfileViewHolder(parent.viewBinding(ItemOrderProfileBinding::inflate)).apply {
             onItemClickListener = { orderProfile ->
-                this@ClientOrderAdapter.onItemClickListener?.invoke(orderProfile)
+                this@OrderProfileAdapter.onItemClickListener?.invoke(orderProfile)
             }
         }
 

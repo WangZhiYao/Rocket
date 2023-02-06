@@ -81,7 +81,6 @@ dependencies {
     debugImplementation(libs.leakcanary.android)
 
     implementation(project(":core:common"))
-    implementation(project(":core:model"))
     implementation(project(":core:framework"))
     implementation(project(":core:mediator"))
 

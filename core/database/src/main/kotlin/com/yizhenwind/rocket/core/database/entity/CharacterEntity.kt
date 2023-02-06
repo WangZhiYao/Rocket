@@ -44,12 +44,6 @@ data class CharacterEntity(
     val accountId: Long,
 
     /**
-     * 仓库锁
-     */
-    @ColumnInfo(name = "security_lock")
-    val securityLock: String? = null,
-
-    /**
      * 角色名
      */
     val name: String,
@@ -65,6 +59,12 @@ data class CharacterEntity(
      */
     @ColumnInfo(name = "internal_id")
     val internalId: Long,
+
+    /**
+     * 安全锁
+     */
+    @ColumnInfo(name = "security_lock")
+    val securityLock: String? = null,
 
     /**
      * 备注

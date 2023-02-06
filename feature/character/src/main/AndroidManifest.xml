@@ -3,6 +3,9 @@
 
     <application>
         <activity android:name=".ui.create.CreateCharacterActivity" />
+
+        <activity android:name=".ui.composite.CharacterCompositeActivity" />
+
     </application>
 
 </manifest>

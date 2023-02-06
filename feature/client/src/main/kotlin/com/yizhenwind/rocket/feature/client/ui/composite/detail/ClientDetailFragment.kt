@@ -45,8 +45,7 @@ class ClientDetailFragment :
     override fun initView() {
         binding.apply {
             clClientDetailContact.setOnLongClickListener {
-                if (ClipboardHelper.copyTo(requireContext(), viewModel.contact)
-                ) {
+                if (ClipboardHelper.copy(requireContext(), viewModel.contact)) {
                     root.showSnack(R.string.client_detail_copy_contact_to_clipboard_success)
                     true
                 } else {

@@ -9,7 +9,7 @@
         android:id="@+id/nav_contact_type"
         android:name="com.yizhenwind.rocket.feature.contacttype.ui.ContactTypeFragment"
         android:label="@string/label_contact_type"
-        tools:layout="@layout/fragment_base_list" >
+        tools:layout="@layout/fragment_base_list">
 
         <action
             android:id="@+id/action_to_create_contact_type"

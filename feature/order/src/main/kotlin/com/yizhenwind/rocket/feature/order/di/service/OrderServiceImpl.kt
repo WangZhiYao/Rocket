@@ -1,9 +1,9 @@
 package com.yizhenwind.rocket.feature.order.di.service
 
-import androidx.paging.PagingData
 import com.yizhenwind.rocket.core.mediator.order.IOrderService
 import com.yizhenwind.rocket.core.model.OrderProfile
-import com.yizhenwind.rocket.domain.order.ObserveOrderProfileByClientIdUseCase
+import com.yizhenwind.rocket.domain.order.ObserveOrderProfileListByCharacterIdUseCase
+import com.yizhenwind.rocket.domain.order.ObserveOrderProfileListByClientIdUseCase
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 
@@ -13,10 +13,14 @@ import javax.inject.Inject
  * @since 2023/1/22
  */
 class OrderServiceImpl @Inject constructor(
-    private val observeOrderProfileByClientIdUseCase: ObserveOrderProfileByClientIdUseCase
+    private val observeOrderProfileListByClientIdUseCase: ObserveOrderProfileListByClientIdUseCase,
+    private val observeOrderProfileListByCharacterIdUseCase: ObserveOrderProfileListByCharacterIdUseCase
 ) : IOrderService {
 
-    override fun observeOrderProfileByClientId(clientId: Long): Flow<PagingData<OrderProfile>> =
-        observeOrderProfileByClientIdUseCase(clientId)
+    override fun observeOrderProfileListByClientId(clientId: Long): Flow<List<OrderProfile>> =
+        observeOrderProfileListByClientIdUseCase(clientId)
+
+    override fun observeOrderProfileListByCharacterId(characterId: Long): Flow<List<OrderProfile>> =
+        observeOrderProfileListByCharacterIdUseCase(characterId)
 
 }

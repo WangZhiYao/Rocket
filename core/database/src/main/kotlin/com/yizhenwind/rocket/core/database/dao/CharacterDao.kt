@@ -65,4 +65,8 @@ interface CharacterDao : IDao<CharacterEntity> {
     )
     fun observeCharacterProfileByAccountId(accountId: Long): Flow<List<CharacterProfileDto>>
 
+    @Transaction
+    @Query("SELECT * FROM character WHERE id = :id LIMIT 1")
+    fun observeCharacterById(id: Long): Flow<CharacterDto?>
+
 }

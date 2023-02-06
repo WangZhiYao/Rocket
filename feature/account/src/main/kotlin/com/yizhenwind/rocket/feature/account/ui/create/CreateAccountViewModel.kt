@@ -111,7 +111,8 @@ class CreateAccountViewModel @Inject constructor(
                 return@intent
             }
 
-            val account = Account(client = Client(id = clientId), username = username, password = password)
+            val account =
+                Account(client = Client(id = clientId), username = username, password = password)
 
             if (authResult != null) {
                 biometricEncryptUseCase(authResult, password)

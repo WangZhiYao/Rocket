@@ -6,7 +6,6 @@ import com.squareup.moshi.adapter
 import com.yizhenwind.rocket.core.common.di.coroutine.qualifier.IODispatcher
 import com.yizhenwind.rocket.core.common.usecase.ExecuteResult
 import com.yizhenwind.rocket.core.database.dao.ContactTypeDao
-import com.yizhenwind.rocket.core.database.entity.CategoryEntity
 import com.yizhenwind.rocket.core.database.entity.ContactTypeEntity
 import com.yizhenwind.rocket.core.database.mapper.ContactTypeMapper
 import com.yizhenwind.rocket.core.logger.ILogger

@@ -4,8 +4,11 @@ import androidx.fragment.app.viewModels
 import com.yizhenwind.rocket.core.framework.base.BaseListFragment
 import com.yizhenwind.rocket.core.framework.ext.fragmentArgs
 import com.yizhenwind.rocket.core.framework.mvi.IMVIHost
+import com.yizhenwind.rocket.core.framework.ui.CharacterProfileAdapter
+import com.yizhenwind.rocket.core.mediator.character.ICharacterService
 import dagger.hilt.android.AndroidEntryPoint
 import org.orbitmvi.orbit.viewmodel.observe
+import javax.inject.Inject
 
 /**
  *
@@ -18,7 +21,10 @@ class AccountCharacterFragment : BaseListFragment(), IMVIHost<AccountCharacterVi
     private val viewModel by viewModels<AccountCharacterViewModel>()
     private val args by fragmentArgs<AccountCharacterArgs>()
 
-    override val adapter = AccountCharacterAdapter()
+    override val adapter = CharacterProfileAdapter()
+
+    @Inject
+    lateinit var characterService: ICharacterService
 
     override fun initData() {
         viewModel.apply {
@@ -31,7 +37,7 @@ class AccountCharacterFragment : BaseListFragment(), IMVIHost<AccountCharacterVi
         super.initView()
         adapter.apply {
             onItemClickListener = { characterProfile ->
-                // TODO: open character composite
+                characterService.launchCharacterComposite(requireContext(), characterProfile.id)
             }
             onActionClickListener = {
                 // TODO: open character bottom sheet

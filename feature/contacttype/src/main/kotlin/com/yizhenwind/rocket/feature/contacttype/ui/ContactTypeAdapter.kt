@@ -2,8 +2,8 @@ package com.yizhenwind.rocket.feature.contacttype.ui
 
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
-import com.yizhenwind.rocket.core.framework.base.BaseListAdapter
 import com.yizhenwind.rocket.core.framework.ext.viewBinding
+import com.yizhenwind.rocket.core.framework.ui.BaseListAdapter
 import com.yizhenwind.rocket.core.model.ContactType
 import com.yizhenwind.rocket.feature.contacttype.databinding.ItemContactTypeBinding
 

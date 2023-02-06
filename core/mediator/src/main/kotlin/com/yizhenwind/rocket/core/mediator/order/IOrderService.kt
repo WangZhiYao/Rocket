@@ -1,6 +1,5 @@
 package com.yizhenwind.rocket.core.mediator.order
 
-import androidx.paging.PagingData
 import com.yizhenwind.rocket.core.model.OrderProfile
 import kotlinx.coroutines.flow.Flow
 
@@ -11,6 +10,8 @@ import kotlinx.coroutines.flow.Flow
  */
 interface IOrderService {
 
-    fun observeOrderProfileByClientId(clientId: Long): Flow<PagingData<OrderProfile>>
+    fun observeOrderProfileListByClientId(clientId: Long): Flow<List<OrderProfile>>
+
+    fun observeOrderProfileListByCharacterId(characterId: Long): Flow<List<OrderProfile>>
 
 }

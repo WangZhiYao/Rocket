@@ -1,29 +1,28 @@
-package com.yizhenwind.rocket.feature.client.ui.composite.character
+package com.yizhenwind.rocket.core.framework.ui
 
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
-import com.yizhenwind.rocket.core.framework.base.BaseListAdapter
+import com.yizhenwind.rocket.core.framework.databinding.ItemCharacterProfileBinding
 import com.yizhenwind.rocket.core.framework.ext.viewBinding
 import com.yizhenwind.rocket.core.model.CharacterProfile
-import com.yizhenwind.rocket.feature.client.databinding.ItemClientCharacterBinding
 
 /**
  *
  * @author WangZhiYao
- * @since 2023/1/19
+ * @since 2023/2/6
  */
-class ClientCharacterAdapter :
-    BaseListAdapter<CharacterProfile, ClientCharacterViewHolder>(CHARACTER_PROFILE_COMPARATOR) {
+class CharacterProfileAdapter :
+    BaseListAdapter<CharacterProfile, CharacterProfileViewHolder>(CHARACTER_PROFILE_COMPARATOR) {
 
     var onActionClickListener: ((CharacterProfile) -> Unit)? = null
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ClientCharacterViewHolder =
-        ClientCharacterViewHolder(parent.viewBinding(ItemClientCharacterBinding::inflate)).apply {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CharacterProfileViewHolder =
+        CharacterProfileViewHolder(parent.viewBinding(ItemCharacterProfileBinding::inflate)).apply {
             onItemClickListener = { characterProfile ->
-                this@ClientCharacterAdapter.onItemClickListener?.invoke(characterProfile)
+                this@CharacterProfileAdapter.onItemClickListener?.invoke(characterProfile)
             }
             onActionClickListener = { characterProfile ->
-                this@ClientCharacterAdapter.onActionClickListener?.invoke(characterProfile)
+                this@CharacterProfileAdapter.onActionClickListener?.invoke(characterProfile)
             }
         }
 
