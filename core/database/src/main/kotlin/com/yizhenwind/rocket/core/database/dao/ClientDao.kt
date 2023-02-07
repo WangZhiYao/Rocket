@@ -25,25 +25,7 @@ interface ClientDao : IDao<ClientEntity> {
      * 分页查询客户简介
      */
     @Transaction
-    @Query(
-        """
-            SELECT
-              id,
-              name,
-              contact_type_id,
-              contact,
-              ( SELECT COUNT(*) FROM account WHERE client_id = client.id ) AS account_count,
-              ( SELECT COUNT(*) FROM character WHERE client_id = client.id ) AS character_count,
-              ( SELECT COUNT(*) FROM `order` WHERE client_id = client.id ) AS order_count,
-              create_time
-            FROM
-              client
-            WHERE
-              enable = 1
-            ORDER BY
-              create_time DESC
-        """
-    )
+    @Query("SELECT id, name, contact_type_id, contact, ( SELECT COUNT(*) FROM account WHERE client_id = client.id ) AS account_count, ( SELECT COUNT(*) FROM character WHERE client_id = client.id ) AS character_count, ( SELECT COUNT(*) FROM `order` WHERE client_id = client.id ) AS order_count, create_time FROM client WHERE enable = 1 ORDER BY create_time DESC")
     fun observeClientProfile(): Flow<List<ClientProfileDto>>
 
     /**
@@ -53,19 +35,7 @@ interface ClientDao : IDao<ClientEntity> {
      * @param contact 联系方式
      */
     @Transaction
-    @Query(
-        """
-            SELECT
-              *
-            FROM
-              client
-            WHERE
-              contact_type_id = :contactTypeId 
-              AND contact = :contact
-              AND enable = 1
-            LIMIT 1
-        """
-    )
+    @Query("SELECT * FROM client WHERE contact_type_id = :contactTypeId AND contact = :contact AND enable = 1 LIMIT 1")
     suspend fun getClientByContact(contactTypeId: Long, contact: String): ClientDto?
 
     /**
@@ -73,10 +43,6 @@ interface ClientDao : IDao<ClientEntity> {
      *
      * @param id 客户ID
      */
-    @Transaction
-    @Query("SELECT * FROM client WHERE id = :id LIMIT 1")
-    suspend fun getClientById(id: Long): ClientDto?
-
     @Transaction
     @Query("SELECT * FROM client WHERE id = :id LIMIT 1")
     fun observeClientById(id: Long): Flow<ClientDto?>

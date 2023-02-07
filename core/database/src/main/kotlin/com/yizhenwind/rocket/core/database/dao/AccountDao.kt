@@ -18,39 +18,11 @@ import kotlinx.coroutines.flow.Flow
 interface AccountDao : IDao<AccountEntity> {
 
     @Transaction
-    @Query(
-        """
-            SELECT
-              * 
-            FROM
-              account
-            WHERE
-              client_id = :clientId
-              AND enable = 1
-            ORDER BY 
-              create_time DESC
-        """
-    )
+    @Query("SELECT * FROM account WHERE client_id = :clientId AND enable = 1 ORDER BY create_time DESC")
     fun observeAccountListByClientId(clientId: Long): Flow<List<AccountDto>>
 
     @Transaction
-    @Query(
-        """
-            SELECT
-              id,
-              username,
-              ( SELECT Count(*) FROM CHARACTER WHERE account_id = account.id ) AS character_count,
-              ( SELECT Count(*) FROM `order` WHERE account_id = account.id ) AS order_count,
-              create_time 
-            FROM
-              account 
-            WHERE
-              client_id = :clientId
-              AND enable = 1
-            ORDER BY
-              create_time DESC 
-        """
-    )
+    @Query("SELECT id, username, ( SELECT Count(*) FROM CHARACTER WHERE account_id = account.id ) AS character_count, ( SELECT Count(*) FROM `order` WHERE account_id = account.id ) AS order_count, create_time FROM account WHERE client_id = :clientId AND enable = 1 ORDER BY create_time DESC")
     fun observeAccountProfileByClientId(clientId: Long): Flow<List<AccountProfileDto>>
 
     @Transaction

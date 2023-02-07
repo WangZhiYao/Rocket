@@ -17,45 +17,11 @@ import kotlinx.coroutines.flow.Flow
 interface OrderDao : IDao<OrderEntity> {
 
     @Transaction
-    @Query(
-        """
-            SELECT
-              id,
-              subject_id,
-              remark,
-              order_status_id,
-              payment_status_id,
-              create_time
-            FROM 
-              `order`
-            WHERE
-              client_id = :clientId
-              AND enable = 1
-            ORDER BY
-              create_time DESC
-        """
-    )
+    @Query("SELECT id, subject_id, remark, order_status, payment_status, create_time FROM `order` WHERE client_id = :clientId AND enable = 1 ORDER BY create_time DESC")
     fun observeOrderProfileListByClientId(clientId: Long): Flow<List<OrderProfileDto>>
 
     @Transaction
-    @Query(
-        """
-            SELECT
-              id,
-              subject_id,
-              remark,
-              order_status_id,
-              payment_status_id,
-              create_time
-            FROM 
-              `order`
-            WHERE
-              character_id = :characterId
-              AND enable = 1
-            ORDER BY
-              create_time DESC
-        """
-    )
+    @Query("SELECT id, subject_id, remark, order_status, payment_status, create_time FROM `order` WHERE character_id = :characterId AND enable = 1 ORDER BY create_time DESC")
     fun observeOrderProfileListByCharacterId(characterId: Long): Flow<List<OrderProfileDto>>
 
 }

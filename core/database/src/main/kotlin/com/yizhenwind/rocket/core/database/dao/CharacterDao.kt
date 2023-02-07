@@ -22,47 +22,11 @@ interface CharacterDao : IDao<CharacterEntity> {
     fun observeCharacterByClientId(clientId: Long): Flow<List<CharacterDto>>
 
     @Transaction
-    @Query(
-        """
-            SELECT
-              id,
-              zone_id,
-              server_id,
-              name,
-              sect_id,
-              remark,
-              create_time
-            FROM
-              character
-            WHERE
-              client_id = :clientId
-              AND enable = 1
-            ORDER BY
-              create_time DESC
-        """
-    )
+    @Query("SELECT id, zone_id, server_id, name, sect_id, remark, create_time FROM character WHERE client_id = :clientId AND enable = 1 ORDER BY create_time DESC")
     fun observeCharacterProfileByClientId(clientId: Long): Flow<List<CharacterProfileDto>>
 
     @Transaction
-    @Query(
-        """
-            SELECT
-              id,
-              zone_id,
-              server_id,
-              name,
-              sect_id,
-              remark,
-              create_time
-            FROM
-              character
-            WHERE
-              account_id = :accountId
-              AND enable = 1
-            ORDER BY
-              create_time DESC
-        """
-    )
+    @Query("SELECT id, zone_id, server_id, name, sect_id, remark, create_time FROM character WHERE account_id = :accountId AND enable = 1 ORDER BY create_time DESC")
     fun observeCharacterProfileByAccountId(accountId: Long): Flow<List<CharacterProfileDto>>
 
     @Transaction

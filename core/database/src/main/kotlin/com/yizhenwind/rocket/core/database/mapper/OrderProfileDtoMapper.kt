@@ -11,9 +11,7 @@ import javax.inject.Inject
  * @since 2023/1/22
  */
 class OrderProfileDtoMapper @Inject constructor(
-    private val subjectDtoMapper: SubjectDtoMapper,
-    private val orderStatusMapper: OrderStatusMapper,
-    private val paymentStatusMapper: PaymentStatusMapper
+    private val subjectDtoMapper: SubjectDtoMapper
 ) : IMapper<OrderProfileDto, OrderProfile> {
 
     override fun map(input: OrderProfileDto): OrderProfile =
@@ -22,8 +20,8 @@ class OrderProfileDtoMapper @Inject constructor(
                 id,
                 subjectDtoMapper.map(subject),
                 remark,
-                orderStatusMapper.fromEntity(orderStatus),
-                paymentStatusMapper.fromEntity(paymentStatus),
+                orderStatus,
+                paymentStatus,
                 createTime
             )
         }

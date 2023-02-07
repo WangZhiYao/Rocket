@@ -32,9 +32,6 @@ class ClientLocalDataSource @Inject constructor(
     suspend fun getClientByContact(contactTypeId: Long, contact: String): ClientDto? =
         clientDao.getClientByContact(contactTypeId, contact)
 
-    suspend fun getClientById(id: Long): ClientDto? =
-        clientDao.getClientById(id)
-
     fun observeClientById(id: Long): Flow<ClientDto?> =
         clientDao.observeClientById(id)
 

@@ -20,10 +20,7 @@ class PrepopulateHelper @Inject constructor(
     private val sectPrepopulateUseCase: SectPrepopulateUseCase,
     private val internalPrepopulateUseCase: InternalPrepopulateUseCase,
     private val categoryPrepopulateUseCase: CategoryPrepopulateUseCase,
-    private val periodPrepopulateUseCase: PeriodPrepopulateUseCase,
-    private val orderStatusPrepopulateUseCase: OrderStatusPrepopulateUseCase,
     private val paymentMethodPrepopulateUseCase: PaymentMethodPrepopulateUseCase,
-    private val paymentStatusPrepopulateUseCase: PaymentStatusPrepopulateUseCase,
     private val logger: ILogger
 ) {
 
@@ -35,14 +32,11 @@ class PrepopulateHelper @Inject constructor(
             add(sectPrepopulateUseCase)
             add(internalPrepopulateUseCase)
             add(categoryPrepopulateUseCase)
-            add(periodPrepopulateUseCase)
-            add(orderStatusPrepopulateUseCase)
             add(paymentMethodPrepopulateUseCase)
-            add(paymentStatusPrepopulateUseCase)
         }
         ioScope.launch {
             sequence.execute().collect {
-                logger.d("prepopulate database done %s", it)
+                logger.d("prepopulate database status: %s", it.name)
             }
         }
     }

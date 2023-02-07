@@ -129,22 +129,7 @@ object DatabaseModule {
 
     @Provides
     @Singleton
-    fun providePeriodDao(database: RocketDatabase): PeriodDao =
-        database.periodDao()
-
-    @Provides
-    @Singleton
-    fun provideOrderStatusDao(database: RocketDatabase): OrderStatusDao =
-        database.orderStatusDao()
-
-    @Provides
-    @Singleton
     fun providePaymentMethodDao(database: RocketDatabase): PaymentMethodDao =
         database.paymentMethodDao()
-
-    @Provides
-    @Singleton
-    fun providePaymentStatusDao(database: RocketDatabase): PaymentStatusDao =
-        database.paymentStatusDao()
 
 }

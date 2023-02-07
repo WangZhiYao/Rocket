@@ -3,6 +3,9 @@ package com.yizhenwind.rocket.core.database.entity
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import com.yizhenwind.rocket.core.common.constant.OrderPeriod
+import com.yizhenwind.rocket.core.common.constant.OrderStatus
+import com.yizhenwind.rocket.core.common.constant.PaymentStatus
 
 /**
  * 订单属性
@@ -46,8 +49,7 @@ data class OrderEntity(
     /**
      * 周期
      */
-    @ColumnInfo(name = "period_id")
-    val periodId: Long,
+    val period: OrderPeriod,
 
     /**
      * 原价（分）
@@ -75,8 +77,8 @@ data class OrderEntity(
     /**
      * 订单状态
      */
-    @ColumnInfo(name = "order_status_id")
-    val orderStatusId: Long,
+    @ColumnInfo(name = "order_status")
+    val orderStatus: OrderStatus,
 
     /**
      * 订单状态更新时间
@@ -87,8 +89,8 @@ data class OrderEntity(
     /**
      * 付款状态
      */
-    @ColumnInfo(name = "payment_status_id")
-    val paymentStatusId: Long,
+    @ColumnInfo(name = "payment_status")
+    val paymentStatus: PaymentStatus,
 
     /**
      * 付款方式ID

@@ -2,8 +2,8 @@ package com.yizhenwind.rocket.core.database.dto
 
 import androidx.room.ColumnInfo
 import androidx.room.Relation
-import com.yizhenwind.rocket.core.database.entity.OrderStatusEntity
-import com.yizhenwind.rocket.core.database.entity.PaymentStatusEntity
+import com.yizhenwind.rocket.core.common.constant.OrderStatus
+import com.yizhenwind.rocket.core.common.constant.PaymentStatus
 import com.yizhenwind.rocket.core.database.entity.SubjectEntity
 
 /**
@@ -22,20 +22,10 @@ data class OrderProfileDto(
     )
     val subject: SubjectDto,
     val remark: String,
-    @ColumnInfo(name = "order_status_id")
-    val orderStatusId: Long,
-    @Relation(
-        parentColumn = "order_status_id",
-        entityColumn = "id",
-    )
-    val orderStatus: OrderStatusEntity,
-    @ColumnInfo(name = "payment_status_id")
-    val paymentStatusId: Long,
-    @Relation(
-        parentColumn = "payment_status_id",
-        entityColumn = "id",
-    )
-    val paymentStatus: PaymentStatusEntity,
+    @ColumnInfo(name = "order_status")
+    val orderStatus: OrderStatus,
+    @ColumnInfo(name = "payment_status")
+    val paymentStatus: PaymentStatus,
     @ColumnInfo(name = "create_time")
     val createTime: Long
 )

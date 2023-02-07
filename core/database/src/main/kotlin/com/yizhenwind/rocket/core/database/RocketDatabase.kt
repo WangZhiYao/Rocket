@@ -24,10 +24,7 @@ import com.yizhenwind.rocket.core.database.entity.*
         CategoryEntity::class,
         SubjectEntity::class,
         OrderEntity::class,
-        PeriodEntity::class,
-        OrderStatusEntity::class,
-        PaymentMethodEntity::class,
-        PaymentStatusEntity::class
+        PaymentMethodEntity::class
     ],
     version = 1,
     exportSchema = false
@@ -56,12 +53,6 @@ abstract class RocketDatabase : RoomDatabase() {
 
     abstract fun orderDao(): OrderDao
 
-    abstract fun periodDao(): PeriodDao
-
-    abstract fun orderStatusDao(): OrderStatusDao
-
     abstract fun paymentMethodDao(): PaymentMethodDao
-
-    abstract fun paymentStatusDao(): PaymentStatusDao
 
 }
