@@ -22,10 +22,11 @@ class CharacterProfileViewHolder(private val binding: ItemCharacterProfileBindin
                 tvCharacterName.text = name
                 tvCharacterZone.text = zone.name
                 tvCharacterServer.text = server.name
-                tvCharacterRemark.text =
-                    if (remark.isNullOrBlank()) tvCharacterRemark.context.getString(
+                tvCharacterRemark.text = remark.ifBlank {
+                    tvCharacterRemark.context.getString(
                         R.string.empty_remark
-                    ) else remark
+                    )
+                }
             }
             ibCharacterAction.setThrottleClickListener {
                 onActionClickListener?.invoke(item)

@@ -11,7 +11,7 @@ data class Client(
     val name: String = "",
     val contactType: ContactType = ContactType(),
     val contact: String = "",
-    val remark: String? = null,
+    val remark: String = "",
     val enable: Boolean = true,
     val createTime: Long = System.currentTimeMillis()
 ) {

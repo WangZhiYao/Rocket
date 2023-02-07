@@ -2,6 +2,7 @@ package com.yizhenwind.rocket.feature.client.ui.create
 
 import androidx.lifecycle.viewModelScope
 import com.yizhenwind.rocket.core.common.constant.Constant
+import com.yizhenwind.rocket.core.common.ext.ifNull
 import com.yizhenwind.rocket.core.framework.base.BaseMVIViewModel
 import com.yizhenwind.rocket.core.logger.ILogger
 import com.yizhenwind.rocket.core.mediator.contacttype.IContactTypeService
@@ -107,7 +108,7 @@ class CreateClientViewModel @Inject constructor(
                     name = name,
                     contactType = contactType.value,
                     contact = contact,
-                    remark = remark
+                    remark = remark.ifNull { "" }
                 )
             )
                 .catch {

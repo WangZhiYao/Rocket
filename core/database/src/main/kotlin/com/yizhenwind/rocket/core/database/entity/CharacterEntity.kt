@@ -64,12 +64,12 @@ data class CharacterEntity(
      * 安全锁
      */
     @ColumnInfo(name = "security_lock")
-    val securityLock: String? = null,
+    val securityLock: String,
 
     /**
      * 备注
      */
-    val remark: String? = null,
+    val remark: String,
 
     /**
      * 是否可用

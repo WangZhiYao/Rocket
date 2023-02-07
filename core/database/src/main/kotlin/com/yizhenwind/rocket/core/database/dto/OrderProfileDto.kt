@@ -21,7 +21,7 @@ data class OrderProfileDto(
         entityColumn = "id",
     )
     val subject: SubjectDto,
-    val remark: String?,
+    val remark: String,
     @ColumnInfo(name = "order_status_id")
     val orderStatusId: Long,
     @Relation(

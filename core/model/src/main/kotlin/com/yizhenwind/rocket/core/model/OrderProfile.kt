@@ -8,7 +8,7 @@ package com.yizhenwind.rocket.core.model
 data class OrderProfile(
     val id: Long = 0,
     val subject: Subject = Subject(),
-    val remark: String? = null,
+    val remark: String = "",
     val orderStatus: OrderStatus = OrderStatus(),
     val paymentStatus: PaymentStatus = PaymentStatus(),
     val createTime: Long = System.currentTimeMillis()

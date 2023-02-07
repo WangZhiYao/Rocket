@@ -27,7 +27,7 @@ data class CategoryEntity(
     /**
      * 描述
      */
-    val description: String? = null,
+    val description: String,
 
     /**
      * 是否为默认

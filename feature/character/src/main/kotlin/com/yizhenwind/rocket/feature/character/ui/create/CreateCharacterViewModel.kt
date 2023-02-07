@@ -1,6 +1,7 @@
 package com.yizhenwind.rocket.feature.character.ui.create
 
 import com.yizhenwind.rocket.core.common.constant.Constant
+import com.yizhenwind.rocket.core.common.ext.ifNull
 import com.yizhenwind.rocket.core.framework.base.BaseMVIViewModel
 import com.yizhenwind.rocket.core.logger.ILogger
 import com.yizhenwind.rocket.core.mediator.account.IAccountService
@@ -203,8 +204,8 @@ class CreateCharacterViewModel @Inject constructor(
                         name = characterName,
                         sect = sect,
                         internal = internal,
-                        securityLock = securityLock,
-                        remark = remark
+                        securityLock = securityLock.ifNull { "" },
+                        remark = remark.ifNull { "" }
                     )
                 )
                     .catch {

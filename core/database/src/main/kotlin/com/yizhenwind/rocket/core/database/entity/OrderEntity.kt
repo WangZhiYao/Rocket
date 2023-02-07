@@ -65,12 +65,12 @@ data class OrderEntity(
      * 结束时间
      */
     @ColumnInfo(name = "end_date")
-    val endDate: Long?,
+    val endDate: Long,
 
     /**
      * 备注
      */
-    val remark: String?,
+    val remark: String,
 
     /**
      * 订单状态
@@ -100,19 +100,19 @@ data class OrderEntity(
      * 付款时间
      */
     @ColumnInfo(name = "payment_time")
-    val paymentTime: Long?,
+    val paymentTime: Long,
 
     /**
      * 退款金额
      */
     @ColumnInfo(name = "refund_amount")
-    val refundAmount: Long?,
+    val refundAmount: Long,
 
     /**
      * 退款时间
      */
     @ColumnInfo(name = "refund_time")
-    val refundTime: Long?,
+    val refundTime: Long,
 
     /**
      * 是否可用

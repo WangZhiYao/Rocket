@@ -11,7 +11,7 @@ import com.squareup.moshi.JsonClass
 data class Category(
     val id: Long = 0,
     val title: String = "",
-    val description: String? = null,
+    val description: String = "",
     val default: Boolean = false,
     val enable: Boolean = true,
     val createTime: Long = System.currentTimeMillis()

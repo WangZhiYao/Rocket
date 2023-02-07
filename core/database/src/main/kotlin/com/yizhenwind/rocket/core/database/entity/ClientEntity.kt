@@ -44,7 +44,7 @@ data class ClientEntity(
     /**
      * 备注
      */
-    val remark: String?,
+    val remark: String,
 
     /**
      * 是否可用

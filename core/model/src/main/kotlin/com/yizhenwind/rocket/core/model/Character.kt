@@ -15,8 +15,8 @@ data class Character(
     val name: String = "",
     val sect: Sect = Sect(),
     val internal: Internal = Internal(),
-    val securityLock: String? = null,
-    val remark: String? = null,
+    val securityLock: String = "",
+    val remark: String = "",
     val enable: Boolean = true,
     val createTime: Long = System.currentTimeMillis()
 )

@@ -11,6 +11,6 @@ data class CharacterProfile(
     val server: Server = Server(),
     val name: String = "",
     val sect: Sect = Sect(),
-    val remark: String? = null,
+    val remark: String = "",
     val createTime: Long = System.currentTimeMillis()
 )

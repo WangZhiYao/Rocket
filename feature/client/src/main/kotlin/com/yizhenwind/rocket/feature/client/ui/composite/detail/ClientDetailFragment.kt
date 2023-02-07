@@ -4,11 +4,11 @@ import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import com.yizhenwind.rocket.core.common.constant.Constant
 import com.yizhenwind.rocket.core.common.ext.formatDate
+import com.yizhenwind.rocket.core.common.util.ClipboardHelper
 import com.yizhenwind.rocket.core.framework.base.BaseFragment
 import com.yizhenwind.rocket.core.framework.ext.fragmentArgs
 import com.yizhenwind.rocket.core.framework.ext.showSnack
 import com.yizhenwind.rocket.core.framework.mvi.IMVIHost
-import com.yizhenwind.rocket.core.common.util.ClipboardHelper
 import com.yizhenwind.rocket.feature.client.R
 import com.yizhenwind.rocket.feature.client.databinding.FragmentClientDetailBinding
 import com.yizhenwind.rocket.feature.client.ui.composite.ClientCompositeViewModel
@@ -62,8 +62,7 @@ class ClientDetailFragment :
                 binding.apply {
                     tvClientDetailContactType.text = contactType.name
                     tvClientDetailContact.text = contact
-                    tvClientDetailRemark.text =
-                        if (remark.isNullOrBlank()) getString(R.string.empty_remark) else remark
+                    tvClientDetailRemark.text = remark.ifBlank { getString(R.string.empty_remark) }
                     tvClientDetailCreateTime.text = createTime.formatDate()
                 }
             }

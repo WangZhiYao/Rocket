@@ -35,7 +35,7 @@ data class CharacterProfileDto(
         entityColumn = "id",
     )
     val sect: SectEntity,
-    val remark: String?,
+    val remark: String,
     @ColumnInfo(name = "create_time")
     val createTime: Long
 )
