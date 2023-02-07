@@ -20,7 +20,7 @@ class PrepopulateHelper @Inject constructor(
     private val sectPrepopulateUseCase: SectPrepopulateUseCase,
     private val internalPrepopulateUseCase: InternalPrepopulateUseCase,
     private val categoryPrepopulateUseCase: CategoryPrepopulateUseCase,
-    private val billingCyclePrepopulateUseCase: BillingCyclePrepopulateUseCase,
+    private val periodPrepopulateUseCase: PeriodPrepopulateUseCase,
     private val orderStatusPrepopulateUseCase: OrderStatusPrepopulateUseCase,
     private val paymentMethodPrepopulateUseCase: PaymentMethodPrepopulateUseCase,
     private val paymentStatusPrepopulateUseCase: PaymentStatusPrepopulateUseCase,
@@ -35,7 +35,7 @@ class PrepopulateHelper @Inject constructor(
             add(sectPrepopulateUseCase)
             add(internalPrepopulateUseCase)
             add(categoryPrepopulateUseCase)
-            add(billingCyclePrepopulateUseCase)
+            add(periodPrepopulateUseCase)
             add(orderStatusPrepopulateUseCase)
             add(paymentMethodPrepopulateUseCase)
             add(paymentStatusPrepopulateUseCase)

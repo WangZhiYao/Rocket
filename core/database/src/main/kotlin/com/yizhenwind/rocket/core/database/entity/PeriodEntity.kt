@@ -9,8 +9,8 @@ import androidx.room.PrimaryKey
  * @author WangZhiYao
  * @since 2023/1/24
  */
-@Entity(tableName = "billing_cycle")
-data class BillingCycleEntity(
+@Entity(tableName = "period")
+data class PeriodEntity(
 
     /**
      * 主键ID
@@ -21,7 +21,7 @@ data class BillingCycleEntity(
     /**
      * 名称
      */
-    val name: String,
+    val value: String,
 
     /**
      * 是否为默认

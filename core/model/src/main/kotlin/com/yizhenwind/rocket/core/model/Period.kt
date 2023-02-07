@@ -9,9 +9,9 @@ import com.squareup.moshi.JsonClass
  * @since 2023/1/28
  */
 @JsonClass(generateAdapter = true)
-data class BillingCycle(
+data class Period(
     val id: Long,
-    val name: String,
+    val value: String,
     val default: Boolean = false,
     val enable: Boolean = true
 )

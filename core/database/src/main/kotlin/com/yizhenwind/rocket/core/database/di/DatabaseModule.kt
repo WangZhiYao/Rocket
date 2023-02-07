@@ -129,8 +129,8 @@ object DatabaseModule {
 
     @Provides
     @Singleton
-    fun provideBillingCycleDao(database: RocketDatabase): BillingCycleDao =
-        database.billingCycleDao()
+    fun providePeriodDao(database: RocketDatabase): PeriodDao =
+        database.periodDao()
 
     @Provides
     @Singleton

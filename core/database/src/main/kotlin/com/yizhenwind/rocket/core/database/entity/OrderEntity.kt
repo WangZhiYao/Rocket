@@ -44,10 +44,10 @@ data class OrderEntity(
     val subjectId: Long,
 
     /**
-     * 收费模式
+     * 周期
      */
-    @ColumnInfo(name = "billing_cycle_id")
-    val billingCycleId: Long,
+    @ColumnInfo(name = "period_id")
+    val periodId: Long,
 
     /**
      * 原价（分）
