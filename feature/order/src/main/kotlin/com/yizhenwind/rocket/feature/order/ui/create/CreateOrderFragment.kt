@@ -275,10 +275,8 @@ class CreateOrderFragment :
 
     private fun attemptCreateOrder() {
         binding.apply {
-            val totalAmount = tietCreateOrderTotalAmount.text?.toString()
-            val paymentAmount = tietCreateOrderPaymentAmount.text?.toString()
             val remark = tietCreateOrderRemark.text?.toString()
-            viewModel.attemptCreateOrder(totalAmount, paymentAmount, remark)
+            viewModel.attemptCreateOrder(remark)
         }
     }
 

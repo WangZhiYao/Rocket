@@ -404,7 +404,7 @@ class CreateOrderViewModel @Inject constructor(
         }
     }
 
-    fun attemptCreateOrder(totalAmount: String?, paymentAmount: String?, remark: String?) {
+    fun attemptCreateOrder(remark: String?) {
         intent {
             state.apply {
                 if (simpleClient.id == Constant.DEFAULT_ID) {
@@ -427,7 +427,7 @@ class CreateOrderViewModel @Inject constructor(
                     postSideEffect(CreateOrderSideEffect.ShowClientError(R.string.error_create_order_subject))
                     return@intent
                 }
-                if (totalAmount.isNullOrBlank()) {
+                if (totalAmount == 0L) {
                     postSideEffect(CreateOrderSideEffect.ShowTotalAmountError(R.string.error_create_order_total_amount))
                     return@intent
                 }
@@ -436,7 +436,7 @@ class CreateOrderViewModel @Inject constructor(
                         postSideEffect(CreateOrderSideEffect.ShowPaymentMethodError(R.string.error_create_order_payment_method))
                         return@intent
                     }
-                    if (paymentAmount.isNullOrBlank()) {
+                    if (paymentAmount == 0L) {
                         postSideEffect(CreateOrderSideEffect.ShowPaymentAmountError(R.string.error_create_order_payment_amount))
                         return@intent
                     }
@@ -449,16 +449,12 @@ class CreateOrderViewModel @Inject constructor(
                         category = category,
                         subject = subject,
                         startTime = startTime,
-                        totalAmount = BigDecimal(totalAmount)
-                            .multiply(BigDecimal(100))
-                            .longValueExact(),
+                        totalAmount = totalAmount,
                         statusUpdateTime = System.currentTimeMillis(),
-                        paymentStatus = paymentStatus,
+                        paymentStatus = if (paymentStatus == PaymentStatus.PARTIALLY_PAID && paymentAmount == totalAmount) PaymentStatus.PAID else paymentStatus,
                         paymentMethod = paymentMethod,
                         paymentTime = paymentTime,
-                        paymentAmount = if (paymentStatus != PaymentStatus.UNPAID) BigDecimal(
-                            paymentAmount
-                        ).multiply(BigDecimal(100)).longValueExact() else 0,
+                        paymentAmount = paymentAmount,
                         remark = remark.ifNull { "" }
                     )
                 )
