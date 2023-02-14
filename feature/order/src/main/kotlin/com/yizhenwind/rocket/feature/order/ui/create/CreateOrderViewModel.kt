@@ -412,19 +412,19 @@ class CreateOrderViewModel @Inject constructor(
                     return@intent
                 }
                 if (simpleAccount.id == Constant.DEFAULT_ID) {
-                    postSideEffect(CreateOrderSideEffect.ShowClientError(R.string.error_create_order_client))
+                    postSideEffect(CreateOrderSideEffect.ShowAccountError(R.string.error_create_order_account))
                     return@intent
                 }
                 if (simpleCharacter.id == Constant.DEFAULT_ID) {
-                    postSideEffect(CreateOrderSideEffect.ShowClientError(R.string.error_create_order_character))
+                    postSideEffect(CreateOrderSideEffect.ShowCharacterError(R.string.error_create_order_character))
                     return@intent
                 }
                 if (category.id == Constant.DEFAULT_ID) {
-                    postSideEffect(CreateOrderSideEffect.ShowClientError(R.string.error_create_order_category))
+                    postSideEffect(CreateOrderSideEffect.ShowCategoryError(R.string.error_create_order_category))
                     return@intent
                 }
                 if (subject.id == Constant.DEFAULT_ID) {
-                    postSideEffect(CreateOrderSideEffect.ShowClientError(R.string.error_create_order_subject))
+                    postSideEffect(CreateOrderSideEffect.ShowSubjectError(R.string.error_create_order_subject))
                     return@intent
                 }
                 if (totalAmount == 0L) {
