@@ -10,8 +10,12 @@ import com.squareup.moshi.JsonClass
  */
 @JsonClass(generateAdapter = true)
 data class PaymentMethod(
-    val id: Long,
-    val name: String,
+    val id: Long = 0,
+    val name: String = "",
     val default: Boolean = false,
     val enable: Boolean = true
-)
+) {
+
+    override fun toString() = name
+
+}

@@ -1,9 +1,11 @@
 package com.yizhenwind.rocket.feature.order.di.service
 
+import android.content.Context
 import com.yizhenwind.rocket.core.mediator.order.IOrderService
 import com.yizhenwind.rocket.core.model.OrderProfile
 import com.yizhenwind.rocket.domain.order.ObserveOrderProfileListByCharacterIdUseCase
 import com.yizhenwind.rocket.domain.order.ObserveOrderProfileListByClientIdUseCase
+import com.yizhenwind.rocket.feature.order.ui.create.CreateOrderArgs
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 
@@ -22,5 +24,14 @@ class OrderServiceImpl @Inject constructor(
 
     override fun observeOrderProfileListByCharacterId(characterId: Long): Flow<List<OrderProfile>> =
         observeOrderProfileListByCharacterIdUseCase(characterId)
+
+    override fun launchCreateOrder(
+        context: Context,
+        clientId: Long,
+        accountId: Long,
+        characterId: Long
+    ) {
+        CreateOrderArgs(clientId, accountId, characterId).launch(context)
+    }
 
 }

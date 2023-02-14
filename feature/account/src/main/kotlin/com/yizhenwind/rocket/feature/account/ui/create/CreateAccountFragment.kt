@@ -13,14 +13,12 @@ import com.yizhenwind.rocket.core.framework.base.BaseFragment
 import com.yizhenwind.rocket.core.framework.ext.setThrottleClickListener
 import com.yizhenwind.rocket.core.framework.ext.showSnack
 import com.yizhenwind.rocket.core.framework.mvi.IMVIHost
-import com.yizhenwind.rocket.core.logger.ILogger
 import com.yizhenwind.rocket.feature.account.R
 import com.yizhenwind.rocket.feature.account.databinding.FragmentCreateAccountBinding
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.CoroutineExceptionHandler
 import kotlinx.coroutines.launch
 import org.orbitmvi.orbit.viewmodel.observe
-import javax.inject.Inject
 
 /**
  *
@@ -38,9 +36,6 @@ class CreateAccountFragment :
 
     private val hasBiometricCapability: Boolean
         get() = AuthenticateHelper.hasBiometricCapability(requireContext())
-
-    @Inject
-    lateinit var logger: ILogger
 
     override fun init() {
         initData()

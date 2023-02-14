@@ -1,7 +1,7 @@
 package com.yizhenwind.rocket.domain.contacttype
 
 import com.yizhenwind.rocket.core.common.constant.Constant
-import com.yizhenwind.rocket.core.common.di.coroutine.qualifier.IODispatcher
+import com.yizhenwind.rocket.core.common.di.qualifier.coroutine.IODispatcher
 import com.yizhenwind.rocket.core.model.ContactType
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.FlowPreview

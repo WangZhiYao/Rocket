@@ -1,6 +1,6 @@
 package com.yizhenwind.rocket.domain.zone
 
-import com.yizhenwind.rocket.core.common.di.coroutine.qualifier.IODispatcher
+import com.yizhenwind.rocket.core.common.di.qualifier.coroutine.IODispatcher
 import com.yizhenwind.rocket.core.model.ZoneServer
 import com.yizhenwind.rocket.data.zoneserver.ZoneServerRepository
 import kotlinx.coroutines.CoroutineDispatcher

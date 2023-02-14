@@ -1,6 +1,6 @@
 package com.yizhenwind.rocket.domain.client
 
-import com.yizhenwind.rocket.core.common.di.coroutine.qualifier.IODispatcher
+import com.yizhenwind.rocket.core.common.di.qualifier.coroutine.IODispatcher
 import com.yizhenwind.rocket.core.model.ClientProfile
 import com.yizhenwind.rocket.data.client.ClientRepository
 import kotlinx.coroutines.CoroutineDispatcher

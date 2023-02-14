@@ -1,6 +1,6 @@
 package com.yizhenwind.rocket.domain.contacttype
 
-import com.yizhenwind.rocket.core.common.di.coroutine.qualifier.IODispatcher
+import com.yizhenwind.rocket.core.common.di.qualifier.coroutine.IODispatcher
 import com.yizhenwind.rocket.core.model.ContactType
 import com.yizhenwind.rocket.data.contacttype.ContactTypeRepository
 import kotlinx.coroutines.CoroutineDispatcher

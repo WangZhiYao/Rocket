@@ -20,6 +20,7 @@ class SubjectDtoMapper @Inject constructor(
                 subject.id,
                 categoryMapper.fromEntity(category),
                 subject.content,
+                subject.default,
                 subject.enable,
                 subject.createTime
             )

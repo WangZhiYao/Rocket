@@ -1,6 +1,6 @@
 package com.yizhenwind.rocket.domain.order
 
-import com.yizhenwind.rocket.core.common.di.coroutine.qualifier.IODispatcher
+import com.yizhenwind.rocket.core.common.di.qualifier.coroutine.IODispatcher
 import com.yizhenwind.rocket.core.model.OrderProfile
 import com.yizhenwind.rocket.data.order.OrderRepository
 import kotlinx.coroutines.CoroutineDispatcher

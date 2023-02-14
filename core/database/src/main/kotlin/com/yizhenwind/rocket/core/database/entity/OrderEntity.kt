@@ -3,7 +3,6 @@ package com.yizhenwind.rocket.core.database.entity
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import com.yizhenwind.rocket.core.common.constant.OrderPeriod
 import com.yizhenwind.rocket.core.common.constant.OrderStatus
 import com.yizhenwind.rocket.core.common.constant.PaymentStatus
 
@@ -35,44 +34,40 @@ data class OrderEntity(
     val accountId: Long,
 
     /**
-     * 代练角色
+     * 角色ID
      */
     @ColumnInfo(name = "character_id", index = true)
     val characterId: Long,
 
     /**
-     * 代练项目
+     * 项目ID
+     */
+    @ColumnInfo(name = "category_id", index = true)
+    val categoryId: Long,
+
+    /**
+     * 项目ID
      */
     @ColumnInfo(name = "subject_id", index = true)
     val subjectId: Long,
 
     /**
-     * 周期
-     */
-    val period: OrderPeriod,
-
-    /**
-     * 原价（分）
-     */
-    @ColumnInfo(name = "original_price")
-    val originalPrice: Long,
-
-    /**
      * 开始时间
      */
-    @ColumnInfo(name = "start_date")
-    val startDate: Long,
+    @ColumnInfo(name = "start_time")
+    val startTime: Long,
 
     /**
      * 结束时间
      */
-    @ColumnInfo(name = "end_date")
-    val endDate: Long,
+    @ColumnInfo(name = "end_time")
+    val endTime: Long,
 
     /**
-     * 备注
+     * 总价（分）
      */
-    val remark: String,
+    @ColumnInfo(name = "total_amount")
+    val totalAmount: Long,
 
     /**
      * 订单状态
@@ -87,25 +82,31 @@ data class OrderEntity(
     val statusUpdateTime: Long,
 
     /**
-     * 付款状态
+     * 支付状态
      */
     @ColumnInfo(name = "payment_status")
     val paymentStatus: PaymentStatus,
 
     /**
-     * 付款方式ID
+     * 支付方式ID
      */
     @ColumnInfo(name = "payment_method_id")
     val paymentMethodId: Long,
 
     /**
-     * 付款时间
+     * 支付时间
      */
     @ColumnInfo(name = "payment_time")
     val paymentTime: Long,
 
     /**
-     * 退款金额
+     * 支付金额（分）
+     */
+    @ColumnInfo(name = "payment_amount")
+    val paymentAmount: Long,
+
+    /**
+     * 退款金额（分）
      */
     @ColumnInfo(name = "refund_amount")
     val refundAmount: Long,
@@ -117,15 +118,14 @@ data class OrderEntity(
     val refundTime: Long,
 
     /**
+     * 备注
+     */
+    val remark: String,
+
+    /**
      * 是否可用
      */
     val enable: Boolean,
-
-    /**
-     * 更新时间
-     */
-    @ColumnInfo(name = "update_time")
-    val updateTime: Long,
 
     /**
      * 创建时间

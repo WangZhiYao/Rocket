@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph_client"
+    app:startDestination="@id/nav_client_profile">
+
+    <fragment
+        android:id="@+id/nav_client_profile"
+        android:name="com.yizhenwind.rocket.feature.client.ui.profile.ClientProfileFragment"
+        android:label="@string/label_client_profile"
+        tools:layout="@layout/fragment_base_list">
+
+        <action
+            android:id="@+id/action_to_create_client"
+            app:destination="@id/nav_create_client"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+
+        <action
+            android:id="@+id/action_to_client_composite"
+            app:destination="@id/nav_client_composite"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+
+    </fragment>
+
+    <activity
+        android:id="@+id/nav_create_client"
+        android:name="com.yizhenwind.rocket.feature.client.ui.create.CreateClientActivity"
+        tools:layout="@layout/activity_base_nav" />
+
+    <activity
+        android:id="@+id/nav_client_composite"
+        android:name="com.yizhenwind.rocket.feature.client.ui.composite.ClientCompositeActivity"
+        tools:layout="@layout/activity_base_composite">
+
+        <argument
+            android:name="clientId"
+            android:defaultValue="0L"
+            app:argType="long"
+            app:nullable="false" />
+
+    </activity>
+
+</navigation>

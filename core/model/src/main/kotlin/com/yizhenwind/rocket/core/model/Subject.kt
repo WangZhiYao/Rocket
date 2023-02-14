@@ -9,6 +9,7 @@ data class Subject(
     val id: Long = 0,
     val category: Category = Category(),
     val content: String = "",
+    val default: Boolean = false,
     val enable: Boolean = true,
     val createTime: Long = System.currentTimeMillis()
 )

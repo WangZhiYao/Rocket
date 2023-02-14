@@ -28,4 +28,16 @@
         <item name="tabIndicatorFullWidth">false</item>
     </style>
 
+    <style name="Theme.Rocket.DatePicker" parent="@style/ThemeOverlay.MaterialComponents.MaterialCalendar">
+        <item name="textInputStyle">
+            @style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense
+        </item>
+    </style>
+
+    <style name="Theme.Rocket.TimePicker" parent="@style/ThemeOverlay.MaterialComponents.TimePicker">
+        <item name="textInputStyle">
+            @style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense
+        </item>
+    </style>
+
 </resources>

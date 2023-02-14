@@ -47,11 +47,6 @@ class CreateAccountViewModel @Inject constructor(
                 return@intent
             }
 
-            if (!checkUsernameValidUseCase(username)) {
-                postSideEffect(CreateAccountSideEffect.ShowAccountError(R.string.error_account_username_invalid))
-                return@intent
-            }
-
             if (getAccountByUsernameUseCase(username) != null) {
                 postSideEffect(CreateAccountSideEffect.ShowAccountError(R.string.error_account_exist))
                 return@intent
@@ -63,16 +58,6 @@ class CreateAccountViewModel @Inject constructor(
 
     fun onPasswordChanged(password: String?) {
         intent {
-            if (password.isNullOrBlank()) {
-                postSideEffect(CreateAccountSideEffect.HidePasswordError)
-                return@intent
-            }
-
-            if (!checkPasswordValidUseCase(password)) {
-                postSideEffect(CreateAccountSideEffect.ShowPasswordError(R.string.error_account_password_invalid))
-                return@intent
-            }
-
             postSideEffect(CreateAccountSideEffect.HidePasswordError)
         }
     }

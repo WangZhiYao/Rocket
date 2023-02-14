@@ -7,4 +7,4 @@ import androidx.annotation.StringRes
  * @author WangZhiYao
  * @since 2023/1/20
  */
-data class ClientDetailSideEffect(@StringRes val resId:Int)
+data class ClientDetailSideEffect(@StringRes val resId: Int)

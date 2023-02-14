@@ -1,6 +1,6 @@
 package com.yizhenwind.rocket.domain.sect
 
-import com.yizhenwind.rocket.core.common.di.coroutine.qualifier.IODispatcher
+import com.yizhenwind.rocket.core.common.di.qualifier.coroutine.IODispatcher
 import com.yizhenwind.rocket.core.model.SectInternal
 import com.yizhenwind.rocket.data.sectinternal.SectInternalRepository
 import kotlinx.coroutines.CoroutineDispatcher

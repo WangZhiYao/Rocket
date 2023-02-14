@@ -11,11 +11,14 @@ import com.yizhenwind.rocket.core.mediator.zoneserver.IZoneServerService
 import com.yizhenwind.rocket.core.model.Account
 import com.yizhenwind.rocket.core.model.Character
 import com.yizhenwind.rocket.core.model.Client
+import com.yizhenwind.rocket.core.model.simple.SimpleAccount
+import com.yizhenwind.rocket.core.model.simple.SimpleClient
 import com.yizhenwind.rocket.domain.character.CreateCharacterUseCase
 import com.yizhenwind.rocket.feature.character.R
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.combine
+import kotlinx.coroutines.flow.flowOf
 import org.orbitmvi.orbit.syntax.simple.intent
 import org.orbitmvi.orbit.syntax.simple.postSideEffect
 import org.orbitmvi.orbit.syntax.simple.reduce
@@ -60,46 +63,48 @@ class CreateCharacterViewModel @Inject constructor(
         }
     }
 
-    fun observeClientList() {
+    fun observeClientAccountList(clientId: Long, accountId: Long) {
         intent {
-            clientService.observeClientList()
-                .collect { clientList ->
+            val simpleAccountListFlow =
+                if (clientId == Constant.DEFAULT_ID) flowOf(emptyList()) else accountService.observeSimpleAccountListByClientId(
+                    clientId
+                )
+
+            clientService.observeSimpleClientList()
+                .combine(simpleAccountListFlow) { simpleClientList, simpleAccountList ->
+                    val simpleClient =
+                        if (clientId == Constant.DEFAULT_ID) null else simpleClientList.find { it.id == clientId }
+                    val simpleAccount =
+                        if (accountId == Constant.DEFAULT_ID) null else simpleAccountList.find { it.id == accountId }
+                    state.copy(
+                        simpleClientList = simpleClientList,
+                        simpleClient = simpleClient.ifNull { SimpleClient() },
+                        simpleAccountList = simpleAccountList,
+                        simpleAccount = simpleAccount.ifNull { SimpleAccount() }
+                    )
+                }
+                .collect { viewState ->
                     reduce {
-                        state.copy(clientList = clientList)
+                        viewState
                     }
                 }
         }
     }
 
-    fun observeAccountListByClientId(clientId: Long, accountId: Long) {
+    fun onClientSelected(simpleClient: SimpleClient) {
         intent {
-            accountService.observeAccountListByClientId(clientId)
-                .collect { accountList ->
-                    reduce {
-                        if (accountId == Constant.DEFAULT_ID) {
-                            state.copy(client = Client(clientId), accountList = accountList)
-                        } else {
-                            state.copy(
-                                client = Client(clientId),
-                                accountList = accountList,
-                                account = accountList.first { account -> account.id == accountId })
-                        }
-                    }
-                }
-        }
-    }
-
-    fun onClientSelected(position: Int) {
-        intent {
-            val client = state.clientList[position]
-            if (client.id == state.client.id) {
+            if (simpleClient.id == state.simpleClient.id) {
                 return@intent
             }
-            accountService.observeAccountListByClientId(client.id)
-                .collect { accountList ->
+            accountService.observeSimpleAccountListByClientId(simpleClient.id)
+                .collect { simpleAccountList ->
                     postSideEffect(CreateCharacterSideEffect.HideClientError)
                     reduce {
-                        state.copy(client = client, accountList = accountList, account = Account())
+                        state.copy(
+                            simpleClient = simpleClient,
+                            simpleAccountList = simpleAccountList,
+                            simpleAccount = SimpleAccount()
+                        )
                     }
                 }
         }
@@ -126,12 +131,14 @@ class CreateCharacterViewModel @Inject constructor(
         }
     }
 
-    fun onAccountSelected(position: Int) {
+    fun onAccountSelected(simpleAccount: SimpleAccount) {
         intent {
-            val account = state.accountList[position]
+            if (simpleAccount.id == state.simpleAccount.id) {
+                return@intent
+            }
             postSideEffect(CreateCharacterSideEffect.HideAccountError)
             reduce {
-                state.copy(account = account)
+                state.copy(simpleAccount = simpleAccount)
             }
         }
     }
@@ -160,7 +167,7 @@ class CreateCharacterViewModel @Inject constructor(
     fun attemptCreateCharacter(securityLock: String?, characterName: String?, remark: String?) {
         intent {
             state.apply {
-                if (client.id == Constant.DEFAULT_ID) {
+                if (simpleClient.id == Constant.DEFAULT_ID) {
                     postSideEffect(CreateCharacterSideEffect.ShowClientError(R.string.error_create_character_client_unselected))
                     return@intent
                 }
@@ -175,7 +182,7 @@ class CreateCharacterViewModel @Inject constructor(
                     return@intent
                 }
 
-                if (account.id == Constant.DEFAULT_ID) {
+                if (simpleAccount.id == Constant.DEFAULT_ID) {
                     postSideEffect(CreateCharacterSideEffect.ShowAccountError(R.string.error_create_character_account_unselected))
                     return@intent
                 }
@@ -197,10 +204,10 @@ class CreateCharacterViewModel @Inject constructor(
 
                 createCharacterUseCase(
                     Character(
-                        client = client,
+                        client = Client(simpleClient.id),
                         zone = zone,
                         server = server,
-                        account = account,
+                        account = Account(simpleAccount.id),
                         name = characterName,
                         sect = sect,
                         internal = internal,

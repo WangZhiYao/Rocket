@@ -14,8 +14,4 @@ data class Client(
     val remark: String = "",
     val enable: Boolean = true,
     val createTime: Long = System.currentTimeMillis()
-) {
-
-    override fun toString(): String = name
-
-}
+)

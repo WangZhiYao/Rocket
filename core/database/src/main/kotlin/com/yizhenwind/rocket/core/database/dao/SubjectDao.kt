@@ -2,6 +2,8 @@ package com.yizhenwind.rocket.core.database.dao
 
 import androidx.room.Dao
 import androidx.room.Query
+import androidx.room.Transaction
+import com.yizhenwind.rocket.core.database.dto.SubjectDto
 import com.yizhenwind.rocket.core.database.entity.SubjectEntity
 import kotlinx.coroutines.flow.Flow
 
@@ -14,7 +16,12 @@ import kotlinx.coroutines.flow.Flow
 @Dao
 interface SubjectDao : IDao<SubjectEntity> {
 
+    @Transaction
     @Query("SELECT * FROM subject WHERE enable = 1")
-    fun observeSubject(): Flow<List<SubjectEntity>>
+    fun observeSubjectList(): Flow<List<SubjectDto>>
+
+    @Transaction
+    @Query("SELECT * FROM subject WHERE category_id = :categoryId AND enable = 1")
+    fun observeSubjectListByCategoryId(categoryId: Long): Flow<List<SubjectDto>>
 
 }

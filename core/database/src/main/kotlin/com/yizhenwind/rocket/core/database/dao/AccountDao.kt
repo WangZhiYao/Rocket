@@ -5,6 +5,7 @@ import androidx.room.Query
 import androidx.room.Transaction
 import com.yizhenwind.rocket.core.database.dto.AccountDto
 import com.yizhenwind.rocket.core.database.dto.AccountProfileDto
+import com.yizhenwind.rocket.core.database.dto.simple.SimpleAccountDto
 import com.yizhenwind.rocket.core.database.entity.AccountEntity
 import kotlinx.coroutines.flow.Flow
 
@@ -32,5 +33,12 @@ interface AccountDao : IDao<AccountEntity> {
     @Transaction
     @Query("SELECT * FROM account WHERE id = :id LIMIT 1")
     fun observeAccountById(id: Long): Flow<AccountDto?>
+
+    @Query("SELECT id, username FROM account WHERE enable = 1")
+    fun observeSimpleAccountList(): Flow<List<SimpleAccountDto>>
+
+
+    @Query("SELECT id, username FROM account WHERE client_id = :clientId AND enable = 1")
+    fun observeSimpleAccountListByClientId(clientId: Long): Flow<List<SimpleAccountDto>>
 
 }

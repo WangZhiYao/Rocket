@@ -5,6 +5,7 @@ import androidx.room.Query
 import androidx.room.Transaction
 import com.yizhenwind.rocket.core.database.dto.ClientDto
 import com.yizhenwind.rocket.core.database.dto.ClientProfileDto
+import com.yizhenwind.rocket.core.database.dto.simple.SimpleClientDto
 import com.yizhenwind.rocket.core.database.entity.ClientEntity
 import kotlinx.coroutines.flow.Flow
 
@@ -46,5 +47,9 @@ interface ClientDao : IDao<ClientEntity> {
     @Transaction
     @Query("SELECT * FROM client WHERE id = :id LIMIT 1")
     fun observeClientById(id: Long): Flow<ClientDto?>
+
+    @Transaction
+    @Query("SELECT id, name, contact_type_id, contact FROM client WHERE enable = 1")
+    fun observeSimpleClientList(): Flow<List<SimpleClientDto>>
 
 }

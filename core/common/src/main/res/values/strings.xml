@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="order_status_not_started">未开始</string>
+    <string name="order_status_processing">代练中</string>
+    <string name="order_status_pause">暂停</string>
+    <string name="order_status_complete">已完成</string>
+    <string name="order_status_refund">已退款</string>
+
+    <string name="payment_status_unpaid">未支付</string>
+    <string name="payment_status_partially_paid">部分支付</string>
+    <string name="payment_status_paid">已支付</string>
+</resources>

@@ -20,7 +20,7 @@ class ClientProfileDtoMapper @Inject constructor(
             ClientProfile(
                 id,
                 name,
-                contactTypeMapper.fromEntity(contactType),
+                contactTypeMapper.fromEntity(contactTypeEntity),
                 contact,
                 accountCount,
                 characterCount,

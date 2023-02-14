@@ -92,6 +92,9 @@ dependencies {
     implementation(project(":feature:zoneserver"))
     implementation(project(":feature:sectinternal"))
     implementation(project(":feature:order"))
+    implementation(project(":feature:paymentmethod"))
+    implementation(project(":feature:category"))
+    implementation(project(":feature:subject"))
     implementation(project(":feature:user"))
     implementation(project(":feature:setting"))
 

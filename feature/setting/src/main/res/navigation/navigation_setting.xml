@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph_setting"
+    app:startDestination="@id/nav_setting">
+
+    <fragment
+        android:id="@+id/nav_setting"
+        android:name="com.yizhenwind.rocket.feature.setting.ui.SettingFragment"
+        android:label="@string/label_setting"
+        tools:layout="@layout/fragment_setting" />
+
+</navigation>

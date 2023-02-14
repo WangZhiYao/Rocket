@@ -1,18 +1,19 @@
 package com.yizhenwind.rocket.core.common.constant
 
+import androidx.annotation.StringRes
+import com.yizhenwind.rocket.core.common.R
+
 /**
  *
  * @author WangZhiYao
  * @since 2023/2/7
  */
-enum class PaymentStatus {
+enum class PaymentStatus(@StringRes val resId: Int) {
 
-    UNPAID,
+    UNPAID(R.string.payment_status_unpaid),
 
-    PARTIALLY_PAID,
+    PARTIALLY_PAID(R.string.payment_status_partially_paid),
 
-    PAID,
-
-    REFUND
+    PAID(R.string.payment_status_paid)
 
 }

@@ -7,11 +7,13 @@ import com.google.android.material.snackbar.Snackbar
 import com.yizhenwind.rocket.core.framework.base.BaseCompositeActivity
 import com.yizhenwind.rocket.core.framework.ext.showSnack
 import com.yizhenwind.rocket.core.framework.mvi.IMVIHost
+import com.yizhenwind.rocket.core.mediator.order.IOrderService
 import com.yizhenwind.rocket.feature.character.R
 import com.yizhenwind.rocket.feature.character.ui.composite.detail.CharacterDetailArgs
 import com.yizhenwind.rocket.feature.character.ui.composite.order.CharacterOrderArgs
 import dagger.hilt.android.AndroidEntryPoint
 import org.orbitmvi.orbit.viewmodel.observe
+import javax.inject.Inject
 
 /**
  *
@@ -24,6 +26,9 @@ class CharacterCompositeActivity : BaseCompositeActivity(),
 
     private val navArgs by navArgs<CharacterCompositeActivityArgs>()
     private val viewModel by viewModels<CharacterCompositeViewModel>()
+
+    @Inject
+    lateinit var orderService: IOrderService
 
     override fun initData() {
         viewModel.observe(this, state = ::render, sideEffect = ::handleSideEffect)
@@ -53,13 +58,18 @@ class CharacterCompositeActivity : BaseCompositeActivity(),
                 // TODO: open edit client
             }
             PAGE_INDEX_ORDER -> {
-                // TODO: open create order
+                orderService.launchCreateOrder(
+                    this,
+                    viewModel.clientId,
+                    viewModel.accountId,
+                    navArgs.characterId
+                )
             }
         }
     }
 
     override suspend fun render(state: CharacterCompositeViewState) {
-        binding.toolbar.title = state.title
+        binding.toolbar.title = state.character.name
     }
 
     override fun handleSideEffect(sideEffect: CharacterCompositeSideEffect) {

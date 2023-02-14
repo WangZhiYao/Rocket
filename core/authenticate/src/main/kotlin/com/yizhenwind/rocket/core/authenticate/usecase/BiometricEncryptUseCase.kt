@@ -3,7 +3,7 @@ package com.yizhenwind.rocket.core.authenticate.usecase
 import androidx.biometric.BiometricPrompt
 import com.yizhenwind.rocket.core.authenticate.CryptographyManager
 import com.yizhenwind.rocket.core.authenticate.model.CipherData
-import com.yizhenwind.rocket.core.common.di.coroutine.qualifier.IODispatcher
+import com.yizhenwind.rocket.core.common.di.qualifier.coroutine.IODispatcher
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.flow.*
 import javax.inject.Inject

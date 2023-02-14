@@ -14,6 +14,6 @@ import kotlinx.coroutines.flow.Flow
 interface PaymentMethodDao : IDao<PaymentMethodEntity> {
 
     @Query("SELECT * FROM payment_method WHERE enable = 1")
-    fun observePaymentMethod(): Flow<List<PaymentMethodEntity>>
+    fun observePaymentMethodList(): Flow<List<PaymentMethodEntity>>
 
 }

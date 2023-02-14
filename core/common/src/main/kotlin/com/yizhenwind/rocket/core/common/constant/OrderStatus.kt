@@ -1,18 +1,23 @@
 package com.yizhenwind.rocket.core.common.constant
 
+import androidx.annotation.StringRes
+import com.yizhenwind.rocket.core.common.R
+
 /**
  *
  * @author WangZhiYao
  * @since 2023/2/7
  */
-enum class OrderStatus {
+enum class OrderStatus(@StringRes val resId: Int) {
 
-    NOT_STARTED,
+    NOT_STARTED(R.string.order_status_not_started),
 
-    PROCESSING,
+    PROCESSING(R.string.order_status_processing),
 
-    PAUSE,
+    PAUSE(R.string.order_status_pause),
 
-    COMPLETED
+    COMPLETED(R.string.order_status_complete),
+
+    REFUND(R.string.order_status_refund)
 
 }

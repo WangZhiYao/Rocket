@@ -1,6 +1,6 @@
 package com.yizhenwind.rocket.core.database.populate
 
-import com.yizhenwind.rocket.core.common.di.coroutine.qualifier.IOScope
+import com.yizhenwind.rocket.core.common.di.qualifier.coroutine.IOScope
 import com.yizhenwind.rocket.core.common.usecase.SequenceUseCase
 import com.yizhenwind.rocket.core.logger.ILogger
 import kotlinx.coroutines.CoroutineScope

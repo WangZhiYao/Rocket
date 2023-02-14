@@ -3,6 +3,7 @@ package com.yizhenwind.rocket.core.mediator.account
 import android.content.Context
 import com.yizhenwind.rocket.core.model.Account
 import com.yizhenwind.rocket.core.model.AccountProfile
+import com.yizhenwind.rocket.core.model.simple.SimpleAccount
 import kotlinx.coroutines.flow.Flow
 
 /**
@@ -13,6 +14,8 @@ import kotlinx.coroutines.flow.Flow
 interface IAccountService {
 
     fun observeAccountListByClientId(clientId: Long): Flow<List<Account>>
+
+    fun observeSimpleAccountListByClientId(clientId: Long): Flow<List<SimpleAccount>>
 
     fun observeAccountProfileByClientId(clientId: Long): Flow<List<AccountProfile>>
 

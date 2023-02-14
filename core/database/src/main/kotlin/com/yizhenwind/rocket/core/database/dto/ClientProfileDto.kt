@@ -19,7 +19,7 @@ data class ClientProfileDto(
         parentColumn = "contact_type_id",
         entityColumn = "id"
     )
-    val contactType: ContactTypeEntity,
+    val contactTypeEntity: ContactTypeEntity,
     val contact: String,
     @ColumnInfo(name = "account_count")
     val accountCount: Int,

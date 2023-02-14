@@ -1,11 +1,14 @@
 package com.yizhenwind.rocket.data.client
 
+import com.yizhenwind.rocket.core.common.mapper.ListMapper
 import com.yizhenwind.rocket.core.database.mapper.ClientDtoMapper
 import com.yizhenwind.rocket.core.database.mapper.ClientMapper
 import com.yizhenwind.rocket.core.database.mapper.ClientProfileDtoMapper
+import com.yizhenwind.rocket.core.database.mapper.SimpleClientMapper
 import com.yizhenwind.rocket.core.model.Client
 import com.yizhenwind.rocket.core.model.ClientProfile
 import com.yizhenwind.rocket.core.model.ContactType
+import com.yizhenwind.rocket.core.model.simple.SimpleClient
 import com.yizhenwind.rocket.data.client.source.ClientLocalDataSource
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
@@ -22,6 +25,7 @@ class ClientRepository @Inject constructor(
     private val clientProfileDtoMapper: ClientProfileDtoMapper,
     private val clientMapper: ClientMapper,
     private val clientDtoMapper: ClientDtoMapper,
+    private val simpleClientMapper: SimpleClientMapper
 ) {
 
     fun observeClientList(): Flow<List<Client>> =
@@ -50,4 +54,9 @@ class ClientRepository @Inject constructor(
         clientLocalDataSource.observeClientById(id).map { clientDto ->
             clientDto?.run { clientDtoMapper.map(this) } ?: Client()
         }
+
+    fun observeSimpleClientList(): Flow<List<SimpleClient>> =
+        clientLocalDataSource.observeSimpleClientList()
+            .map { ListMapper(simpleClientMapper).map(it) }
+
 }

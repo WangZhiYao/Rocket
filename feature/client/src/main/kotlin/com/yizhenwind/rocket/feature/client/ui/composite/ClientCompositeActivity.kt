@@ -10,6 +10,7 @@ import com.yizhenwind.rocket.core.framework.ext.showSnack
 import com.yizhenwind.rocket.core.framework.mvi.IMVIHost
 import com.yizhenwind.rocket.core.mediator.account.IAccountService
 import com.yizhenwind.rocket.core.mediator.character.ICharacterService
+import com.yizhenwind.rocket.core.mediator.order.IOrderService
 import com.yizhenwind.rocket.feature.client.R
 import com.yizhenwind.rocket.feature.client.ui.composite.account.ClientAccountArgs
 import com.yizhenwind.rocket.feature.client.ui.composite.character.ClientCharacterArgs
@@ -36,6 +37,9 @@ class ClientCompositeActivity : BaseCompositeActivity(),
 
     @Inject
     lateinit var characterService: ICharacterService
+
+    @Inject
+    lateinit var orderService: IOrderService
 
     override fun initData() {
         viewModel.observe(this, state = ::render, sideEffect = ::handleSideEffect)
@@ -87,7 +91,12 @@ class ClientCompositeActivity : BaseCompositeActivity(),
                 )
             }
             PAGE_INDEX_ORDER -> {
-                // TODO: open create order
+                orderService.launchCreateOrder(
+                    this,
+                    navArgs.clientId,
+                    Constant.DEFAULT_ID,
+                    Constant.DEFAULT_ID
+                )
             }
         }
     }

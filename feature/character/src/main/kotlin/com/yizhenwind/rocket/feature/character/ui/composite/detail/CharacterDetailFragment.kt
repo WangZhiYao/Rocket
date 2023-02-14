@@ -109,7 +109,7 @@ class CharacterDetailFragment :
     override suspend fun render(state: CharacterDetailViewState) {
         state.character.apply {
             if (id != Constant.DEFAULT_ID) {
-                activityViewModel.setTitle(name)
+                activityViewModel.setCharacter(this)
                 binding.apply {
                     tvCharacterDetailClient.text = client.name
                     tvCharacterDetailZone.text = zone.name
@@ -118,9 +118,9 @@ class CharacterDetailFragment :
                     tvCharacterDetailSect.text = sect.name
                     tvCharacterDetailInternal.text = internal.name
                     tvCharacterDetailSecurityLock.text =
-                        if (securityLock.isNullOrBlank()) getString(R.string.empty_security_lock) else securityLock
+                        securityLock.ifBlank { getString(R.string.empty_security_lock) }
                     tvCharacterDetailRemark.text =
-                        if (remark.isNullOrBlank()) getString(R.string.empty_remark) else remark
+                        remark.ifBlank { getString(R.string.empty_remark) }
                     tvCharacterDetailCreateTime.text = createTime.formatDate()
                 }
             }

@@ -3,7 +3,7 @@ package com.yizhenwind.rocket.core.database.populate
 import android.content.Context
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.adapter
-import com.yizhenwind.rocket.core.common.di.coroutine.qualifier.IODispatcher
+import com.yizhenwind.rocket.core.common.di.qualifier.coroutine.IODispatcher
 import com.yizhenwind.rocket.core.common.usecase.ExecuteResult
 import com.yizhenwind.rocket.core.database.dao.ContactTypeDao
 import com.yizhenwind.rocket.core.database.entity.ContactTypeEntity

@@ -17,9 +17,9 @@ class OrderProfileViewHolder(private val binding: ItemOrderProfileBinding) :
         binding.apply {
             item.apply {
                 tvOrderCategoryTitle.text = subject.category.title
-                tvOrderStatus.text = orderStatus.name
+                tvOrderStatus.setText(orderStatus.resId)
                 tvOrderSubjectContent.text = subject.content
-                tvOrderPaymentStatus.text = paymentStatus.name
+                tvOrderPaymentStatus.setText(paymentStatus.resId)
                 tvOrderCreateTime.text = createTime.formatDate()
             }
 

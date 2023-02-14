@@ -14,7 +14,6 @@ import com.yizhenwind.rocket.core.framework.ext.fragmentArgs
 import com.yizhenwind.rocket.core.framework.ext.setThrottleClickListener
 import com.yizhenwind.rocket.core.framework.ext.showSnack
 import com.yizhenwind.rocket.core.framework.mvi.IMVIHost
-import com.yizhenwind.rocket.core.logger.ILogger
 import com.yizhenwind.rocket.core.mediator.client.IClientService
 import com.yizhenwind.rocket.feature.account.R
 import com.yizhenwind.rocket.feature.account.databinding.FragmentAccountDetailBinding
@@ -41,9 +40,6 @@ class AccountDetailFragment :
 
     @Inject
     lateinit var clientService: IClientService
-
-    @Inject
-    lateinit var logger: ILogger
 
     override fun init() {
         initData()

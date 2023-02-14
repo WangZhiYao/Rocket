@@ -3,6 +3,7 @@ package com.yizhenwind.rocket.data.client.source
 import com.yizhenwind.rocket.core.database.dao.ClientDao
 import com.yizhenwind.rocket.core.database.dto.ClientDto
 import com.yizhenwind.rocket.core.database.dto.ClientProfileDto
+import com.yizhenwind.rocket.core.database.dto.simple.SimpleClientDto
 import com.yizhenwind.rocket.core.database.entity.ClientEntity
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
@@ -34,5 +35,8 @@ class ClientLocalDataSource @Inject constructor(
 
     fun observeClientById(id: Long): Flow<ClientDto?> =
         clientDao.observeClientById(id)
+
+    fun observeSimpleClientList(): Flow<List<SimpleClientDto>> =
+        clientDao.observeSimpleClientList()
 
 }
