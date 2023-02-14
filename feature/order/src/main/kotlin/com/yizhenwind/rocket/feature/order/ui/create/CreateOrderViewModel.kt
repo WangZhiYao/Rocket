@@ -141,21 +141,21 @@ class CreateOrderViewModel @Inject constructor(
                                 )
                             )
                         } else if (simpleAccount.id != Constant.DEFAULT_ID) {
-                            characterService.observeSimpleCharacterListByAccountId(accountId)
+                            characterService.observeSimpleCharacterListByAccountId(simpleAccount.id)
                                 .map { simpleCharacterList ->
                                     val simpleCharacter = if (simpleCharacterList.size == 1) {
                                         simpleCharacterList[0]
                                     } else {
-                                        null
+                                        SimpleCharacter()
                                     }
 
                                     viewState.copy(
                                         simpleCharacterList = simpleCharacterList,
-                                        simpleCharacter = simpleCharacter.ifNull { SimpleCharacter() }
+                                        simpleCharacter = simpleCharacter
                                     )
                                 }
                         } else {
-                            characterService.observeSimpleCharacterListByClientId(clientId)
+                            characterService.observeSimpleCharacterListByClientId(simpleClient.id)
                                 .map { simpleCharacterList ->
                                     viewState.copy(
                                         simpleCharacterList = simpleCharacterList,

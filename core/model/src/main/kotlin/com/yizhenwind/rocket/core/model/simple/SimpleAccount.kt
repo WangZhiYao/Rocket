@@ -8,8 +8,4 @@ package com.yizhenwind.rocket.core.model.simple
 data class SimpleAccount(
     val id: Long = 0,
     val username: String = ""
-) {
-
-    override fun toString() = username
-
-}
+)
