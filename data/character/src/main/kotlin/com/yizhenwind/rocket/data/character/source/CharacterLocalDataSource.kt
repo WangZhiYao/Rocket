@@ -22,7 +22,7 @@ class CharacterLocalDataSource @Inject constructor(
         characterDao.observeCharacterProfileByClientId(clientId)
 
     fun observeCharacterProfileByAccountId(accountId: Long): Flow<List<CharacterProfileDto>> =
-        characterDao.observeCharacterProfileByClientId(accountId)
+        characterDao.observeCharacterProfileByAccountId(accountId)
 
     fun createCharacter(characterEntity: CharacterEntity): Flow<Long> =
         flow {
