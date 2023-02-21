@@ -221,7 +221,22 @@ class CreateCharacterViewModel @Inject constructor(
                         postSideEffect(CreateCharacterSideEffect.CreateCharacterSuccess(character))
                     }
             }
+        }
+    }
 
+    fun reset() {
+        intent {
+            reduce {
+                state.copy(
+                    clientTuple = ClientTuple(),
+                    accountTupleList = emptyList(),
+                    accountTuple = AccountTuple(),
+                    zone = Zone(),
+                    server = Server(),
+                    sect = Sect(),
+                    internal = Internal()
+                )
+            }
         }
     }
 }

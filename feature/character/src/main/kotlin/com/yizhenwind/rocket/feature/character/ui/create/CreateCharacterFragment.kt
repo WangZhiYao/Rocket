@@ -99,6 +99,7 @@ class CreateCharacterFragment :
             state.apply {
                 actvCreateCharacterClient.setText(clientTuple.name, false)
                 clientAdapter.submitList(clientTupleList)
+                actvCreateCharacterZone.setText(zone.name, false)
                 zoneAdapter.submitList(zoneList)
                 actvCreateCharacterServer.setText(server.name, false)
                 serverAdapter.submitList(serverList)
@@ -146,6 +147,7 @@ class CreateCharacterFragment :
                 is CreateCharacterSideEffect.ShowSnack ->
                     root.showSnack(sideEffect.resId)
                 is CreateCharacterSideEffect.CreateCharacterSuccess -> {
+                    resetUI()
                     root.showSnack(
                         resId = R.string.create_character_success,
                         Snackbar.LENGTH_INDEFINITE,
@@ -156,6 +158,7 @@ class CreateCharacterFragment :
                                 sideEffect.character.id
                             )
                         )
+                        requireActivity().finish()
                     }
                 }
             }
@@ -171,4 +174,12 @@ class CreateCharacterFragment :
         }
     }
 
+    private fun resetUI() {
+        viewModel.reset()
+        binding.apply {
+            tietCreateCharacterName.text = null
+            tietCreateCharacterSecurityLock.text = null
+            tietCreateCharacterRemark.text = null
+        }
+    }
 }
