@@ -39,9 +39,6 @@ class ClientCharacterFragment : BaseListFragment(), IMVIHost<ClientCharacterView
             onItemClickListener = { characterProfile ->
                 characterService.launchCharacterComposite(requireContext(), characterProfile.id)
             }
-            onActionClickListener = {
-                // TODO: open character bottom sheet
-            }
         }
     }
 

@@ -14,15 +14,10 @@ import com.yizhenwind.rocket.core.model.CharacterProfile
 class CharacterProfileAdapter :
     BaseListAdapter<CharacterProfile, CharacterProfileViewHolder>(CHARACTER_PROFILE_COMPARATOR) {
 
-    var onActionClickListener: ((CharacterProfile) -> Unit)? = null
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CharacterProfileViewHolder =
         CharacterProfileViewHolder(parent.viewBinding(ItemCharacterProfileBinding::inflate)).apply {
             onItemClickListener = { characterProfile ->
                 this@CharacterProfileAdapter.onItemClickListener?.invoke(characterProfile)
-            }
-            onActionClickListener = { characterProfile ->
-                this@CharacterProfileAdapter.onActionClickListener?.invoke(characterProfile)
             }
         }
 
