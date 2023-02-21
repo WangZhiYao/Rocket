@@ -1,22 +1,16 @@
 package com.yizhenwind.rocket.feature.client.ui.create
 
-import android.view.inputmethod.EditorInfo
 import androidx.core.widget.doAfterTextChanged
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.Lifecycle
-import androidx.lifecycle.lifecycleScope
-import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
 import com.google.android.material.snackbar.Snackbar
 import com.yizhenwind.rocket.core.framework.base.BaseFragment
 import com.yizhenwind.rocket.core.framework.ext.setThrottleClickListener
 import com.yizhenwind.rocket.core.framework.ext.showSnack
 import com.yizhenwind.rocket.core.framework.mvi.IMVIHost
-import com.yizhenwind.rocket.core.model.ContactType
 import com.yizhenwind.rocket.feature.client.R
 import com.yizhenwind.rocket.feature.client.databinding.FragmentCreateClientBinding
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.launch
 import org.orbitmvi.orbit.viewmodel.observe
 
 /**
@@ -32,46 +26,15 @@ class CreateClientFragment :
 
     private val viewModel by viewModels<CreateClientViewModel>()
 
+    private val contactTypeAdapter = ContactTypeAdapter()
+
     override fun init() {
         initData()
         initView()
     }
 
     override fun initData() {
-        viewModel.apply {
-            observe(viewLifecycleOwner, state = ::render, sideEffect = ::handleSideEffect)
-
-            viewLifecycleOwner.lifecycleScope.launch {
-                lifecycle.repeatOnLifecycle(Lifecycle.State.STARTED) {
-                    launch {
-                        contactTypeList.collect { contactTypeList ->
-                            binding.apply {
-                                actvCreateClientContactType.apply {
-                                    contactTypeList.apply {
-                                        setSimpleItems(map { it.name }.toTypedArray())
-                                        setText(firstOrNull()?.name, false)
-                                    }
-                                }
-                                tietCreateClientContactValue.text = null
-                            }
-                        }
-                    }
-
-                    launch {
-                        contactType.collect { contactType ->
-                            binding.tietCreateClientContactValue.apply {
-                                text = null
-                                inputType = when (contactType.id) {
-                                    ContactType.QQ -> EditorInfo.TYPE_CLASS_NUMBER
-                                    ContactType.WECHAT -> EditorInfo.TYPE_CLASS_TEXT
-                                    else -> EditorInfo.TYPE_CLASS_TEXT
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        }
+        viewModel.observe(viewLifecycleOwner, state = ::render, sideEffect = ::handleSideEffect)
     }
 
     override fun initView() {
@@ -80,8 +43,11 @@ class CreateClientFragment :
                 viewModel.onNameChanged(name?.toString())
             }
 
-            actvCreateClientContactType.setOnItemClickListener { _, _, position, _ ->
-                viewModel.onContactTypeChanged(position)
+            actvCreateClientContactType.apply {
+                setAdapter(contactTypeAdapter)
+                setOnItemClickListener { _, _, position, _ ->
+                    viewModel.onContactTypeChanged(contactTypeAdapter.getItem(position))
+                }
             }
 
             tietCreateClientContactValue.doAfterTextChanged { contact ->
@@ -98,12 +64,20 @@ class CreateClientFragment :
         }
     }
 
+    override suspend fun render(state: CreateClientViewState) {
+        binding.apply {
+            state.apply {
+                contactTypeAdapter.submitList(contactTypeList)
+                actvCreateClientContactType.setText(contactType.name, false)
+            }
+        }
+    }
+
     override fun handleSideEffect(sideEffect: CreateClientSideEffect) {
         binding.apply {
             when (sideEffect) {
                 is CreateClientSideEffect.ShowNameError ->
-                    tilCreateClientName.error =
-                        getString(sideEffect.resId)
+                    tilCreateClientName.error = getString(sideEffect.resId)
                 CreateClientSideEffect.HideNameError ->
                     tilCreateClientName.error = null
                 is CreateClientSideEffect.ShowContactError ->
