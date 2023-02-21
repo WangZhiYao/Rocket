@@ -8,9 +8,11 @@ import com.yizhenwind.rocket.core.common.constant.Constant
 import com.yizhenwind.rocket.core.framework.base.BaseCompositeActivity
 import com.yizhenwind.rocket.core.framework.ext.showSnack
 import com.yizhenwind.rocket.core.framework.mvi.IMVIHost
+import com.yizhenwind.rocket.core.framework.widget.MessageDialog
 import com.yizhenwind.rocket.core.mediator.account.IAccountService
 import com.yizhenwind.rocket.core.mediator.character.ICharacterService
 import com.yizhenwind.rocket.core.mediator.order.IOrderService
+import com.yizhenwind.rocket.core.model.Client
 import com.yizhenwind.rocket.feature.client.R
 import com.yizhenwind.rocket.feature.client.ui.composite.account.ClientAccountArgs
 import com.yizhenwind.rocket.feature.client.ui.composite.character.ClientCharacterArgs
@@ -43,6 +45,20 @@ class ClientCompositeActivity : BaseCompositeActivity(),
 
     override fun initData() {
         viewModel.observe(this, state = ::render, sideEffect = ::handleSideEffect)
+    }
+
+    override fun initView() {
+        super.initView()
+        binding.toolbar.apply {
+            inflateMenu(R.menu.menu_client_compose)
+            setOnMenuItemClickListener { menuItem ->
+                if (menuItem.itemId == R.id.action_delete) {
+                    showDeleteClientDialog(viewModel.client)
+                    return@setOnMenuItemClickListener true
+                }
+                return@setOnMenuItemClickListener false
+            }
+        }
     }
 
     override fun getTitles(): List<Int> =
@@ -102,7 +118,7 @@ class ClientCompositeActivity : BaseCompositeActivity(),
     }
 
     override suspend fun render(state: ClientCompositeViewState) {
-        binding.toolbar.title = state.title
+        binding.toolbar.title = state.client.name
     }
 
     override fun handleSideEffect(sideEffect: ClientCompositeSideEffect) {
@@ -119,7 +135,19 @@ class ClientCompositeActivity : BaseCompositeActivity(),
                     }
                 }
             }
+            ClientCompositeSideEffect.DeleteClientSuccess -> finish()
         }
+    }
+
+    private fun showDeleteClientDialog(client: Client) {
+        MessageDialog.Builder(supportFragmentManager)
+            .setTitle(getString(R.string.dialog_delete_client_title, client.name))
+            .setContent(getString(R.string.dialog_delete_client_content, client.name))
+            .setOnPositiveClickListener { dialog ->
+                dialog.dismiss()
+                viewModel.attemptDeleteClient(client)
+            }
+            .show()
     }
 
     companion object {

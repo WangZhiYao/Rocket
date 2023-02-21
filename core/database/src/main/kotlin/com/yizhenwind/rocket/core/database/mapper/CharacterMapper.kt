@@ -18,15 +18,14 @@ class CharacterMapper @Inject constructor() : IMapper<Character, CharacterEntity
             CharacterEntity(
                 id,
                 client.id,
+                account.id,
                 zone.id,
                 server.id,
-                account.id,
                 name,
                 sect.id,
                 internal.id,
                 securityLock,
                 remark,
-                enable,
                 createTime
             )
         }

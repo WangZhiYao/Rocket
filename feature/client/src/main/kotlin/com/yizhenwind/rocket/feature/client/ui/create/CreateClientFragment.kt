@@ -122,6 +122,7 @@ class CreateClientFragment :
                                 sideEffect.client.id
                             )
                         )
+                        requireActivity().finish()
                     }
                 }
                 is CreateClientSideEffect.CreateClientFailure ->

@@ -4,10 +4,10 @@ import com.yizhenwind.rocket.core.common.mapper.ListMapper
 import com.yizhenwind.rocket.core.database.mapper.CharacterDtoMapper
 import com.yizhenwind.rocket.core.database.mapper.CharacterMapper
 import com.yizhenwind.rocket.core.database.mapper.CharacterProfileDtoMapper
-import com.yizhenwind.rocket.core.database.mapper.SimpleCharacterMapper
+import com.yizhenwind.rocket.core.database.mapper.CharacterTupleMapper
 import com.yizhenwind.rocket.core.model.Character
 import com.yizhenwind.rocket.core.model.CharacterProfile
-import com.yizhenwind.rocket.core.model.simple.SimpleCharacter
+import com.yizhenwind.rocket.core.model.CharacterTuple
 import com.yizhenwind.rocket.data.character.source.CharacterLocalDataSource
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
@@ -23,7 +23,7 @@ class CharacterRepository @Inject constructor(
     private val characterDtoMapper: CharacterDtoMapper,
     private val characterProfileDtoMapper: CharacterProfileDtoMapper,
     private val characterMapper: CharacterMapper,
-    private val simpleCharacterMapper: SimpleCharacterMapper
+    private val characterTupleMapper: CharacterTupleMapper
 ) {
 
     fun observeCharacterProfileByClientId(clientId: Long): Flow<List<CharacterProfile>> =
@@ -43,12 +43,12 @@ class CharacterRepository @Inject constructor(
             characterDto?.run { characterDtoMapper.map(this) } ?: Character()
         }
 
-    fun observeSimpleCharacterListByClientId(clientId: Long): Flow<List<SimpleCharacter>> =
-        characterLocalDataSource.observeSimpleCharacterListByClientId(clientId)
-            .map { ListMapper(simpleCharacterMapper).map(it) }
+    fun observeCharacterTupleListByClientId(clientId: Long): Flow<List<CharacterTuple>> =
+        characterLocalDataSource.observeCharacterTupleListByClientId(clientId)
+            .map { ListMapper(characterTupleMapper).map(it) }
 
-    fun observeSimpleCharacterListByAccountId(accountId: Long): Flow<List<SimpleCharacter>> =
-        characterLocalDataSource.observeSimpleCharacterListByAccountId(accountId)
-            .map { ListMapper(simpleCharacterMapper).map(it) }
+    fun observeCharacterTupleListByAccountId(accountId: Long): Flow<List<CharacterTuple>> =
+        characterLocalDataSource.observeCharacterTupleListByAccountId(accountId)
+            .map { ListMapper(characterTupleMapper).map(it) }
 
 }

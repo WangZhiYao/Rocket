@@ -1,7 +1,7 @@
 package com.yizhenwind.rocket.core.mediator.client
 
 import android.content.Context
-import com.yizhenwind.rocket.core.model.simple.SimpleClient
+import com.yizhenwind.rocket.core.model.ClientTuple
 import kotlinx.coroutines.flow.Flow
 
 /**
@@ -12,7 +12,7 @@ import kotlinx.coroutines.flow.Flow
  */
 interface IClientService {
 
-    fun observeSimpleClientList(): Flow<List<SimpleClient>>
+    fun observeClientTupleList(): Flow<List<ClientTuple>>
 
     fun launchClientComposite(context: Context, clientId: Long)
 

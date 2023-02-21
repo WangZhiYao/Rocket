@@ -24,15 +24,14 @@ class CharacterDtoMapper @Inject constructor(
             Character(
                 character.id,
                 clientDtoMapper.map(client),
+                accountDtoMapper.map(account),
                 zoneMapper.fromEntity(zone),
                 serverMapper.fromEntity(server),
-                accountDtoMapper.map(account),
                 character.name,
                 sectMapper.fromEntity(sect),
                 internalMapper.fromEntity(internal),
                 character.securityLock,
                 character.remark,
-                character.enable,
                 character.createTime
             )
         }

@@ -9,14 +9,13 @@ package com.yizhenwind.rocket.core.model
 data class Character(
     val id: Long = 0,
     val client: Client = Client(),
+    val account: Account = Account(),
     val zone: Zone = Zone(),
     val server: Server = Server(),
-    val account: Account = Account(),
     val name: String = "",
     val sect: Sect = Sect(),
     val internal: Internal = Internal(),
     val securityLock: String = "",
     val remark: String = "",
-    val enable: Boolean = true,
     val createTime: Long = System.currentTimeMillis()
 )

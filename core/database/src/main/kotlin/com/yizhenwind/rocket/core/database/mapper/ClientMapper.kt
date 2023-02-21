@@ -14,6 +14,6 @@ import javax.inject.Inject
 class ClientMapper @Inject constructor() : IMapper<Client, ClientEntity> {
 
     override fun map(input: Client): ClientEntity =
-        input.run { ClientEntity(id, name, contactType.id, contact, remark, enable, createTime) }
+        input.run { ClientEntity(id, name, contactType.id, contact, remark, createTime) }
 
 }

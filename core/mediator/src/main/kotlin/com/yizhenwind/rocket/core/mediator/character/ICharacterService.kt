@@ -2,7 +2,7 @@ package com.yizhenwind.rocket.core.mediator.character
 
 import android.content.Context
 import com.yizhenwind.rocket.core.model.CharacterProfile
-import com.yizhenwind.rocket.core.model.simple.SimpleCharacter
+import com.yizhenwind.rocket.core.model.CharacterTuple
 import kotlinx.coroutines.flow.Flow
 
 /**
@@ -20,8 +20,8 @@ interface ICharacterService {
 
     fun launchCharacterComposite(context: Context, characterId: Long)
 
-    fun observeSimpleCharacterListByClientId(clientId: Long): Flow<List<SimpleCharacter>>
+    fun observeCharacterTupleListByClientId(clientId: Long): Flow<List<CharacterTuple>>
 
-    fun observeSimpleCharacterListByAccountId(accountId: Long): Flow<List<SimpleCharacter>>
+    fun observeCharacterTupleListByAccountId(accountId: Long): Flow<List<CharacterTuple>>
 
 }

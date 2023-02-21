@@ -5,7 +5,7 @@ import androidx.room.Query
 import androidx.room.Transaction
 import com.yizhenwind.rocket.core.database.dto.ClientDto
 import com.yizhenwind.rocket.core.database.dto.ClientProfileDto
-import com.yizhenwind.rocket.core.database.dto.simple.SimpleClientDto
+import com.yizhenwind.rocket.core.database.dto.ClientTupleDto
 import com.yizhenwind.rocket.core.database.entity.ClientEntity
 import kotlinx.coroutines.flow.Flow
 
@@ -24,10 +24,11 @@ interface ClientDao : IDao<ClientEntity> {
 
     /**
      * 分页查询客户简介
+     * 根据用户订单状态更新时间排序
      */
     @Transaction
-    @Query("SELECT id, name, contact_type_id, contact, ( SELECT COUNT(*) FROM account WHERE client_id = client.id ) AS account_count, ( SELECT COUNT(*) FROM character WHERE client_id = client.id ) AS character_count, ( SELECT COUNT(*) FROM `order` WHERE client_id = client.id ) AS order_count, create_time FROM client WHERE enable = 1 ORDER BY create_time DESC")
-    fun observeClientProfile(): Flow<List<ClientProfileDto>>
+    @Query("SELECT id, name, contact_type_id, contact, ( SELECT COUNT(*) FROM account WHERE client_id = client.id ) AS account_count , ( SELECT COUNT(*) FROM character WHERE client_id = client.id ) AS character_count, ( SELECT COUNT(*) FROM `order` WHERE client_id = client.id AND `order`.enable = 1 ) AS order_count, remark, create_time FROM client ORDER BY ( SELECT create_time FROM `order` WHERE `order`.client_id = client_id AND enable = 1 ) DESC")
+    fun observeClientProfileList(): Flow<List<ClientProfileDto>>
 
     /**
      * 根据联系方式查询客户
@@ -36,7 +37,7 @@ interface ClientDao : IDao<ClientEntity> {
      * @param contact 联系方式
      */
     @Transaction
-    @Query("SELECT * FROM client WHERE contact_type_id = :contactTypeId AND contact = :contact AND enable = 1 LIMIT 1")
+    @Query("SELECT * FROM client WHERE contact_type_id = :contactTypeId AND contact = :contact LIMIT 1")
     suspend fun getClientByContact(contactTypeId: Long, contact: String): ClientDto?
 
     /**
@@ -49,7 +50,7 @@ interface ClientDao : IDao<ClientEntity> {
     fun observeClientById(id: Long): Flow<ClientDto?>
 
     @Transaction
-    @Query("SELECT id, name, contact_type_id, contact FROM client WHERE enable = 1")
-    fun observeSimpleClientList(): Flow<List<SimpleClientDto>>
+    @Query("SELECT id, name, contact_type_id, contact FROM client")
+    fun observeClientTupleList(): Flow<List<ClientTupleDto>>
 
 }

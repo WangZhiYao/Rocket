@@ -24,7 +24,6 @@ class AccountDtoMapper @Inject constructor(
                 accountEntity.password,
                 accountEntity.encrypted,
                 accountEntity.iv,
-                accountEntity.enable,
                 accountEntity.createTime
             )
         }

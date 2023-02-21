@@ -25,6 +25,7 @@ class ClientProfileDtoMapper @Inject constructor(
                 accountCount,
                 characterCount,
                 orderCount,
+                remark,
                 createTime
             )
         }

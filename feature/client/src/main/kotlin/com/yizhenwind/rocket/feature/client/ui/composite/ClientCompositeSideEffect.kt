@@ -11,4 +11,6 @@ sealed class ClientCompositeSideEffect {
 
     data class ShowError(@StringRes val resId: Int) : ClientCompositeSideEffect()
 
+    object DeleteClientSuccess : ClientCompositeSideEffect()
+
 }

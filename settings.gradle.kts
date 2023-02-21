@@ -39,6 +39,7 @@ include(":data:paymentmethod")
 include(":data:category")
 include(":data:subject")
 // Domain
+include(":domain:common")
 include(":domain:client")
 include(":domain:contacttype")
 include(":domain:account")
