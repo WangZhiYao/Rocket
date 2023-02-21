@@ -172,6 +172,7 @@
                 android:hint="@string/create_order_total_amount"
                 app:endIconMode="clear_text"
                 app:errorEnabled="true"
+                app:helperTextEnabled="true"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/til_create_order_start_date">
@@ -283,6 +284,7 @@
                 android:visibility="gone"
                 app:endIconMode="clear_text"
                 app:errorEnabled="true"
+                app:helperTextEnabled="true"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/til_create_order_payment_date"

@@ -17,6 +17,11 @@
     <string name="create_order_remark">备注</string>
     <string name="create_order_success">创建订单成功</string>
 
+    <string name="helper_create_order_total_amount_greater_than_payment_amount_when_paid">在已支付状态下总价大于已支付金额时, 支付状态将变更为部分支付</string>
+    <string name="helper_create_order_payment_amount_less_than_total_amount_when_paid">在已支付状态下已支付金额小于总价时, 支付状态将变更为部分支付</string>
+    <string name="helper_create_order_total_amount_equal_to_payment_amount_when_partially_paid">在部分支付状态下总价等于已支付金额时, 支付状态将变更为已支付</string>
+    <string name="helper_create_order_payment_amount_equal_to_total_amount_when_partially_paid">在部分支付状态下已支付金额等于总价时, 支付状态将变更为已支付</string>
+
     <string name="label_character_selection">选择角色</string>
 
     <string name="ok">确定</string>

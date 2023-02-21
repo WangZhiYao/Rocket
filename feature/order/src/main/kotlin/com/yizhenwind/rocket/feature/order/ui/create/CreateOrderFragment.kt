@@ -226,6 +226,10 @@ class CreateOrderFragment :
                     tilCreateOrderTotalAmount.error = getString(sideEffect.resId)
                 CreateOrderSideEffect.HideTotalAmountError ->
                     tilCreateOrderTotalAmount.error = null
+                is CreateOrderSideEffect.ShowTotalAmountHelper ->
+                    tilCreateOrderTotalAmount.helperText = getString(sideEffect.resId)
+                CreateOrderSideEffect.HideTotalAmountHelper ->
+                    tilCreateOrderTotalAmount.helperText = null
                 is CreateOrderSideEffect.ShowPaymentMethodError ->
                     tilCreateOrderPaymentMethod.error = getString(sideEffect.resId)
                 CreateOrderSideEffect.HidePaymentMethodError ->
@@ -234,6 +238,10 @@ class CreateOrderFragment :
                     tilCreateOrderPaymentAmount.error = getString(sideEffect.resId)
                 CreateOrderSideEffect.HidePaymentAmountError ->
                     tilCreateOrderPaymentAmount.error = null
+                is CreateOrderSideEffect.ShowPaymentAmountHelper ->
+                    tilCreateOrderPaymentAmount.helperText = getString(sideEffect.resId)
+                CreateOrderSideEffect.HidePaymentAmountHelper ->
+                    tilCreateOrderPaymentAmount.helperText = null
                 is CreateOrderSideEffect.CreateOrderSuccess -> {
                     resetUI()
                     root.showSnack(R.string.create_order_success)

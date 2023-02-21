@@ -254,10 +254,35 @@ class CreateOrderViewModel @Inject constructor(
     fun onTotalAmountChanged(totalAmountStr: String?) {
         intent {
             postSideEffect(CreateOrderSideEffect.HideTotalAmountError)
+            postSideEffect(CreateOrderSideEffect.HideTotalAmountHelper)
+            postSideEffect(CreateOrderSideEffect.HidePaymentAmountError)
+            postSideEffect(CreateOrderSideEffect.HidePaymentAmountHelper)
             val totalAmount = totalAmountStr.toAmount()
             state.apply {
-                if (totalAmount > 0L && paymentStatus != PaymentStatus.UNPAID && totalAmount < paymentAmount) {
-                    postSideEffect(CreateOrderSideEffect.ShowTotalAmountError(R.string.error_create_order_total_amount_can_not_lower_than_payment_amount))
+                if (totalAmount > 0 && paymentAmount > 0L) {
+                    if (totalAmount > paymentAmount && paymentStatus == PaymentStatus.PAID) {
+                        postSideEffect(CreateOrderSideEffect.ShowTotalAmountHelper(R.string.helper_create_order_total_amount_greater_than_payment_amount_when_paid))
+                        reduce {
+                            state.copy(
+                                totalAmount = totalAmount,
+                                paymentStatus = PaymentStatus.PARTIALLY_PAID
+                            )
+                        }
+                        return@intent
+                    }
+                    if (totalAmount == paymentAmount && paymentStatus == PaymentStatus.PARTIALLY_PAID) {
+                        postSideEffect(CreateOrderSideEffect.ShowTotalAmountHelper(R.string.helper_create_order_total_amount_equal_to_payment_amount_when_partially_paid))
+                        reduce {
+                            state.copy(
+                                totalAmount = totalAmount,
+                                paymentStatus = PaymentStatus.PAID
+                            )
+                        }
+                        return@intent
+                    }
+                    if (totalAmount < paymentAmount && paymentStatus != PaymentStatus.UNPAID) {
+                        postSideEffect(CreateOrderSideEffect.ShowTotalAmountError(R.string.error_create_order_total_amount_can_not_lower_than_payment_amount))
+                    }
                 }
             }
             reduce {
@@ -277,12 +302,11 @@ class CreateOrderViewModel @Inject constructor(
                             paymentMethod = PaymentMethod(),
                             paymentAmount = 0
                         )
-                    PaymentStatus.PARTIALLY_PAID, PaymentStatus.PAID -> {
+                    PaymentStatus.PARTIALLY_PAID, PaymentStatus.PAID ->
                         state.copy(
                             paymentStatus = paymentStatus,
                             paymentTime = System.currentTimeMillis()
                         )
-                    }
                 }
             }
         }
@@ -299,10 +323,33 @@ class CreateOrderViewModel @Inject constructor(
     fun onPaymentAmountChanged(paymentAmountStr: String?) {
         intent {
             postSideEffect(CreateOrderSideEffect.HidePaymentAmountError)
+            postSideEffect(CreateOrderSideEffect.HidePaymentAmountHelper)
             val paymentAmount = paymentAmountStr.toAmount()
             state.apply {
-                if (totalAmount > 0L && paymentStatus != PaymentStatus.UNPAID && totalAmount < paymentAmount) {
-                    postSideEffect(CreateOrderSideEffect.ShowPaymentAmountError(R.string.error_create_order_payment_amount_can_not_bigger_than_total_amount))
+                if (totalAmount > 0 && paymentAmount > 0L) {
+                    if (totalAmount > paymentAmount && paymentStatus == PaymentStatus.PAID) {
+                        postSideEffect(CreateOrderSideEffect.ShowPaymentAmountHelper(R.string.helper_create_order_payment_amount_less_than_total_amount_when_paid))
+                        reduce {
+                            state.copy(
+                                totalAmount = totalAmount,
+                                paymentStatus = PaymentStatus.PARTIALLY_PAID
+                            )
+                        }
+                        return@intent
+                    }
+                    if (totalAmount == paymentAmount && paymentStatus == PaymentStatus.PARTIALLY_PAID) {
+                        postSideEffect(CreateOrderSideEffect.ShowPaymentAmountHelper(R.string.helper_create_order_payment_amount_equal_to_total_amount_when_partially_paid))
+                        reduce {
+                            state.copy(
+                                totalAmount = totalAmount,
+                                paymentStatus = PaymentStatus.PAID
+                            )
+                        }
+                        return@intent
+                    }
+                    if (totalAmount < paymentAmount && paymentStatus != PaymentStatus.UNPAID) {
+                        postSideEffect(CreateOrderSideEffect.ShowPaymentAmountError(R.string.error_create_order_payment_amount_can_not_bigger_than_total_amount))
+                    }
                 }
             }
             reduce {

@@ -34,6 +34,10 @@ sealed class CreateOrderSideEffect {
 
     object HideTotalAmountError : CreateOrderSideEffect()
 
+    data class ShowTotalAmountHelper(@StringRes val resId: Int) : CreateOrderSideEffect()
+
+    object HideTotalAmountHelper : CreateOrderSideEffect()
+
     data class ShowPaymentMethodError(@StringRes val resId: Int) : CreateOrderSideEffect()
 
     object HidePaymentMethodError : CreateOrderSideEffect()
@@ -41,6 +45,10 @@ sealed class CreateOrderSideEffect {
     data class ShowPaymentAmountError(@StringRes val resId: Int) : CreateOrderSideEffect()
 
     object HidePaymentAmountError : CreateOrderSideEffect()
+
+    data class ShowPaymentAmountHelper(@StringRes val resId: Int) : CreateOrderSideEffect()
+
+    object HidePaymentAmountHelper : CreateOrderSideEffect()
 
     data class CreateOrderSuccess(val order: Order) : CreateOrderSideEffect()
 
