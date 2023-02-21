@@ -1,71 +1,77 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    style="@style/Theme.Rocket.ClickableItem"
+    style="@style/Theme.Rocket.Card"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
-    <TextView
-        android:id="@+id/tv_order_category_title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/item_content_margin"
-        android:layout_marginTop="@dimen/item_content_margin"
-        android:ellipsize="end"
-        android:maxLines="1"
-        android:textColor="@color/color_text_primary"
-        android:textSize="12sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:text="PVP" />
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
-    <TextView
-        android:id="@+id/tv_order_status"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/item_content_margin"
-        android:layout_marginEnd="@dimen/item_content_margin"
-        android:textSize="12sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:text="代练中" />
+        <TextView
+            android:id="@+id/tv_order_category_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/item_content_margin"
+            android:layout_marginTop="@dimen/item_content_margin"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:textColor="@color/color_text_primary"
+            android:textSize="12sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="PVP" />
 
-    <TextView
-        android:id="@+id/tv_order_subject_content"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/item_content_margin"
-        android:layout_marginTop="4dp"
-        android:layout_marginEnd="@dimen/item_content_margin"
-        android:textColor="@color/color_text_primary"
-        android:textSize="16sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tv_order_category_title"
-        tools:text="JJC 5胜" />
+        <TextView
+            android:id="@+id/tv_order_status"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/item_content_margin"
+            android:layout_marginEnd="@dimen/item_content_margin"
+            android:textSize="12sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="代练中" />
 
-    <TextView
-        android:id="@+id/tv_order_payment_status"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/item_content_margin"
-        android:layout_marginTop="8dp"
-        android:layout_marginBottom="@dimen/item_content_margin"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tv_order_subject_content"
-        tools:text="未付款" />
+        <TextView
+            android:id="@+id/tv_order_subject_content"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/item_content_margin"
+            android:layout_marginTop="4dp"
+            android:layout_marginEnd="@dimen/item_content_margin"
+            android:textColor="@color/color_text_primary"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_order_category_title"
+            tools:text="JJC 5胜" />
 
-    <TextView
-        android:id="@+id/tv_order_create_time"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="@dimen/item_content_margin"
-        android:layout_marginBottom="@dimen/item_content_margin"
-        android:textColor="@color/color_text_secondary"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        tools:text="2023-01-28 18:26:00" />
+        <TextView
+            android:id="@+id/tv_order_payment_status"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/item_content_margin"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="@dimen/item_content_margin"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_order_subject_content"
+            tools:text="未付款" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <TextView
+            android:id="@+id/tv_order_create_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/item_content_margin"
+            android:layout_marginBottom="@dimen/item_content_margin"
+            android:textColor="@color/color_text_secondary"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            tools:text="2023-01-28 18:26:00" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</com.google.android.material.card.MaterialCardView>
