@@ -28,13 +28,13 @@ class CreateCharacterFragment :
     private val viewModel by viewModels<CreateCharacterViewModel>()
     private val args by navArgs<CreateCharacterFragmentArgs>()
 
-    private val clientAdapter = SimpleClientDropDownAdapter()
+    private val clientAdapter = ClientTupleDropDownAdapter()
+
+    private val accountAdapter = AccountTupleDropDownAdapter()
 
     private val zoneAdapter = ZoneDropDownAdapter()
 
     private val serverAdapter = ServerDropDownAdapter()
-
-    private val accountAdapter = SimpleAccountDropDownAdapter()
 
     private val sectAdapter = SectDropDownAdapter()
 
@@ -48,7 +48,7 @@ class CreateCharacterFragment :
     override fun initData() {
         viewModel.apply {
             observe(viewLifecycleOwner, state = ::render, sideEffect = ::handleSideEffect)
-            observeClientAccountList(args.clientId, args.accountId)
+            initViewState(args.clientId, args.accountId)
         }
     }
 
@@ -57,8 +57,13 @@ class CreateCharacterFragment :
             actvCreateCharacterClient.apply {
                 setAdapter(clientAdapter)
                 setOnItemClickListener { _, _, position, _ ->
-                    clientAdapter.getItem(position)
-                        .let { simpleClient -> viewModel.onClientSelected(simpleClient) }
+                    viewModel.onClientSelected(clientAdapter.getItem(position))
+                }
+            }
+            actvCreateCharacterAccount.apply {
+                setAdapter(accountAdapter)
+                setOnItemClickListener { _, _, position, _ ->
+                    viewModel.onAccountSelected(accountAdapter.getItem(position))
                 }
             }
             actvCreateCharacterZone.apply {
@@ -71,13 +76,6 @@ class CreateCharacterFragment :
                 setAdapter(serverAdapter)
                 setOnItemClickListener { _, _, position, _ ->
                     viewModel.onServerSelected(position)
-                }
-            }
-            actvCreateCharacterAccount.apply {
-                setAdapter(accountAdapter)
-                setOnItemClickListener { _, _, position, _ ->
-                    accountAdapter.getItem(position)
-                        .let { simpleAccount -> viewModel.onAccountSelected(simpleAccount) }
                 }
             }
             actvCreateCharacterSect.apply {
@@ -99,13 +97,13 @@ class CreateCharacterFragment :
     override suspend fun render(state: CreateCharacterViewState) {
         binding.apply {
             state.apply {
-                actvCreateCharacterClient.setText(simpleClient.name, false)
-                clientAdapter.submitList(simpleClientList)
+                actvCreateCharacterClient.setText(clientTuple.name, false)
+                clientAdapter.submitList(clientTupleList)
                 zoneAdapter.submitList(zoneList)
                 actvCreateCharacterServer.setText(server.name, false)
                 serverAdapter.submitList(serverList)
-                actvCreateCharacterAccount.setText(simpleAccount.username, false)
-                accountAdapter.submitList(simpleAccountList)
+                actvCreateCharacterAccount.setText(accountTuple.username, false)
+                accountAdapter.submitList(accountTupleList)
                 actvCreateCharacterSect.setText(sect.name, false)
                 sectAdapter.submitList(sectList)
                 actvCreateCharacterInternal.setText(internal.name, false)

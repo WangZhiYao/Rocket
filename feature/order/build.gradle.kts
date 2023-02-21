@@ -49,6 +49,7 @@ dependencies {
 
     implementation(project(":core:framework"))
     implementation(project(":core:mediator"))
+    implementation(project(":domain:common"))
     implementation(project(":domain:order"))
 
     implementation(libs.hilt.android)

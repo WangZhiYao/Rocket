@@ -13,6 +13,7 @@ import com.yizhenwind.rocket.core.framework.base.BaseFragment
 import com.yizhenwind.rocket.core.framework.ext.setThrottleClickListener
 import com.yizhenwind.rocket.core.framework.ext.showSnack
 import com.yizhenwind.rocket.core.framework.mvi.IMVIHost
+import com.yizhenwind.rocket.core.framework.widget.ClientTupleDropDownAdapter
 import com.yizhenwind.rocket.feature.account.R
 import com.yizhenwind.rocket.feature.account.databinding.FragmentCreateAccountBinding
 import dagger.hilt.android.AndroidEntryPoint
@@ -34,6 +35,8 @@ class CreateAccountFragment :
     private val viewModel by viewModels<CreateAccountViewModel>()
     private val args by navArgs<CreateAccountFragmentArgs>()
 
+    private val clientAdapter = ClientTupleDropDownAdapter()
+
     private val hasBiometricCapability: Boolean
         get() = AuthenticateHelper.hasBiometricCapability(requireContext())
 
@@ -43,11 +46,20 @@ class CreateAccountFragment :
     }
 
     override fun initData() {
-        viewModel.observe(viewLifecycleOwner, state = ::render, sideEffect = ::handleSideEffect)
+        viewModel.apply {
+            observe(viewLifecycleOwner, state = ::render, sideEffect = ::handleSideEffect)
+            initViewState(args.clientId)
+        }
     }
 
     override fun initView() {
         binding.apply {
+            actvCreateAccountClient.apply {
+                setAdapter(clientAdapter)
+                setOnItemClickListener { _, _, position, _ ->
+                    viewModel.onClientSelected(clientAdapter.getItem(position))
+                }
+            }
             tietCreateAccountUsername.doAfterTextChanged { username ->
                 viewModel.onUsernameChanged(username?.toString())
             }
@@ -70,7 +82,6 @@ class CreateAccountFragment :
                         )
                     }) {
                         viewModel.createAccount(
-                            args.clientId,
                             account,
                             password,
                             authenticateForEncrypt()
@@ -78,7 +89,6 @@ class CreateAccountFragment :
                     }
                 } else {
                     viewModel.createAccount(
-                        args.clientId,
                         account,
                         password
                     )
@@ -88,7 +98,12 @@ class CreateAccountFragment :
     }
 
     override suspend fun render(state: CreateAccountViewState) {
-
+        binding.apply {
+            state.apply {
+                actvCreateAccountClient.setText(clientTuple.name, false)
+                clientAdapter.submitList(clientTupleList)
+            }
+        }
     }
 
     override fun handleSideEffect(sideEffect: CreateAccountSideEffect) {
@@ -112,6 +127,7 @@ class CreateAccountFragment :
                                 sideEffect.account.id
                             )
                         )
+                        requireActivity().finish()
                     }
                 }
             }

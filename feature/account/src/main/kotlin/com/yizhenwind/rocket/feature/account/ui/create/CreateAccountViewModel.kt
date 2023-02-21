@@ -6,10 +6,13 @@ import com.yizhenwind.rocket.core.framework.base.BaseMVIViewModel
 import com.yizhenwind.rocket.core.logger.ILogger
 import com.yizhenwind.rocket.core.model.Account
 import com.yizhenwind.rocket.core.model.Client
+import com.yizhenwind.rocket.core.model.ClientTuple
 import com.yizhenwind.rocket.domain.account.CheckPasswordValidUseCase
 import com.yizhenwind.rocket.domain.account.CheckUsernameValidUseCase
 import com.yizhenwind.rocket.domain.account.CreateAccountUseCase
 import com.yizhenwind.rocket.domain.account.GetAccountByUsernameUseCase
+import com.yizhenwind.rocket.domain.common.usecase.ClientTupleUseCase
+import com.yizhenwind.rocket.domain.common.usecase.TupleContext
 import com.yizhenwind.rocket.feature.account.R
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.FlowPreview
@@ -18,8 +21,10 @@ import kotlinx.coroutines.flow.flatMapConcat
 import kotlinx.coroutines.flow.map
 import org.orbitmvi.orbit.syntax.simple.intent
 import org.orbitmvi.orbit.syntax.simple.postSideEffect
+import org.orbitmvi.orbit.syntax.simple.reduce
 import org.orbitmvi.orbit.viewmodel.container
 import javax.inject.Inject
+import kotlin.math.log
 
 /**
  *
@@ -29,6 +34,7 @@ import javax.inject.Inject
  */
 @HiltViewModel
 class CreateAccountViewModel @Inject constructor(
+    private val clientTupleUseCase: ClientTupleUseCase,
     private val checkUsernameValidUseCase: CheckUsernameValidUseCase,
     private val getAccountByUsernameUseCase: GetAccountByUsernameUseCase,
     private val checkPasswordValidUseCase: CheckPasswordValidUseCase,
@@ -39,6 +45,33 @@ class CreateAccountViewModel @Inject constructor(
 
     override val container =
         container<CreateAccountViewState, CreateAccountSideEffect>(CreateAccountViewState())
+
+    fun initViewState(clientId: Long) {
+        intent {
+            clientTupleUseCase.execute(TupleContext(clientTuple = ClientTuple(id = clientId)))
+                .catch {
+                    logger.e(it)
+                }
+                .collect { tupleContext ->
+                    tupleContext.apply {
+                        reduce {
+                            state.copy(
+                                clientTupleList = clientTupleList,
+                                clientTuple = clientTuple
+                            )
+                        }
+                    }
+                }
+        }
+    }
+
+    fun onClientSelected(clientTuple: ClientTuple) {
+        intent {
+            reduce {
+                state.copy(clientTuple = clientTuple)
+            }
+        }
+    }
 
     fun onUsernameChanged(username: String?) {
         intent {
@@ -64,7 +97,6 @@ class CreateAccountViewModel @Inject constructor(
 
     @OptIn(FlowPreview::class)
     fun createAccount(
-        clientId: Long,
         username: String?,
         password: String?,
         authResult: BiometricPrompt.AuthenticationResult? = null
@@ -97,7 +129,11 @@ class CreateAccountViewModel @Inject constructor(
             }
 
             val account =
-                Account(client = Client(id = clientId), username = username, password = password)
+                Account(
+                    client = Client(id = state.clientTuple.id),
+                    username = username,
+                    password = password
+                )
 
             if (authResult != null) {
                 biometricEncryptUseCase(authResult, password)

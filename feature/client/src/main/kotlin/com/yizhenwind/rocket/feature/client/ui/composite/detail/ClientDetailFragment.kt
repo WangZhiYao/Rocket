@@ -58,7 +58,7 @@ class ClientDetailFragment :
     override suspend fun render(state: ClientDetailViewState) {
         state.client.apply {
             if (id != Constant.DEFAULT_ID) {
-                activityViewModel.setTitle(name)
+                activityViewModel.setClient(this)
                 binding.apply {
                     tvClientDetailContactType.text = contactType.name
                     tvClientDetailContact.text = contact

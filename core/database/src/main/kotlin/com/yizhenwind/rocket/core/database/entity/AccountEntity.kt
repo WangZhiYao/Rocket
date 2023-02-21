@@ -58,11 +58,6 @@ data class AccountEntity(
     val iv: String,
 
     /**
-     * 是否可用
-     */
-    val enable: Boolean,
-
-    /**
      * 创建时间
      */
     @ColumnInfo(name = "create_time")

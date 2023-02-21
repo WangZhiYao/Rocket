@@ -22,7 +22,6 @@ class ClientDtoMapper @Inject constructor(
                 contactTypeMapper.fromEntity(contactType),
                 client.contact,
                 client.remark,
-                client.enable,
                 client.createTime
             )
         }

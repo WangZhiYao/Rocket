@@ -50,6 +50,7 @@ dependencies {
     implementation(project(":core:framework"))
     implementation(project(":core:authenticate"))
     implementation(project(":core:mediator"))
+    implementation(project(":domain:common"))
     implementation(project(":domain:account"))
 
     implementation(libs.hilt.android)

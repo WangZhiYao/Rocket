@@ -4,10 +4,10 @@ import com.yizhenwind.rocket.core.common.mapper.ListMapper
 import com.yizhenwind.rocket.core.database.mapper.AccountDtoMapper
 import com.yizhenwind.rocket.core.database.mapper.AccountMapper
 import com.yizhenwind.rocket.core.database.mapper.AccountProfileDtoMapper
-import com.yizhenwind.rocket.core.database.mapper.SimpleAccountMapper
+import com.yizhenwind.rocket.core.database.mapper.AccountTupleMapper
 import com.yizhenwind.rocket.core.model.Account
 import com.yizhenwind.rocket.core.model.AccountProfile
-import com.yizhenwind.rocket.core.model.simple.SimpleAccount
+import com.yizhenwind.rocket.core.model.AccountTuple
 import com.yizhenwind.rocket.data.account.source.AccountLocalDataSource
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
@@ -24,7 +24,7 @@ class AccountRepository @Inject constructor(
     private val accountProfileDtoMapper: AccountProfileDtoMapper,
     private val accountMapper: AccountMapper,
     private val accountDtoMapper: AccountDtoMapper,
-    private val simpleAccountMapper: SimpleAccountMapper
+    private val accountTupleMapper: AccountTupleMapper
 ) {
 
     fun observeAccountListByClientId(clientId: Long): Flow<List<Account>> =
@@ -48,12 +48,12 @@ class AccountRepository @Inject constructor(
             accountEntity?.run { accountDtoMapper.map(this) } ?: Account()
         }
 
-    fun observeSimpleAccountList(): Flow<List<SimpleAccount>> =
-        accountLocalDataSource.observeSimpleAccountList()
-            .map { ListMapper(simpleAccountMapper).map(it) }
+    fun observeAccountTupleList(): Flow<List<AccountTuple>> =
+        accountLocalDataSource.observeAccountTupleList()
+            .map { ListMapper(accountTupleMapper).map(it) }
 
-    fun observeSimpleAccountListByClientId(clientId: Long): Flow<List<SimpleAccount>> =
-        accountLocalDataSource.observeSimpleAccountListByClientId(clientId)
-            .map { ListMapper(simpleAccountMapper).map(it) }
+    fun observeAccountTupleListByClientId(clientId: Long): Flow<List<AccountTuple>> =
+        accountLocalDataSource.observeAccountTupleListByClientId(clientId)
+            .map { ListMapper(accountTupleMapper).map(it) }
 
 }

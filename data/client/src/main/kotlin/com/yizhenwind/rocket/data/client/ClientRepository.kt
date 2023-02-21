@@ -4,11 +4,11 @@ import com.yizhenwind.rocket.core.common.mapper.ListMapper
 import com.yizhenwind.rocket.core.database.mapper.ClientDtoMapper
 import com.yizhenwind.rocket.core.database.mapper.ClientMapper
 import com.yizhenwind.rocket.core.database.mapper.ClientProfileDtoMapper
-import com.yizhenwind.rocket.core.database.mapper.SimpleClientMapper
+import com.yizhenwind.rocket.core.database.mapper.ClientTupleMapper
 import com.yizhenwind.rocket.core.model.Client
 import com.yizhenwind.rocket.core.model.ClientProfile
 import com.yizhenwind.rocket.core.model.ContactType
-import com.yizhenwind.rocket.core.model.simple.SimpleClient
+import com.yizhenwind.rocket.core.model.ClientTuple
 import com.yizhenwind.rocket.data.client.source.ClientLocalDataSource
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
@@ -25,21 +25,19 @@ class ClientRepository @Inject constructor(
     private val clientProfileDtoMapper: ClientProfileDtoMapper,
     private val clientMapper: ClientMapper,
     private val clientDtoMapper: ClientDtoMapper,
-    private val simpleClientMapper: SimpleClientMapper
+    private val clientTupleMapper: ClientTupleMapper
 ) {
 
     fun observeClientList(): Flow<List<Client>> =
         clientLocalDataSource.observeClientList()
             .map { clientDtoList ->
-                clientDtoList.map { clientDto -> clientDtoMapper.map(clientDto) }
+                ListMapper(clientDtoMapper).map(clientDtoList)
             }
 
-    fun observeClientProfile(): Flow<List<ClientProfile>> =
-        clientLocalDataSource.observeClientProfile()
+    fun observeClientProfileList(): Flow<List<ClientProfile>> =
+        clientLocalDataSource.observeClientProfileList()
             .map { clientProfileDtoList ->
-                clientProfileDtoList.map { clientProfileDto ->
-                    clientProfileDtoMapper.map(clientProfileDto)
-                }
+                ListMapper(clientProfileDtoMapper).map(clientProfileDtoList)
             }
 
     fun createClient(client: Client): Flow<Client> =
@@ -55,8 +53,14 @@ class ClientRepository @Inject constructor(
             clientDto?.run { clientDtoMapper.map(this) } ?: Client()
         }
 
-    fun observeSimpleClientList(): Flow<List<SimpleClient>> =
-        clientLocalDataSource.observeSimpleClientList()
-            .map { ListMapper(simpleClientMapper).map(it) }
+    fun observeClientTupleList(): Flow<List<ClientTuple>> =
+        clientLocalDataSource.observeClientTupleList()
+            .map { ListMapper(clientTupleMapper).map(it) }
+
+    fun updateClient(client: Client): Flow<Int> =
+        clientLocalDataSource.updateClient(clientMapper.map(client))
+
+    fun deleteClient(client: Client): Flow<Int> =
+        clientLocalDataSource.deleteClient(clientMapper.map(client))
 
 }

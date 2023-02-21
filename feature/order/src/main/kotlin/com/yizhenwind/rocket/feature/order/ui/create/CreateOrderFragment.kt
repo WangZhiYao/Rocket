@@ -17,9 +17,9 @@ import com.yizhenwind.rocket.core.framework.ext.setThrottleClickListener
 import com.yizhenwind.rocket.core.framework.ext.showSnack
 import com.yizhenwind.rocket.core.framework.mvi.IMVIHost
 import com.yizhenwind.rocket.core.framework.widget.CategoryDropDownAdapter
-import com.yizhenwind.rocket.core.framework.widget.SimpleAccountDropDownAdapter
-import com.yizhenwind.rocket.core.framework.widget.SimpleCharacterDropDownAdapter
-import com.yizhenwind.rocket.core.framework.widget.SimpleClientDropDownAdapter
+import com.yizhenwind.rocket.core.framework.widget.AccountTupleDropDownAdapter
+import com.yizhenwind.rocket.core.framework.widget.CharacterTupleDropDownAdapter
+import com.yizhenwind.rocket.core.framework.widget.ClientTupleDropDownAdapter
 import com.yizhenwind.rocket.feature.order.R
 import com.yizhenwind.rocket.feature.order.databinding.FragmentCreateOrderBinding
 import com.yizhenwind.rocket.feature.order.ui.widget.*
@@ -41,11 +41,11 @@ class CreateOrderFragment :
     private val viewModel by viewModels<CreateOrderViewModel>()
     private val navArgs by navArgs<CreateOrderFragmentArgs>()
 
-    private val clientAdapter = SimpleClientDropDownAdapter()
+    private val clientAdapter = ClientTupleDropDownAdapter()
 
-    private val accountAdapter = SimpleAccountDropDownAdapter()
+    private val accountAdapter = AccountTupleDropDownAdapter()
 
-    private val characterAdapter = SimpleCharacterDropDownAdapter()
+    private val characterAdapter = CharacterTupleDropDownAdapter()
 
     private val categoryAdapter by lazy { CategoryDropDownAdapter(requireContext()) }
 
@@ -65,7 +65,7 @@ class CreateOrderFragment :
     override fun initData() {
         viewModel.apply {
             observe(viewLifecycleOwner, state = ::render, sideEffect = ::handleSideEffect)
-            initViewState(navArgs.clientId, navArgs.accountId)
+            initViewState(navArgs.clientId, navArgs.accountId, navArgs.characterId)
         }
     }
 
@@ -173,12 +173,12 @@ class CreateOrderFragment :
     override suspend fun render(state: CreateOrderViewState) {
         binding.apply {
             state.apply {
-                actvCreateOrderClient.setText(simpleClient.name, false)
-                clientAdapter.submitList(simpleClientList)
-                actvCreateOrderAccount.setText(simpleAccount.username, false)
-                accountAdapter.submitList(simpleAccountList)
-                actvCreateOrderCharacter.setText(simpleCharacter.name, false)
-                characterAdapter.submitList(simpleCharacterList)
+                actvCreateOrderClient.setText(clientTuple.name, false)
+                clientAdapter.submitList(clientTupleList)
+                actvCreateOrderAccount.setText(accountTuple.username, false)
+                accountAdapter.submitList(accountTupleList)
+                actvCreateOrderCharacter.setText(characterTuple.name, false)
+                characterAdapter.submitList(characterTupleList)
                 actvCreateOrderCategory.setText(category.title, false)
                 categoryAdapter.submitList(categoryList)
                 actvCreateOrderSubject.setText(subject.content, false)

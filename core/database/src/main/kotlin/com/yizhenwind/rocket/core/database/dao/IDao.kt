@@ -1,5 +1,6 @@
 package com.yizhenwind.rocket.core.database.dao
 
+import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.Update
 import androidx.room.Upsert
@@ -41,5 +42,11 @@ interface IDao<T> {
      */
     @Update
     suspend fun update(item: T): Int
+
+    /**
+     * 删除
+     */
+    @Delete
+    suspend fun delete(item: T): Int
 
 }

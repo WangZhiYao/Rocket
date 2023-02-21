@@ -3,7 +3,7 @@ package com.yizhenwind.rocket.data.client.source
 import com.yizhenwind.rocket.core.database.dao.ClientDao
 import com.yizhenwind.rocket.core.database.dto.ClientDto
 import com.yizhenwind.rocket.core.database.dto.ClientProfileDto
-import com.yizhenwind.rocket.core.database.dto.simple.SimpleClientDto
+import com.yizhenwind.rocket.core.database.dto.ClientTupleDto
 import com.yizhenwind.rocket.core.database.entity.ClientEntity
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
@@ -22,8 +22,8 @@ class ClientLocalDataSource @Inject constructor(
     fun observeClientList(): Flow<List<ClientDto>> =
         clientDao.observeClientList()
 
-    fun observeClientProfile(): Flow<List<ClientProfileDto>> =
-        clientDao.observeClientProfile()
+    fun observeClientProfileList(): Flow<List<ClientProfileDto>> =
+        clientDao.observeClientProfileList()
 
     fun createClient(clientEntity: ClientEntity): Flow<Long> =
         flow {
@@ -36,7 +36,17 @@ class ClientLocalDataSource @Inject constructor(
     fun observeClientById(id: Long): Flow<ClientDto?> =
         clientDao.observeClientById(id)
 
-    fun observeSimpleClientList(): Flow<List<SimpleClientDto>> =
-        clientDao.observeSimpleClientList()
+    fun observeClientTupleList(): Flow<List<ClientTupleDto>> =
+        clientDao.observeClientTupleList()
+
+    fun updateClient(clientEntity: ClientEntity): Flow<Int> =
+        flow {
+            emit(clientDao.update(clientEntity))
+        }
+
+    fun deleteClient(clientEntity: ClientEntity): Flow<Int> =
+        flow {
+            emit(clientDao.delete(clientEntity))
+        }
 
 }

@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="label_client_profile">客户</string>
+    <string name="label_client_profile_list">客户</string>
+
+    <string name="item_profile_account_count">账号数: %d</string>
+    <string name="item_profile_character_count">角色数: %d</string>
+    <string name="item_profile_order_count">订单数: %d</string>
 
     <string name="label_create_client">创建客户</string>
     <string name="create_client_name">客户姓名</string>
@@ -21,12 +25,17 @@
     <string name="client_detail_create_time">创建时间</string>
     <string name="client_detail_copy_contact_to_clipboard_success">联系方式已复制到剪切板</string>
 
+    <string name="dialog_delete_client_title">删除客户: %s</string>
+    <string name="dialog_delete_client_content">是否需要删除客户: %s, 删除后与其相关联的账号, 角色, 订单等将不再可用</string>
+    <string name="action_delete_client">删除客户</string>
+
     <string name="empty_remark">暂无备注</string>
 
     <string name="error_client_name_empty">请输入客户名</string>
     <string name="error_contact_empty">请输入联系方式</string>
     <string name="error_client_exist">已经存在以上联系方式的客户</string>
     <string name="error_create_client">创建客户失败</string>
+    <string name="error_delete_client_failed">删除客户失败</string>
 
     <string name="error_client_detail">客户信息错误</string>
     <string name="error_action_close">关闭</string>

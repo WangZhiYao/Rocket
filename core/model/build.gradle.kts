@@ -43,6 +43,7 @@ dependencies {
     androidTestImplementation(libs.bundles.androidx.test)
 
     implementation(project(":core:common"))
+    compileOnly(libs.androidx.recyclerview)
 
     ksp(libs.moshi.kotlin.codegen)
 

@@ -4,11 +4,11 @@ import android.content.Context
 import android.content.Intent
 import com.yizhenwind.rocket.core.mediator.character.ICharacterService
 import com.yizhenwind.rocket.core.model.CharacterProfile
-import com.yizhenwind.rocket.core.model.simple.SimpleCharacter
+import com.yizhenwind.rocket.core.model.CharacterTuple
 import com.yizhenwind.rocket.domain.character.ObserveCharacterProfileByAccountIdUseCase
 import com.yizhenwind.rocket.domain.character.ObserveCharacterProfileByClientIdUseCase
-import com.yizhenwind.rocket.domain.character.ObserveSimpleCharacterListByAccountIdUseCase
-import com.yizhenwind.rocket.domain.character.ObserveSimpleCharacterListByClientIdUseCase
+import com.yizhenwind.rocket.domain.character.ObserveCharacterTupleListByAccountIdUseCase
+import com.yizhenwind.rocket.domain.character.ObserveCharacterTupleListByClientIdUseCase
 import com.yizhenwind.rocket.feature.character.ui.composite.CharacterCompositeActivity
 import com.yizhenwind.rocket.feature.character.ui.composite.CharacterCompositeActivityArgs
 import com.yizhenwind.rocket.feature.character.ui.create.CreateCharacterArgs
@@ -23,8 +23,8 @@ import javax.inject.Inject
 class CharacterServiceImpl @Inject constructor(
     private val observeCharacterProfileByClientIdUseCase: ObserveCharacterProfileByClientIdUseCase,
     private val observeCharacterProfileByAccountIdUseCase: ObserveCharacterProfileByAccountIdUseCase,
-    private val observeSimpleCharacterListByClientIdUseCase: ObserveSimpleCharacterListByClientIdUseCase,
-    private val observeSimpleCharacterListByAccountIdUseCase: ObserveSimpleCharacterListByAccountIdUseCase
+    private val observeCharacterTupleListByClientIdUseCase: ObserveCharacterTupleListByClientIdUseCase,
+    private val observeCharacterTupleListByAccountIdUseCase: ObserveCharacterTupleListByAccountIdUseCase
 ) : ICharacterService {
 
     override fun observeCharacterProfileByClientId(clientId: Long): Flow<List<CharacterProfile>> =
@@ -45,10 +45,10 @@ class CharacterServiceImpl @Inject constructor(
         )
     }
 
-    override fun observeSimpleCharacterListByClientId(clientId: Long): Flow<List<SimpleCharacter>> =
-        observeSimpleCharacterListByClientIdUseCase(clientId)
+    override fun observeCharacterTupleListByClientId(clientId: Long): Flow<List<CharacterTuple>> =
+        observeCharacterTupleListByClientIdUseCase(clientId)
 
-    override fun observeSimpleCharacterListByAccountId(accountId: Long): Flow<List<SimpleCharacter>> =
-        observeSimpleCharacterListByAccountIdUseCase(accountId)
+    override fun observeCharacterTupleListByAccountId(accountId: Long): Flow<List<CharacterTuple>> =
+        observeCharacterTupleListByAccountIdUseCase(accountId)
 
 }

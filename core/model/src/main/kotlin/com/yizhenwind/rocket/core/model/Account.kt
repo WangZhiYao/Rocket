@@ -13,6 +13,5 @@ data class Account(
     val password: String = "",
     val encrypted: Boolean = false,
     val iv: String = "",
-    val enable: Boolean = true,
     val createTime: Long = System.currentTimeMillis()
 )

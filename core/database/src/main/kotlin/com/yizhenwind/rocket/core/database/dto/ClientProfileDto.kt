@@ -27,6 +27,7 @@ data class ClientProfileDto(
     val characterCount: Int,
     @ColumnInfo(name = "order_count")
     val orderCount: Int,
+    val remark: String = "",
     @ColumnInfo(name = "create_time")
     val createTime: Long
 )

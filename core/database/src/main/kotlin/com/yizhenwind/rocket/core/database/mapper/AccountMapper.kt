@@ -22,7 +22,6 @@ class AccountMapper @Inject constructor() : IMapper<Account, AccountEntity> {
                 password,
                 encrypted,
                 iv,
-                enable,
                 createTime
             )
         }

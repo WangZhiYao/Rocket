@@ -2,6 +2,7 @@ package com.yizhenwind.rocket.core.database.entity
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity
+import androidx.room.ForeignKey
 import androidx.room.PrimaryKey
 import com.yizhenwind.rocket.core.common.constant.OrderStatus
 import com.yizhenwind.rocket.core.common.constant.PaymentStatus
@@ -12,7 +13,32 @@ import com.yizhenwind.rocket.core.common.constant.PaymentStatus
  * @author WangZhiYao
  * @since 2021/10/27
  */
-@Entity(tableName = "order")
+@Entity(
+    tableName = "order",
+    foreignKeys = [
+        ForeignKey(
+            entity = ClientEntity::class,
+            parentColumns = ["id"],
+            childColumns = ["client_id"],
+            onDelete = ForeignKey.CASCADE,
+            onUpdate = ForeignKey.CASCADE
+        ),
+        ForeignKey(
+            entity = AccountEntity::class,
+            parentColumns = ["id"],
+            childColumns = ["account_id"],
+            onDelete = ForeignKey.CASCADE,
+            onUpdate = ForeignKey.CASCADE
+        ),
+        ForeignKey(
+            entity = CharacterEntity::class,
+            parentColumns = ["id"],
+            childColumns = ["character_id"],
+            onDelete = ForeignKey.CASCADE,
+            onUpdate = ForeignKey.CASCADE
+        )
+    ]
+)
 data class OrderEntity(
 
     /**

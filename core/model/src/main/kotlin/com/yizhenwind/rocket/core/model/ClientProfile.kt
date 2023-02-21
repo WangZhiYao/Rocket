@@ -1,5 +1,7 @@
 package com.yizhenwind.rocket.core.model
 
+import androidx.recyclerview.widget.DiffUtil
+
 /**
  * 客户信息简略
  *
@@ -14,5 +16,23 @@ data class ClientProfile(
     val accountCount: Int = 0,
     val characterCount: Int = 0,
     val orderCount: Int = 0,
+    val remark: String = "",
     val createTime: Long = 0
-)
+) {
+
+    companion object {
+
+        val COMPARATOR = object : DiffUtil.ItemCallback<ClientProfile>() {
+
+            override fun areItemsTheSame(
+                oldItem: ClientProfile,
+                newItem: ClientProfile
+            ): Boolean = oldItem.id == newItem.id
+
+            override fun areContentsTheSame(
+                oldItem: ClientProfile,
+                newItem: ClientProfile
+            ): Boolean = oldItem == newItem
+        }
+    }
+}

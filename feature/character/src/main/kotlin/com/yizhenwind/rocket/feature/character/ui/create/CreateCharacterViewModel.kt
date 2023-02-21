@@ -2,23 +2,20 @@ package com.yizhenwind.rocket.feature.character.ui.create
 
 import com.yizhenwind.rocket.core.common.constant.Constant
 import com.yizhenwind.rocket.core.common.ext.ifNull
+import com.yizhenwind.rocket.core.common.usecase.DataFlowSequenceUseCase
 import com.yizhenwind.rocket.core.framework.base.BaseMVIViewModel
 import com.yizhenwind.rocket.core.logger.ILogger
-import com.yizhenwind.rocket.core.mediator.account.IAccountService
-import com.yizhenwind.rocket.core.mediator.client.IClientService
 import com.yizhenwind.rocket.core.mediator.sectinternal.ISectInternalService
 import com.yizhenwind.rocket.core.mediator.zoneserver.IZoneServerService
-import com.yizhenwind.rocket.core.model.Account
-import com.yizhenwind.rocket.core.model.Character
-import com.yizhenwind.rocket.core.model.Client
-import com.yizhenwind.rocket.core.model.simple.SimpleAccount
-import com.yizhenwind.rocket.core.model.simple.SimpleClient
+import com.yizhenwind.rocket.core.model.*
 import com.yizhenwind.rocket.domain.character.CreateCharacterUseCase
+import com.yizhenwind.rocket.domain.common.usecase.AccountTupleUseCase
+import com.yizhenwind.rocket.domain.common.usecase.ClientTupleUseCase
+import com.yizhenwind.rocket.domain.common.usecase.TupleContext
 import com.yizhenwind.rocket.feature.character.R
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.combine
-import kotlinx.coroutines.flow.flowOf
 import org.orbitmvi.orbit.syntax.simple.intent
 import org.orbitmvi.orbit.syntax.simple.postSideEffect
 import org.orbitmvi.orbit.syntax.simple.reduce
@@ -33,8 +30,8 @@ import javax.inject.Inject
  */
 @HiltViewModel
 class CreateCharacterViewModel @Inject constructor(
-    private val clientService: IClientService,
-    private val accountService: IAccountService,
+    private val clientTupleUseCase: ClientTupleUseCase,
+    private val accountTupleUseCase: AccountTupleUseCase,
     private val zoneServerService: IZoneServerService,
     private val sectInternalService: ISectInternalService,
     private val createCharacterUseCase: CreateCharacterUseCase,
@@ -63,50 +60,63 @@ class CreateCharacterViewModel @Inject constructor(
         }
     }
 
-    fun observeClientAccountList(clientId: Long, accountId: Long) {
+    fun initViewState(clientId: Long, accountId: Long) {
         intent {
-            val simpleAccountListFlow =
-                if (clientId == Constant.DEFAULT_ID) flowOf(emptyList()) else accountService.observeSimpleAccountListByClientId(
-                    clientId
-                )
+            val sequenceUseCase = DataFlowSequenceUseCase<TupleContext>()
+                .add(clientTupleUseCase)
+                .add(accountTupleUseCase)
 
-            clientService.observeSimpleClientList()
-                .combine(simpleAccountListFlow) { simpleClientList, simpleAccountList ->
-                    val simpleClient =
-                        if (clientId == Constant.DEFAULT_ID) null else simpleClientList.find { it.id == clientId }
-                    val simpleAccount =
-                        if (accountId == Constant.DEFAULT_ID) null else simpleAccountList.find { it.id == accountId }
-                    state.copy(
-                        simpleClientList = simpleClientList,
-                        simpleClient = simpleClient.ifNull { SimpleClient() },
-                        simpleAccountList = simpleAccountList,
-                        simpleAccount = simpleAccount.ifNull { SimpleAccount() }
-                    )
-                }
-                .collect { viewState ->
-                    reduce {
-                        viewState
+            sequenceUseCase.execute(
+                TupleContext(
+                    clientTuple = ClientTuple(id = clientId),
+                    accountTuple = AccountTuple(id = accountId)
+                )
+            )
+                .collect { tupleContext ->
+                    tupleContext.apply {
+                        reduce {
+                            state.copy(
+                                clientTupleList = clientTupleList,
+                                clientTuple = clientTuple,
+                                accountTupleList = accountTupleList,
+                                accountTuple = accountTuple
+                            )
+                        }
                     }
                 }
         }
     }
 
-    fun onClientSelected(simpleClient: SimpleClient) {
+    fun onClientSelected(clientTuple: ClientTuple) {
         intent {
-            if (simpleClient.id == state.simpleClient.id) {
+            if (clientTuple.id == state.clientTuple.id) {
                 return@intent
             }
-            accountService.observeSimpleAccountListByClientId(simpleClient.id)
-                .collect { simpleAccountList ->
+            accountTupleUseCase.execute(TupleContext(clientTuple = clientTuple))
+                .collect { tupleContext ->
                     postSideEffect(CreateCharacterSideEffect.HideClientError)
-                    reduce {
-                        state.copy(
-                            simpleClient = simpleClient,
-                            simpleAccountList = simpleAccountList,
-                            simpleAccount = SimpleAccount()
-                        )
+                    tupleContext.apply {
+                        reduce {
+                            state.copy(
+                                clientTuple = clientTuple,
+                                accountTupleList = accountTupleList,
+                                accountTuple = accountTuple
+                            )
+                        }
                     }
                 }
+        }
+    }
+
+    fun onAccountSelected(accountTuple: AccountTuple) {
+        intent {
+            if (accountTuple.id == state.accountTuple.id) {
+                return@intent
+            }
+            postSideEffect(CreateCharacterSideEffect.HideAccountError)
+            reduce {
+                state.copy(accountTuple = accountTuple)
+            }
         }
     }
 
@@ -127,18 +137,6 @@ class CreateCharacterViewModel @Inject constructor(
             postSideEffect(CreateCharacterSideEffect.HideServerError)
             reduce {
                 state.copy(server = server)
-            }
-        }
-    }
-
-    fun onAccountSelected(simpleAccount: SimpleAccount) {
-        intent {
-            if (simpleAccount.id == state.simpleAccount.id) {
-                return@intent
-            }
-            postSideEffect(CreateCharacterSideEffect.HideAccountError)
-            reduce {
-                state.copy(simpleAccount = simpleAccount)
             }
         }
     }
@@ -167,7 +165,7 @@ class CreateCharacterViewModel @Inject constructor(
     fun attemptCreateCharacter(securityLock: String?, characterName: String?, remark: String?) {
         intent {
             state.apply {
-                if (simpleClient.id == Constant.DEFAULT_ID) {
+                if (clientTuple.id == Constant.DEFAULT_ID) {
                     postSideEffect(CreateCharacterSideEffect.ShowClientError(R.string.error_create_character_client_unselected))
                     return@intent
                 }
@@ -182,7 +180,7 @@ class CreateCharacterViewModel @Inject constructor(
                     return@intent
                 }
 
-                if (simpleAccount.id == Constant.DEFAULT_ID) {
+                if (accountTuple.id == Constant.DEFAULT_ID) {
                     postSideEffect(CreateCharacterSideEffect.ShowAccountError(R.string.error_create_character_account_unselected))
                     return@intent
                 }
@@ -204,10 +202,10 @@ class CreateCharacterViewModel @Inject constructor(
 
                 createCharacterUseCase(
                     Character(
-                        client = Client(simpleClient.id),
+                        client = Client(clientTuple.id),
                         zone = zone,
                         server = server,
-                        account = Account(simpleAccount.id),
+                        account = Account(accountTuple.id),
                         name = characterName,
                         sect = sect,
                         internal = internal,

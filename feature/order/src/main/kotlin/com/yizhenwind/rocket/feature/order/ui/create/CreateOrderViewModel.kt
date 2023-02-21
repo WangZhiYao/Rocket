@@ -4,23 +4,23 @@ import android.app.Application
 import com.yizhenwind.rocket.core.common.constant.Constant
 import com.yizhenwind.rocket.core.common.constant.PaymentStatus
 import com.yizhenwind.rocket.core.common.ext.ifNull
+import com.yizhenwind.rocket.core.common.usecase.DataFlowSequenceUseCase
 import com.yizhenwind.rocket.core.framework.base.BaseMVIAndroidViewModel
 import com.yizhenwind.rocket.core.logger.ILogger
-import com.yizhenwind.rocket.core.mediator.account.IAccountService
 import com.yizhenwind.rocket.core.mediator.category.ICategoryService
-import com.yizhenwind.rocket.core.mediator.character.ICharacterService
-import com.yizhenwind.rocket.core.mediator.client.IClientService
 import com.yizhenwind.rocket.core.mediator.paymentmethod.IPaymentMethodService
 import com.yizhenwind.rocket.core.mediator.subject.ISubjectService
 import com.yizhenwind.rocket.core.model.*
-import com.yizhenwind.rocket.core.model.simple.SimpleAccount
-import com.yizhenwind.rocket.core.model.simple.SimpleCharacter
-import com.yizhenwind.rocket.core.model.simple.SimpleClient
+import com.yizhenwind.rocket.domain.common.usecase.AccountTupleUseCase
+import com.yizhenwind.rocket.domain.common.usecase.CharacterTupleUseCase
+import com.yizhenwind.rocket.domain.common.usecase.ClientTupleUseCase
+import com.yizhenwind.rocket.domain.common.usecase.TupleContext
 import com.yizhenwind.rocket.domain.order.CreateOrderUseCase
 import com.yizhenwind.rocket.feature.order.R
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.FlowPreview
-import kotlinx.coroutines.flow.*
+import kotlinx.coroutines.flow.catch
+import kotlinx.coroutines.flow.combine
+import kotlinx.coroutines.flow.flowOf
 import org.orbitmvi.orbit.syntax.simple.intent
 import org.orbitmvi.orbit.syntax.simple.postSideEffect
 import org.orbitmvi.orbit.syntax.simple.reduce
@@ -37,9 +37,9 @@ import javax.inject.Inject
 @HiltViewModel
 class CreateOrderViewModel @Inject constructor(
     application: Application,
-    private val clientService: IClientService,
-    private val accountService: IAccountService,
-    private val characterService: ICharacterService,
+    private val clientTupleUseCase: ClientTupleUseCase,
+    private val accountTupleUseCase: AccountTupleUseCase,
+    private val characterTupleUseCase: CharacterTupleUseCase,
     private val categoryService: ICategoryService,
     private val subjectService: ISubjectService,
     private val paymentMethodService: IPaymentMethodService,
@@ -81,188 +81,97 @@ class CreateOrderViewModel @Inject constructor(
         }
     }
 
-    @OptIn(FlowPreview::class)
-    fun initViewState(clientId: Long, accountId: Long) {
+    fun initViewState(clientId: Long, accountId: Long, characterId: Long) {
         intent {
-            clientService.observeSimpleClientList()
-                .map { simpleClientList ->
-                    var simpleClient = if (clientId == Constant.DEFAULT_ID) {
-                        null
-                    } else {
-                        simpleClientList.find { it.id == clientId }
-                    }
+            val sequenceUseCase = DataFlowSequenceUseCase<TupleContext>()
+                .add(clientTupleUseCase)
+                .add(accountTupleUseCase)
+                .add(characterTupleUseCase)
 
-                    if (simpleClient == null && simpleClientList.size == 1) {
-                        simpleClient = simpleClientList[0]
-                    }
-
-                    state.copy(
-                        simpleClientList = simpleClientList,
-                        simpleClient = simpleClient.ifNull { SimpleClient() }
-                    )
-                }
-                .flatMapConcat { viewState ->
-                    viewState.simpleClient.run {
-                        if (id == Constant.DEFAULT_ID) {
-                            flowOf(
-                                viewState.copy(
-                                    simpleAccountList = emptyList(),
-                                    simpleAccount = SimpleAccount()
-                                )
+            sequenceUseCase.execute(
+                TupleContext(
+                    clientTuple = ClientTuple(id = clientId),
+                    accountTuple = AccountTuple(id = accountId),
+                    characterTuple = CharacterTuple(id = characterId)
+                )
+            )
+                .collect { tupleContext ->
+                    tupleContext.apply {
+                        reduce {
+                            state.copy(
+                                clientTupleList = clientTupleList,
+                                clientTuple = clientTuple,
+                                accountTupleList = accountTupleList,
+                                accountTuple = accountTuple,
+                                characterTupleList = characterTupleList,
+                                characterTuple = characterTuple
                             )
-                        } else {
-                            accountService.observeSimpleAccountListByClientId(id)
-                                .map { simpleAccountList ->
-                                    var simpleAccount = if (accountId == Constant.DEFAULT_ID) {
-                                        null
-                                    } else {
-                                        simpleAccountList.find { it.id == accountId }
-                                    }
-
-                                    if (simpleAccount == null && simpleAccountList.size == 1) {
-                                        simpleAccount = simpleAccountList[0]
-                                    }
-
-                                    viewState.copy(
-                                        simpleAccountList = simpleAccountList,
-                                        simpleAccount = simpleAccount.ifNull { SimpleAccount() }
-                                    )
-                                }
                         }
-                    }
-                }
-                .flatMapConcat { viewState ->
-                    viewState.run {
-                        if (simpleClient.id == Constant.DEFAULT_ID) {
-                            flowOf(
-                                viewState.copy(
-                                    simpleCharacterList = emptyList(),
-                                    simpleCharacter = SimpleCharacter()
-                                )
-                            )
-                        } else if (simpleAccount.id != Constant.DEFAULT_ID) {
-                            characterService.observeSimpleCharacterListByAccountId(simpleAccount.id)
-                                .map { simpleCharacterList ->
-                                    val simpleCharacter = if (simpleCharacterList.size == 1) {
-                                        simpleCharacterList[0]
-                                    } else {
-                                        SimpleCharacter()
-                                    }
-
-                                    viewState.copy(
-                                        simpleCharacterList = simpleCharacterList,
-                                        simpleCharacter = simpleCharacter
-                                    )
-                                }
-                        } else {
-                            characterService.observeSimpleCharacterListByClientId(simpleClient.id)
-                                .map { simpleCharacterList ->
-                                    viewState.copy(
-                                        simpleCharacterList = simpleCharacterList,
-                                        simpleCharacter = SimpleCharacter()
-                                    )
-                                }
-                        }
-                    }
-                }
-                .collect { viewState ->
-                    reduce {
-                        viewState
                     }
                 }
         }
     }
 
-    @OptIn(FlowPreview::class)
-    fun onClientSelected(simpleClient: SimpleClient) {
+    fun onClientSelected(clientTuple: ClientTuple) {
         intent {
-            if (simpleClient.id == state.simpleClient.id) {
+            if (clientTuple.id == state.clientTuple.id) {
                 return@intent
             }
-            accountService.observeSimpleAccountListByClientId(simpleClient.id)
-                .map { simpleAccountList ->
-                    val simpleAccount = if (simpleAccountList.size == 1) {
-                        simpleAccountList[0]
-                    } else {
-                        SimpleAccount()
-                    }
 
-                    state.copy(
-                        simpleAccountList = simpleAccountList,
-                        simpleAccount = simpleAccount
-                    )
-                }
-                .flatMapConcat { viewState ->
-                    viewState.simpleAccount.run {
-                        if (id == Constant.DEFAULT_ID) {
-                            characterService.observeSimpleCharacterListByClientId(simpleClient.id)
-                                .map { simpleCharacterList ->
-                                    viewState.copy(
-                                        simpleCharacterList = simpleCharacterList,
-                                        simpleCharacter = SimpleCharacter()
-                                    )
-                                }
-                        } else {
-                            characterService.observeSimpleCharacterListByAccountId(id)
-                                .map { simpleCharacterList ->
-                                    val simpleCharacter = if (simpleCharacterList.size == 1) {
-                                        simpleCharacterList[0]
-                                    } else {
-                                        SimpleCharacter()
-                                    }
+            val sequenceUseCase = DataFlowSequenceUseCase<TupleContext>()
+                .add(accountTupleUseCase)
+                .add(characterTupleUseCase)
 
-                                    viewState.copy(
-                                        simpleCharacterList = simpleCharacterList,
-                                        simpleCharacter = simpleCharacter
-                                    )
-                                }
-                        }
-                    }
-                }
-                .collect { viewState ->
+            sequenceUseCase.execute(TupleContext(clientTuple = clientTuple))
+                .collect { tupleContext ->
                     postSideEffect(CreateOrderSideEffect.HideClientError)
                     postSideEffect(CreateOrderSideEffect.HideAccountError)
                     postSideEffect(CreateOrderSideEffect.HideCharacterError)
-                    reduce {
-                        viewState
+                    tupleContext.apply {
+                        reduce {
+                            state.copy(
+                                accountTupleList = accountTupleList,
+                                accountTuple = accountTuple,
+                                characterTupleList = characterTupleList,
+                                characterTuple = characterTuple
+                            )
+                        }
                     }
                 }
         }
     }
 
-    fun onAccountSelected(simpleAccount: SimpleAccount) {
+    fun onAccountSelected(accountTuple: AccountTuple) {
         intent {
-            if (simpleAccount.id == state.simpleAccount.id) {
+            if (accountTuple.id == state.accountTuple.id) {
                 return@intent
             }
-            characterService.observeSimpleCharacterListByAccountId(simpleAccount.id)
-                .collect { simpleCharacterList ->
-                    val simpleCharacter = if (simpleCharacterList.size == 1) {
-                        simpleCharacterList[0]
-                    } else {
-                        SimpleCharacter()
-                    }
+
+            characterTupleUseCase.execute(TupleContext(clientTuple = state.clientTuple, accountTuple = accountTuple))
+                .collect { tupleContext ->
                     postSideEffect(CreateOrderSideEffect.HideAccountError)
                     postSideEffect(CreateOrderSideEffect.HideCharacterError)
-                    reduce {
-                        state.copy(
-                            simpleAccount = simpleAccount,
-                            simpleCharacterList = simpleCharacterList,
-                            simpleCharacter = simpleCharacter
-                        )
+                    tupleContext.apply {
+                        reduce {
+                            state.copy(
+                                accountTuple = accountTuple,
+                                characterTupleList = characterTupleList,
+                                characterTuple = characterTuple
+                            )
+                        }
                     }
                 }
         }
     }
 
-    fun onCharacterSelected(simpleCharacter: SimpleCharacter) {
+    fun onCharacterSelected(characterTuple: CharacterTuple) {
         intent {
             postSideEffect(CreateOrderSideEffect.HideAccountError)
             postSideEffect(CreateOrderSideEffect.HideCharacterError)
             reduce {
                 state.copy(
-                    simpleAccount = simpleCharacter.simpleAccount,
-                    simpleCharacter = simpleCharacter
+                    accountTuple = characterTuple.accountTuple,
+                    characterTuple = characterTuple
                 )
             }
         }
@@ -407,15 +316,15 @@ class CreateOrderViewModel @Inject constructor(
     fun attemptCreateOrder(remark: String?) {
         intent {
             state.apply {
-                if (simpleClient.id == Constant.DEFAULT_ID) {
+                if (clientTuple.id == Constant.DEFAULT_ID) {
                     postSideEffect(CreateOrderSideEffect.ShowClientError(R.string.error_create_order_client))
                     return@intent
                 }
-                if (simpleAccount.id == Constant.DEFAULT_ID) {
+                if (accountTuple.id == Constant.DEFAULT_ID) {
                     postSideEffect(CreateOrderSideEffect.ShowAccountError(R.string.error_create_order_account))
                     return@intent
                 }
-                if (simpleCharacter.id == Constant.DEFAULT_ID) {
+                if (characterTuple.id == Constant.DEFAULT_ID) {
                     postSideEffect(CreateOrderSideEffect.ShowCharacterError(R.string.error_create_order_character))
                     return@intent
                 }
@@ -443,9 +352,9 @@ class CreateOrderViewModel @Inject constructor(
                 }
                 createOrderUseCase(
                     Order(
-                        client = Client(simpleClient.id),
-                        account = Account(simpleAccount.id),
-                        character = Character(simpleCharacter.id),
+                        client = Client(clientTuple.id),
+                        account = Account(accountTuple.id),
+                        character = Character(characterTuple.id),
                         category = category,
                         subject = subject,
                         startTime = startTime,

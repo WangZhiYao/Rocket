@@ -14,7 +14,7 @@ import androidx.room.PrimaryKey
 @Entity(
     tableName = "client",
     indices = [
-        Index(value = ["contact_type_id", "contact"])
+        Index(value = ["contact_type_id", "contact"], unique = true)
     ]
 )
 data class ClientEntity(
@@ -45,11 +45,6 @@ data class ClientEntity(
      * 备注
      */
     val remark: String,
-
-    /**
-     * 是否可用
-     */
-    val enable: Boolean,
 
     /**
      * 创建时间
