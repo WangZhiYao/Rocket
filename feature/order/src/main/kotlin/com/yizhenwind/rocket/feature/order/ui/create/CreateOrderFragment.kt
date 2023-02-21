@@ -16,8 +16,8 @@ import com.yizhenwind.rocket.core.framework.base.BaseFragment
 import com.yizhenwind.rocket.core.framework.ext.setThrottleClickListener
 import com.yizhenwind.rocket.core.framework.ext.showSnack
 import com.yizhenwind.rocket.core.framework.mvi.IMVIHost
-import com.yizhenwind.rocket.core.framework.widget.CategoryDropDownAdapter
 import com.yizhenwind.rocket.core.framework.widget.AccountTupleDropDownAdapter
+import com.yizhenwind.rocket.core.framework.widget.CategoryDropDownAdapter
 import com.yizhenwind.rocket.core.framework.widget.CharacterTupleDropDownAdapter
 import com.yizhenwind.rocket.core.framework.widget.ClientTupleDropDownAdapter
 import com.yizhenwind.rocket.feature.order.R
@@ -234,8 +234,10 @@ class CreateOrderFragment :
                     tilCreateOrderPaymentAmount.error = getString(sideEffect.resId)
                 CreateOrderSideEffect.HidePaymentAmountError ->
                     tilCreateOrderPaymentAmount.error = null
-                is CreateOrderSideEffect.CreateOrderSuccess ->
+                is CreateOrderSideEffect.CreateOrderSuccess -> {
+                    resetUI()
                     root.showSnack(R.string.create_order_success)
+                }
                 is CreateOrderSideEffect.CreateOrderFailed ->
                     root.showSnack(R.string.error_create_order)
             }
@@ -277,6 +279,15 @@ class CreateOrderFragment :
         binding.apply {
             val remark = tietCreateOrderRemark.text?.toString()
             viewModel.attemptCreateOrder(remark)
+        }
+    }
+
+    private fun resetUI() {
+        viewModel.reset()
+        binding.apply {
+            tietCreateOrderTotalAmount.text = null
+            tietCreateOrderPaymentAmount.text = null
+            tietCreateOrderRemark.text = null
         }
     }
 

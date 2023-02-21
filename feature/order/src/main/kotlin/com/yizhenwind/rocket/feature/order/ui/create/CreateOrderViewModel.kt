@@ -4,6 +4,7 @@ import android.app.Application
 import com.yizhenwind.rocket.core.common.constant.Constant
 import com.yizhenwind.rocket.core.common.constant.PaymentStatus
 import com.yizhenwind.rocket.core.common.ext.ifNull
+import com.yizhenwind.rocket.core.common.ext.toAmount
 import com.yizhenwind.rocket.core.common.usecase.DataFlowSequenceUseCase
 import com.yizhenwind.rocket.core.framework.base.BaseMVIAndroidViewModel
 import com.yizhenwind.rocket.core.logger.ILogger
@@ -25,7 +26,6 @@ import org.orbitmvi.orbit.syntax.simple.intent
 import org.orbitmvi.orbit.syntax.simple.postSideEffect
 import org.orbitmvi.orbit.syntax.simple.reduce
 import org.orbitmvi.orbit.viewmodel.container
-import java.math.BigDecimal
 import java.util.*
 import javax.inject.Inject
 
@@ -147,7 +147,12 @@ class CreateOrderViewModel @Inject constructor(
                 return@intent
             }
 
-            characterTupleUseCase.execute(TupleContext(clientTuple = state.clientTuple, accountTuple = accountTuple))
+            characterTupleUseCase.execute(
+                TupleContext(
+                    clientTuple = state.clientTuple,
+                    accountTuple = accountTuple
+                )
+            )
                 .collect { tupleContext ->
                     postSideEffect(CreateOrderSideEffect.HideAccountError)
                     postSideEffect(CreateOrderSideEffect.HideCharacterError)
@@ -249,20 +254,14 @@ class CreateOrderViewModel @Inject constructor(
     fun onTotalAmountChanged(totalAmountStr: String?) {
         intent {
             postSideEffect(CreateOrderSideEffect.HideTotalAmountError)
-            val totalAmount = if (totalAmountStr.isNullOrBlank()) {
-                0
-            } else {
-                BigDecimal(totalAmountStr).multiply(BigDecimal(100)).longValueExact()
+            val totalAmount = totalAmountStr.toAmount()
+            state.apply {
+                if (totalAmount > 0L && paymentStatus != PaymentStatus.UNPAID && totalAmount < paymentAmount) {
+                    postSideEffect(CreateOrderSideEffect.ShowTotalAmountError(R.string.error_create_order_total_amount_can_not_lower_than_payment_amount))
+                }
             }
             reduce {
-                if (totalAmount != 0L
-                    && state.paymentStatus == PaymentStatus.PARTIALLY_PAID
-                    && totalAmount == state.paymentAmount
-                ) {
-                    state.copy(totalAmount = totalAmount, paymentStatus = PaymentStatus.PAID)
-                } else {
-                    state.copy(totalAmount = totalAmount)
-                }
+                state.copy(totalAmount = totalAmount)
             }
         }
     }
@@ -270,15 +269,20 @@ class CreateOrderViewModel @Inject constructor(
     fun onPaymentStatusSelected(paymentStatus: PaymentStatus) {
         intent {
             reduce {
-                if (paymentStatus != PaymentStatus.UNPAID) {
-                    val paymentTime = if (state.paymentTime == 0L) {
-                        System.currentTimeMillis()
-                    } else {
-                        state.paymentTime
+                when (paymentStatus) {
+                    PaymentStatus.UNPAID ->
+                        state.copy(
+                            paymentStatus = paymentStatus,
+                            paymentTime = 0,
+                            paymentMethod = PaymentMethod(),
+                            paymentAmount = 0
+                        )
+                    PaymentStatus.PARTIALLY_PAID, PaymentStatus.PAID -> {
+                        state.copy(
+                            paymentStatus = paymentStatus,
+                            paymentTime = System.currentTimeMillis()
+                        )
                     }
-                    state.copy(paymentStatus = paymentStatus, paymentTime = paymentTime)
-                } else {
-                    state.copy(paymentStatus = paymentStatus, paymentTime = 0)
                 }
             }
         }
@@ -295,20 +299,14 @@ class CreateOrderViewModel @Inject constructor(
     fun onPaymentAmountChanged(paymentAmountStr: String?) {
         intent {
             postSideEffect(CreateOrderSideEffect.HidePaymentAmountError)
-            val paymentAmount = if (paymentAmountStr.isNullOrBlank()) {
-                0
-            } else {
-                BigDecimal(paymentAmountStr).multiply(BigDecimal(100)).longValueExact()
+            val paymentAmount = paymentAmountStr.toAmount()
+            state.apply {
+                if (totalAmount > 0L && paymentStatus != PaymentStatus.UNPAID && totalAmount < paymentAmount) {
+                    postSideEffect(CreateOrderSideEffect.ShowPaymentAmountError(R.string.error_create_order_payment_amount_can_not_bigger_than_total_amount))
+                }
             }
             reduce {
-                if (state.totalAmount != 0L
-                    && state.paymentStatus == PaymentStatus.PARTIALLY_PAID
-                    && state.totalAmount == paymentAmount
-                ) {
-                    state.copy(paymentStatus = PaymentStatus.PAID, paymentAmount = paymentAmount)
-                } else {
-                    state.copy(paymentAmount = paymentAmount)
-                }
+                state.copy(paymentAmount = paymentAmount)
             }
         }
     }
@@ -349,6 +347,10 @@ class CreateOrderViewModel @Inject constructor(
                         postSideEffect(CreateOrderSideEffect.ShowPaymentAmountError(R.string.error_create_order_payment_amount))
                         return@intent
                     }
+                    if (paymentAmount > totalAmount) {
+                        postSideEffect(CreateOrderSideEffect.ShowPaymentAmountError(R.string.error_create_order_payment_amount_can_not_bigger_than_total_amount))
+                        return@intent
+                    }
                 }
                 createOrderUseCase(
                     Order(
@@ -378,6 +380,31 @@ class CreateOrderViewModel @Inject constructor(
                             postSideEffect(CreateOrderSideEffect.CreateOrderSuccess(order))
                         }
                     }
+            }
+        }
+    }
+
+    fun reset() {
+        intent {
+            reduce {
+                state.copy(
+                    clientTuple = ClientTuple(),
+                    accountTupleList = emptyList(),
+                    accountTuple = AccountTuple(),
+                    characterTupleList = emptyList(),
+                    characterTuple = CharacterTuple(),
+                    category = Category(),
+                    subjectList = emptyList(),
+                    subject = Subject(),
+                    startTime = System.currentTimeMillis(),
+                    totalAmount = 0,
+                    paymentStatusList = emptyList(),
+                    paymentStatus = PaymentStatus.UNPAID,
+                    paymentMethodList = emptyList(),
+                    paymentMethod = PaymentMethod(),
+                    paymentAmount = 0,
+                    paymentTime = 0
+                )
             }
         }
     }

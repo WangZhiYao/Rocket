@@ -28,8 +28,10 @@
     <string name="error_create_order_category">请选择分类</string>
     <string name="error_create_order_subject">请选择项目</string>
     <string name="error_create_order_total_amount">请输入总价</string>
+    <string name="error_create_order_total_amount_can_not_lower_than_payment_amount">总价不能低于已支付金额</string>
     <string name="error_create_order_payment_method">请选择支付方式</string>
     <string name="error_create_order_payment_amount">请输入已支付的金额</string>
+    <string name="error_create_order_payment_amount_can_not_bigger_than_total_amount">已支付金额不能大于总价</string>
     <string name="error_create_order">创建订单失败</string>
 
 </resources>
