@@ -43,9 +43,6 @@ class ClientAccountFragment : BaseListFragment(), IMVIHost<ClientAccountViewStat
                     accountProfile.id
                 )
             }
-            onActionClickListener = { accountProfile ->
-                // TODO: open action bottom sheet
-            }
         }
     }
 

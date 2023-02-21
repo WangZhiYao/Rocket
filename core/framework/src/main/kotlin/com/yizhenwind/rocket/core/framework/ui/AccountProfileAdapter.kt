@@ -14,15 +14,10 @@ import com.yizhenwind.rocket.core.model.AccountProfile
 class AccountProfileAdapter :
     BaseListAdapter<AccountProfile, AccountProfileViewHolder>(ACCOUNT_PROFILE_COMPARATOR) {
 
-    var onActionClickListener: ((AccountProfile) -> Unit)? = null
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AccountProfileViewHolder =
         AccountProfileViewHolder(parent.viewBinding(ItemAccountProfileBinding::inflate)).apply {
             onItemClickListener = { accountProfile ->
                 this@AccountProfileAdapter.onItemClickListener?.invoke(accountProfile)
-            }
-            onActionClickListener = { accountProfile ->
-                this@AccountProfileAdapter.onActionClickListener?.invoke(accountProfile)
             }
         }
 

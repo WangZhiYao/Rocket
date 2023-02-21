@@ -38,9 +38,7 @@ class AccountProfileViewHolder(private val binding: ItemAccountProfileBinding) :
                 }
             }
 
-            ibAccountAction.setThrottleClickListener { onActionClickListener?.invoke(item) }
             root.setThrottleClickListener { onItemClickListener?.invoke(item) }
         }
     }
-
 }
