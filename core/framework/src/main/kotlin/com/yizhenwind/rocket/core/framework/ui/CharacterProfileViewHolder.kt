@@ -13,8 +13,6 @@ import com.yizhenwind.rocket.core.model.CharacterProfile
 class CharacterProfileViewHolder(private val binding: ItemCharacterProfileBinding) :
     BaseViewHolder<CharacterProfile>(binding.root) {
 
-    var onActionClickListener: ((CharacterProfile) -> Unit)? = null
-
     override fun bind(item: CharacterProfile) {
         binding.apply {
             item.apply {
@@ -27,9 +25,6 @@ class CharacterProfileViewHolder(private val binding: ItemCharacterProfileBindin
                         R.string.empty_remark
                     )
                 }
-            }
-            ibCharacterAction.setThrottleClickListener {
-                onActionClickListener?.invoke(item)
             }
             root.setThrottleClickListener {
                 onItemClickListener?.invoke(item)
