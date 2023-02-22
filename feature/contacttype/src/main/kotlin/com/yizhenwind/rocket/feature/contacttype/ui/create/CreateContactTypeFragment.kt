@@ -57,10 +57,12 @@ class CreateContactTypeFragment :
     override fun handleSideEffect(sideEffect: CreateContactTypeSideEffect) {
         binding.apply {
             when (sideEffect) {
-                is CreateContactTypeSideEffect.ShowError -> tilCreateContactType.error =
-                    getString(sideEffect.resId)
-                CreateContactTypeSideEffect.HideError -> tilCreateContactType.error = null
-                is CreateContactTypeSideEffect.CreateContactTypeSuccess -> findNavController().navigateUp()
+                is CreateContactTypeSideEffect.ShowError ->
+                    tilCreateContactType.error = getString(sideEffect.resId)
+                CreateContactTypeSideEffect.HideError ->
+                    tilCreateContactType.error = null
+                is CreateContactTypeSideEffect.CreateContactTypeSuccess ->
+                    findNavController().navigateUp()
             }
         }
     }

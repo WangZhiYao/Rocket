@@ -1,4 +1,4 @@
-package com.yizhenwind.rocket.feature.subject.ui.create
+package com.yizhenwind.rocket.feature.category.ui
 
 import android.os.Bundle
 import androidx.navigation.NavController
@@ -6,17 +6,16 @@ import androidx.navigation.fragment.NavHostFragment
 import com.yizhenwind.rocket.core.framework.base.BaseNavActivity
 import com.yizhenwind.rocket.core.framework.databinding.ActivityBaseNavBinding
 import com.yizhenwind.rocket.core.framework.ext.viewBindings
-import com.yizhenwind.rocket.feature.subject.R
+import com.yizhenwind.rocket.feature.category.R
 import dagger.hilt.android.AndroidEntryPoint
 
 /**
  *
- *
  * @author WangZhiYao
- * @since 2023/2/13
+ * @since 2023/2/22
  */
 @AndroidEntryPoint
-class CreateSubjectActivity : BaseNavActivity() {
+class CategoryNavActivity : BaseNavActivity() {
 
     private val binding by viewBindings<ActivityBaseNavBinding>()
 
@@ -34,7 +33,6 @@ class CreateSubjectActivity : BaseNavActivity() {
         binding.apply {
             setupToolbar(toolbar)
         }
-        navController.setGraph(R.navigation.navigation_create_subject, intent.extras)
+        navController.setGraph(R.navigation.navigation_category)
     }
-
 }

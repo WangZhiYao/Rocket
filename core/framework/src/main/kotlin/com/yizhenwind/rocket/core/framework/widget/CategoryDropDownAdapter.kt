@@ -17,6 +17,6 @@ class CategoryDropDownAdapter(private val context: Context) :
         item.title
 
     override fun contentBottom(item: Category): CharSequence =
-        item.description.ifBlank { context.getString(R.string.empty_description) }
+        item.remark.ifBlank { context.getString(R.string.empty_remark) }
 
 }

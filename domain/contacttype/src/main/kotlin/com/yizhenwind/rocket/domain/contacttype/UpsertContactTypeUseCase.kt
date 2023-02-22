@@ -14,7 +14,7 @@ import javax.inject.Inject
  * @author WangZhiYao
  * @since 2023/1/28
  */
-class CreateOrEnableContactTypeUseCase @Inject constructor(
+class UpsertContactTypeUseCase @Inject constructor(
     private val getContactTypeByNameUseCase: GetContactTypeByNameUseCase,
     private val createContactTypeUseCase: CreateContactTypeUseCase,
     private val updateContactTypeUseCase: UpdateContactTypeUseCase,

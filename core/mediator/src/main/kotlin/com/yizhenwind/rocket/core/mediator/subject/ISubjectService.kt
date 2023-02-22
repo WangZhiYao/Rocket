@@ -1,5 +1,6 @@
 package com.yizhenwind.rocket.core.mediator.subject
 
+import android.content.Context
 import com.yizhenwind.rocket.core.model.Subject
 import kotlinx.coroutines.flow.Flow
 
@@ -14,5 +15,7 @@ interface ISubjectService {
     fun observeSubjectList(): Flow<List<Subject>>
 
     fun observeSubjectListByCategoryId(categoryId: Long): Flow<List<Subject>>
+
+    fun launchCreateSubject(context: Context, categoryId: Long)
 
 }

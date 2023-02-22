@@ -22,9 +22,7 @@ class CreateContactTypeUseCase @Inject constructor(
 
     operator fun invoke(contactType: ContactType): Flow<ContactType> =
         contactTypeRepository.createContactType(contactType)
-            .map { id ->
-                contactType.copy(id = id)
-            }
+            .map { id -> contactType.copy(id = id) }
             .flowOn(dispatcher)
 
 }

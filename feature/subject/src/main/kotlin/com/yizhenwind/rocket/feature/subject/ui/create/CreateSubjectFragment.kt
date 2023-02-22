@@ -2,6 +2,7 @@ package com.yizhenwind.rocket.feature.subject.ui.create
 
 import androidx.core.widget.doAfterTextChanged
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.navArgs
 import com.yizhenwind.rocket.core.framework.base.BaseFragment
 import com.yizhenwind.rocket.core.framework.ext.setThrottleClickListener
 import com.yizhenwind.rocket.core.framework.ext.showSnack
@@ -24,6 +25,7 @@ class CreateSubjectFragment :
     IMVIHost<CreateSubjectViewState, CreateSubjectSideEffect> {
 
     private val viewModel by viewModels<CreateSubjectViewModel>()
+    private val navArgs by navArgs<CreateSubjectFragmentArgs>()
 
     private val categoryAdapter by lazy {
         CategoryDropDownAdapter(requireContext())
@@ -35,7 +37,10 @@ class CreateSubjectFragment :
     }
 
     override fun initData() {
-        viewModel.observe(viewLifecycleOwner, state = ::render, sideEffect = ::handleSideEffect)
+        viewModel.apply {
+            observe(viewLifecycleOwner, state = ::render, sideEffect = ::handleSideEffect)
+            initViewState(navArgs.categoryId)
+        }
     }
 
     override fun initView() {

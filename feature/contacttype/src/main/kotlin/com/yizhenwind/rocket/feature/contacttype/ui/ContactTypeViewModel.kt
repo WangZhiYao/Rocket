@@ -37,11 +37,11 @@ class ContactTypeViewModel @Inject constructor(
         }
     }
 
-    fun toggleContactTypeState(contactType: ContactType, enable: Boolean) {
+    fun updateContactType(contactType: ContactType) {
         intent {
-            updateContactTypeUseCase(contactType.copy(enable = enable))
+            updateContactTypeUseCase(contactType)
                 .collect { contactType ->
-                    if (!enable) {
+                    if (!contactType.enable) {
                         postSideEffect(ContactTypeSideEffect.DeleteContactTypeSuccess(contactType))
                     }
                 }

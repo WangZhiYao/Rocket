@@ -1,6 +1,7 @@
 package com.yizhenwind.rocket.feature.subject.ui.create
 
 import com.yizhenwind.rocket.core.common.constant.Constant
+import com.yizhenwind.rocket.core.common.ext.pickFirstOrDefault
 import com.yizhenwind.rocket.core.framework.base.BaseMVIViewModel
 import com.yizhenwind.rocket.core.logger.ILogger
 import com.yizhenwind.rocket.core.mediator.category.ICategoryService
@@ -32,12 +33,14 @@ class CreateSubjectViewModel @Inject constructor(
     override val container =
         container<CreateSubjectViewState, CreateSubjectSideEffect>(CreateSubjectViewState())
 
-    init {
+    fun initViewState(categoryId: Long) {
         intent {
             categoryService.observeCategoryList()
                 .collect { categoryList ->
                     reduce {
-                        state.copy(categoryList = categoryList)
+                        state.copy(
+                            categoryList = categoryList,
+                            category = categoryList.pickFirstOrDefault(Category()) { it.id == categoryId })
                     }
                 }
         }

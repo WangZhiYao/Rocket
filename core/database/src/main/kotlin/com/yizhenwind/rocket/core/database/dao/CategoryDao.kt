@@ -17,4 +17,7 @@ interface CategoryDao : IDao<CategoryEntity> {
     @Query("SELECT * FROM category WHERE enable = 1")
     fun observeCategoryList(): Flow<List<CategoryEntity>>
 
+    @Query("SELECT * FROM category WHERE title = :title")
+    suspend fun getCategoryByTitle(title: String): CategoryEntity?
+
 }

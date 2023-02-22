@@ -12,9 +12,9 @@ import javax.inject.Inject
 class CategoryMapper @Inject constructor() : IEntityMapper<CategoryEntity, Category> {
 
     override fun fromEntity(entity: CategoryEntity): Category =
-        entity.run { Category(id, title, description, default, enable, createTime) }
+        entity.run { Category(id, title, remark, default, enable, createTime) }
 
     override fun toEntity(model: Category): CategoryEntity =
-        model.run { CategoryEntity(id, title, description, default, enable, createTime) }
+        model.run { CategoryEntity(id, title, remark, default, enable, createTime) }
 
 }

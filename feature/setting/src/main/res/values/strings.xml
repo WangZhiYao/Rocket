@@ -5,4 +5,6 @@
     <string name="setting_contact_type">联系方式类型</string>
     <string name="setting_contact_type_hint">客户的联系方式类型</string>
 
+    <string name="setting_category">分类</string>
+    <string name="setting_category_hint">代练项目的分类</string>
 </resources>

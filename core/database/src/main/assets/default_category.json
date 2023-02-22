@@ -2,14 +2,14 @@
   {
     "id": 1,
     "title": "PVP",
-    "description": "JJC，大小攻防等",
+    "remark": "JJC，大小攻防等",
     "default": true,
     "enable": true
   },
   {
     "id": 2,
     "title": "PVE",
-    "description": "资历，代清等",
+    "remark": "资历，代清等",
     "default": true,
     "enable": true
   }

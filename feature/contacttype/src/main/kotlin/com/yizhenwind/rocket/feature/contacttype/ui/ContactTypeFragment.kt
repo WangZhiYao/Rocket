@@ -39,7 +39,7 @@ class ContactTypeFragment : BaseListFragment(),
             }
         }
         adapter.onDeleteClickListener = { contactType ->
-            viewModel.toggleContactTypeState(contactType, false)
+            viewModel.updateContactType(contactType.copy(enable = false))
         }
     }
 
@@ -50,17 +50,16 @@ class ContactTypeFragment : BaseListFragment(),
     override fun handleSideEffect(sideEffect: ContactTypeSideEffect) {
         binding.apply {
             when (sideEffect) {
-                is ContactTypeSideEffect.DeleteContactTypeSuccess -> {
+                is ContactTypeSideEffect.DeleteContactTypeSuccess ->
                     sideEffect.contactType.apply {
                         root.showSnack(
-                            text = getString(R.string.create_contact_type_delete_success, name),
+                            text = getString(R.string.contact_type_delete_success, name),
                             anchorView = fab,
-                            actionText = getString(R.string.create_contact_type_delete_revoke)
+                            actionText = getString(R.string.contact_type_delete_revoke)
                         ) {
-                            viewModel.toggleContactTypeState(this, true)
+                            viewModel.updateContactType(copy(enable = true))
                         }
                     }
-                }
             }
         }
     }

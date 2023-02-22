@@ -9,6 +9,14 @@
         android:id="@+id/nav_create_subject"
         android:name="com.yizhenwind.rocket.feature.subject.ui.create.CreateSubjectFragment"
         android:label="@string/label_create_subject"
-        tools:layout="@layout/fragment_create_subject" />
+        tools:layout="@layout/fragment_create_subject">
+
+        <argument
+            android:name="categoryId"
+            android:defaultValue="0L"
+            app:argType="long"
+            app:nullable="false" />
+
+    </fragment>
 
 </navigation>

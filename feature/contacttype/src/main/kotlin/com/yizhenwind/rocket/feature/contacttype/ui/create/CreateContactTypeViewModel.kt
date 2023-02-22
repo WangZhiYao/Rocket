@@ -2,7 +2,7 @@ package com.yizhenwind.rocket.feature.contacttype.ui.create
 
 import com.yizhenwind.rocket.core.common.constant.Constant
 import com.yizhenwind.rocket.core.framework.base.BaseMVIViewModel
-import com.yizhenwind.rocket.domain.contacttype.CreateOrEnableContactTypeUseCase
+import com.yizhenwind.rocket.domain.contacttype.UpsertContactTypeUseCase
 import com.yizhenwind.rocket.domain.contacttype.GetContactTypeByNameUseCase
 import com.yizhenwind.rocket.feature.contacttype.R
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -20,7 +20,7 @@ import javax.inject.Inject
 @HiltViewModel
 class CreateContactTypeViewModel @Inject constructor(
     private val getContactTypeByNameUseCase: GetContactTypeByNameUseCase,
-    private val createOrEnableContactTypeUseCase: CreateOrEnableContactTypeUseCase
+    private val upsertContactTypeUseCase: UpsertContactTypeUseCase
 ) : BaseMVIViewModel<CreateContactTypeViewState, CreateContactTypeSideEffect>() {
 
     override val container =
@@ -52,7 +52,7 @@ class CreateContactTypeViewModel @Inject constructor(
             }
             val contactType = getContactTypeByNameUseCase(name)
             if (contactType.id == Constant.DEFAULT_ID || !contactType.enable) {
-                createOrEnableContactTypeUseCase(name)
+                upsertContactTypeUseCase(name)
                     .collect {
                         postSideEffect(CreateContactTypeSideEffect.CreateContactTypeSuccess)
                     }
