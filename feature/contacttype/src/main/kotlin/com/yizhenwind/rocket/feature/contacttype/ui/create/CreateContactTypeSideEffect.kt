@@ -14,6 +14,6 @@ sealed class CreateContactTypeSideEffect {
 
     object HideError : CreateContactTypeSideEffect()
 
-    object NavigationUp : CreateContactTypeSideEffect()
+    object CreateContactTypeSuccess : CreateContactTypeSideEffect()
 
 }

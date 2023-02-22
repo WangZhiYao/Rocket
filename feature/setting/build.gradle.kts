@@ -47,6 +47,7 @@ dependencies {
     androidTestImplementation(libs.bundles.androidx.test)
 
     implementation(project(":core:framework"))
+    implementation(project(":core:mediator"))
 
     implementation(libs.hilt.android)
     kapt(libs.hilt.android.compiler)

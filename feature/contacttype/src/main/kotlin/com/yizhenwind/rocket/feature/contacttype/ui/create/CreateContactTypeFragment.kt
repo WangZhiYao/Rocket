@@ -60,7 +60,7 @@ class CreateContactTypeFragment :
                 is CreateContactTypeSideEffect.ShowError -> tilCreateContactType.error =
                     getString(sideEffect.resId)
                 CreateContactTypeSideEffect.HideError -> tilCreateContactType.error = null
-                is CreateContactTypeSideEffect.NavigationUp -> findNavController().navigateUp()
+                is CreateContactTypeSideEffect.CreateContactTypeSuccess -> findNavController().navigateUp()
             }
         }
     }

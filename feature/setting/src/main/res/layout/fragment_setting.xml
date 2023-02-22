@@ -4,15 +4,33 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/tv_setting_contact_type"
+    <LinearLayout
+        android:id="@+id/ll_setting_contact_type"
         style="@style/Theme.Rocket.ClickableItem"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/single_line_item_height"
+        android:layout_height="64dp"
         android:layout_marginTop="@dimen/item_content_margin"
         android:gravity="center_vertical"
-        android:paddingStart="@dimen/item_content_margin"
-        android:text="@string/setting_contact_type"
-        android:textColor="@color/color_text_primary" />
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/item_content_margin"
+            android:layout_marginEnd="@dimen/item_content_margin"
+            android:text="@string/setting_contact_type"
+            android:textColor="@color/color_text_primary" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/item_content_margin"
+            android:layout_marginTop="4dp"
+            android:layout_marginEnd="@dimen/item_content_margin"
+            android:text="@string/setting_contact_type_hint"
+            android:textColor="@color/color_text_secondary"
+            android:textSize="12sp" />
+
+    </LinearLayout>
 
 </LinearLayout>

@@ -54,7 +54,7 @@ class CreateContactTypeViewModel @Inject constructor(
             if (contactType.id == Constant.DEFAULT_ID || !contactType.enable) {
                 createOrEnableContactTypeUseCase(name)
                     .collect {
-                        postSideEffect(CreateContactTypeSideEffect.NavigationUp)
+                        postSideEffect(CreateContactTypeSideEffect.CreateContactTypeSuccess)
                     }
             } else {
                 postSideEffect(CreateContactTypeSideEffect.ShowError(R.string.error_contact_type_exist))

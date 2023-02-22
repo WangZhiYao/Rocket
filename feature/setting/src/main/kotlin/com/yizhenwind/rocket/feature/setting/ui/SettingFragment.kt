@@ -2,8 +2,10 @@ package com.yizhenwind.rocket.feature.setting.ui
 
 import com.yizhenwind.rocket.core.framework.base.BaseFragment
 import com.yizhenwind.rocket.core.framework.ext.setThrottleClickListener
+import com.yizhenwind.rocket.core.mediator.contacttype.IContactTypeService
 import com.yizhenwind.rocket.feature.setting.databinding.FragmentSettingBinding
 import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
 /**
  *
@@ -14,14 +16,17 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class SettingFragment : BaseFragment<FragmentSettingBinding>(FragmentSettingBinding::inflate) {
 
+    @Inject
+    lateinit var contactTypeService: IContactTypeService
+
     override fun init() {
         initView()
     }
 
     override fun initView() {
         binding.apply {
-            tvSettingContactType.setThrottleClickListener {
-                /*findNavController().navigate(NavigationMainDirections.actionToContactType())*/
+            llSettingContactType.setThrottleClickListener {
+                contactTypeService.launchContactTypeList(requireContext())
             }
         }
     }
