@@ -16,9 +16,10 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/item_content_margin"
             android:layout_marginTop="@dimen/item_content_margin"
+            android:ellipsize="end"
+            android:maxLines="1"
             android:textColor="@color/color_text_primary"
-            android:textSize="16sp"
-            android:textStyle="bold"
+            android:textSize="12sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:text="苍云" />
@@ -28,15 +29,16 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/item_content_margin"
+            android:layout_marginTop="4dp"
             android:layout_marginEnd="@dimen/item_content_margin"
             android:ellipsize="end"
             android:maxLines="1"
             android:textColor="@color/color_text_primary"
             android:textSize="16sp"
             android:textStyle="bold"
-            app:layout_constraintBaseline_toBaselineOf="@id/tv_character_sect"
-            app:layout_constraintEnd_toStartOf="@id/tv_character_zone"
-            app:layout_constraintStart_toEndOf="@id/tv_character_sect"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_character_sect"
             tools:text="宇文长卿" />
 
         <TextView
@@ -44,7 +46,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="8dp"
-            app:layout_constraintBaseline_toBaselineOf="@id/tv_character_name"
+            android:textSize="12sp"
+            app:layout_constraintBaseline_toBaselineOf="@id/tv_character_sect"
             app:layout_constraintEnd_toStartOf="@id/tv_character_server"
             tools:text="电信五区" />
 
@@ -53,7 +56,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="@dimen/item_content_margin"
-            app:layout_constraintBaseline_toBaselineOf="@id/tv_character_zone"
+            android:textSize="12sp"
+            app:layout_constraintBaseline_toBaselineOf="@id/tv_character_sect"
             app:layout_constraintEnd_toEndOf="parent"
             tools:text="唯我独尊" />
 
@@ -72,7 +76,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tv_character_name"
-            tools:text="@tools:sample/lorem/random" />
+            tools:text="@string/empty_remark" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
