@@ -18,10 +18,10 @@ import org.orbitmvi.orbit.viewmodel.observe
  * @since 2023/1/28
  */
 @AndroidEntryPoint
-class ContactTypeFragment : BaseListFragment(),
-    IMVIHost<ContactTypeViewState, ContactTypeSideEffect> {
+class ContactTypeListFragment : BaseListFragment(),
+    IMVIHost<ContactTypeListViewState, ContactTypeListSideEffect> {
 
-    private val viewModel by viewModels<ContactTypeViewModel>()
+    private val viewModel by viewModels<ContactTypeListViewModel>()
 
     override val adapter = ContactTypeAdapter()
 
@@ -35,7 +35,7 @@ class ContactTypeFragment : BaseListFragment(),
             isVisible = true
             setImageResource(R.drawable.ic_round_add_white_24dp)
             setThrottleClickListener {
-                findNavController().navigate(ContactTypeFragmentDirections.actionToCreateContactType())
+                findNavController().navigate(ContactTypeListFragmentDirections.actionToCreateContactType())
             }
         }
         adapter.onDeleteClickListener = { contactType ->
@@ -43,14 +43,14 @@ class ContactTypeFragment : BaseListFragment(),
         }
     }
 
-    override suspend fun render(state: ContactTypeViewState) {
+    override suspend fun render(state: ContactTypeListViewState) {
         adapter.submitList(state.contactTypeList)
     }
 
-    override fun handleSideEffect(sideEffect: ContactTypeSideEffect) {
+    override fun handleSideEffect(sideEffect: ContactTypeListSideEffect) {
         binding.apply {
             when (sideEffect) {
-                is ContactTypeSideEffect.DeleteContactTypeSuccess ->
+                is ContactTypeListSideEffect.DeleteContactTypeListSuccess ->
                     sideEffect.contactType.apply {
                         root.showSnack(
                             text = getString(R.string.contact_type_delete_success, name),

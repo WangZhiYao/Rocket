@@ -18,8 +18,8 @@ class ContactTypeRepository @Inject constructor(
     private val contactTypeMapper: ContactTypeMapper
 ) {
 
-    fun observeContactType(): Flow<List<ContactType>> =
-        contactTypeLocalDataSource.observeContactType()
+    fun observeContactTypeList(): Flow<List<ContactType>> =
+        contactTypeLocalDataSource.observeContactTypeList()
             .map {
                 EntityListMapper(contactTypeMapper).fromEntity(it)
             }

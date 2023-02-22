@@ -14,7 +14,7 @@ import kotlinx.coroutines.flow.Flow
 interface ContactTypeDao : IDao<ContactTypeEntity> {
 
     @Query("SELECT * FROM contact_type WHERE enable = 1")
-    fun observeContactType(): Flow<List<ContactTypeEntity>>
+    fun observeContactTypeList(): Flow<List<ContactTypeEntity>>
 
     @Query("SELECT * FROM contact_type WHERE name = :name")
     suspend fun getContactTypeByName(name: String): ContactTypeEntity?

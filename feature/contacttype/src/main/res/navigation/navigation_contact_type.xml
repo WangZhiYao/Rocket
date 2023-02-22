@@ -3,11 +3,11 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/navigation_contact_type"
-    app:startDestination="@id/nav_contact_type">
+    app:startDestination="@id/nav_contact_type_list">
 
     <fragment
-        android:id="@+id/nav_contact_type"
-        android:name="com.yizhenwind.rocket.feature.contacttype.ui.ContactTypeFragment"
+        android:id="@+id/nav_contact_type_list"
+        android:name="com.yizhenwind.rocket.feature.contacttype.ui.ContactTypeListFragment"
         android:label="@string/label_contact_type"
         tools:layout="@layout/fragment_base_list">
 

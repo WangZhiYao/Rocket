@@ -8,8 +8,8 @@ import com.yizhenwind.rocket.core.model.ContactType
  * @author WangZhiYao
  * @since 2023/1/29
  */
-sealed class ContactTypeSideEffect {
+sealed class ContactTypeListSideEffect {
 
-    data class DeleteContactTypeSuccess(val contactType: ContactType) : ContactTypeSideEffect()
+    data class DeleteContactTypeListSuccess(val contactType: ContactType) : ContactTypeListSideEffect()
 
 }

@@ -13,13 +13,13 @@ import javax.inject.Inject
  * @author WangZhiYao
  * @since 2023/1/24
  */
-class ObserveContactTypeUseCase @Inject constructor(
+class ObserveContactTypeListUseCase @Inject constructor(
     private val contactTypeRepository: ContactTypeRepository,
     @IODispatcher private val dispatcher: CoroutineDispatcher
 ) {
 
     operator fun invoke(): Flow<List<ContactType>> =
-        contactTypeRepository.observeContactType()
+        contactTypeRepository.observeContactTypeList()
             .flowOn(dispatcher)
 
 }

@@ -15,8 +15,8 @@ class ContactTypeLocalDataSource @Inject constructor(
     private val contactTypeDao: ContactTypeDao
 ) {
 
-    fun observeContactType(): Flow<List<ContactTypeEntity>> =
-        contactTypeDao.observeContactType()
+    fun observeContactTypeList(): Flow<List<ContactTypeEntity>> =
+        contactTypeDao.observeContactTypeList()
 
     suspend fun getContactTypeByName(name: String): ContactTypeEntity? =
         contactTypeDao.getContactTypeByName(name)

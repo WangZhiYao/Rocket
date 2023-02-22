@@ -9,4 +9,4 @@ import com.yizhenwind.rocket.core.model.ContactType
  * @author WangZhiYao
  * @since 2023/1/28
  */
-data class ContactTypeViewState(val contactTypeList: List<ContactType> = emptyList()) : IViewState
+data class ContactTypeListViewState(val contactTypeList: List<ContactType> = emptyList()) : IViewState
