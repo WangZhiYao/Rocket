@@ -40,7 +40,6 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tv_account_username"
-            app:layout_constraintVertical_chainStyle="packed"
             tools:text="角色数: 0  订单数: 0" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

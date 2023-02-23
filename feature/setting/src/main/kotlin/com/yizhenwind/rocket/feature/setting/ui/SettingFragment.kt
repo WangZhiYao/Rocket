@@ -1,12 +1,11 @@
 package com.yizhenwind.rocket.feature.setting.ui
 
-import com.yizhenwind.rocket.core.framework.base.BaseFragment
-import com.yizhenwind.rocket.core.framework.ext.setThrottleClickListener
-import com.yizhenwind.rocket.core.mediator.category.ICategoryService
-import com.yizhenwind.rocket.core.mediator.contacttype.IContactTypeService
-import com.yizhenwind.rocket.feature.setting.databinding.FragmentSettingBinding
+import androidx.fragment.app.viewModels
+import com.yizhenwind.rocket.core.framework.base.BaseListFragment
+import com.yizhenwind.rocket.core.framework.ext.navigate
+import com.yizhenwind.rocket.core.framework.mvi.IMVIHost
 import dagger.hilt.android.AndroidEntryPoint
-import javax.inject.Inject
+import org.orbitmvi.orbit.viewmodel.observe
 
 /**
  *
@@ -15,27 +14,31 @@ import javax.inject.Inject
  * @since 2023/1/28
  */
 @AndroidEntryPoint
-class SettingFragment : BaseFragment<FragmentSettingBinding>(FragmentSettingBinding::inflate) {
+class SettingFragment : BaseListFragment(), IMVIHost<SettingViewState, Nothing> {
 
-    @Inject
-    lateinit var contactTypeService: IContactTypeService
+    private val viewModel by viewModels<SettingViewModel>()
 
-    @Inject
-    lateinit var categoryService: ICategoryService
+    override val adapter = SettingItemAdapter()
 
     override fun init() {
+        initData()
         initView()
     }
 
-    override fun initView() {
-        binding.apply {
-            llSettingContactType.setThrottleClickListener {
-                contactTypeService.launchContactTypeList(requireContext())
-            }
+    override fun initData() {
+        viewModel.observe(viewLifecycleOwner, state = ::render)
+    }
 
-            llSettingCategory.setThrottleClickListener {
-                categoryService.launchCategoryList(requireContext())
+    override fun initView() {
+        super.initView()
+        adapter.onItemClickListener = { settingItem ->
+            if (settingItem is SettingItem.Item) {
+                navigate(settingItem.deepLink)
             }
         }
+    }
+
+    override suspend fun render(state: SettingViewState) {
+        adapter.submitList(state.settingItemList)
     }
 }

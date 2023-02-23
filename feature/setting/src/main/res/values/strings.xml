@@ -2,9 +2,14 @@
 <resources>
     <string name="label_setting">设置</string>
 
-    <string name="setting_contact_type">联系方式类型</string>
-    <string name="setting_contact_type_hint">客户的联系方式类型</string>
+    <string name="item_setting_title_client">客户</string>
+    <string name="item_setting_contact_type">联系方式类型</string>
+    <string name="item_setting_contact_type_description">客户的联系方式类型</string>
 
-    <string name="setting_category">分类</string>
-    <string name="setting_category_hint">代练项目的分类</string>
+    <string name="item_setting_title_order">订单</string>
+    <string name="item_setting_category">分类</string>
+    <string name="item_setting_category_description">代练项目的分类</string>
+    <string name="item_setting_payment_method">支付方式</string>
+    <string name="item_setting_payment_method_description">代练订单的支付方式</string>
+
 </resources>

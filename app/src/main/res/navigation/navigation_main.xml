@@ -14,4 +14,8 @@
 
     <include app:graph="@navigation/navigation_setting" />
 
+    <include app:graph="@navigation/navigation_contact_type" />
+
+    <include app:graph="@navigation/navigation_category" />
+
 </navigation>

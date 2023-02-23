@@ -11,6 +11,8 @@
         android:label="@string/label_category_list"
         tools:layout="@layout/fragment_base_list">
 
+        <deepLink app:uri="rocket://category/list" />
+
         <action
             android:id="@+id/action_category_list_to_create_category"
             app:destination="@id/nav_create_category"
