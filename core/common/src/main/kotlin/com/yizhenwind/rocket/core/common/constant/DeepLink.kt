@@ -13,11 +13,21 @@ object DeepLink {
 
         const val CATEGORY = "category"
 
+        const val SUBJECT = "subject"
+
     }
 
     object Path {
 
         const val LIST = "list"
+
+        const val CREATE = "create"
+
+    }
+
+    object Param {
+
+        const val CATEGORY_ID = "categoryId"
 
     }
 

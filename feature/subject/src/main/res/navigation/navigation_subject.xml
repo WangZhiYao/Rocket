@@ -9,22 +9,6 @@
         android:id="@+id/nav_subject"
         android:name="com.yizhenwind.rocket.feature.subject.ui.SubjectListFragment"
         android:label="@string/label_subject"
-        tools:layout="@layout/fragment_base_list">
-
-        <action
-            android:id="@+id/action_to_create_subject"
-            app:destination="@id/nav_create_subject"
-            app:enterAnim="@anim/slide_in_right"
-            app:exitAnim="@anim/slide_out_left"
-            app:popEnterAnim="@anim/slide_in_left"
-            app:popExitAnim="@anim/slide_out_right" />
-
-    </fragment>
-
-    <activity
-        android:id="@+id/nav_create_subject"
-        android:name="com.yizhenwind.rocket.feature.subject.ui.create.CreateSubjectActivity"
-        android:label="@string/label_create_subject"
-        tools:layout="@layout/activity_base_nav" />
+        tools:layout="@layout/fragment_base_list" />
 
 </navigation>

@@ -11,6 +11,8 @@
         android:label="@string/label_create_subject"
         tools:layout="@layout/fragment_create_subject">
 
+        <deepLink app:uri="rocket://subject/create?categoryId={categoryId}" />
+
         <argument
             android:name="categoryId"
             android:defaultValue="0L"

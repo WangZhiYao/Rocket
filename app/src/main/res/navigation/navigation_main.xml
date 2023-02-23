@@ -10,6 +10,8 @@
 
     <include app:graph="@navigation/navigation_subject" />
 
+    <include app:graph="@navigation/navigation_create_subject" />
+
     <include app:graph="@navigation/navigation_user" />
 
     <include app:graph="@navigation/navigation_setting" />

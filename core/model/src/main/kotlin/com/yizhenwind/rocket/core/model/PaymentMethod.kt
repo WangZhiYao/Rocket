@@ -1,5 +1,6 @@
 package com.yizhenwind.rocket.core.model
 
+import androidx.recyclerview.widget.DiffUtil
 import com.squareup.moshi.JsonClass
 
 /**
@@ -18,4 +19,20 @@ data class PaymentMethod(
 
     override fun toString() = name
 
+    companion object {
+
+        val COMPARATOR = object : DiffUtil.ItemCallback<PaymentMethod>() {
+
+            override fun areItemsTheSame(
+                oldItem: PaymentMethod,
+                newItem: PaymentMethod
+            ): Boolean = oldItem.id == newItem.id
+
+            override fun areContentsTheSame(
+                oldItem: PaymentMethod,
+                newItem: PaymentMethod
+            ): Boolean = oldItem == newItem
+
+        }
+    }
 }

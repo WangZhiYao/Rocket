@@ -2,9 +2,10 @@ package com.yizhenwind.rocket.feature.subject.ui
 
 import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
-import androidx.navigation.fragment.findNavController
+import com.yizhenwind.rocket.core.common.constant.DeepLink
 import com.yizhenwind.rocket.core.framework.R
 import com.yizhenwind.rocket.core.framework.base.BaseListFragment
+import com.yizhenwind.rocket.core.framework.ext.navigate
 import com.yizhenwind.rocket.core.framework.ext.setThrottleClickListener
 import com.yizhenwind.rocket.core.framework.mvi.IMVIHost
 import dagger.hilt.android.AndroidEntryPoint
@@ -36,7 +37,10 @@ class SubjectListFragment : BaseListFragment(), IMVIHost<SubjectListViewState, N
             isVisible = true
             setImageResource(R.drawable.ic_round_add_white_24dp)
             setThrottleClickListener {
-                findNavController().navigate(SubjectListFragmentDirections.actionToCreateSubject())
+                navigate {
+                    module(DeepLink.Module.SUBJECT)
+                    path(DeepLink.Path.CREATE)
+                }
             }
         }
     }

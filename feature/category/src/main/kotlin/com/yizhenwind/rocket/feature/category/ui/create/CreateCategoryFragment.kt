@@ -2,18 +2,17 @@ package com.yizhenwind.rocket.feature.category.ui.create
 
 import androidx.core.widget.doAfterTextChanged
 import androidx.fragment.app.viewModels
-import androidx.navigation.fragment.findNavController
 import com.google.android.material.snackbar.Snackbar
+import com.yizhenwind.rocket.core.common.constant.DeepLink
 import com.yizhenwind.rocket.core.framework.base.BaseFragment
+import com.yizhenwind.rocket.core.framework.ext.navigate
 import com.yizhenwind.rocket.core.framework.ext.setThrottleClickListener
 import com.yizhenwind.rocket.core.framework.ext.showSnack
 import com.yizhenwind.rocket.core.framework.mvi.IMVIHost
-import com.yizhenwind.rocket.core.mediator.subject.ISubjectService
 import com.yizhenwind.rocket.feature.category.R
 import com.yizhenwind.rocket.feature.category.databinding.FragmentCreateCategoryBinding
 import dagger.hilt.android.AndroidEntryPoint
 import org.orbitmvi.orbit.viewmodel.observe
-import javax.inject.Inject
 
 /**
  *
@@ -26,9 +25,6 @@ class CreateCategoryFragment :
     IMVIHost<CreateCategoryViewState, CreateCategorySideEffect> {
 
     private val viewModel by viewModels<CreateCategoryViewModel>()
-
-    @Inject
-    lateinit var subjectService: ISubjectService
 
     override fun init() {
         initData()
@@ -62,8 +58,11 @@ class CreateCategoryFragment :
                         Snackbar.LENGTH_LONG,
                         R.string.create_category_success_to_create_subject
                     ) {
-                        subjectService.launchCreateSubject(requireContext(), sideEffect.category.id)
-                        findNavController().navigateUp()
+                        navigate {
+                            module(DeepLink.Module.SUBJECT)
+                            path(DeepLink.Path.CREATE)
+                            arguments(DeepLink.Param.CATEGORY_ID, sideEffect.category.id.toString())
+                        }
                     }
                 }
                 is CreateCategorySideEffect.ShowSnack ->
