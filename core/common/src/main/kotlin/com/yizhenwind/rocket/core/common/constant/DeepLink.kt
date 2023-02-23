@@ -15,6 +15,8 @@ object DeepLink {
 
         const val SUBJECT = "subject"
 
+        const val PAYMENT_METHOD = "paymentMethod"
+
     }
 
     object Path {

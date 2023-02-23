@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph_payment_method">
+
+    <fragment
+        android:id="@+id/nav_payment_method_list"
+        android:name="com.yizhenwind.rocket.feature.paymentmethod.ui.PaymentMethodListFragment"
+        android:label="@string/label_payment_method_list"
+        tools:layout="@layout/fragment_base_list">
+
+        <deepLink app:uri="rocket://paymentMethod/list" />
+
+    </fragment>
+
+</navigation>

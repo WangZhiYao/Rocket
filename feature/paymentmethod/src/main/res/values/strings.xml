@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="label_payment_method_list">支付方式列表</string>
+</resources>
