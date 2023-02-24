@@ -10,10 +10,12 @@ import androidx.annotation.StringRes
  */
 sealed class CreateContactTypeSideEffect {
 
-    data class ShowError(@StringRes val resId: Int) : CreateContactTypeSideEffect()
+    data class ShowNameError(@StringRes val resId: Int) : CreateContactTypeSideEffect()
 
-    object HideError : CreateContactTypeSideEffect()
+    object HideNameError : CreateContactTypeSideEffect()
 
     object CreateContactTypeSuccess : CreateContactTypeSideEffect()
+
+    data class ShowError(@StringRes val resId: Int) : CreateContactTypeSideEffect()
 
 }

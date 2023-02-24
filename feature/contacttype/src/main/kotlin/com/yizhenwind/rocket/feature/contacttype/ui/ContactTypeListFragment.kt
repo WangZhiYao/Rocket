@@ -50,7 +50,7 @@ class ContactTypeListFragment : BaseListFragment(),
     override fun handleSideEffect(sideEffect: ContactTypeListSideEffect) {
         binding.apply {
             when (sideEffect) {
-                is ContactTypeListSideEffect.DeleteContactTypeListSuccess ->
+                is ContactTypeListSideEffect.DeleteContactTypeSuccess ->
                     sideEffect.contactType.apply {
                         root.showSnack(
                             text = getString(R.string.contact_type_delete_success, name),

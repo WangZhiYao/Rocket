@@ -42,7 +42,7 @@ class ContactTypeListViewModel @Inject constructor(
             updateContactTypeUseCase(contactType)
                 .collect { contactType ->
                     if (!contactType.enable) {
-                        postSideEffect(ContactTypeListSideEffect.DeleteContactTypeListSuccess(contactType))
+                        postSideEffect(ContactTypeListSideEffect.DeleteContactTypeSuccess(contactType))
                     }
                 }
         }

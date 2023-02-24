@@ -6,6 +6,7 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.yizhenwind.rocket.core.framework.base.BaseFragment
 import com.yizhenwind.rocket.core.framework.ext.setThrottleClickListener
+import com.yizhenwind.rocket.core.framework.ext.showSnack
 import com.yizhenwind.rocket.core.framework.mvi.IMVIHost
 import com.yizhenwind.rocket.feature.contacttype.databinding.FragmentCreateContactTypeBinding
 import dagger.hilt.android.AndroidEntryPoint
@@ -57,14 +58,15 @@ class CreateContactTypeFragment :
     override fun handleSideEffect(sideEffect: CreateContactTypeSideEffect) {
         binding.apply {
             when (sideEffect) {
-                is CreateContactTypeSideEffect.ShowError ->
+                is CreateContactTypeSideEffect.ShowNameError ->
                     tilCreateContactType.error = getString(sideEffect.resId)
-                CreateContactTypeSideEffect.HideError ->
+                CreateContactTypeSideEffect.HideNameError ->
                     tilCreateContactType.error = null
                 is CreateContactTypeSideEffect.CreateContactTypeSuccess ->
                     findNavController().navigateUp()
+                is CreateContactTypeSideEffect.ShowError ->
+                    root.showSnack(sideEffect.resId)
             }
         }
     }
-
 }
