@@ -22,4 +22,14 @@ class PaymentMethodRepository @Inject constructor(
         paymentMethodLocalDataSource.observePaymentMethodList()
             .map { EntityListMapper(paymentMethodMapper).fromEntity(it) }
 
+    suspend fun getPaymentMethodByName(name: String): PaymentMethod? =
+        paymentMethodLocalDataSource.getPaymentMethodByName(name)
+            ?.run { paymentMethodMapper.fromEntity(this) }
+
+    fun updatePaymentMethod(paymentMethod: PaymentMethod): Flow<Int> =
+        paymentMethodLocalDataSource.updatePaymentMethod(paymentMethodMapper.toEntity(paymentMethod))
+
+    fun createPaymentMethod(paymentMethod: PaymentMethod): Flow<Long> =
+        paymentMethodLocalDataSource.createPaymentMethod(paymentMethodMapper.toEntity(paymentMethod))
+
 }

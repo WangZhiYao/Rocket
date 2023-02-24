@@ -2,6 +2,7 @@ package com.yizhenwind.rocket.core.framework.ext
 
 import android.net.Uri
 import androidx.fragment.app.Fragment
+import androidx.navigation.NavDirections
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.navOptions
 import com.yizhenwind.rocket.core.common.util.DeepLinkBuilder
@@ -47,4 +48,8 @@ fun Fragment.navigate(deepLink: Uri) {
             }
         }
     )
+}
+
+fun Fragment.navigate(directions: NavDirections) {
+    findNavController().navigate(directions)
 }

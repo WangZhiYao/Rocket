@@ -16,4 +16,7 @@ interface PaymentMethodDao : IDao<PaymentMethodEntity> {
     @Query("SELECT * FROM payment_method WHERE enable = 1")
     fun observePaymentMethodList(): Flow<List<PaymentMethodEntity>>
 
+    @Query("SELECT * FROM payment_method WHERE name = :name")
+    suspend fun getPaymentMethodByName(name: String): PaymentMethodEntity?
+
 }

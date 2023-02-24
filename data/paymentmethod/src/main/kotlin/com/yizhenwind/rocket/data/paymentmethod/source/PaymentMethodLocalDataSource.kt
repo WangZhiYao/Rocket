@@ -3,6 +3,7 @@ package com.yizhenwind.rocket.data.paymentmethod.source
 import com.yizhenwind.rocket.core.database.dao.PaymentMethodDao
 import com.yizhenwind.rocket.core.database.entity.PaymentMethodEntity
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.flow
 import javax.inject.Inject
 
 /**
@@ -16,5 +17,18 @@ class PaymentMethodLocalDataSource @Inject constructor(
 
     fun observePaymentMethodList(): Flow<List<PaymentMethodEntity>> =
         paymentMethodDao.observePaymentMethodList()
+
+    suspend fun getPaymentMethodByName(name: String): PaymentMethodEntity? =
+        paymentMethodDao.getPaymentMethodByName(name)
+
+    fun updatePaymentMethod(paymentMethodEntity: PaymentMethodEntity): Flow<Int> =
+        flow {
+            emit(paymentMethodDao.update(paymentMethodEntity))
+        }
+
+    fun createPaymentMethod(paymentMethodEntity: PaymentMethodEntity): Flow<Long> =
+        flow {
+            emit(paymentMethodDao.insert(paymentMethodEntity))
+        }
 
 }
