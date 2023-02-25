@@ -11,6 +11,8 @@
         android:label="@string/label_create_client"
         tools:layout="@layout/fragment_create_client">
 
+        <deepLink app:uri="rocket://client/create" />
+
         <action
             android:id="@+id/action_create_client_to_client_composite"
             app:destination="@id/nav_client_composite"

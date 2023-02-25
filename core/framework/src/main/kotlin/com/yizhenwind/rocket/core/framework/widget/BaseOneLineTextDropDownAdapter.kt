@@ -20,7 +20,7 @@ abstract class BaseOneLineTextDropDownAdapter<T> : BaseDropDownAdapter<T>() {
             convertView.tag as ItemDropDownOneLineTextBinding
         }
 
-        binding.tvDropDownContent.text = convertToString(getItem(position))
+        binding.tvDropDownContent.text = itemToString(getItem(position))
 
         return binding.root.apply { tag = binding }
     }

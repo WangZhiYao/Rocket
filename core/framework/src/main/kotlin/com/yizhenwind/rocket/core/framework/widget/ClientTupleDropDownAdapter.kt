@@ -9,7 +9,7 @@ import com.yizhenwind.rocket.core.model.ClientTuple
  */
 class ClientTupleDropDownAdapter : BaseTwoLineTextDropDownAdapter<ClientTuple>() {
 
-    override fun convertToString(item: ClientTuple): CharSequence = item.name
+    override fun itemToString(item: ClientTuple): CharSequence = item.name
 
     override fun contentBottom(item: ClientTuple): CharSequence =
         item.run { String.format("%s: %s", contactType.name, contact) }

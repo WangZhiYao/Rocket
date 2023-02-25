@@ -9,7 +9,7 @@ object DeepLink {
 
     object Module {
 
-        const val CONTACT_TYPE = "contactType"
+        const val CLIENT = "client"
 
         const val CATEGORY = "category"
 

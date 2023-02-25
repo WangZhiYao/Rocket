@@ -32,6 +32,6 @@ class CharacterTupleDropDownAdapter : BaseDropDownAdapter<CharacterTuple>() {
         return binding.root.apply { tag = binding }
     }
 
-    override fun convertToString(item: CharacterTuple): CharSequence = item.name
+    override fun itemToString(item: CharacterTuple): CharSequence = item.name
 
 }

@@ -11,7 +11,7 @@ import com.yizhenwind.rocket.core.model.Subject
  */
 class SubjectDropDownAdapter : BaseTwoLineTextDropDownAdapter<Subject>() {
 
-    override fun convertToString(item: Subject): CharSequence =
+    override fun itemToString(item: Subject): CharSequence =
         item.content
 
     override fun contentBottom(item: Subject): CharSequence =

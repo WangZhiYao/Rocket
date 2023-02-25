@@ -15,15 +15,10 @@ import com.yizhenwind.rocket.feature.client.databinding.ItemClientProfileBinding
 class ClientProfileAdapter :
     BaseListAdapter<ClientProfile, ClientProfileViewHolder>(ClientProfile.COMPARATOR) {
 
-    var onActionClickListener: ((ClientProfile) -> Unit)? = null
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ClientProfileViewHolder =
         ClientProfileViewHolder(parent.viewBinding(ItemClientProfileBinding::inflate)).apply {
             onItemClickListener = { clientProfile ->
                 this@ClientProfileAdapter.onItemClickListener?.invoke(clientProfile)
-            }
-            onActionClickListener = { clientProfile ->
-                this@ClientProfileAdapter.onActionClickListener?.invoke(clientProfile)
             }
         }
 }

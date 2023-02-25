@@ -3,7 +3,9 @@ package com.yizhenwind.rocket.feature.client.ui.profile
 import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import com.yizhenwind.rocket.core.common.constant.DeepLink
 import com.yizhenwind.rocket.core.framework.base.BaseListFragment
+import com.yizhenwind.rocket.core.framework.ext.navigate
 import com.yizhenwind.rocket.core.framework.ext.setThrottleClickListener
 import com.yizhenwind.rocket.core.framework.mvi.IMVIHost
 import com.yizhenwind.rocket.feature.client.R
@@ -17,7 +19,8 @@ import org.orbitmvi.orbit.viewmodel.observe
  * @since 2023/1/16
  */
 @AndroidEntryPoint
-class ClientProfileListFragment : BaseListFragment(), IMVIHost<ClientProfileListViewState, Nothing> {
+class ClientProfileListFragment : BaseListFragment(),
+    IMVIHost<ClientProfileListViewState, Nothing> {
 
     private val viewModel by viewModels<ClientProfileListViewModel>()
 
@@ -38,17 +41,15 @@ class ClientProfileListFragment : BaseListFragment(), IMVIHost<ClientProfileList
                         )
                     )
                 }
-                onActionClickListener = { clientProfile ->
-                    // TODO: open action bottom sheet
-                }
             }
             fab.apply {
                 isVisible = true
                 setImageResource(R.drawable.ic_round_add_white_24dp)
                 setThrottleClickListener {
-                    findNavController().navigate(
-                        ClientProfileListFragmentDirections.actionToCreateClient()
-                    )
+                    navigate {
+                        module(DeepLink.Module.CLIENT)
+                        path(DeepLink.Path.CREATE)
+                    }
                 }
             }
         }

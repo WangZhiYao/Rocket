@@ -1,5 +1,7 @@
 package com.yizhenwind.rocket.core.model
 
+import com.yizhenwind.rocket.core.common.constant.ContactType
+
 /**
  *
  * @author WangZhiYao
@@ -8,6 +10,6 @@ package com.yizhenwind.rocket.core.model
 data class ClientTuple(
     val id: Long = 0,
     val name: String = "",
-    val contactType: ContactType = ContactType(),
+    val contactType: ContactType = ContactType.QQ,
     val contact: String = ""
 )

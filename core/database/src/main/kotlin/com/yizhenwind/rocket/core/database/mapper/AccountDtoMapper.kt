@@ -12,14 +12,14 @@ import javax.inject.Inject
  * @since 2023/1/18
  */
 class AccountDtoMapper @Inject constructor(
-    private val clientDtoMapper: ClientDtoMapper,
+    private val clientMapper: ClientMapper,
 ) : IMapper<AccountDto, Account> {
 
     override fun map(input: AccountDto): Account =
         input.run {
             Account(
                 accountEntity.id,
-                clientDtoMapper.map(clientDto),
+                clientMapper.fromEntity(clientEntity),
                 accountEntity.username,
                 accountEntity.password,
                 accountEntity.encrypted,

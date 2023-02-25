@@ -86,7 +86,6 @@ dependencies {
 
     implementation(project(":feature:home"))
     implementation(project(":feature:client"))
-    implementation(project(":feature:contacttype"))
     implementation(project(":feature:account"))
     implementation(project(":feature:character"))
     implementation(project(":feature:zoneserver"))

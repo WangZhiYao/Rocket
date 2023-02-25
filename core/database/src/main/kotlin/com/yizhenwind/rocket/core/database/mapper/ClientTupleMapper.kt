@@ -10,18 +10,15 @@ import javax.inject.Inject
  * @author WangZhiYao
  * @since 2023/2/9
  */
-class ClientTupleMapper @Inject constructor(
-    private val contactTypeMapper: ContactTypeMapper
-) : IMapper<ClientTupleDto, ClientTuple> {
+class ClientTupleMapper @Inject constructor() : IMapper<ClientTupleDto, ClientTuple> {
 
     override fun map(input: ClientTupleDto): ClientTuple =
         input.run {
             ClientTuple(
                 id,
                 name,
-                contactTypeMapper.fromEntity(contactTypeEntity),
+                contactType,
                 contact
             )
         }
-
 }

@@ -10,6 +10,6 @@ import com.yizhenwind.rocket.core.model.Server
  */
 class ServerDropDownAdapter : BaseOneLineTextDropDownAdapter<Server>() {
 
-    override fun convertToString(item: Server): CharSequence = item.name
+    override fun itemToString(item: Server): CharSequence = item.name
 
 }

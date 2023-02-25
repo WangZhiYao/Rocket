@@ -10,6 +10,6 @@ import com.yizhenwind.rocket.core.model.Internal
  */
 class InternalDropDownAdapter : BaseOneLineTextDropDownAdapter<Internal>() {
 
-    override fun convertToString(item: Internal): CharSequence = item.name
+    override fun itemToString(item: Internal): CharSequence = item.name
 
 }

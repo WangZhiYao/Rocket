@@ -1,6 +1,7 @@
 package com.yizhenwind.rocket.core.model
 
 import androidx.recyclerview.widget.DiffUtil
+import com.yizhenwind.rocket.core.common.constant.ContactType
 
 /**
  * 客户信息简略
@@ -11,7 +12,7 @@ import androidx.recyclerview.widget.DiffUtil
 data class ClientProfile(
     val id: Long = 0,
     val name: String = "",
-    val contactType: ContactType = ContactType(),
+    val contactType: ContactType = ContactType.QQ,
     val contact: String = "",
     val accountCount: Int = 0,
     val characterCount: Int = 0,

@@ -10,6 +10,6 @@ import com.yizhenwind.rocket.core.model.Sect
  */
 class SectDropDownAdapter : BaseOneLineTextDropDownAdapter<Sect>() {
 
-    override fun convertToString(item: Sect): CharSequence = item.name
+    override fun itemToString(item: Sect): CharSequence = item.name
 
 }

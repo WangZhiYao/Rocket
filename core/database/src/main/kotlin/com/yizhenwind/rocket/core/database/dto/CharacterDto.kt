@@ -13,11 +13,10 @@ data class CharacterDto(
     @Embedded
     val character: CharacterEntity,
     @Relation(
-        entity = ClientEntity::class,
         parentColumn = "client_id",
         entityColumn = "id",
     )
-    val client: ClientDto,
+    val client: ClientEntity,
     @Relation(
         entity = AccountEntity::class,
         parentColumn = "account_id",

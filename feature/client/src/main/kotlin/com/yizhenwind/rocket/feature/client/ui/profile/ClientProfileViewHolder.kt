@@ -14,8 +14,6 @@ import com.yizhenwind.rocket.feature.client.databinding.ItemClientProfileBinding
 class ClientProfileViewHolder(private val binding: ItemClientProfileBinding) :
     BaseViewHolder<ClientProfile>(binding.root) {
 
-    var onActionClickListener: ((ClientProfile) -> Unit)? = null
-
     override fun bind(item: ClientProfile) {
         binding.apply {
             item.apply {

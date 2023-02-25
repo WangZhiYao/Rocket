@@ -11,6 +11,6 @@ import com.yizhenwind.rocket.core.model.PaymentMethod
  */
 class PaymentMethodDropDownAdapter : BaseOneLineTextDropDownAdapter<PaymentMethod>() {
 
-    override fun convertToString(item: PaymentMethod): CharSequence = item.name
+    override fun itemToString(item: PaymentMethod): CharSequence = item.name
 
 }

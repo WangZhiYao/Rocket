@@ -24,17 +24,6 @@ class SettingViewModel @Inject constructor() : BaseMVIViewModel<SettingViewState
     init {
         intent {
             val settingItemList = ArrayList<SettingItem>().apply {
-                add(SettingItem.Title(R.string.item_setting_title_client))
-                add(
-                    SettingItem.Item(
-                        R.string.item_setting_contact_type,
-                        R.string.item_setting_contact_type_description,
-                        deepLink {
-                            module(DeepLink.Module.CONTACT_TYPE)
-                            path(DeepLink.Path.LIST)
-                        }
-                    )
-                )
                 add(SettingItem.Title(R.string.item_setting_title_order))
                 add(
                     SettingItem.Item(

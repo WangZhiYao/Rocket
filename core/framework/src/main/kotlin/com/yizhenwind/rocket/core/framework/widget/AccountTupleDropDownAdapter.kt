@@ -9,6 +9,6 @@ import com.yizhenwind.rocket.core.model.AccountTuple
  */
 class AccountTupleDropDownAdapter : BaseOneLineTextDropDownAdapter<AccountTuple>() {
 
-    override fun convertToString(item: AccountTuple): CharSequence = item.username
+    override fun itemToString(item: AccountTuple): CharSequence = item.username
 
 }

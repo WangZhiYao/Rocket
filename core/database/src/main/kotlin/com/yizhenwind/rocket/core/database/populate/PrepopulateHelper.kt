@@ -14,7 +14,6 @@ import javax.inject.Inject
  */
 class PrepopulateHelper @Inject constructor(
     @IOScope private val ioScope: CoroutineScope,
-    private val contactTypePrepopulateUseCase: ContactTypePrepopulateUseCase,
     private val zonePrepopulateUseCase: ZonePrepopulateUseCase,
     private val serverPrepopulateUseCase: ServerPrepopulateUseCase,
     private val sectPrepopulateUseCase: SectPrepopulateUseCase,
@@ -26,7 +25,6 @@ class PrepopulateHelper @Inject constructor(
 
     fun doPopulate() {
         val sequence = SequenceUseCase().apply {
-            add(contactTypePrepopulateUseCase)
             add(zonePrepopulateUseCase)
             add(serverPrepopulateUseCase)
             add(sectPrepopulateUseCase)

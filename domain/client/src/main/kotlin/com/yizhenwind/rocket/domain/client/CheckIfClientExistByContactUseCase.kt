@@ -1,6 +1,6 @@
 package com.yizhenwind.rocket.domain.client
 
-import com.yizhenwind.rocket.core.model.ContactType
+import com.yizhenwind.rocket.core.common.constant.ContactType
 import javax.inject.Inject
 
 /**

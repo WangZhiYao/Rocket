@@ -11,7 +11,7 @@ import javax.inject.Inject
  * @since 2023/1/19
  */
 class CharacterDtoMapper @Inject constructor(
-    private val clientDtoMapper: ClientDtoMapper,
+    private val clientMapper: ClientMapper,
     private val zoneMapper: ZoneMapper,
     private val serverMapper: ServerMapper,
     private val accountDtoMapper: AccountDtoMapper,
@@ -23,7 +23,7 @@ class CharacterDtoMapper @Inject constructor(
         input.run {
             Character(
                 character.id,
-                clientDtoMapper.map(client),
+                clientMapper.fromEntity(client),
                 accountDtoMapper.map(account),
                 zoneMapper.fromEntity(zone),
                 serverMapper.fromEntity(server),

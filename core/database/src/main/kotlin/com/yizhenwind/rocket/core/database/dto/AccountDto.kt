@@ -15,9 +15,8 @@ data class AccountDto(
     @Embedded
     val accountEntity: AccountEntity,
     @Relation(
-        entity = ClientEntity::class,
         parentColumn = "client_id",
         entityColumn = "id"
     )
-    val clientDto: ClientDto
+    val clientEntity: ClientEntity
 )

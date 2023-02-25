@@ -4,6 +4,7 @@ import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.Index
 import androidx.room.PrimaryKey
+import com.yizhenwind.rocket.core.common.constant.ContactType
 
 /**
  * 客户属性
@@ -13,9 +14,7 @@ import androidx.room.PrimaryKey
  */
 @Entity(
     tableName = "client",
-    indices = [
-        Index(value = ["contact_type_id", "contact"], unique = true)
-    ]
+    indices = [Index(value = ["contact_type", "contact"], unique = true)]
 )
 data class ClientEntity(
 
@@ -33,8 +32,8 @@ data class ClientEntity(
     /**
      * 联系方式类型
      */
-    @ColumnInfo(name = "contact_type_id")
-    val contactTypeId: Long,
+    @ColumnInfo(name = "contact_type")
+    val contactType: ContactType,
 
     /**
      * 联系方式

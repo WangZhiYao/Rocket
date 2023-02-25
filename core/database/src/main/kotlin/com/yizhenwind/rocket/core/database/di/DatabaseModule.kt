@@ -79,11 +79,6 @@ object DatabaseModule {
 
     @Provides
     @Singleton
-    fun provideContactTypeDao(database: RocketDatabase): ContactTypeDao =
-        database.contactTypeDao()
-
-    @Provides
-    @Singleton
     fun provideAccountDao(database: RocketDatabase): AccountDao =
         database.accountDao()
 

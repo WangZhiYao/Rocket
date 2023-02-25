@@ -38,10 +38,10 @@ abstract class BaseDropDownAdapter<T> : BaseAdapter(), Filterable {
 
         @Suppress("UNCHECKED_CAST")
         override fun convertResultToString(resultValue: Any?): CharSequence =
-            if (resultValue == null) "" else convertToString(resultValue as T)
+            if (resultValue == null) "" else itemToString(resultValue as T)
 
     }
 
-    abstract fun convertToString(item: T): CharSequence
+    abstract fun itemToString(item: T): CharSequence
 
 }

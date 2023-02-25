@@ -11,16 +11,14 @@ import javax.inject.Inject
  * @author WangZhiYao
  * @since 2022/11/21
  */
-class ClientProfileDtoMapper @Inject constructor(
-    private val contactTypeMapper: ContactTypeMapper
-) : IMapper<ClientProfileDto, ClientProfile> {
+class ClientProfileDtoMapper @Inject constructor() : IMapper<ClientProfileDto, ClientProfile> {
 
     override fun map(input: ClientProfileDto): ClientProfile =
         input.run {
             ClientProfile(
                 id,
                 name,
-                contactTypeMapper.fromEntity(contactTypeEntity),
+                contactType,
                 contact,
                 accountCount,
                 characterCount,

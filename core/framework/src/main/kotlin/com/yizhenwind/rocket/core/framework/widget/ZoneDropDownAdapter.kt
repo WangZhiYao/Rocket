@@ -10,6 +10,6 @@ import com.yizhenwind.rocket.core.model.Zone
  */
 class ZoneDropDownAdapter : BaseOneLineTextDropDownAdapter<Zone>() {
 
-    override fun convertToString(item: Zone): CharSequence = item.name
+    override fun itemToString(item: Zone): CharSequence = item.name
 
 }

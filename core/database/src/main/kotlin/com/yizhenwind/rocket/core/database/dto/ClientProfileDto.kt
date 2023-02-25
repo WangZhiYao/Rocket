@@ -1,8 +1,7 @@
 package com.yizhenwind.rocket.core.database.dto
 
 import androidx.room.ColumnInfo
-import androidx.room.Relation
-import com.yizhenwind.rocket.core.database.entity.ContactTypeEntity
+import com.yizhenwind.rocket.core.common.constant.ContactType
 
 /**
  * 客户信息摘要
@@ -13,13 +12,8 @@ import com.yizhenwind.rocket.core.database.entity.ContactTypeEntity
 data class ClientProfileDto(
     val id: Long,
     val name: String,
-    @ColumnInfo(name = "contact_type_id")
-    val contactTypeId: Long,
-    @Relation(
-        parentColumn = "contact_type_id",
-        entityColumn = "id"
-    )
-    val contactTypeEntity: ContactTypeEntity,
+    @ColumnInfo(name = "contact_type")
+    val contactType: ContactType,
     val contact: String,
     @ColumnInfo(name = "account_count")
     val accountCount: Int,

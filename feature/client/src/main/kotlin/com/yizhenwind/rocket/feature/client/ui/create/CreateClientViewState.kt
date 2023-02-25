@@ -1,7 +1,7 @@
 package com.yizhenwind.rocket.feature.client.ui.create
 
+import com.yizhenwind.rocket.core.common.constant.ContactType
 import com.yizhenwind.rocket.core.framework.mvi.IViewState
-import com.yizhenwind.rocket.core.model.ContactType
 
 /**
  *
@@ -9,6 +9,6 @@ import com.yizhenwind.rocket.core.model.ContactType
  * @since 2023/1/17
  */
 data class CreateClientViewState(
-    val contactTypeList: List<ContactType> = emptyList(),
-    val contactType: ContactType = ContactType()
+    val contactTypeList: List<ContactType> = ContactType.values().toList(),
+    val contactType: ContactType = ContactType.QQ
 ) : IViewState

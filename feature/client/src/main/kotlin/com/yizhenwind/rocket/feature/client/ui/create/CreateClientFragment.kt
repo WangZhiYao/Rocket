@@ -26,7 +26,7 @@ class CreateClientFragment :
 
     private val viewModel by viewModels<CreateClientViewModel>()
 
-    private val contactTypeAdapter = ContactTypeAdapter()
+    private val contactTypeAdapter by lazy { ContactTypeAdapter(requireContext()) }
 
     override fun init() {
         initData()
@@ -96,7 +96,6 @@ class CreateClientFragment :
                                 sideEffect.client.id
                             )
                         )
-                        requireActivity().finish()
                     }
                 }
                 is CreateClientSideEffect.CreateClientFailure ->

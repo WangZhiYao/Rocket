@@ -21,7 +21,7 @@ abstract class BaseTwoLineTextDropDownAdapter<T> : BaseDropDownAdapter<T>() {
         }
 
         getItem(position).apply {
-            binding.tvDropDownContentTop.text = convertToString(this)
+            binding.tvDropDownContentTop.text = itemToString(this)
             binding.tvDropDownContentBottom.text = contentBottom(this)
         }
 

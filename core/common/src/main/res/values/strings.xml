@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="contact_type_qq">QQ</string>
+    <string name="contact_type_wechat">微信</string>
+    <string name="contact_type_phone">手机号</string>
+
     <string name="order_status_not_started">未开始</string>
     <string name="order_status_processing">代练中</string>
     <string name="order_status_pause">暂停</string>

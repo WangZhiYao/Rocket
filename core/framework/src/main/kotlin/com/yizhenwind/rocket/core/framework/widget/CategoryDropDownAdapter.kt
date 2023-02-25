@@ -13,7 +13,7 @@ import com.yizhenwind.rocket.core.model.Category
 class CategoryDropDownAdapter(private val context: Context) :
     BaseTwoLineTextDropDownAdapter<Category>() {
 
-    override fun convertToString(item: Category): CharSequence =
+    override fun itemToString(item: Category): CharSequence =
         item.title
 
     override fun contentBottom(item: Category): CharSequence =

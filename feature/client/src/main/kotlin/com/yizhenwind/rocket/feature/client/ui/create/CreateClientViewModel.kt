@@ -1,13 +1,11 @@
 package com.yizhenwind.rocket.feature.client.ui.create
 
 import com.yizhenwind.rocket.core.common.constant.Constant
+import com.yizhenwind.rocket.core.common.constant.ContactType
 import com.yizhenwind.rocket.core.common.ext.ifNull
-import com.yizhenwind.rocket.core.common.ext.pickFirstOrDefault
 import com.yizhenwind.rocket.core.framework.base.BaseMVIViewModel
 import com.yizhenwind.rocket.core.logger.ILogger
-import com.yizhenwind.rocket.core.mediator.contacttype.IContactTypeService
 import com.yizhenwind.rocket.core.model.Client
-import com.yizhenwind.rocket.core.model.ContactType
 import com.yizhenwind.rocket.domain.client.CheckIfClientExistByContactUseCase
 import com.yizhenwind.rocket.domain.client.CreateClientUseCase
 import com.yizhenwind.rocket.feature.client.R
@@ -27,7 +25,6 @@ import javax.inject.Inject
  */
 @HiltViewModel
 class CreateClientViewModel @Inject constructor(
-    private val contactTypeService: IContactTypeService,
     private val checkIfClientExistByContactUseCase: CheckIfClientExistByContactUseCase,
     private val createClientUseCase: CreateClientUseCase,
     private val logger: ILogger
@@ -35,20 +32,6 @@ class CreateClientViewModel @Inject constructor(
 
     override val container =
         container<CreateClientViewState, CreateClientSideEffect>(CreateClientViewState())
-
-    init {
-        intent {
-            contactTypeService.observeContactType()
-                .collect { contactTypeList ->
-                    reduce {
-                        state.copy(
-                            contactTypeList = contactTypeList,
-                            contactType = contactTypeList.pickFirstOrDefault(ContactType()) { true }
-                        )
-                    }
-                }
-        }
-    }
 
     fun onNameChanged(name: String?) {
         intent {

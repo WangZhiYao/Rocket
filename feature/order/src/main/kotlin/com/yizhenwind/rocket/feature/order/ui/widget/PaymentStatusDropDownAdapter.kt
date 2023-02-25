@@ -13,7 +13,7 @@ import com.yizhenwind.rocket.core.framework.widget.BaseOneLineTextDropDownAdapte
 class PaymentStatusDropDownAdapter(private val context: Context) :
     BaseOneLineTextDropDownAdapter<PaymentStatus>() {
 
-    override fun convertToString(item: PaymentStatus): CharSequence =
+    override fun itemToString(item: PaymentStatus): CharSequence =
         context.getString(item.resId)
 
 }

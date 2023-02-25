@@ -1,7 +1,7 @@
 package com.yizhenwind.rocket.data.client.source
 
+import com.yizhenwind.rocket.core.common.constant.ContactType
 import com.yizhenwind.rocket.core.database.dao.ClientDao
-import com.yizhenwind.rocket.core.database.dto.ClientDto
 import com.yizhenwind.rocket.core.database.dto.ClientProfileDto
 import com.yizhenwind.rocket.core.database.dto.ClientTupleDto
 import com.yizhenwind.rocket.core.database.entity.ClientEntity
@@ -19,7 +19,7 @@ class ClientLocalDataSource @Inject constructor(
     private val clientDao: ClientDao
 ) {
 
-    fun observeClientList(): Flow<List<ClientDto>> =
+    fun observeClientList(): Flow<List<ClientEntity>> =
         clientDao.observeClientList()
 
     fun observeClientProfileList(): Flow<List<ClientProfileDto>> =
@@ -30,10 +30,10 @@ class ClientLocalDataSource @Inject constructor(
             emit(clientDao.insert(clientEntity))
         }
 
-    suspend fun getClientByContact(contactTypeId: Long, contact: String): ClientDto? =
-        clientDao.getClientByContact(contactTypeId, contact)
+    suspend fun getClientByContact(contactType: ContactType, contact: String): ClientEntity? =
+        clientDao.getClientByContact(contactType, contact)
 
-    fun observeClientById(id: Long): Flow<ClientDto?> =
+    fun observeClientById(id: Long): Flow<ClientEntity?> =
         clientDao.observeClientById(id)
 
     fun observeClientTupleList(): Flow<List<ClientTupleDto>> =
