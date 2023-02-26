@@ -16,7 +16,6 @@
     <string name="account_detail_client">客户</string>
     <string name="account_detail_username">用户名</string>
     <string name="account_detail_password">密码</string>
-    <string name="account_detail_password_decrypt">查看密码</string>
     <string name="account_detail_create_time">创建时间</string>
     <string name="account_detail_copy_username_to_clipboard_success">用户名已复制到剪切板</string>
     <string name="account_detail_copy_password_to_clipboard_success">密码已复制到剪切板</string>

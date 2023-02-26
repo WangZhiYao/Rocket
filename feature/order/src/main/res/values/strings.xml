@@ -22,11 +22,6 @@
     <string name="helper_create_order_total_amount_equal_to_payment_amount_when_partially_paid">在部分支付状态下总价等于已支付金额时, 支付状态将变更为已支付</string>
     <string name="helper_create_order_payment_amount_equal_to_total_amount_when_partially_paid">在部分支付状态下已支付金额等于总价时, 支付状态将变更为已支付</string>
 
-    <string name="label_character_selection">选择角色</string>
-
-    <string name="ok">确定</string>
-    <string name="cancel">取消</string>
-
     <string name="error_create_order_client">请选择客户</string>
     <string name="error_create_order_account">请选择账号</string>
     <string name="error_create_order_character">请选择角色</string>
@@ -34,7 +29,6 @@
     <string name="error_create_order_subject">请选择项目</string>
     <string name="error_create_order_total_amount">请输入总价</string>
     <string name="error_create_order_total_amount_can_not_lower_than_payment_amount">总价不能低于已支付金额</string>
-    <string name="error_create_order_payment_method">请选择支付方式</string>
     <string name="error_create_order_payment_amount">请输入已支付的金额</string>
     <string name="error_create_order_payment_amount_can_not_bigger_than_total_amount">已支付金额不能大于总价</string>
     <string name="error_create_order">创建订单失败</string>

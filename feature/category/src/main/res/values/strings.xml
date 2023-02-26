@@ -2,8 +2,6 @@
 <resources>
     <string name="label_category_list">分类列表</string>
     <string name="category_delete_success">分类删除成功</string>
-    <string name="category_delete_revoke">撤销删除</string>
-
 
     <string name="label_create_category">创建分类</string>
     <string name="create_category_title_hint">分类标题</string>
