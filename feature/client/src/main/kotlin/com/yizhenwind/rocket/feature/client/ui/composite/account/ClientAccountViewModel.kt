@@ -24,10 +24,10 @@ class ClientAccountViewModel @Inject constructor(
 
     fun observeAccountProfileByClientId(clientId: Long) {
         intent {
-            accountService.observeAccountProfileByClientId(clientId)
-                .collect { accountProfileList ->
+            accountService.observeAccountListByClientId(clientId)
+                .collect { accountList ->
                     reduce {
-                        state.copy(accountProfileList = accountProfileList)
+                        state.copy(accountList = accountList)
                     }
                 }
         }

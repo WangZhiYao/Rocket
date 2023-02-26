@@ -17,11 +17,11 @@ import kotlinx.coroutines.flow.Flow
 interface SubjectDao : IDao<SubjectEntity> {
 
     @Transaction
-    @Query("SELECT * FROM subject WHERE enable = 1")
+    @Query("SELECT * FROM subject")
     fun observeSubjectList(): Flow<List<SubjectDto>>
 
     @Transaction
-    @Query("SELECT * FROM subject WHERE category_id = :categoryId AND enable = 1")
+    @Query("SELECT * FROM subject WHERE category_id = :categoryId")
     fun observeSubjectListByCategoryId(categoryId: Long): Flow<List<SubjectDto>>
 
 }

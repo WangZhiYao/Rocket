@@ -1,6 +1,7 @@
 package com.yizhenwind.rocket.core.model
 
 import com.yizhenwind.rocket.core.common.constant.OrderStatus
+import com.yizhenwind.rocket.core.common.constant.PaymentMethod
 import com.yizhenwind.rocket.core.common.constant.PaymentStatus
 
 /**
@@ -22,7 +23,7 @@ data class Order(
     val orderStatus: OrderStatus = OrderStatus.NOT_STARTED,
     val statusUpdateTime: Long = 0,
     val paymentStatus: PaymentStatus = PaymentStatus.UNPAID,
-    val paymentMethod: PaymentMethod = PaymentMethod(),
+    val paymentMethod: PaymentMethod = PaymentMethod.ALIPAY,
     val paymentTime: Long = 0,
     val paymentAmount: Long = 0,
     val refundAmount: Long = 0,

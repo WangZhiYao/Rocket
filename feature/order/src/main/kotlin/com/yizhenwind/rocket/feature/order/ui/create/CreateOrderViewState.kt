@@ -1,5 +1,6 @@
 package com.yizhenwind.rocket.feature.order.ui.create
 
+import com.yizhenwind.rocket.core.common.constant.PaymentMethod
 import com.yizhenwind.rocket.core.common.constant.PaymentStatus
 import com.yizhenwind.rocket.core.framework.mvi.IViewState
 import com.yizhenwind.rocket.core.model.*
@@ -25,7 +26,7 @@ data class CreateOrderViewState(
     val paymentStatusList: List<PaymentStatus> = emptyList(),
     val paymentStatus: PaymentStatus = PaymentStatus.UNPAID,
     val paymentMethodList: List<PaymentMethod> = emptyList(),
-    val paymentMethod: PaymentMethod = PaymentMethod(),
+    val paymentMethod: PaymentMethod = PaymentMethod.ALIPAY,
     val paymentAmount: Long = 0,
     val paymentTime: Long = 0
 ) : IViewState

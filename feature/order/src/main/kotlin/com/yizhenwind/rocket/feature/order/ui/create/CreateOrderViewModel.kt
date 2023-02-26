@@ -2,6 +2,7 @@ package com.yizhenwind.rocket.feature.order.ui.create
 
 import android.app.Application
 import com.yizhenwind.rocket.core.common.constant.Constant
+import com.yizhenwind.rocket.core.common.constant.PaymentMethod
 import com.yizhenwind.rocket.core.common.constant.PaymentStatus
 import com.yizhenwind.rocket.core.common.ext.ifNull
 import com.yizhenwind.rocket.core.common.ext.toAmount
@@ -9,7 +10,6 @@ import com.yizhenwind.rocket.core.common.usecase.DataFlowSequenceUseCase
 import com.yizhenwind.rocket.core.framework.base.BaseMVIAndroidViewModel
 import com.yizhenwind.rocket.core.logger.ILogger
 import com.yizhenwind.rocket.core.mediator.category.ICategoryService
-import com.yizhenwind.rocket.core.mediator.paymentmethod.IPaymentMethodService
 import com.yizhenwind.rocket.core.mediator.subject.ISubjectService
 import com.yizhenwind.rocket.core.model.*
 import com.yizhenwind.rocket.domain.common.usecase.AccountTupleUseCase
@@ -42,7 +42,6 @@ class CreateOrderViewModel @Inject constructor(
     private val characterTupleUseCase: CharacterTupleUseCase,
     private val categoryService: ICategoryService,
     private val subjectService: ISubjectService,
-    private val paymentMethodService: IPaymentMethodService,
     private val createOrderUseCase: CreateOrderUseCase,
     private val logger: ILogger
 ) : BaseMVIAndroidViewModel<CreateOrderViewState, CreateOrderSideEffect>(application) {
@@ -64,13 +63,13 @@ class CreateOrderViewModel @Inject constructor(
                 categoryService.observeCategoryList(),
                 subjectService.observeSubjectList(),
                 flowOf(PaymentStatus.values()),
-                paymentMethodService.observePaymentMethodList()
+                flowOf(PaymentMethod.values())
             ) { categoryList, subjectList, paymentStatusList, paymentMethodList ->
                 state.copy(
                     categoryList = categoryList,
                     subjectList = subjectList,
                     paymentStatusList = paymentStatusList.toList(),
-                    paymentMethodList = paymentMethodList
+                    paymentMethodList = paymentMethodList.toList()
                 )
             }
                 .collect { viewState ->
@@ -208,7 +207,7 @@ class CreateOrderViewModel @Inject constructor(
             postSideEffect(CreateOrderSideEffect.HideCategoryError)
             postSideEffect(CreateOrderSideEffect.HideSubjectError)
             reduce {
-                state.copy(category = subject.category, subject = subject)
+                state.copy(category = Category(), subject = subject)
             }
         }
     }
@@ -299,7 +298,6 @@ class CreateOrderViewModel @Inject constructor(
                         state.copy(
                             paymentStatus = paymentStatus,
                             paymentTime = 0,
-                            paymentMethod = PaymentMethod(),
                             paymentAmount = 0
                         )
                     PaymentStatus.PARTIALLY_PAID, PaymentStatus.PAID ->
@@ -386,10 +384,6 @@ class CreateOrderViewModel @Inject constructor(
                     return@intent
                 }
                 if (paymentStatus != PaymentStatus.UNPAID) {
-                    if (paymentMethod.id == Constant.DEFAULT_ID) {
-                        postSideEffect(CreateOrderSideEffect.ShowPaymentMethodError(R.string.error_create_order_payment_method))
-                        return@intent
-                    }
                     if (paymentAmount == 0L) {
                         postSideEffect(CreateOrderSideEffect.ShowPaymentAmountError(R.string.error_create_order_payment_amount))
                         return@intent
@@ -448,7 +442,7 @@ class CreateOrderViewModel @Inject constructor(
                     paymentStatusList = emptyList(),
                     paymentStatus = PaymentStatus.UNPAID,
                     paymentMethodList = emptyList(),
-                    paymentMethod = PaymentMethod(),
+                    paymentMethod = PaymentMethod.ALIPAY,
                     paymentAmount = 0,
                     paymentTime = 0
                 )

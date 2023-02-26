@@ -1,6 +1,5 @@
 package com.yizhenwind.rocket.feature.category.ui
 
-import androidx.core.view.isVisible
 import com.yizhenwind.rocket.core.framework.ext.setThrottleClickListener
 import com.yizhenwind.rocket.core.framework.ui.BaseViewHolder
 import com.yizhenwind.rocket.core.model.Category
@@ -23,11 +22,8 @@ class CategoryViewHolder(private val binding: ItemCategoryBinding) :
                 tvCategoryTitle.text = title
                 tvCategoryRemark.text =
                     remark.ifBlank { tvCategoryRemark.context.getString(R.string.empty_remark) }
-                ibCategoryDelete.apply {
-                    isVisible = !default
-                    setThrottleClickListener {
-                        onDeleteClickListener?.invoke(item)
-                    }
+                ibCategoryDelete.setThrottleClickListener {
+                    onDeleteClickListener?.invoke(item)
                 }
                 root.setThrottleClickListener { onItemClickListener?.invoke(this) }
             }

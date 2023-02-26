@@ -30,16 +30,6 @@ data class CategoryEntity(
     val remark: String,
 
     /**
-     * 是否为默认
-     */
-    val default: Boolean,
-
-    /**
-     * 是否可用
-     */
-    val enable: Boolean,
-
-    /**
      * 创建时间
      */
     @ColumnInfo(name = "create_time")

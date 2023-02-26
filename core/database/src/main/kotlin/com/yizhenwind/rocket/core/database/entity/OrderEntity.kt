@@ -5,6 +5,7 @@ import androidx.room.Entity
 import androidx.room.ForeignKey
 import androidx.room.PrimaryKey
 import com.yizhenwind.rocket.core.common.constant.OrderStatus
+import com.yizhenwind.rocket.core.common.constant.PaymentMethod
 import com.yizhenwind.rocket.core.common.constant.PaymentStatus
 
 /**
@@ -34,6 +35,20 @@ import com.yizhenwind.rocket.core.common.constant.PaymentStatus
             entity = CharacterEntity::class,
             parentColumns = ["id"],
             childColumns = ["character_id"],
+            onDelete = ForeignKey.CASCADE,
+            onUpdate = ForeignKey.CASCADE
+        ),
+        ForeignKey(
+            entity = CategoryEntity::class,
+            parentColumns = ["id"],
+            childColumns = ["category_id"],
+            onDelete = ForeignKey.CASCADE,
+            onUpdate = ForeignKey.CASCADE
+        ),
+        ForeignKey(
+            entity = SubjectEntity::class,
+            parentColumns = ["id"],
+            childColumns = ["subject_id"],
             onDelete = ForeignKey.CASCADE,
             onUpdate = ForeignKey.CASCADE
         )
@@ -114,10 +129,10 @@ data class OrderEntity(
     val paymentStatus: PaymentStatus,
 
     /**
-     * 支付方式ID
+     * 支付方式
      */
-    @ColumnInfo(name = "payment_method_id")
-    val paymentMethodId: Long,
+    @ColumnInfo(name = "payment_method")
+    val paymentMethod: PaymentMethod,
 
     /**
      * 支付时间

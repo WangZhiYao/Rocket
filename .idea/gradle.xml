@@ -27,7 +27,6 @@
             <option value="$PROJECT_DIR$/data/character" />
             <option value="$PROJECT_DIR$/data/client" />
             <option value="$PROJECT_DIR$/data/order" />
-            <option value="$PROJECT_DIR$/data/paymentmethod" />
             <option value="$PROJECT_DIR$/data/sectinternal" />
             <option value="$PROJECT_DIR$/data/subject" />
             <option value="$PROJECT_DIR$/data/zoneserver" />
@@ -38,7 +37,6 @@
             <option value="$PROJECT_DIR$/domain/client" />
             <option value="$PROJECT_DIR$/domain/common" />
             <option value="$PROJECT_DIR$/domain/order" />
-            <option value="$PROJECT_DIR$/domain/paymentmethod" />
             <option value="$PROJECT_DIR$/domain/sectinternal" />
             <option value="$PROJECT_DIR$/domain/subject" />
             <option value="$PROJECT_DIR$/domain/zoneserver" />
@@ -49,7 +47,6 @@
             <option value="$PROJECT_DIR$/feature/client" />
             <option value="$PROJECT_DIR$/feature/home" />
             <option value="$PROJECT_DIR$/feature/order" />
-            <option value="$PROJECT_DIR$/feature/paymentmethod" />
             <option value="$PROJECT_DIR$/feature/sectinternal" />
             <option value="$PROJECT_DIR$/feature/setting" />
             <option value="$PROJECT_DIR$/feature/subject" />

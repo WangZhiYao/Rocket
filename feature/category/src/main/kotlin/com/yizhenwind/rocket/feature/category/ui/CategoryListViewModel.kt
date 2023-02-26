@@ -2,8 +2,8 @@ package com.yizhenwind.rocket.feature.category.ui
 
 import com.yizhenwind.rocket.core.framework.base.BaseMVIViewModel
 import com.yizhenwind.rocket.core.model.Category
+import com.yizhenwind.rocket.domain.category.DeleteCategoryUseCase
 import com.yizhenwind.rocket.domain.category.ObserveCategoryListUseCase
-import com.yizhenwind.rocket.domain.category.UpdateCategoryUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import org.orbitmvi.orbit.syntax.simple.intent
 import org.orbitmvi.orbit.syntax.simple.postSideEffect
@@ -19,7 +19,7 @@ import javax.inject.Inject
 @HiltViewModel
 class CategoryListViewModel @Inject constructor(
     private val observeCategoryListUseCase: ObserveCategoryListUseCase,
-    private val updateCategoryUseCase: UpdateCategoryUseCase
+    private val deleteCategoryUseCase: DeleteCategoryUseCase
 ) : BaseMVIViewModel<CategoryListViewState, CategoryListSideEffect>() {
 
     override val container =
@@ -36,13 +36,11 @@ class CategoryListViewModel @Inject constructor(
         }
     }
 
-    fun updateCategory(category: Category) {
+    fun deleteCategory(category: Category) {
         intent {
-            updateCategoryUseCase(category)
-                .collect { category ->
-                    if (!category.enable) {
-                        postSideEffect(CategoryListSideEffect.DeleteCategorySuccess(category))
-                    }
+            deleteCategoryUseCase(category)
+                .collect {
+                    postSideEffect(CategoryListSideEffect.DeleteCategorySuccess)
                 }
         }
     }

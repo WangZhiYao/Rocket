@@ -1,5 +1,7 @@
 package com.yizhenwind.rocket.core.model
 
+import androidx.recyclerview.widget.DiffUtil
+
 /**
  *
  *
@@ -14,4 +16,23 @@ data class Account(
     val encrypted: Boolean = false,
     val iv: String = "",
     val createTime: Long = System.currentTimeMillis()
-)
+) {
+
+    companion object {
+
+        val COMPARATOR = object : DiffUtil.ItemCallback<Account>() {
+
+            override fun areItemsTheSame(
+                oldItem: Account,
+                newItem: Account
+            ): Boolean =
+                oldItem.id == newItem.id
+
+            override fun areContentsTheSame(
+                oldItem: Account,
+                newItem: Account
+            ): Boolean =
+                oldItem == newItem
+        }
+    }
+}

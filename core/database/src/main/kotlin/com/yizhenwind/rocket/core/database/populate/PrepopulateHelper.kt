@@ -19,7 +19,6 @@ class PrepopulateHelper @Inject constructor(
     private val sectPrepopulateUseCase: SectPrepopulateUseCase,
     private val internalPrepopulateUseCase: InternalPrepopulateUseCase,
     private val categoryPrepopulateUseCase: CategoryPrepopulateUseCase,
-    private val paymentMethodPrepopulateUseCase: PaymentMethodPrepopulateUseCase,
     private val logger: ILogger
 ) {
 
@@ -30,7 +29,6 @@ class PrepopulateHelper @Inject constructor(
             add(sectPrepopulateUseCase)
             add(internalPrepopulateUseCase)
             add(categoryPrepopulateUseCase)
-            add(paymentMethodPrepopulateUseCase)
         }
         ioScope.launch {
             sequence.execute().collect {

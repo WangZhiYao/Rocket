@@ -1,5 +1,6 @@
 package com.yizhenwind.rocket.core.model
 
+import androidx.recyclerview.widget.DiffUtil
 import com.yizhenwind.rocket.core.common.constant.ContactType
 
 /**
@@ -15,4 +16,22 @@ data class Client(
     val contact: String = "",
     val remark: String = "",
     val createTime: Long = System.currentTimeMillis()
-)
+) {
+
+    companion object {
+
+        val COMPARATOR = object : DiffUtil.ItemCallback<Client>() {
+
+            override fun areItemsTheSame(
+                oldItem: Client,
+                newItem: Client
+            ): Boolean = oldItem.id == newItem.id
+
+            override fun areContentsTheSame(
+                oldItem: Client,
+                newItem: Client
+            ): Boolean = oldItem == newItem
+        }
+    }
+
+}

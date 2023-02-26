@@ -20,6 +20,4 @@
 
     <include app:graph="@navigation/navigation_category" />
 
-    <include app:graph="@navigation/navigation_payment_method" />
-
 </navigation>

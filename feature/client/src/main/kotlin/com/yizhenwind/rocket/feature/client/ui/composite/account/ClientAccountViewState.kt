@@ -1,7 +1,7 @@
 package com.yizhenwind.rocket.feature.client.ui.composite.account
 
 import com.yizhenwind.rocket.core.framework.mvi.IViewState
-import com.yizhenwind.rocket.core.model.AccountProfile
+import com.yizhenwind.rocket.core.model.Account
 
 /**
  *
@@ -10,5 +10,5 @@ import com.yizhenwind.rocket.core.model.AccountProfile
  * @since 2023/1/18
  */
 data class ClientAccountViewState(
-    val accountProfileList: List<AccountProfile> = emptyList()
+    val accountList: List<Account> = emptyList()
 ) : IViewState

@@ -13,4 +13,9 @@
     <string name="payment_status_unpaid">未支付</string>
     <string name="payment_status_partially_paid">部分支付</string>
     <string name="payment_status_paid">已支付</string>
+
+    <string name="payment_method_alipay">支付宝</string>
+    <string name="payment_method_wechat">微信</string>
+    <string name="payment_method_qq">QQ</string>
+
 </resources>

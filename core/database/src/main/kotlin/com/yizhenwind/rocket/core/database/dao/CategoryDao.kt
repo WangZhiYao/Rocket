@@ -14,7 +14,7 @@ import kotlinx.coroutines.flow.Flow
 @Dao
 interface CategoryDao : IDao<CategoryEntity> {
 
-    @Query("SELECT * FROM category WHERE enable = 1")
+    @Query("SELECT * FROM category")
     fun observeCategoryList(): Flow<List<CategoryEntity>>
 
     @Query("SELECT * FROM category WHERE title = :title")

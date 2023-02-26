@@ -1,7 +1,5 @@
 package com.yizhenwind.rocket.feature.category.ui
 
-import com.yizhenwind.rocket.core.model.Category
-
 /**
  *
  * @author WangZhiYao
@@ -9,6 +7,6 @@ import com.yizhenwind.rocket.core.model.Category
  */
 sealed class CategoryListSideEffect {
 
-    data class DeleteCategorySuccess(val category: Category) : CategoryListSideEffect()
+    object DeleteCategorySuccess : CategoryListSideEffect()
 
 }

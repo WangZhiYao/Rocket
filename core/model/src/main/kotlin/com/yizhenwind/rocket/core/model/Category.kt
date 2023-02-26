@@ -13,8 +13,6 @@ data class Category(
     val id: Long = 0,
     val title: String = "",
     val remark: String = "",
-    val default: Boolean = false,
-    val enable: Boolean = true,
     val createTime: Long = System.currentTimeMillis()
 ) {
     companion object {

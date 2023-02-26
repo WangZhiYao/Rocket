@@ -28,7 +28,7 @@ class OrderMapper @Inject constructor() : IMapper<Order, OrderEntity> {
                 orderStatus,
                 statusUpdateTime,
                 paymentStatus,
-                paymentMethod.id,
+                paymentMethod,
                 paymentTime,
                 paymentAmount,
                 refundAmount,

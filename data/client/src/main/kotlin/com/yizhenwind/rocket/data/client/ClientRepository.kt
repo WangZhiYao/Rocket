@@ -3,11 +3,9 @@ package com.yizhenwind.rocket.data.client
 import com.yizhenwind.rocket.core.common.constant.ContactType
 import com.yizhenwind.rocket.core.common.mapper.ListMapper
 import com.yizhenwind.rocket.core.database.mapper.ClientMapper
-import com.yizhenwind.rocket.core.database.mapper.ClientProfileDtoMapper
 import com.yizhenwind.rocket.core.database.mapper.ClientTupleMapper
 import com.yizhenwind.rocket.core.database.mapper.EntityListMapper
 import com.yizhenwind.rocket.core.model.Client
-import com.yizhenwind.rocket.core.model.ClientProfile
 import com.yizhenwind.rocket.core.model.ClientTuple
 import com.yizhenwind.rocket.data.client.source.ClientLocalDataSource
 import kotlinx.coroutines.flow.Flow
@@ -22,7 +20,6 @@ import javax.inject.Inject
  */
 class ClientRepository @Inject constructor(
     private val clientLocalDataSource: ClientLocalDataSource,
-    private val clientProfileDtoMapper: ClientProfileDtoMapper,
     private val clientMapper: ClientMapper,
     private val clientTupleMapper: ClientTupleMapper
 ) {
@@ -31,12 +28,6 @@ class ClientRepository @Inject constructor(
         clientLocalDataSource.observeClientList()
             .map { clientDtoList ->
                 EntityListMapper(clientMapper).fromEntity(clientDtoList)
-            }
-
-    fun observeClientProfileList(): Flow<List<ClientProfile>> =
-        clientLocalDataSource.observeClientProfileList()
-            .map { clientProfileDtoList ->
-                ListMapper(clientProfileDtoMapper).map(clientProfileDtoList)
             }
 
     fun createClient(client: Client): Flow<Client> =

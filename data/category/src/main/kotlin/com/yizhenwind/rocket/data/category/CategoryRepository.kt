@@ -29,4 +29,7 @@ class CategoryRepository @Inject constructor(
     fun createCategory(category: Category): Flow<Long> =
         categoryLocalDataSource.createCategory(categoryMapper.toEntity(category))
 
+    fun deleteCategory(category: Category): Flow<Int> =
+        categoryLocalDataSource.deleteCategory(categoryMapper.toEntity(category))
+
 }

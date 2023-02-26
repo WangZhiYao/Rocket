@@ -2,7 +2,6 @@ package com.yizhenwind.rocket.data.account.source
 
 import com.yizhenwind.rocket.core.database.dao.AccountDao
 import com.yizhenwind.rocket.core.database.dto.AccountDto
-import com.yizhenwind.rocket.core.database.dto.AccountProfileDto
 import com.yizhenwind.rocket.core.database.dto.AccountTupleDto
 import com.yizhenwind.rocket.core.database.entity.AccountEntity
 import kotlinx.coroutines.flow.Flow
@@ -21,9 +20,6 @@ class AccountLocalDataSource @Inject constructor(
 
     fun observeAccountListByClientId(clientId: Long): Flow<List<AccountDto>> =
         accountDao.observeAccountListByClientId(clientId)
-
-    fun observeAccountProfileByClientId(clientId: Long): Flow<List<AccountProfileDto>> =
-        accountDao.observeAccountProfileByClientId(clientId)
 
     fun createAccount(accountEntity: AccountEntity): Flow<Long> =
         flow {

@@ -53,7 +53,7 @@ class CreateOrderFragment :
 
     private val paymentStatusAdapter by lazy { PaymentStatusDropDownAdapter(requireContext()) }
 
-    private val paymentMethodAdapter = PaymentMethodDropDownAdapter()
+    private val paymentMethodAdapter by lazy { PaymentMethodDropDownAdapter(requireContext()) }
 
     private val decimalDigitsInputFilter = DecimalDigitsInputFilter()
 
@@ -193,7 +193,7 @@ class CreateOrderFragment :
                 tilCreateOrderPaymentTime.isVisible = paymentStatus != PaymentStatus.UNPAID
                 tietCreateOrderPaymentDate.setText(paymentTime.formatDate("yyyy-MM-dd"))
                 tietCreateOrderPaymentTime.setText(paymentTime.formatDate("HH:mm"))
-                actvCreateOrderPaymentMethod.setText(paymentMethod.name, false)
+                actvCreateOrderPaymentMethod.setText(getString(paymentMethod.resId), false)
                 paymentMethodAdapter.submitList(paymentMethodList)
             }
         }
@@ -230,10 +230,6 @@ class CreateOrderFragment :
                     tilCreateOrderTotalAmount.helperText = getString(sideEffect.resId)
                 CreateOrderSideEffect.HideTotalAmountHelper ->
                     tilCreateOrderTotalAmount.helperText = null
-                is CreateOrderSideEffect.ShowPaymentMethodError ->
-                    tilCreateOrderPaymentMethod.error = getString(sideEffect.resId)
-                CreateOrderSideEffect.HidePaymentMethodError ->
-                    tilCreateOrderPaymentMethod.error = null
                 is CreateOrderSideEffect.ShowPaymentAmountError ->
                     tilCreateOrderPaymentAmount.error = getString(sideEffect.resId)
                 CreateOrderSideEffect.HidePaymentAmountError ->

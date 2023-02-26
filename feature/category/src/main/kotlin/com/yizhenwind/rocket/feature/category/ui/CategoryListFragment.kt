@@ -42,7 +42,7 @@ class CategoryListFragment : BaseListFragment(),
 
             }
             onDeleteClickListener = { category ->
-                viewModel.updateCategory(category.copy(enable = false))
+                viewModel.deleteCategory(category)
             }
         }
     }
@@ -55,15 +55,10 @@ class CategoryListFragment : BaseListFragment(),
         binding.apply {
             when (sideEffect) {
                 is CategoryListSideEffect.DeleteCategorySuccess ->
-                    sideEffect.category.apply {
-                        root.showSnack(
-                            text = getString(R.string.category_delete_success, title),
-                            anchorView = fab,
-                            actionText = getString(R.string.category_delete_revoke)
-                        ) {
-                            viewModel.updateCategory(copy(enable = true))
-                        }
-                    }
+                    root.showSnack(
+                        text = getString(R.string.category_delete_success),
+                        anchorView = fab
+                    )
             }
         }
     }

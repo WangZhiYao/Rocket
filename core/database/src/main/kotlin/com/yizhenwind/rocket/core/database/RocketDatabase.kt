@@ -13,17 +13,16 @@ import com.yizhenwind.rocket.core.database.entity.*
  */
 @Database(
     entities = [
-        ClientEntity::class,
         AccountEntity::class,
-        CharacterEntity::class,
-        ZoneEntity::class,
-        ServerEntity::class,
-        SectEntity::class,
-        InternalEntity::class,
         CategoryEntity::class,
-        SubjectEntity::class,
+        CharacterEntity::class,
+        ClientEntity::class,
+        InternalEntity::class,
         OrderEntity::class,
-        PaymentMethodEntity::class
+        SectEntity::class,
+        ServerEntity::class,
+        SubjectEntity::class,
+        ZoneEntity::class
     ],
     version = 1,
     exportSchema = false
@@ -49,7 +48,5 @@ abstract class RocketDatabase : RoomDatabase() {
     abstract fun subjectDao(): SubjectDao
 
     abstract fun orderDao(): OrderDao
-
-    abstract fun paymentMethodDao(): PaymentMethodDao
 
 }

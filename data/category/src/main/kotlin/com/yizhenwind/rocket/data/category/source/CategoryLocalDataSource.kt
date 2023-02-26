@@ -32,4 +32,9 @@ class CategoryLocalDataSource @Inject constructor(
     suspend fun getCategoryByTitle(title: String): CategoryEntity? =
         categoryDao.getCategoryByTitle(title)
 
+    fun deleteCategory(categoryEntity: CategoryEntity): Flow<Int> =
+        flow {
+            emit(categoryDao.delete(categoryEntity))
+        }
+
 }

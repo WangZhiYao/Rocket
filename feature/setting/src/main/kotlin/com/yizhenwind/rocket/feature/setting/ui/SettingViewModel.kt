@@ -35,16 +35,6 @@ class SettingViewModel @Inject constructor() : BaseMVIViewModel<SettingViewState
                         }
                     )
                 )
-                add(
-                    SettingItem.Item(
-                        R.string.item_setting_payment_method,
-                        R.string.item_setting_payment_method_description,
-                        deepLink {
-                            module(DeepLink.Module.PAYMENT_METHOD)
-                            path(DeepLink.Path.LIST)
-                        }
-                    )
-                )
             }
             reduce {
                 state.copy(settingItemList = settingItemList)

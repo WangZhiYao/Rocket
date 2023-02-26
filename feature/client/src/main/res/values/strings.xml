@@ -2,9 +2,7 @@
 <resources>
     <string name="label_client_profile_list">客户</string>
 
-    <string name="item_profile_account_count">账号数: %d</string>
-    <string name="item_profile_character_count">角色数: %d</string>
-    <string name="item_profile_order_count">订单数: %d</string>
+    <string name="item_client_contact">%s: %s</string>
 
     <string name="label_create_client">创建客户</string>
     <string name="create_client_name">客户姓名</string>
