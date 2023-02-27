@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph_category_subject"
+    app:startDestination="@id/nav_category_list">
+
+    <fragment
+        android:id="@+id/nav_category_list"
+        android:name="com.yizhenwind.rocket.feature.categorysubject.ui.CategoryListFragment"
+        android:label="@string/label_category_subject_list"
+        tools:layout="@layout/fragment_base_list">
+
+    </fragment>
+
+</navigation>

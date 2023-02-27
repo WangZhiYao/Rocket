@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="label_category_subject_list">分类与项目</string>
+
+    <string name="dialog_delete_category_title">删除分类</string>
+    <string name="dialog_delete_category_content">删除分类 %s 时, 该分类下的所有项目与订单将被一起删除, 是否继续?</string>
+    <string name="dialog_delete_category_confirm">确认</string>
+
+    <string name="error_delete_category_failed">删除分类失败</string>
+
+</resources>

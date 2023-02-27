@@ -30,7 +30,7 @@ class SubjectRepository @Inject constructor(
             .map { ListMapper(subjectDtoMapper).map(it) }
 
     fun createSubject(subject: Subject): Flow<Subject> =
-        subjectLocalDataSource.createSubject(subjectMapper.map(subject))
+        subjectLocalDataSource.createSubject(subjectMapper.toEntity(subject))
             .map { id -> subject.copy(id = id) }
 
 }

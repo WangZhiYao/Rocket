@@ -16,9 +16,9 @@
             android:title="@string/label_client_profile_list" />
 
         <item
-            android:id="@id/nav_graph_subject"
+            android:id="@id/nav_graph_category_subject"
             android:icon="@drawable/ic_round_subject_white_24dp"
-            android:title="@string/label_subject" />
+            android:title="@string/label_category_subject_list" />
 
         <item
             android:id="@id/nav_graph_user"

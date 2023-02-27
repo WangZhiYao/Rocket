@@ -9,6 +9,6 @@
         android:id="@+id/nav_setting"
         android:name="com.yizhenwind.rocket.feature.setting.ui.SettingFragment"
         android:label="@string/label_setting"
-        tools:layout="@layout/fragment_setting" />
+        tools:layout="@layout/fragment_base_list" />
 
 </navigation>
