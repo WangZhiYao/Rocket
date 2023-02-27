@@ -108,10 +108,7 @@ class AccountDetailFragment :
             state.apply {
                 account.apply {
                     if (id != Constant.DEFAULT_ID) {
-                        activityViewModel.apply {
-                            setTitle(username)
-                            setClientId(client.id)
-                        }
+                        activityViewModel.setAccount(this)
                     }
 
                     tvAccountDetailClient.text = client.name

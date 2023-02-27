@@ -12,4 +12,6 @@ sealed class AccountCompositeSideEffect {
 
     data class ShowError(@StringRes val resId: Int) : AccountCompositeSideEffect()
 
+    object DeleteAccountSuccess : AccountCompositeSideEffect()
+
 }

@@ -7,7 +7,9 @@ import com.google.android.material.snackbar.Snackbar
 import com.yizhenwind.rocket.core.framework.base.BaseCompositeActivity
 import com.yizhenwind.rocket.core.framework.ext.showSnack
 import com.yizhenwind.rocket.core.framework.mvi.IMVIHost
+import com.yizhenwind.rocket.core.framework.widget.MessageDialog
 import com.yizhenwind.rocket.core.mediator.character.ICharacterService
+import com.yizhenwind.rocket.core.model.Account
 import com.yizhenwind.rocket.feature.account.R
 import com.yizhenwind.rocket.feature.account.ui.composite.character.AccountCharacterArgs
 import com.yizhenwind.rocket.feature.account.ui.composite.detail.AccountDetailArgs
@@ -32,6 +34,20 @@ class AccountCompositeActivity : BaseCompositeActivity(),
 
     override fun initData() {
         viewModel.observe(this, state = ::render, sideEffect = ::handleSideEffect)
+    }
+
+    override fun initView() {
+        super.initView()
+        binding.toolbar.apply {
+            inflateMenu(R.menu.menu_account_composite)
+            setOnMenuItemClickListener { menuItem ->
+                if (menuItem.itemId == R.id.action_delete) {
+                    showDeleteCharacterDialog(viewModel.account)
+                    return@setOnMenuItemClickListener true
+                }
+                return@setOnMenuItemClickListener false
+            }
+        }
     }
 
     override fun getTitles(): List<Int> =
@@ -63,17 +79,19 @@ class AccountCompositeActivity : BaseCompositeActivity(),
                 // TODO: open edit client
             }
             PAGE_INDEX_CHARACTER -> {
-                characterService.launchCreateCharacter(
-                    this,
-                    viewModel.clientId,
-                    navArgs.accountId
-                )
+                viewModel.account.apply {
+                    characterService.launchCreateCharacter(
+                        this@AccountCompositeActivity,
+                        client.id,
+                        id
+                    )
+                }
             }
         }
     }
 
     override suspend fun render(state: AccountCompositeViewState) {
-        binding.toolbar.title = state.title
+        binding.toolbar.title = state.account.username
     }
 
     override fun handleSideEffect(sideEffect: AccountCompositeSideEffect) {
@@ -90,7 +108,19 @@ class AccountCompositeActivity : BaseCompositeActivity(),
                     }
                 }
             }
+            AccountCompositeSideEffect.DeleteAccountSuccess -> finish()
         }
+    }
+
+    private fun showDeleteCharacterDialog(account: Account) {
+        MessageDialog.Builder(supportFragmentManager)
+            .setTitle(getString(R.string.dialog_delete_account_title, account.username))
+            .setContent(getString(R.string.dialog_delete_account_content, account.username))
+            .setOnPositiveClickListener { dialog ->
+                viewModel.deleteAccount(account)
+                dialog.dismiss()
+            }
+            .show()
     }
 
     companion object {

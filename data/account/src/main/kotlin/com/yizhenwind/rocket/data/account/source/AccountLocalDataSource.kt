@@ -38,4 +38,9 @@ class AccountLocalDataSource @Inject constructor(
     fun observeAccountTupleListByClientId(clientId: Long): Flow<List<AccountTupleDto>> =
         accountDao.observeAccountTupleListByClientId(clientId)
 
+    fun deleteAccount(accountEntity: AccountEntity): Flow<Int> =
+        flow {
+            emit(accountDao.delete(accountEntity))
+        }
+
 }

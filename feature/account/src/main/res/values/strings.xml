@@ -13,6 +13,10 @@
     <string name="account_composite_detail">详情</string>
     <string name="account_composite_character">角色</string>
 
+    <string name="dialog_delete_account_title">删除角色: %s</string>
+    <string name="dialog_delete_account_content">是否需要删除角色: %s, 删除后与其相关联的角色与订单也将被删除</string>
+    <string name="action_delete_account">删除角色</string>
+
     <string name="account_detail_client">客户</string>
     <string name="account_detail_username">用户名</string>
     <string name="account_detail_password">密码</string>
@@ -30,6 +34,7 @@
     <string name="error_biometric_failed">生物验证失败</string>
     <string name="error_account_detail_password_decrypt">密码解密失败</string>
     <string name="error_account_detail_copy_password_to_clipboard">请先解密密码</string>
+    <string name="error_delete_account_failed">删除角色失败</string>
 
     <string name="account_detail_password_placeholder">password</string>
 

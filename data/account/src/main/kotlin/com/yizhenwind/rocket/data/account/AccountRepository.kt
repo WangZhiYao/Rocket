@@ -49,4 +49,7 @@ class AccountRepository @Inject constructor(
         accountLocalDataSource.observeAccountTupleListByClientId(clientId)
             .map { ListMapper(accountTupleMapper).map(it) }
 
+    fun deleteAccount(account: Account): Flow<Int> =
+        accountLocalDataSource.deleteAccount(accountMapper.map(account))
+
 }
