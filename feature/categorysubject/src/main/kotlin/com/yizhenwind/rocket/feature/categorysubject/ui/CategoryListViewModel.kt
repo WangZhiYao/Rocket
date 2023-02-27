@@ -3,8 +3,8 @@ package com.yizhenwind.rocket.feature.categorysubject.ui
 import com.yizhenwind.rocket.core.framework.base.BaseMVIViewModel
 import com.yizhenwind.rocket.core.logger.ILogger
 import com.yizhenwind.rocket.core.model.Category
-import com.yizhenwind.rocket.domain.categorysubject.DeleteCategoryUseCase
-import com.yizhenwind.rocket.domain.categorysubject.ObserveCategoryListUseCase
+import com.yizhenwind.rocket.domain.category.DeleteCategoryUseCase
+import com.yizhenwind.rocket.domain.category.ObserveCategoryListUseCase
 import com.yizhenwind.rocket.feature.categorysubject.R
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.catch

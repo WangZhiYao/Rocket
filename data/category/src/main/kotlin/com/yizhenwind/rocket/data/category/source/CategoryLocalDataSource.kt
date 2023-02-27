@@ -19,18 +19,13 @@ class CategoryLocalDataSource @Inject constructor(
     fun observeCategoryList(): Flow<List<CategoryEntity>> =
         categoryDao.observeCategoryList()
 
-    fun updateCategory(categoryEntity: CategoryEntity): Flow<Int> =
-        flow {
-            emit(categoryDao.update(categoryEntity))
-        }
+    suspend fun getCategoryByTitle(title: String): CategoryEntity? =
+        categoryDao.getCategoryByTitle(title)
 
     fun createCategory(categoryEntity: CategoryEntity): Flow<Long> =
         flow {
             emit(categoryDao.insert(categoryEntity))
         }
-
-    suspend fun getCategoryByTitle(title: String): CategoryEntity? =
-        categoryDao.getCategoryByTitle(title)
 
     fun deleteCategory(categoryEntity: CategoryEntity): Flow<Int> =
         flow {

@@ -3,9 +3,7 @@ package com.yizhenwind.rocket.feature.categorysubject.ui.create
 import androidx.core.widget.doAfterTextChanged
 import androidx.fragment.app.viewModels
 import com.google.android.material.snackbar.Snackbar
-import com.yizhenwind.rocket.core.common.constant.DeepLink
 import com.yizhenwind.rocket.core.framework.base.BaseFragment
-import com.yizhenwind.rocket.core.framework.ext.navigate
 import com.yizhenwind.rocket.core.framework.ext.setThrottleClickListener
 import com.yizhenwind.rocket.core.framework.ext.showSnack
 import com.yizhenwind.rocket.core.framework.mvi.IMVIHost

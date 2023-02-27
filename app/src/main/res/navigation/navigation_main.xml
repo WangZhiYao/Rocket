@@ -10,7 +10,9 @@
 
     <include app:graph="@navigation/navigation_create_client" />
 
-    <include app:graph="@navigation/navigation_category_subject" />
+    <include app:graph="@navigation/navigation_category_list" />
+
+    <include app:graph="@navigation/navigation_create_category" />
 
     <include app:graph="@navigation/navigation_create_category" />
 

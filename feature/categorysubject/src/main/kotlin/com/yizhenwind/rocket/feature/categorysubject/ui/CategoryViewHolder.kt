@@ -22,9 +22,9 @@ class CategoryViewHolder(
             item.apply {
                 tvCategoryTitle.text = title
                 tvCategoryRemark.text = remark
+                ibCategoryDelete.setThrottleClickListener { onDeleteClickListener?.invoke(this) }
+                root.setThrottleClickListener { onItemClickListener?.invoke(this) }
             }
-            ibCategoryDelete.setThrottleClickListener { onDeleteClickListener?.invoke(item) }
-            root.setThrottleClickListener { onItemClickListener?.invoke(item) }
         }
     }
 

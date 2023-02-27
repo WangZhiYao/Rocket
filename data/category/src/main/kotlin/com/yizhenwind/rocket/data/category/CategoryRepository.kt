@@ -23,8 +23,9 @@ class CategoryRepository @Inject constructor(
         categoryLocalDataSource.observeCategoryList()
             .map { EntityListMapper(categoryMapper).fromEntity(it) }
 
-    fun updateCategory(category: Category): Flow<Int> =
-        categoryLocalDataSource.updateCategory(categoryMapper.toEntity(category))
+    suspend fun getCategoryByTitle(title: String): Category? =
+        categoryLocalDataSource.getCategoryByTitle(title)
+            ?.run { categoryMapper.fromEntity(this) }
 
     fun createCategory(category: Category): Flow<Long> =
         categoryLocalDataSource.createCategory(categoryMapper.toEntity(category))

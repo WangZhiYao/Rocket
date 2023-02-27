@@ -49,12 +49,10 @@
             android:layout_marginEnd="@dimen/item_content_margin"
             android:background="?attr/selectableItemBackgroundBorderless"
             android:src="@drawable/ic_round_delete_white_24dp"
-            android:visibility="gone"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:tint="?attr/colorControlNormal"
-            tools:visibility="visible" />
+            app:tint="?attr/colorControlNormal" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

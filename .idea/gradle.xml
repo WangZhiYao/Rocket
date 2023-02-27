@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="GradleMigrationSettings" migrationVersion="1" />
   <component name="GradleSettings">
     <option name="linkedExternalProjectsSettings">
       <GradleProjectSettings>
@@ -23,7 +24,6 @@
             <option value="$PROJECT_DIR$/data" />
             <option value="$PROJECT_DIR$/data/account" />
             <option value="$PROJECT_DIR$/data/category" />
-            <option value="$PROJECT_DIR$/data/categorysubject" />
             <option value="$PROJECT_DIR$/data/character" />
             <option value="$PROJECT_DIR$/data/client" />
             <option value="$PROJECT_DIR$/data/order" />
@@ -33,7 +33,6 @@
             <option value="$PROJECT_DIR$/domain" />
             <option value="$PROJECT_DIR$/domain/account" />
             <option value="$PROJECT_DIR$/domain/category" />
-            <option value="$PROJECT_DIR$/domain/categorysubject" />
             <option value="$PROJECT_DIR$/domain/character" />
             <option value="$PROJECT_DIR$/domain/client" />
             <option value="$PROJECT_DIR$/domain/common" />

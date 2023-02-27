@@ -15,8 +15,6 @@ object DeepLink {
 
         const val SUBJECT = "subject"
 
-        const val PAYMENT_METHOD = "paymentMethod"
-
     }
 
     object Path {
@@ -27,7 +25,7 @@ object DeepLink {
 
     }
 
-    object Param {
+    object Arguments {
 
         const val CATEGORY_ID = "categoryId"
 

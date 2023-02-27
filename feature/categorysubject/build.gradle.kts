@@ -49,7 +49,6 @@ dependencies {
 
     implementation(project(":core:framework"))
     implementation(project(":core:mediator"))
-    implementation(project(":domain:categorysubject"))
     implementation(project(":domain:category"))
     implementation(project(":domain:subject"))
 
