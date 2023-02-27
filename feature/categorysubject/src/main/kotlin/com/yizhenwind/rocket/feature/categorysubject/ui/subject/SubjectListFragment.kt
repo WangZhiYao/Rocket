@@ -2,9 +2,9 @@ package com.yizhenwind.rocket.feature.categorysubject.ui.subject
 
 import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
-import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.yizhenwind.rocket.core.framework.base.BaseListFragment
+import com.yizhenwind.rocket.core.framework.ext.navigate
 import com.yizhenwind.rocket.core.framework.ext.setThrottleClickListener
 import com.yizhenwind.rocket.core.framework.ext.showSnack
 import com.yizhenwind.rocket.core.framework.mvi.IMVIHost
@@ -45,7 +45,7 @@ class SubjectListFragment : BaseListFragment(),
             isVisible = true
             setImageResource(R.drawable.ic_round_add_white_24dp)
             setThrottleClickListener {
-
+                navigate(SubjectListFragmentDirections.actionSubjectListToCreateSubject(navArgs.categoryId))
             }
         }
     }

@@ -7,8 +7,8 @@
 
     <fragment
         android:id="@+id/nav_subject_list"
-        android:label="{categoryTitle}"
         android:name="com.yizhenwind.rocket.feature.categorysubject.ui.subject.SubjectListFragment"
+        android:label="{categoryTitle}"
         tools:layout="@layout/fragment_base_list">
 
         <deepLink app:uri="rocket://subject/list?categoryId={categoryId}&amp;categoryTitle={categoryTitle}" />
@@ -23,6 +23,30 @@
             android:name="categoryTitle"
             android:defaultValue=""
             app:argType="string"
+            app:nullable="false" />
+
+        <action
+            android:id="@+id/action_subject_list_to_create_subject"
+            app:destination="@id/nav_create_subject"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_create_subject"
+        android:name="com.yizhenwind.rocket.feature.categorysubject.ui.subject.create.CreateSubjectFragment"
+        android:label="@string/label_create_subject"
+        tools:layout="@layout/fragment_create_subject">
+
+        <deepLink app:uri="rocket://subject/create?categoryId={categoryId}" />
+
+        <argument
+            android:name="categoryId"
+            android:defaultValue="0L"
+            app:argType="long"
             app:nullable="false" />
 
     </fragment>
