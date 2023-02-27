@@ -18,6 +18,10 @@
     <string name="character_composite_detail">详情</string>
     <string name="character_composite_order">订单</string>
 
+    <string name="dialog_delete_character_title">删除角色: %s</string>
+    <string name="dialog_delete_character_content">是否需要删除角色: %s, 删除后与其相关联的订单也将被删除</string>
+    <string name="action_delete_character">删除角色</string>
+
     <string name="character_detail_client">客户</string>
     <string name="character_detail_zone">大区</string>
     <string name="character_detail_server">服务器</string>
@@ -42,5 +46,6 @@
     <string name="error_create_character_failed">创建角色失败</string>
     <string name="error_action_close">关闭</string>
     <string name="error_character_detail">角色信息错误</string>
+    <string name="error_delete_character_failed">删除角色失败</string>
 
 </resources>

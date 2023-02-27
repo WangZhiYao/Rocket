@@ -11,4 +11,6 @@ sealed class CharacterCompositeSideEffect {
 
     data class ShowError(@StringRes val resId: Int) : CharacterCompositeSideEffect()
 
+    object DeleteCharacterSuccess : CharacterCompositeSideEffect()
+
 }

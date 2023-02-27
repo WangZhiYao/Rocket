@@ -51,4 +51,7 @@ class CharacterRepository @Inject constructor(
         characterLocalDataSource.observeCharacterTupleListByAccountId(accountId)
             .map { ListMapper(characterTupleMapper).map(it) }
 
+    fun deleteCharacter(character: Character): Flow<Int> =
+        characterLocalDataSource.deleteCharacter(characterMapper.map(character))
+
 }

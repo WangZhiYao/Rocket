@@ -50,7 +50,7 @@ class ClientCompositeActivity : BaseCompositeActivity(),
     override fun initView() {
         super.initView()
         binding.toolbar.apply {
-            inflateMenu(R.menu.menu_client_compose)
+            inflateMenu(R.menu.menu_client_composite)
             setOnMenuItemClickListener { menuItem ->
                 if (menuItem.itemId == R.id.action_delete) {
                     showDeleteClientDialog(viewModel.client)

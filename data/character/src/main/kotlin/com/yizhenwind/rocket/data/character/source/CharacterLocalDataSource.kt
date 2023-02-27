@@ -38,4 +38,9 @@ class CharacterLocalDataSource @Inject constructor(
     fun observeCharacterTupleListByAccountId(accountId: Long): Flow<List<CharacterTupleDto>> =
         characterDao.observeCharacterTupleListByAccountId(accountId)
 
+    fun deleteCharacter(characterEntity: CharacterEntity): Flow<Int> =
+        flow {
+            emit(characterDao.delete(characterEntity))
+        }
+
 }

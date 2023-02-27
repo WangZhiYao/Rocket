@@ -7,7 +7,9 @@ import com.google.android.material.snackbar.Snackbar
 import com.yizhenwind.rocket.core.framework.base.BaseCompositeActivity
 import com.yizhenwind.rocket.core.framework.ext.showSnack
 import com.yizhenwind.rocket.core.framework.mvi.IMVIHost
+import com.yizhenwind.rocket.core.framework.widget.MessageDialog
 import com.yizhenwind.rocket.core.mediator.order.IOrderService
+import com.yizhenwind.rocket.core.model.Character
 import com.yizhenwind.rocket.feature.character.R
 import com.yizhenwind.rocket.feature.character.ui.composite.detail.CharacterDetailArgs
 import com.yizhenwind.rocket.feature.character.ui.composite.order.CharacterOrderArgs
@@ -34,6 +36,20 @@ class CharacterCompositeActivity : BaseCompositeActivity(),
         viewModel.observe(this, state = ::render, sideEffect = ::handleSideEffect)
     }
 
+    override fun initView() {
+        super.initView()
+        binding.toolbar.apply {
+            inflateMenu(R.menu.menu_character_composite)
+            setOnMenuItemClickListener { menuItem ->
+                if (menuItem.itemId == R.id.action_delete) {
+                    showDeleteCharacterDialog(viewModel.character)
+                    return@setOnMenuItemClickListener true
+                }
+                return@setOnMenuItemClickListener false
+            }
+        }
+    }
+
     override fun getTitles(): List<Int> =
         arrayListOf(R.string.character_composite_detail, R.string.character_composite_order)
 
@@ -58,12 +74,14 @@ class CharacterCompositeActivity : BaseCompositeActivity(),
                 // TODO: open edit client
             }
             PAGE_INDEX_ORDER -> {
-                orderService.launchCreateOrder(
-                    this,
-                    viewModel.clientId,
-                    viewModel.accountId,
-                    navArgs.characterId
-                )
+                viewModel.character.apply {
+                    orderService.launchCreateOrder(
+                        this@CharacterCompositeActivity,
+                        client.id,
+                        account.id,
+                        id
+                    )
+                }
             }
         }
     }
@@ -86,7 +104,19 @@ class CharacterCompositeActivity : BaseCompositeActivity(),
                     }
                 }
             }
+            CharacterCompositeSideEffect.DeleteCharacterSuccess -> finish()
         }
+    }
+
+    private fun showDeleteCharacterDialog(character: Character) {
+        MessageDialog.Builder(supportFragmentManager)
+            .setTitle(getString(R.string.dialog_delete_character_title, character.name))
+            .setContent(getString(R.string.dialog_delete_character_content, character.name))
+            .setOnPositiveClickListener { dialog ->
+                viewModel.deleteCharacter(character)
+                dialog.dismiss()
+            }
+            .show()
     }
 
     companion object {
