@@ -1,9 +1,6 @@
 package com.yizhenwind.rocket.feature.setting.ui
 
-import com.yizhenwind.rocket.core.common.constant.DeepLink
-import com.yizhenwind.rocket.core.common.util.deepLink
 import com.yizhenwind.rocket.core.framework.base.BaseMVIViewModel
-import com.yizhenwind.rocket.feature.setting.R
 import dagger.hilt.android.lifecycle.HiltViewModel
 import org.orbitmvi.orbit.syntax.simple.intent
 import org.orbitmvi.orbit.syntax.simple.reduce
@@ -23,19 +20,7 @@ class SettingViewModel @Inject constructor() : BaseMVIViewModel<SettingViewState
 
     init {
         intent {
-            val settingItemList = ArrayList<SettingItem>().apply {
-                add(SettingItem.Title(R.string.item_setting_title_order))
-                add(
-                    SettingItem.Item(
-                        R.string.item_setting_category,
-                        R.string.item_setting_category_description,
-                        deepLink {
-                            module(DeepLink.Module.CATEGORY)
-                            path(DeepLink.Path.LIST)
-                        }
-                    )
-                )
-            }
+            val settingItemList = ArrayList<SettingItem>()
             reduce {
                 state.copy(settingItemList = settingItemList)
             }

@@ -1,4 +1,4 @@
-package com.yizhenwind.rocket.feature.category.di.service
+package com.yizhenwind.rocket.feature.categorysubject.di.service
 
 import com.yizhenwind.rocket.core.mediator.category.ICategoryService
 import com.yizhenwind.rocket.core.model.Category

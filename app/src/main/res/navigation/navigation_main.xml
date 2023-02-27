@@ -22,6 +22,4 @@
 
     <include app:graph="@navigation/navigation_setting" />
 
-    <include app:graph="@navigation/navigation_category" />
-
 </navigation>

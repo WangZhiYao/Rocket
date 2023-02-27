@@ -11,6 +11,8 @@
         android:label="@string/label_category_subject_list"
         tools:layout="@layout/fragment_base_list">
 
+        <deepLink app:uri="rocket://category/list" />
+
     </fragment>
 
 </navigation>

@@ -1,4 +1,4 @@
-package com.yizhenwind.rocket.feature.subject.di.service
+package com.yizhenwind.rocket.feature.categorysubject.di.service
 
 import com.yizhenwind.rocket.core.mediator.subject.ISubjectService
 import com.yizhenwind.rocket.core.model.Subject
