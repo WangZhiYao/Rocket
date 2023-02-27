@@ -12,6 +12,8 @@
 
     <include app:graph="@navigation/navigation_category_list" />
 
+    <include app:graph="@navigation/navigation_subject_list" />
+
     <include app:graph="@navigation/navigation_create_category" />
 
     <include app:graph="@navigation/navigation_create_category" />

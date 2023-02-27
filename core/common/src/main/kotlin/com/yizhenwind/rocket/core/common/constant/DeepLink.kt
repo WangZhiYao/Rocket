@@ -29,6 +29,8 @@ object DeepLink {
 
         const val CATEGORY_ID = "categoryId"
 
+        const val CATEGORY_TITLE = "categoryTitle"
+
     }
 
 }

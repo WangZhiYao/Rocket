@@ -33,4 +33,7 @@ class SubjectRepository @Inject constructor(
         subjectLocalDataSource.createSubject(subjectMapper.toEntity(subject))
             .map { id -> subject.copy(id = id) }
 
+    fun deleteSubject(subject: Subject): Flow<Int> =
+        subjectLocalDataSource.deleteSubject(subjectMapper.toEntity(subject))
+
 }

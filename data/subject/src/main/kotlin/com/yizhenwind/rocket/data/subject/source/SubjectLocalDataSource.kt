@@ -28,4 +28,8 @@ class SubjectLocalDataSource @Inject constructor(
             emit(subjectDao.insert(subjectEntity))
         }
 
+    fun deleteSubject(subjectEntity: SubjectEntity): Flow<Int> =
+        flow {
+            emit(subjectDao.delete(subjectEntity))
+        }
 }

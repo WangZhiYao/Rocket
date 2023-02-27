@@ -14,9 +14,16 @@
     <string name="create_category_success">创建分类成功</string>
     <string name="create_category_success_to_create_subject">去创建项目</string>
 
+    <string name="subject_list_delete_subject_success">删除项目成功</string>
+
+    <string name="dialog_delete_subject_title">删除项目</string>
+    <string name="dialog_delete_subject_content">删除项目 %s 时, 该项目下的所有订单将被一起删除, 是否继续?</string>
+    <string name="dialog_delete_subject_confirm">确认</string>
+
     <string name="error_delete_category_failed">删除分类失败</string>
     <string name="error_create_category_title_already_exist">该分类已存在</string>
     <string name="error_create_category_empty_title">请输入分类标题</string>
     <string name="error_create_category_failed">创建分类失败</string>
+    <string name="error_delete_subject_failed">删除项目失败</string>
 
 </resources>

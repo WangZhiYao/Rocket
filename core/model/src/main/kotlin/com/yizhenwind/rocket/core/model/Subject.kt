@@ -1,5 +1,7 @@
 package com.yizhenwind.rocket.core.model
 
+import androidx.recyclerview.widget.DiffUtil
+
 /**
  *
  * @author WangZhiYao
@@ -10,4 +12,19 @@ data class Subject(
     val category: Category = Category(),
     val content: String = "",
     val createTime: Long = System.currentTimeMillis()
-)
+) {
+
+    companion object {
+
+        val COMPARATOR = object : DiffUtil.ItemCallback<Subject>() {
+
+            override fun areItemsTheSame(oldItem: Subject, newItem: Subject): Boolean =
+                oldItem.id == newItem.id
+
+            override fun areContentsTheSame(oldItem: Subject, newItem: Subject): Boolean =
+                oldItem == newItem
+
+        }
+
+    }
+}

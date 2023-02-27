@@ -36,7 +36,12 @@ class CategoryListFragment : BaseListFragment(),
         super.initView()
         adapter.apply {
             onItemClickListener = { category ->
-
+                navigate {
+                    module(DeepLink.Module.SUBJECT)
+                    path(DeepLink.Path.LIST)
+                    arguments(DeepLink.Arguments.CATEGORY_ID, category.id.toString())
+                    arguments(DeepLink.Arguments.CATEGORY_TITLE, category.title)
+                }
             }
             onDeleteClickListener = { category ->
                 showDeleteCategoryDialog(category)
