@@ -2,8 +2,6 @@ package com.yizhenwind.rocket.feature.character.ui.create
 
 import com.yizhenwind.rocket.core.framework.mvi.IViewState
 import com.yizhenwind.rocket.core.model.*
-import com.yizhenwind.rocket.core.model.AccountTuple
-import com.yizhenwind.rocket.core.model.ClientTuple
 
 /**
  *

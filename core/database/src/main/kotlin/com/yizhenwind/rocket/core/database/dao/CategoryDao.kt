@@ -24,6 +24,6 @@ interface CategoryDao : IDao<CategoryEntity> {
 
     @Transaction
     @Query("SELECT * FROM category")
-    fun observeCategorySubjectList():Flow<List<CategorySubjectDto>>
+    fun observeCategorySubjectList(): Flow<List<CategorySubjectDto>>
 
 }
