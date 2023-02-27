@@ -1,7 +1,11 @@
 package com.yizhenwind.rocket.feature.categorysubject.ui
 
+import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
+import com.yizhenwind.rocket.core.common.constant.DeepLink
 import com.yizhenwind.rocket.core.framework.base.BaseListFragment
+import com.yizhenwind.rocket.core.framework.ext.navigate
+import com.yizhenwind.rocket.core.framework.ext.setThrottleClickListener
 import com.yizhenwind.rocket.core.framework.mvi.IMVIHost
 import com.yizhenwind.rocket.core.framework.widget.MessageDialog
 import com.yizhenwind.rocket.core.model.Category
@@ -37,6 +41,16 @@ class CategoryListFragment : BaseListFragment(),
                 showDeleteCategoryDialog(category)
             }
         }
+        binding.fab.apply {
+            isVisible = true
+            setImageResource(R.drawable.ic_round_add_white_24dp)
+            setThrottleClickListener {
+                navigate {
+                    module(DeepLink.Module.CATEGORY)
+                    path(DeepLink.Path.CREATE)
+                }
+            }
+        }
     }
 
     override suspend fun render(state: CategoryListViewState) {
@@ -48,8 +62,9 @@ class CategoryListFragment : BaseListFragment(),
             .setTitle(getString(R.string.dialog_delete_category_title))
             .setContent(getString(R.string.dialog_delete_category_content, category.title))
             .setPositive(getString(R.string.dialog_delete_category_confirm))
-            .setOnPositiveClickListener {
+            .setOnPositiveClickListener { dialog ->
                 viewModel.deleteCategory(category)
+                dialog.dismiss()
             }
             .show()
     }

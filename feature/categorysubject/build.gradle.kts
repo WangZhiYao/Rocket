@@ -50,6 +50,8 @@ dependencies {
     implementation(project(":core:framework"))
     implementation(project(":core:mediator"))
     implementation(project(":domain:categorysubject"))
+    implementation(project(":domain:category"))
+    implementation(project(":domain:subject"))
 
     implementation(libs.hilt.android)
     kapt(libs.hilt.android.compiler)

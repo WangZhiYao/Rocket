@@ -6,6 +6,14 @@
     <string name="dialog_delete_category_content">删除分类 %s 时, 该分类下的所有项目与订单将被一起删除, 是否继续?</string>
     <string name="dialog_delete_category_confirm">确认</string>
 
+    <string name="label_create_category">创建分类</string>
+    <string name="create_category_title_hint">分类标题</string>
+    <string name="create_category_remark_hint">备注</string>
+    <string name="create_category_success">创建分类成功</string>
+    <string name="create_category_success_to_create_subject">去创建项目</string>
+
     <string name="error_delete_category_failed">删除分类失败</string>
+    <string name="error_create_category_empty_title">请输入分类标题</string>
+    <string name="error_create_category_failed">创建分类失败</string>
 
 </resources>
