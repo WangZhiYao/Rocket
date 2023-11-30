@@ -1,5 +1,5 @@
 [versions]
-android = "8.1.4"
+android = "8.2.0"
 kotlin = "1.9.21"
 hilt = "2.48.1"
 ksp = "1.9.21-1.0.15"
